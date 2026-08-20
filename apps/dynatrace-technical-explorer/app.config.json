@@ -1,0 +1,17 @@
+{
+  "$schema": "./.dt-app/app.config.schema.json",
+  "environmentUrl": "https://zow79349.apps.dynatrace.com/",
+  "app": {
+    "name": "Dynatrace Technical Explorer",
+    "version": "0.0.0",
+    "description": "Read-only technical explorer for DQL, operations data, and basic visualizations.",
+    "id": "my.dynatrace.technical.explorer",
+    "scopes": [
+      { "name": "storage:logs:read", "comment": "Read logs with DQL" },
+      { "name": "storage:metrics:read", "comment": "Read metrics with DQL" },
+      { "name": "storage:entities:read", "comment": "Read monitored entities with DQL" },
+      { "name": "storage:events:read", "comment": "Read events and problems with DQL" },
+      { "name": "storage:buckets:read", "comment": "Discover readable storage buckets" }
+    ]
+  }
+}

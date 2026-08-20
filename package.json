@@ -1,0 +1,30 @@
+{
+  "name": "dtx-entorno-dynatrace",
+  "version": "0.1.0",
+  "description": "Entorno de trabajo para Dynatrace: CLI propio (dtx), scripts de API, integración MCP y dtctl",
+  "type": "module",
+  "bin": {
+    "dtx": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "dynatrace",
+    "mcp",
+    "dtctl",
+    "dql",
+    "cli"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.0"
+  }
+}

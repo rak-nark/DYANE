@@ -1,0 +1,2788 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-08-20T19:47:17.718Z",
+  "totalDocuments": 30,
+  "domains": {
+    "general": 8,
+    "kubernetes": 4,
+    "openpipeline": 5,
+    "grail": 5,
+    "appengine": 8
+  },
+  "documents": {
+    "541f1581f04985a9": {
+      "id": "541f1581f04985a9",
+      "url": "https://docs.dynatrace.com/docs",
+      "title": "Welcome to Dynatrace Documentation — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs",
+      "contentHash": "646c4cbad4135518924ba8a6d48ad820e027ffceae7328b2c8fa88366c40e62d",
+      "headings": [
+        "Welcome to Dynatrace Documentation",
+        "Get started with Dynatrace or discover what’s new",
+        "Popular pages",
+        "Tutorials",
+        "Documentation highlights",
+        "Dynatrace apps",
+        "Still have questions?",
+        "Talk to our product experts",
+        "Continue your learning journey",
+        "Join Dynatrace University",
+        "Dynatrace Developer",
+        "Join Dynatrace Community"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "get started",
+          "href": "/docs/discover-dynatrace/get-started"
+        },
+        {
+          "text": "SaaS",
+          "href": "/docs/whats-new/saas"
+        },
+        {
+          "text": "OneAgent",
+          "href": "/docs/whats-new/oneagent"
+        },
+        {
+          "text": "ActiveGate",
+          "href": "/docs/whats-new/activegate"
+        },
+        {
+          "text": "Dynatrace apps",
+          "href": "/docs/discover-dynatrace/dynatrace-apps"
+        },
+        {
+          "text": "Talk to our product expertsOur Dynatrace product experts are here to help you with technical questions and provide in-depth assistance via chat.",
+          "href": "https://support.dynatrace.com/"
+        },
+        {
+          "text": "Join Dynatrace UniversityGame-changing education and resources, online and in-person",
+          "href": "https://university.dynatrace.com"
+        },
+        {
+          "text": "Dynatrace DeveloperLearn to create incredible apps with minimal effort",
+          "href": "https://developer.dynatrace.com"
+        },
+        {
+          "text": "Join Dynatrace CommunityFind the answers you are looking for and meet other users and Dynatrace experts.",
+          "href": "https://community.dynatrace.com"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:24.744Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs.md",
+      "lastmod": "2017-07-19T00:00:00.000Z"
+    },
+    "730a5a6c2d213a9a": {
+      "id": "730a5a6c2d213a9a",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate",
+      "title": "Analyze, Explore, and Automate — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-analyze-explore-automate",
+      "contentHash": "55d2d96fe8cebc74a0536956c0be313f77c35e0959f19f1411b1ff10d765f41d",
+      "headings": [
+        "Analyze, Explore, and Automate",
+        "Dashboards",
+        "Notebooks",
+        "Smartscape",
+        "Log Analytics",
+        "Metrics",
+        "Alerting and notifications",
+        "Compliance and resilience",
+        "Workflows",
+        "Services",
+        "Distributed Tracing",
+        "AI and LLM Observability",
+        "Data Observability",
+        "Classic",
+        "Dashboards Classic",
+        "Data Explorer",
+        "Logs Classic",
+        "Metrics Classic",
+        "Notifications and alerting",
+        "Distributed Traces Classic",
+        "Smartscape Topology"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "DashboardsGet to know the visualizations and new features coming with Dashboards in the latest Dynatrace.",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "NotebooksCreate powerful, data-driven documents for custom analytics.",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/notebooks"
+        },
+        {
+          "text": "SmartscapeVisualize the structure of your environments and identify dependencies between your service entities.",
+          "href": "/docs/analyze-explore-automate/smartscape"
+        },
+        {
+          "text": "Log AnalyticsManage, analyze, and monitor log data.",
+          "href": "/docs/analyze-explore-automate/logs"
+        },
+        {
+          "text": "MetricsMetrics powered by Grail offer a comprehensive solution to manage your metrics data",
+          "href": "/docs/analyze-explore-automate/metrics"
+        },
+        {
+          "text": "Alerting and notificationsUtilize anomaly detection, problem detection, and workflows for external notifications to ensure that critical problems never go unnoticed.",
+          "href": "/docs/analyze-explore-automate/alerting-and-notifications"
+        },
+        {
+          "text": "Compliance and resilienceConsolidate insights from the Dynatrace observability and security platform in a unified dashboard.",
+          "href": "/docs/observe/business-observability/compliance-and-resilience"
+        },
+        {
+          "text": "WorkflowsBoost your productivity, optimize reporting, handle security alerts faster, and build custom workflows to enable system automation.",
+          "href": "/docs/analyze-explore-automate/workflows"
+        },
+        {
+          "text": "ServicesManage the health and performance of your cloud-native services",
+          "href": "/docs/observe/application-observability/services"
+        },
+        {
+          "text": "Distributed TracingTrace and analyze in real time highly distributed systems with Grail.",
+          "href": "/docs/observe/application-observability/distributed-tracing"
+        },
+        {
+          "text": "AI and LLM ObservabilityGain insights and understand the behavior, performance, and cost of artificial intelligence (AI) models and services",
+          "href": "/docs/observe/dynatrace-for-ai-observability"
+        },
+        {
+          "text": "Data ObservabilityObserve the most important meta information about observed data by using Dynatrace capabilities.",
+          "href": "/docs/observe/data-observability"
+        },
+        {
+          "text": "Dashboards ClassicUse dashboards for quick, focused access to the data you need to monitor your environments.",
+          "href": "/docs/analyze-explore-automate/dashboards-classic"
+        },
+        {
+          "text": "Data ExplorerQuery for metrics and transform results to gain desired insights.",
+          "href": "/docs/analyze-explore-automate/explorer"
+        },
+        {
+          "text": "Logs ClassicManage, analyze, and monitor log data.",
+          "href": "/docs/analyze-explore-automate/log-monitoring"
+        },
+        {
+          "text": "Metrics ClassicLearn about the many metrics that Dynatrace offers.",
+          "href": "/docs/analyze-explore-automate/metrics-classic"
+        },
+        {
+          "text": "Notifications and alertingLet Dynatrace alert you about problems in your environment.",
+          "href": "/docs/analyze-explore-automate/notifications-and-alerting"
+        },
+        {
+          "text": "Distributed Traces ClassicUse distributed tracing to analyze your services.",
+          "href": "/docs/observe/application-observability/distributed-traces"
+        },
+        {
+          "text": "Smartscape TopologyUse Smartscape Topology to visualize your environment.",
+          "href": "/docs/analyze-explore-automate/smartscape-classic"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:24.987Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-analyze-explore-automate.md",
+      "lastmod": "2026-02-18T00:00:00.000Z"
+    },
+    "5d7d3021c6cdae15": {
+      "id": "5d7d3021c6cdae15",
+      "url": "https://docs.dynatrace.com/docs/deliver/backstage-integration",
+      "title": "Backstage integration — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-deliver-backstage-integration",
+      "contentHash": "a776b078b525081de66c39912d135239fd93036700ae1c1686136562de5ef240",
+      "headings": [
+        "Backstage integration",
+        "Introduction",
+        "Target Audience",
+        "Scenario",
+        "Prerequisites",
+        "Setup and use",
+        "First, get started",
+        "Second, leverage additional features",
+        "Conclusion",
+        "Further reading"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Backstage Software Catalog",
+          "href": "https://backstage.io/docs/features/software-catalog/"
+        },
+        {
+          "text": "Backstage Dynatrace plugin for Managed",
+          "href": "https://github.com/backstage/community-plugins/tree/main/workspaces/dynatrace/plugins/dynatrace"
+        },
+        {
+          "text": "Backstage Dynatrace plugins",
+          "href": "https://github.com/Dynatrace/backstage-plugin"
+        },
+        {
+          "text": "Backstage",
+          "href": "https://backstage.io/"
+        },
+        {
+          "text": "Backstage Software Catalog",
+          "href": "https://backstage.io/docs/features/software-catalog/"
+        },
+        {
+          "text": "Account Management",
+          "href": "https://myaccount.dynatrace.com/"
+        },
+        {
+          "text": "configuration",
+          "href": "https://github.com/Dynatrace/backstage-plugin?tab=readme-ov-file#add-dynatrace-environment-connection"
+        },
+        {
+          "text": "getting started guide",
+          "href": "https://github.com/Dynatrace/backstage-plugin?tab=readme-ov-file#getting-started"
+        },
+        {
+          "text": "customization features",
+          "href": "https://github.com/Dynatrace/backstage-plugin?tab=readme-ov-file#additional-features"
+        },
+        {
+          "text": "Recording",
+          "href": "https://www.youtube.com/watch?v=0or5K_3HieA"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:25.243Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-deliver-backstage-integration.md",
+      "lastmod": "2025-11-17T00:00:00.000Z"
+    },
+    "c90b9692f413f7ae": {
+      "id": "c90b9692f413f7ae",
+      "url": "https://docs.dynatrace.com/docs/deliver",
+      "title": "Software Delivery — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-deliver",
+      "contentHash": "b7df1b610c557b434f0deb2566457ccec741e18f0f85a243466fe8e36a8362d2",
+      "headings": [
+        "Software Delivery",
+        "Release monitoring",
+        "Quality gates and release validation",
+        "Pipeline observability",
+        "Ownership",
+        "Configuration as Code",
+        "Backstage",
+        "Software Delivery Apps",
+        "Site Reliability Guardian",
+        "Ownership",
+        "Service-Level Objectives",
+        "Explore in Dynatrace Hub",
+        "Dynatrace Classic",
+        "Service-level objectives classic (SLOs)"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Release monitoringRelease monitoring enables an easy evaluation of the performance of individual release versions.",
+          "href": "/docs/deliver/release-monitoring-classic"
+        },
+        {
+          "text": "Quality gates and release validationValidate the releases of your business-critical services.",
+          "href": "/docs/deliver/quality-gates"
+        },
+        {
+          "text": "Pipeline observabilityWith insights into your pipelines and processes, you can observe and analyze software engineering practices within an organization.",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events"
+        },
+        {
+          "text": "OwnershipMap team ownership to monitored entities for better collaboration, task assignment, incident and vulnerability response, and service-level management.",
+          "href": "/docs/deliver/ownership"
+        },
+        {
+          "text": "Configuration as CodeLearn how to use Dynatrace Configuration as Code.",
+          "href": "/docs/deliver/configuration-as-code"
+        },
+        {
+          "text": "BackstageIntegrate Dynatrace into Backstage to level up developer experience.",
+          "href": "/docs/deliver/backstage-integration"
+        },
+        {
+          "text": "Site Reliability GuardianMake the right release decisions and empower SREs to apply Service-Level Objectives (SLOs) for their critical services using Site Reliability Guardian.",
+          "href": "/docs/deliver/site-reliability-guardian"
+        },
+        {
+          "text": "OwnershipOwnership in the latest Dynatrace provides custom actions to define workflows integrating entity owners and their contact information.",
+          "href": "/docs/deliver/ownership/ownership-app"
+        },
+        {
+          "text": "Service-Level ObjectivesWith  Service-Level Objectives, you can define and review your service-level objectives (SLOs) utilizing Dynatrace Query Language (DQL).",
+          "href": "/docs/deliver/service-level-objectives"
+        },
+        {
+          "text": "Explore in Dynatrace HubEmpower DevOps platform engineers, SREs, and development teams to deliver software faster, more securely, and of a higher quality.",
+          "href": "https://www.dynatrace.com/hub/detail/automations/?internal_source=doc&amp;internal_medium=link&amp;internal_campaign=cross"
+        },
+        {
+          "text": "Service-level objectives classic (SLOs)Service-level objectives classic (SLOs) enable DevOps teams to accelerate and scale their site reliability engineering (SRE) efforts.",
+          "href": "/docs/deliver/service-level-objectives-classic"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:25.475Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-deliver.md",
+      "lastmod": "2026-04-14T00:00:00.000Z"
+    },
+    "4e6c6a1a988f1661": {
+      "id": "4e6c6a1a988f1661",
+      "url": "https://docs.dynatrace.com/docs/deliver/release-validation-automated",
+      "title": "Automate release validation — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-deliver-release-validation-automated",
+      "contentHash": "63816b53c40e5de1934f73282407920c7739aaad822d35f629ff67f6e3bc25d2",
+      "headings": [
+        "Automate release validation",
+        "Target audience",
+        "What will you learn",
+        "Prerequisites",
+        "Steps",
+        "Setup steps",
+        "Create a guardian using a template",
+        "Create a workflow to trigger the SRG automatically",
+        "Baseline your SRG",
+        "Automate the release validation steps",
+        "Run your trained guardian",
+        "Informational-only objectives",
+        "Conclusion"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Site Reliability Guardian (SRG)",
+          "href": "/docs/deliver/site-reliability-guardian#srg-concepts"
+        },
+        {
+          "text": "Workflows",
+          "href": "/docs/analyze-explore-automate/workflows"
+        },
+        {
+          "text": "release validation demo tutorial",
+          "href": "https://dt-url.net/obslab-release-validation"
+        },
+        {
+          "text": "Site Reliability Guardian in the playground",
+          "href": "https://dt-url.net/2f03w1t"
+        },
+        {
+          "text": "release validation demo tutorial",
+          "href": "https://dt-url.net/obslab-release-validation"
+        },
+        {
+          "text": "Create a guardian",
+          "href": "/docs/deliver/site-reliability-guardian/create-srg"
+        },
+        {
+          "text": "Create Site Reliability Guardian - GitHub tutorial",
+          "href": "https://dt-url.net/xe03uqi"
+        },
+        {
+          "text": "Configuration as Code overview",
+          "href": "/docs/deliver/configuration-as-code"
+        },
+        {
+          "text": "Automate the Site Reliability Guardian - GitHub tutorial",
+          "href": "https://dt-url.net/x323ui1"
+        },
+        {
+          "text": "Site Reliability Guardian",
+          "href": "/docs/deliver/site-reliability-guardian"
+        },
+        {
+          "text": "learning modules",
+          "href": "/docs/deliver/site-reliability-guardian#learning-modules"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:25.711Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-deliver-release-validation-automated.md",
+      "lastmod": "2025-11-25T00:00:00.000Z"
+    },
+    "5588100a4a3685c9": {
+      "id": "5588100a4a3685c9",
+      "url": "https://docs.dynatrace.com/docs/deliver/self-service-kubernetes-use-case",
+      "title": "Predict and autoscale Kubernetes workloads — Dynatrace Docs",
+      "domain": "kubernetes",
+      "slug": "docs-deliver-self-service-kubernetes-use-case",
+      "contentHash": "5a7d67cd1ea6769b0cdccc37c2fb7e9fe2d98d7570d6a926d95c08cb4851ea90",
+      "headings": [
+        "Predict and autoscale Kubernetes workloads",
+        "What will you learn",
+        "Before you begin",
+        "Prerequisites",
+        "Annotate your Kubernetes Deployments",
+        "Steps",
+        "Predict Kubernetes resources usage workflow",
+        "Commit Dynatrace Intelligence prediction workflow",
+        "Prerequisite",
+        "Summary",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Observability Lab: Predictive Auto-Scaling for Kubernetes workloads",
+          "href": "https://dt-url.net/obslab-predictive-kubernetes-scaling"
+        },
+        {
+          "text": "Forecast disk and resource utilization",
+          "href": "/docs/dynatrace-intelligence/use-cases/dynatrace-intelligence-for-workflows"
+        },
+        {
+          "text": "Set up Kubernetes Connector",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/kubernetes-automation/kubernetes-workflows-setup"
+        },
+        {
+          "text": "Set up GitHub Connector",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/github/github-workflows-setup"
+        },
+        {
+          "text": "horizontal scaling",
+          "href": "https://dt-url.net/d723u3m"
+        },
+        {
+          "text": "vertical scaling",
+          "href": "https://dt-url.net/vf43uri"
+        },
+        {
+          "text": "Observability Lab GitHub Tutorial",
+          "href": "https://dt-url.net/ms63uam"
+        },
+        {
+          "text": "Set up GitHub Connector",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/github/github-workflows-setup"
+        },
+        {
+          "text": "Explore our sample dashboards on the Dynatrace Playground",
+          "href": "https://dt-url.net/playground-obslab-predictive-kubernetes-scaling"
+        },
+        {
+          "text": "Get hands-on and delploy our demo using GitHub Codespace",
+          "href": "https://dt-url.net/obslab-predictive-kubernetes-scaling"
+        },
+        {
+          "text": "Watch our Youtube video",
+          "href": "https://dt-url.net/predictive-autoscaling-k8s"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:25.993Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\kubernetes__docs-deliver-self-service-kubernetes-use-case.md",
+      "lastmod": "2026-01-28T00:00:00.000Z"
+    },
+    "3e017b5a3144ecb8": {
+      "id": "3e017b5a3144ecb8",
+      "url": "https://docs.dynatrace.com/docs/deliver/test-pipeline-observability",
+      "title": "Test pipeline observability — Dynatrace Docs",
+      "domain": "openpipeline",
+      "slug": "docs-deliver-test-pipeline-observability",
+      "contentHash": "0de0cac11794777f4521a0f564f9e96b98741a07117a308c3f4625696468fb8e",
+      "headings": [
+        "Test pipeline observability",
+        "Target audience",
+        "Scenario",
+        "Prerequisites",
+        "Access and permissions",
+        "Knowledge",
+        "Steps",
+        "Conclusion"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Dynatrace Dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "workflows",
+          "href": "/docs/analyze-explore-automate/workflows"
+        },
+        {
+          "text": "Business events API",
+          "href": "/docs/observe/business-observability/bo-events-capturing/bo-events-capturing-external-sources"
+        },
+        {
+          "text": "dashboard",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "triggered",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger"
+        },
+        {
+          "text": "Ownership",
+          "href": "/docs/deliver/ownership/ownership-app"
+        },
+        {
+          "text": "workflow Slack",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/slack"
+        },
+        {
+          "text": "Forecast disk and resource utilization",
+          "href": "/docs/dynatrace-intelligence/use-cases/dynatrace-intelligence-for-workflows"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:26.226Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\openpipeline__docs-deliver-test-pipeline-observability.md",
+      "lastmod": "2024-10-07T00:00:00.000Z"
+    },
+    "6104f2d1c4d11ded": {
+      "id": "6104f2d1c4d11ded",
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api",
+      "title": "Dynatrace API — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-dynatrace-api",
+      "contentHash": "950954226b95c5de5bc0b70d8313e3227b99063afb64261c7c67309a4e3939ef",
+      "headings": [
+        "Dynatrace API",
+        "Basics",
+        "Endpoints",
+        "ActiveGate",
+        "Anonymization",
+        "Application Security",
+        "Audit logs",
+        "Business Events",
+        "Cluster information",
+        "Credential vault",
+        "Custom tags",
+        "Deployment",
+        "Events",
+        "Extensions 2.0",
+        "Hub capabilities",
+        "Log Monitoring",
+        "Metrics",
+        "Version 1",
+        "Version 2",
+        "Metric units",
+        "Monitored entities",
+        "Network zones",
+        "OneAgent on a host",
+        "Problems",
+        "Releases",
+        "Remote configuration",
+        "RUM",
+        "Settings",
+        "SLO",
+        "Synthetic",
+        "Tokens",
+        "Anomaly detection",
+        "AWS",
+        "Azure",
+        "Calculated metrics",
+        "Conditional naming",
+        "Data privacy",
+        "Dashboards",
+        "Extensions",
+        "Mobile",
+        "OneAgent",
+        "Remote environments",
+        "Reports",
+        "RUM",
+        "Services",
+        "User management",
+        "Group management",
+        "Permission management",
+        "Policy management",
+        "Account limits",
+        "Service user management",
+        "Platform tokens",
+        "Environment management",
+        "Dynatrace Platform Subscription",
+        "Account audit logs",
+        "Notifications",
+        "Reference data",
+        "API Explorer",
+        "Authentication in the API Explorer",
+        "Try out an API call",
+        "Authentication in the API Explorer",
+        "Try out an API call",
+        "Authentication in the API Explorer",
+        "Try out an API call"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Authentication",
+          "href": "/docs/dynatrace-api/basics/dynatrace-api-authentication"
+        },
+        {
+          "text": "Response codes",
+          "href": "/docs/dynatrace-api/basics/dynatrace-api-response-codes"
+        },
+        {
+          "text": "Access limit",
+          "href": "/docs/dynatrace-api/basics/access-limit"
+        },
+        {
+          "text": "Preview and Early Access releases",
+          "href": "/docs/dynatrace-api/basics/preview-early-access"
+        },
+        {
+          "text": "Migration guides",
+          "href": "/docs/dynatrace-api/basics/deprecation-migration-guides"
+        },
+        {
+          "text": "Grail APIs",
+          "href": "https://developer.dynatrace.com/plan/platform-services/grail-service/"
+        },
+        {
+          "text": "Information",
+          "href": "/docs/dynatrace-api/environment-api/activegates/activegate-info"
+        },
+        {
+          "text": "Auto-update configuration",
+          "href": "/docs/dynatrace-api/environment-api/activegates/auto-update-config"
+        },
+        {
+          "text": "Auto-update jobs",
+          "href": "/docs/dynatrace-api/environment-api/activegates/auto-update-jobs"
+        },
+        {
+          "text": "Anonymization",
+          "href": "/docs/dynatrace-api/environment-api/anonymization"
+        },
+        {
+          "text": "Vulnerabilities",
+          "href": "/docs/dynatrace-api/environment-api/application-security/vulnerabilities"
+        },
+        {
+          "text": "Davis Security Advisor",
+          "href": "/docs/dynatrace-api/environment-api/application-security/davis-security-advice"
+        },
+        {
+          "text": "Attacks",
+          "href": "/docs/dynatrace-api/environment-api/application-security/attacks"
+        },
+        {
+          "text": "Audit logs",
+          "href": "/docs/dynatrace-api/environment-api/audit-logs"
+        },
+        {
+          "text": "Business Events",
+          "href": "/docs/dynatrace-api/environment-api/business-analytics-v2"
+        },
+        {
+          "text": "Cluster information",
+          "href": "/docs/dynatrace-api/environment-api/cluster-information"
+        },
+        {
+          "text": "Credential vault",
+          "href": "/docs/dynatrace-api/environment-api/credential-vault"
+        },
+        {
+          "text": "Custom tags of monitored entities",
+          "href": "/docs/dynatrace-api/environment-api/custom-tags"
+        },
+        {
+          "text": "OneAgent",
+          "href": "/docs/dynatrace-api/environment-api/deployment/oneagent"
+        },
+        {
+          "text": "ActiveGate",
+          "href": "/docs/dynatrace-api/environment-api/deployment/activegate"
+        },
+        {
+          "text": "BOSH tarballs",
+          "href": "/docs/dynatrace-api/environment-api/deployment/bosh"
+        },
+        {
+          "text": "Orchestration tarballs",
+          "href": "/docs/dynatrace-api/environment-api/deployment/orchestration"
+        },
+        {
+          "text": "List events",
+          "href": "/docs/dynatrace-api/environment-api/events-v2/get-events"
+        },
+        {
+          "text": "List event types",
+          "href": "/docs/dynatrace-api/environment-api/events-v2/get-event-types"
+        },
+        {
+          "text": "List event properties",
+          "href": "/docs/dynatrace-api/environment-api/events-v2/get-event-properties"
+        },
+        {
+          "text": "Ingest events",
+          "href": "/docs/dynatrace-api/environment-api/events-v2/post-event"
+        },
+        {
+          "text": "Extensions 2.0",
+          "href": "/docs/dynatrace-api/environment-api/extensions-20"
+        },
+        {
+          "text": "Hub capabilities",
+          "href": "/docs/dynatrace-api/environment-api/hub"
+        },
+        {
+          "text": "Log Monitoring",
+          "href": "/docs/dynatrace-api/environment-api/log-monitoring-v2"
+        },
+        {
+          "text": "Basics",
+          "href": "/docs/dynatrace-api/environment-api/metric-v1"
+        },
+        {
+          "text": "List metrics",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2/get-all-metrics"
+        },
+        {
+          "text": "Get data points",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2/get-data-points"
+        },
+        {
+          "text": "Ingest data points",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2/post-ingest-metrics"
+        },
+        {
+          "text": "Metric selector",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2/metric-selector"
+        },
+        {
+          "text": "Metric expressions",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2/metric-expressions"
+        },
+        {
+          "text": "List units",
+          "href": "/docs/dynatrace-api/environment-api/metrics-units/get-all-units"
+        },
+        {
+          "text": "View a unit",
+          "href": "/docs/dynatrace-api/environment-api/metrics-units/get-unit"
+        },
+        {
+          "text": "Convert units",
+          "href": "/docs/dynatrace-api/environment-api/metrics-units/get-unit-convert"
+        },
+        {
+          "text": "Monitored entities",
+          "href": "/docs/dynatrace-api/environment-api/entity-v2"
+        },
+        {
+          "text": "Network zones",
+          "href": "/docs/dynatrace-api/environment-api/network-zones"
+        },
+        {
+          "text": "OneAgent on a host",
+          "href": "/docs/dynatrace-api/environment-api/oneagent-on-a-host/get-all-hosts-with-oneagents"
+        },
+        {
+          "text": "Problems v2",
+          "href": "/docs/dynatrace-api/environment-api/problems-v2"
+        },
+        {
+          "text": "Releases",
+          "href": "/docs/dynatrace-api/environment-api/releaseapi"
+        },
+        {
+          "text": "OneAgent",
+          "href": "/docs/dynatrace-api/environment-api/remote-configuration/oneagent"
+        },
+        {
+          "text": "ActiveGate",
+          "href": "/docs/dynatrace-api/environment-api/remote-configuration/activegate"
+        },
+        {
+          "text": "Geographic regions",
+          "href": "/docs/dynatrace-api/environment-api/rum/geographic-regions"
+        },
+        {
+          "text": "User sessions",
+          "href": "/docs/dynatrace-api/environment-api/rum/user-sessions"
+        },
+        {
+          "text": "Real User Monitoring JavaScript",
+          "href": "/docs/dynatrace-api/environment-api/rum/real-user-monitoring-javascript-code"
+        },
+        {
+          "text": "Settings",
+          "href": "/docs/dynatrace-api/environment-api/settings"
+        },
+        {
+          "text": "Service-Level Objectives",
+          "href": "/docs/dynatrace-api/environment-api/service-level-objectives"
+        },
+        {
+          "text": "Monitors",
+          "href": "/docs/dynatrace-api/environment-api/synthetic/synthetic-monitors"
+        },
+        {
+          "text": "Monitor executions v2",
+          "href": "/docs/dynatrace-api/environment-api/synthetic-v2/synthetic-monitor-execution"
+        },
+        {
+          "text": "Locations v1",
+          "href": "/docs/dynatrace-api/environment-api/synthetic/synthetic-locations"
+        },
+        {
+          "text": "Locations v2",
+          "href": "/docs/dynatrace-api/environment-api/synthetic-v2/synthetic-locations-v2"
+        },
+        {
+          "text": "Nodes v1",
+          "href": "/docs/dynatrace-api/environment-api/synthetic/synthetic-nodes"
+        },
+        {
+          "text": "Nodes v2",
+          "href": "/docs/dynatrace-api/environment-api/synthetic-v2/synthetic-nodes-v2"
+        },
+        {
+          "text": "Third-party synthetic",
+          "href": "/docs/dynatrace-api/environment-api/synthetic/third-party-synthetic"
+        },
+        {
+          "text": "Tokens v2",
+          "href": "/docs/dynatrace-api/environment-api/tokens-v2"
+        },
+        {
+          "text": "Applications",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-applications"
+        },
+        {
+          "text": "AWS",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-aws"
+        },
+        {
+          "text": "Database services",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-database"
+        },
+        {
+          "text": "Disk events",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-disk-events"
+        },
+        {
+          "text": "Hosts",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-hosts"
+        },
+        {
+          "text": "Process groups",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-process-groups"
+        },
+        {
+          "text": "Services",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-services"
+        },
+        {
+          "text": "VMware",
+          "href": "/docs/dynatrace-api/configuration-api/anomaly-detection-api/anomaly-detection-api-vmware"
+        },
+        {
+          "text": "AWS credentials",
+          "href": "/docs/dynatrace-api/configuration-api/aws-credentials-api"
+        },
+        {
+          "text": "AWS PrivateLink",
+          "href": "/docs/dynatrace-api/configuration-api/aws-privatelink"
+        },
+        {
+          "text": "AWS supported services",
+          "href": "/docs/dynatrace-api/configuration-api/aws-supported-services"
+        },
+        {
+          "text": "Azure credentials",
+          "href": "/docs/dynatrace-api/configuration-api/azure-credentials-api"
+        },
+        {
+          "text": "Azure supported services",
+          "href": "/docs/dynatrace-api/configuration-api/azure-supported-services"
+        },
+        {
+          "text": "Mobile app metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/mobile-app-metrics"
+        },
+        {
+          "text": "Service metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/service-metrics"
+        },
+        {
+          "text": "Synthetic metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/synthetic-metrics"
+        },
+        {
+          "text": "Web application metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/rum-metrics"
+        },
+        {
+          "text": "Conditional naming",
+          "href": "/docs/dynatrace-api/configuration-api/conditional-naming"
+        },
+        {
+          "text": "Data privacy",
+          "href": "/docs/dynatrace-api/configuration-api/data-privacy-api"
+        },
+        {
+          "text": "Dashboards",
+          "href": "/docs/dynatrace-api/configuration-api/dashboards-api"
+        },
+        {
+          "text": "Extensions",
+          "href": "/docs/dynatrace-api/configuration-api/extensions-api"
+        },
+        {
+          "text": "Plugins",
+          "href": "/docs/dynatrace-api/configuration-api/plugins-api"
+        },
+        {
+          "text": "Mobile and custom app configuration",
+          "href": "/docs/dynatrace-api/configuration-api/rum/mobile-custom-app-configuration"
+        },
+        {
+          "text": "Mobile symbolication",
+          "href": "/docs/dynatrace-api/configuration-api/mobile-symbolication-api"
+        },
+        {
+          "text": "OneAgent on a host",
+          "href": "/docs/dynatrace-api/configuration-api/oneagent-configuration/oneagent-on-host"
+        },
+        {
+          "text": "OneAgent in a host group",
+          "href": "/docs/dynatrace-api/configuration-api/oneagent-configuration/oneagent-in-host-group"
+        },
+        {
+          "text": "Environment-wide configuration",
+          "href": "/docs/dynatrace-api/configuration-api/oneagent-configuration/oneagent-environment-wide"
+        },
+        {
+          "text": "Remote environments",
+          "href": "/docs/dynatrace-api/configuration-api/remote-environments"
+        },
+        {
+          "text": "Reports",
+          "href": "/docs/dynatrace-api/configuration-api/reports-api"
+        },
+        {
+          "text": "Allowed beacon origins for CORS",
+          "href": "/docs/dynatrace-api/configuration-api/rum/allowed-beacon-cors"
+        },
+        {
+          "text": "Applications detection configuration",
+          "href": "/docs/dynatrace-api/configuration-api/rum/application-detection-configuration"
+        },
+        {
+          "text": "Calculated web application metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/rum-metrics"
+        },
+        {
+          "text": "Content resources",
+          "href": "/docs/dynatrace-api/configuration-api/rum/content-resources"
+        },
+        {
+          "text": "Geographic regions - IP address mapping rules",
+          "href": "/docs/dynatrace-api/configuration-api/rum/geographic-regions-ip-address"
+        },
+        {
+          "text": "Geographic regions - IP mapping headers",
+          "href": "/docs/dynatrace-api/configuration-api/rum/geographic-regions-ip-header"
+        },
+        {
+          "text": "Mobile and custom app configuration",
+          "href": "/docs/dynatrace-api/configuration-api/rum/mobile-custom-app-configuration"
+        },
+        {
+          "text": "Web application configuration",
+          "href": "/docs/dynatrace-api/configuration-api/rum/web-application-configuration-api"
+        },
+        {
+          "text": "Calculated service metrics",
+          "href": "/docs/dynatrace-api/configuration-api/calculated-metrics/service-metrics"
+        },
+        {
+          "text": "Custom services",
+          "href": "/docs/dynatrace-api/configuration-api/service-api/custom-services-api"
+        },
+        {
+          "text": "Failure detection",
+          "href": "/docs/dynatrace-api/configuration-api/service-api/failure-detection"
+        },
+        {
+          "text": "Request attributes",
+          "href": "/docs/dynatrace-api/configuration-api/service-api/request-attributes-api"
+        },
+        {
+          "text": "Request naming",
+          "href": "/docs/dynatrace-api/configuration-api/service-api/request-naming-api"
+        },
+        {
+          "text": "Service detection rules",
+          "href": "/docs/dynatrace-api/configuration-api/service-api/detection-rules"
+        },
+        {
+          "text": "User managementView and manage Dynatrace users in your account.",
+          "href": "/docs/dynatrace-api/account-management-api/user-management-api"
+        },
+        {
+          "text": "Group managementView and manage user groups in your account.",
+          "href": "/docs/dynatrace-api/account-management-api/group-management-api"
+        },
+        {
+          "text": "Permission managementManage user permissions in your account.",
+          "href": "/docs/dynatrace-api/account-management-api/permission-management-api"
+        },
+        {
+          "text": "Policy managementManage access policies in your account.",
+          "href": "/docs/dynatrace-api/account-management-api/policy-management-api/policies"
+        },
+        {
+          "text": "Account limitsView account limits of your account.",
+          "href": "/docs/dynatrace-api/account-management-api/account-limits-api"
+        },
+        {
+          "text": "Service user managementManage service users in your account.",
+          "href": "/docs/dynatrace-api/account-management-api/service-user-management-api"
+        },
+        {
+          "text": "Platform tokensManage platform tokens of your account.",
+          "href": "/docs/dynatrace-api/account-management-api/platform-tokens-api"
+        },
+        {
+          "text": "Environment managementView monitoring environments of your Dynatrace account.",
+          "href": "/docs/dynatrace-api/account-management-api/environment-management-api/environment-management-api"
+        },
+        {
+          "text": "Dynatrace Platform SubscriptionView your Dynatrace Platform Subscription and how it is used.",
+          "href": "/docs/dynatrace-api/account-management-api/dynatrace-platform-subscription-api"
+        },
+        {
+          "text": "Account audit logsView audit logs related to your Dynatrace account.",
+          "href": "/docs/dynatrace-api/account-management-api/account-audits-api"
+        },
+        {
+          "text": "NotificationsList notifications for your account.",
+          "href": "/docs/dynatrace-api/account-management-api/post-notifications"
+        },
+        {
+          "text": "Reference dataView the reference info about your account.",
+          "href": "/docs/dynatrace-api/account-management-api/reference-data"
+        },
+        {
+          "text": "user menu",
+          "href": "/docs/discover-dynatrace/get-started/dynatrace-ui#user-menu-previous-dynatrace"
+        },
+        {
+          "text": "user menu",
+          "href": "/docs/discover-dynatrace/get-started/dynatrace-ui#user-menu-previous-dynatrace"
+        },
+        {
+          "text": "Account Management",
+          "href": "https://myaccount.dynatrace.com/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:26.597Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-dynatrace-api.md",
+      "lastmod": "2026-02-26T00:00:00.000Z"
+    },
+    "900bc51e764e96d1": {
+      "id": "900bc51e764e96d1",
+      "url": "https://docs.dynatrace.com/docs/discover-dynatrace",
+      "title": "Discover Dynatrace — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-discover-dynatrace",
+      "contentHash": "edf25dae0478ddb0c867418e0b3973dbafdebe3893ed34b90895c7cb99f4da78",
+      "headings": [
+        "Discover Dynatrace",
+        "What is Dynatrace",
+        "Get started",
+        "Resources",
+        "Playground",
+        "Trial",
+        "Dynatrace Community",
+        "Dynatrace Developer",
+        "Dynatrace University"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "What is DynatraceObservability built for the age of AI",
+          "href": "/docs/discover-dynatrace/what-is-dynatrace"
+        },
+        {
+          "text": "Get startedGet started with Dynatrace in just a few steps.",
+          "href": "/docs/discover-dynatrace/get-started"
+        },
+        {
+          "text": "sign up for Playground",
+          "href": "https://www.dynatrace.com/signup/playground/"
+        },
+        {
+          "text": "Sign up for free trial",
+          "href": "https://www.dynatrace.com/signup/"
+        },
+        {
+          "text": "Dynatrace Community",
+          "href": "https://community.dynatrace.com"
+        },
+        {
+          "text": "Dynatrace Developer",
+          "href": "https://developer.dynatrace.com"
+        },
+        {
+          "text": "Dynatrace University",
+          "href": "https://university.dynatrace.com"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:26.823Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-discover-dynatrace.md",
+      "lastmod": "2026-03-17T00:00:00.000Z"
+    },
+    "e8c7223c8d719363": {
+      "id": "e8c7223c8d719363",
+      "url": "https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace",
+      "title": "What is Dynatrace — Dynatrace Docs",
+      "domain": "general",
+      "slug": "docs-discover-dynatrace-what-is-dynatrace",
+      "contentHash": "c3ff69fd811bab74fbe5c06caf4c26a22a2bd2b596e5fdc70f73259a7aef9c92",
+      "headings": [
+        "What is Dynatrace",
+        "What can you do with Dynatrace?",
+        "Platform capabilities",
+        "Application Observability",
+        "Log Analytics",
+        "AI/LLM Observability",
+        "Application Security",
+        "Digital Experience",
+        "Business Observability",
+        "Developer Experience",
+        "Infrastructure Observability",
+        "Extend the platform",
+        "How Dynatrace works",
+        "Dynatrace Intelligence",
+        "AppEngine",
+        "AutomationEngine",
+        "Grail",
+        "Smartscape",
+        "OpenPipeline",
+        "OneAgent",
+        "FAQ",
+        "Get started with Dynatrace",
+        "Free trial",
+        "Playground",
+        "Learn more about Dynatrace"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Application Observability",
+          "href": "/docs/observe/application-observability"
+        },
+        {
+          "text": "Log Analytics",
+          "href": "/docs/analyze-explore-automate/logs"
+        },
+        {
+          "text": "AI Observability for generative AI and LLM models with Dynatrace",
+          "href": "/docs/observe/dynatrace-for-ai-observability"
+        },
+        {
+          "text": "Application Security",
+          "href": "/docs/secure/application-security"
+        },
+        {
+          "text": "Digital Experience",
+          "href": "/docs/observe/digital-experience"
+        },
+        {
+          "text": "Business Observability",
+          "href": "/docs/observe/business-observability"
+        },
+        {
+          "text": "Software Delivery",
+          "href": "/docs/deliver"
+        },
+        {
+          "text": "Live Debugger",
+          "href": "/docs/observe/application-observability/live-debugger"
+        },
+        {
+          "text": "Infrastructure Observability",
+          "href": "/docs/observe/infrastructure-observability"
+        },
+        {
+          "text": "AppEngine",
+          "href": "/docs/platform/appengine"
+        },
+        {
+          "text": "Extend Dynatrace",
+          "href": "/docs/ingest-from/extend-dynatrace"
+        },
+        {
+          "text": "Dynatrace Hub",
+          "href": "/docs/manage/hub"
+        },
+        {
+          "text": "Dynatrace Developer",
+          "href": "https://developer.dynatrace.com/"
+        },
+        {
+          "text": "Embedded Model Context Protocol (MCP)",
+          "href": "/docs/dynatrace-intelligence/dynatrace-mcp"
+        },
+        {
+          "text": "Dynatrace IntelligenceDynatrace Intelligence uniquely combines predictive AI, causal AI, and generative AI for observability, security, and business use cases.",
+          "href": "/docs/dynatrace-intelligence"
+        },
+        {
+          "text": "AppEngineCreate and share custom apps that leverage insights from all your observability, security, and business data.",
+          "href": "/docs/platform/appengine"
+        },
+        {
+          "text": "AutomationEngineAccelerate digital transformation with simple yet powerful automations driven by observability and security insights.",
+          "href": "/docs/platform/automationengine"
+        },
+        {
+          "text": "GrailGrail™ is a causational data lakehouse with a massively parallel processing (MPP) analytics engine that leverages Dynatrace Query Language (DQL) for instant, AI-powered, context-rich analytics.",
+          "href": "/docs/platform/grail"
+        },
+        {
+          "text": "SmartscapeSmartscape® dynamic environment-topology mapping visualizes the dynamic relationships among all application components across every tier.",
+          "href": "/docs/analyze-explore-automate/smartscape"
+        },
+        {
+          "text": "OpenPipelineDynatrace OpenPipeline manages all aspects of Dynatrace&#x27;s unified ingestion with powerful, scalable, and flexible stream processing and data extraction options.",
+          "href": "/docs/platform/openpipeline"
+        },
+        {
+          "text": "OneAgentOneAgent® services automatically discover, activate, and instrument applications, microservices, infrastructure, and any dependencies in modern cloud environments.",
+          "href": "/docs/platform/oneagent"
+        },
+        {
+          "text": "free trial",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "public sandbox environment",
+          "href": "https://wkf10640.apps.dynatrace.com/ui/apps/dynatrace.launcher"
+        },
+        {
+          "text": "Dynatrace University",
+          "href": "https://university.dynatrace.com/"
+        },
+        {
+          "text": "Dynatrace Community",
+          "href": "https://community.dynatrace.com/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:26:27.059Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\general__docs-discover-dynatrace-what-is-dynatrace.md",
+      "lastmod": "2026-06-03T00:00:00.000Z"
+    },
+    "65a15219f8937e47": {
+      "id": "65a15219f8937e47",
+      "url": "https://docs.dynatrace.com/docs/ingest-from",
+      "title": "Ingest data into Dynatrace — Dynatrace Docs",
+      "domain": "openpipeline",
+      "slug": "docs-ingest-from",
+      "contentHash": "34c3d2fc41459b01919ff4c6e885af503d86b95e5312a54666f2524e7e7ea087",
+      "headings": [
+        "Ingest data into Dynatrace",
+        "Where ingestion fits in the Dynatrace journey",
+        "What determines the right approach",
+        "Select your environment",
+        "Infrastructure prerequisites"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Process your data with OpenPipeline",
+          "href": "/docs/platform/openpipeline"
+        },
+        {
+          "text": "Choose how to ingest data into Dynatrace",
+          "href": "/docs/ingest-from/choose-your-approach"
+        },
+        {
+          "text": "Choose how to ingest data into Dynatrace",
+          "href": "/docs/ingest-from/choose-your-approach"
+        },
+        {
+          "text": "Servers and VMs",
+          "href": "/docs/ingest-from/dynatrace-oneagent"
+        },
+        {
+          "text": "Kubernetes",
+          "href": "/docs/ingest-from/setup-on-k8s"
+        },
+        {
+          "text": "Containers and PaaS",
+          "href": "/docs/ingest-from/setup-on-container-platforms"
+        },
+        {
+          "text": "AWS Lambda",
+          "href": "/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-lambda-integration"
+        },
+        {
+          "text": "Azure Functions",
+          "href": "/docs/ingest-from/microsoft-azure-services/integrations/azure-functions"
+        },
+        {
+          "text": "Amazon Web Services",
+          "href": "/docs/ingest-from/amazon-web-services"
+        },
+        {
+          "text": "Microsoft Azure",
+          "href": "/docs/ingest-from/microsoft-azure-services"
+        },
+        {
+          "text": "Google Cloud Platform",
+          "href": "/docs/ingest-from/google-cloud-platform"
+        },
+        {
+          "text": "OpenTelemetry",
+          "href": "/docs/ingest-from/opentelemetry"
+        },
+        {
+          "text": "Extend and customize",
+          "href": "/docs/ingest-from/extend-dynatrace"
+        },
+        {
+          "text": "ActiveGate",
+          "href": "/docs/ingest-from/dynatrace-activegate"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:27:36.189Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\openpipeline__docs-ingest-from.md",
+      "lastmod": "2026-06-22T00:00:00.000Z"
+    },
+    "0f2e77723f80dcb3": {
+      "id": "0f2e77723f80dcb3",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications",
+      "title": "Alerting and notifications — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-alerting-and-notifications",
+      "contentHash": "bdee2c24e0e4eea269b080bf55bbc8df02f293dc28966020e6bddaa2b47f306c",
+      "headings": [
+        "Alerting and notifications",
+        "Alerting",
+        "Automatic detection",
+        "Custom alerts",
+        "Problem detection",
+        "Workflows for external notifications",
+        "Workflow trigger",
+        "Integration with external systems via Workflows connectors",
+        "Simple workflows vs standard workflows",
+        "Simple workflows",
+        "Standard workflows",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "workflows",
+          "href": "/docs/analyze-explore-automate/workflows"
+        },
+        {
+          "text": "Dynatrace Intelligence",
+          "href": "/docs/dynatrace-intelligence"
+        },
+        {
+          "text": "Davis events",
+          "href": "/docs/semantic-dictionary/model/davis"
+        },
+        {
+          "text": "problem",
+          "href": "/docs/dynatrace-intelligence/problems-app"
+        },
+        {
+          "text": "trigger workflows",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "problem trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Davis event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-event-trigger"
+        },
+        {
+          "text": "event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#event-trigger"
+        },
+        {
+          "text": "agentic workflows",
+          "href": "/docs/dynatrace-intelligence/dynatrace-intelligence-integrations/agentic-workflows"
+        },
+        {
+          "text": "Dynatrace Intelligence",
+          "href": "/docs/dynatrace-intelligence"
+        },
+        {
+          "text": "Dynatrace Intelligence",
+          "href": "/docs/dynatrace-intelligence"
+        },
+        {
+          "text": "health alerts",
+          "href": "/docs/observe/infrastructure-observability/infrastructure-and-operations#health-alerts"
+        },
+        {
+          "text": "OpenPipeline extraction rules",
+          "href": "/docs/analyze-explore-automate/logs/lma-use-cases/lma-alert-log-based-events#extract-davis-event"
+        },
+        {
+          "text": "custom alerts",
+          "href": "/docs/dynatrace-intelligence/root-cause-analysis/event-analysis-and-correlation/event-categories/custom-alerts"
+        },
+        {
+          "text": "problem remediation",
+          "href": "https://www.dynatrace.com/knowledge-base/problem-remediation"
+        },
+        {
+          "text": "email",
+          "href": "/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email"
+        },
+        {
+          "text": "Slack message",
+          "href": "/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack"
+        },
+        {
+          "text": "health alerts",
+          "href": "/docs/observe/infrastructure-observability/infrastructure-and-operations#health-alerts"
+        },
+        {
+          "text": "OpenPipeline extraction rules",
+          "href": "/docs/analyze-explore-automate/logs/lma-use-cases/lma-alert-log-based-events#extract-davis-event"
+        },
+        {
+          "text": "custom alerts",
+          "href": "/docs/dynatrace-intelligence/root-cause-analysis/event-analysis-and-correlation/event-categories/custom-alerts"
+        },
+        {
+          "text": "email",
+          "href": "/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email"
+        },
+        {
+          "text": "Slack message",
+          "href": "/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack"
+        },
+        {
+          "text": "problem remediation",
+          "href": "https://www.dynatrace.com/knowledge-base/problem-remediation"
+        },
+        {
+          "text": "Dynatrace Intelligence",
+          "href": "/docs/dynatrace-intelligence"
+        },
+        {
+          "text": "Adjust the sensitivity of anomaly detection",
+          "href": "/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection"
+        },
+        {
+          "text": "Anomaly Detection",
+          "href": "/docs/dynatrace-intelligence/anomaly-detection/anomaly-detection-app"
+        },
+        {
+          "text": "Problems",
+          "href": "/docs/dynatrace-intelligence/problems-app"
+        },
+        {
+          "text": "problem trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Davis event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-event-trigger"
+        },
+        {
+          "text": "generic event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#event-trigger"
+        },
+        {
+          "text": "Primary Grail fields",
+          "href": "/docs/semantic-dictionary/tags/primary-fields"
+        },
+        {
+          "text": "Workflows Connectors and actions",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions"
+        },
+        {
+          "text": "Automated threat-alert triaging",
+          "href": "/docs/secure/use-cases/automated-threat-alert-triaging"
+        },
+        {
+          "text": "CSPM Notification Automation",
+          "href": "/docs/secure/use-cases/notification-automation"
+        },
+        {
+          "text": "Set up alerts based on events extracted from logs",
+          "href": "/docs/analyze-explore-automate/logs/lma-use-cases/lma-alert-log-based-events"
+        },
+        {
+          "text": "Set up custom alerts based on metrics extracted from logs",
+          "href": "/docs/analyze-explore-automate/logs/lma-use-cases/lma-alert-log-based-metrics"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:28:49.829Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\grail__docs-analyze-explore-automate-alerting-and-notifications.md",
+      "lastmod": "2026-04-08T00:00:00.000Z"
+    },
+    "ff4853d49d161077": {
+      "id": "ff4853d49d161077",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity",
+      "title": "Standardized event severity — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-alerting-and-notifications-standardized-event-severity",
+      "contentHash": "2d43538bf812be2dce81236e540f230d3a5581341efd3483bd743ffe4d39d9b7",
+      "headings": [
+        "Standardized event severity",
+        "Severity levels",
+        "Severity storage in Grail",
+        "Severity for events and problems",
+        "Single events",
+        "Problems",
+        "Set severity for anomaly detectors",
+        "Severity in workflows"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:28:50.065Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\grail__docs-analyze-explore-automate-alerting-and-notifications-standardized-event-severity.md",
+      "lastmod": "2026-06-19T00:00:00.000Z"
+    },
+    "a9048baa80c28adc": {
+      "id": "a9048baa80c28adc",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email",
+      "title": "Send email notifications for problems — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-alerting-and-notifications-workflows-tutorial-problems-email",
+      "contentHash": "f02c470f56abda441f3001956faf164151753f3c2f6781fa50d91e409db96468",
+      "headings": [
+        "Send email notifications for problems",
+        "What will you learn",
+        "Prerequisites",
+        "Steps",
+        "Conclusion",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Create a simple workflow",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow#create-simple-workflow"
+        },
+        {
+          "text": "event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger"
+        },
+        {
+          "text": "Davis problems",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "email notification",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/email"
+        },
+        {
+          "text": "standard user",
+          "href": "/docs/manage/identity-access-management/permission-management/default-policies"
+        },
+        {
+          "text": "authorization settings",
+          "href": "/docs/analyze-explore-automate/workflows/security#authorization-settings"
+        },
+        {
+          "text": "authorization settings",
+          "href": "/docs/analyze-explore-automate/workflows/security#user-permission"
+        },
+        {
+          "text": "Create a simple workflow",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow#create-simple-workflow"
+        },
+        {
+          "text": "event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger"
+        },
+        {
+          "text": "Davis problems",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Problem trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "email notification",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/email"
+        },
+        {
+          "text": "Create a simple workflow in Dynatrace Workflows",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow"
+        },
+        {
+          "text": "Problems app",
+          "href": "/docs/dynatrace-intelligence/problems-app"
+        },
+        {
+          "text": "Email",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/email"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:28:50.294Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\grail__docs-analyze-explore-automate-alerting-and-notifications-workflows-tutorial-problems-email.md",
+      "lastmod": "2025-10-19T00:00:00.000Z"
+    },
+    "7ba9622b36fc53c0": {
+      "id": "7ba9622b36fc53c0",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack",
+      "title": "Send Slack notifications for problems — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-alerting-and-notifications-workflows-tutorial-problems-slack",
+      "contentHash": "2ed0507f0a184098a070ce96fc09a01175ce3dde255c895bb7ebc1959406a683",
+      "headings": [
+        "Send Slack notifications for problems",
+        "What will you learn",
+        "Prerequisites",
+        "Steps",
+        "Conclusion",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Create a simple workflow",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow#create-simple-workflow"
+        },
+        {
+          "text": "event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger"
+        },
+        {
+          "text": "Davis problems",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Slack message",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/slack"
+        },
+        {
+          "text": "standard user",
+          "href": "/docs/manage/identity-access-management/permission-management/default-policies"
+        },
+        {
+          "text": "authorization settings",
+          "href": "/docs/analyze-explore-automate/workflows/security#authorization-settings"
+        },
+        {
+          "text": "authorization settings",
+          "href": "/docs/analyze-explore-automate/workflows/security#user-permission"
+        },
+        {
+          "text": "set up Slack integration",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/slack#setup-slack-integration"
+        },
+        {
+          "text": "Create a simple workflow",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow#create-simple-workflow"
+        },
+        {
+          "text": "event trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger"
+        },
+        {
+          "text": "Davis problems",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Problem trigger",
+          "href": "/docs/analyze-explore-automate/workflows/build/trigger/event-trigger#davis-problem-trigger"
+        },
+        {
+          "text": "Slack message",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/slack"
+        },
+        {
+          "text": "Create a simple workflow in Dynatrace Workflows",
+          "href": "/docs/analyze-explore-automate/workflows/build/simple-workflow"
+        },
+        {
+          "text": "Problems app",
+          "href": "/docs/dynatrace-intelligence/problems-app"
+        },
+        {
+          "text": "Slack Connector",
+          "href": "/docs/analyze-explore-automate/workflows/default-workflow-actions/actions/slack"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:28:50.526Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\grail__docs-analyze-explore-automate-alerting-and-notifications-workflows-tutorial-problems-slack.md",
+      "lastmod": "2025-10-19T00:00:00.000Z"
+    },
+    "517bc494e08257a3": {
+      "id": "517bc494e08257a3",
+      "url": "https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s",
+      "title": "Enrich Kubernetes telemetry with primary Grail fields and tags — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-manage-tags-tags-domain-k8s",
+      "contentHash": "f9ad97d52697c0d61947a1c3940a844122606b938dac17bb2990f63bd8afcf40",
+      "headings": [
+        "Enrich Kubernetes telemetry with primary Grail fields and tags",
+        "Enrichment guidance",
+        "1. Out-of-the-box primary Grail fields",
+        "2. Promote existing namespace labels or annotations",
+        "3. Enrich with dedicated metadata.dynatrace.com annotations",
+        "4. Configure attributes in the DynaKube",
+        "5. OpenPipeline (last resort)",
+        "Precedence",
+        "Coverage by signal type",
+        "Query enriched data in Grail",
+        "Central configuration setup checks",
+        "Limitations",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Classic vs. latest",
+          "href": "/docs/manage/tags/tags-difference-classic"
+        },
+        {
+          "text": "migration steps",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment"
+        },
+        {
+          "text": "segments",
+          "href": "/docs/manage/segments"
+        },
+        {
+          "text": "pipeline routing",
+          "href": "/docs/platform/openpipeline/get-started/how-to-routing"
+        },
+        {
+          "text": "bucket assignment",
+          "href": "/docs/analyze-explore-automate/logs/lma-bucket-assignment"
+        },
+        {
+          "text": "Grail permissions",
+          "href": "/docs/manage/identity-access-management/use-cases/access-security-context"
+        },
+        {
+          "text": "cost allocation",
+          "href": "/docs/manage-your-costs/allocate/plan-and-set-up"
+        },
+        {
+          "text": "Primary tags",
+          "href": "/docs/manage/tags/primary-tags"
+        },
+        {
+          "text": "primary_tags.*",
+          "href": "/docs/semantic-dictionary/fields#primary-grail-tags"
+        },
+        {
+          "text": "primary fields",
+          "href": "/docs/semantic-dictionary/tags/primary-fields"
+        },
+        {
+          "text": "security context",
+          "href": "/docs/ingest-from/setup-on-k8s/k8-security-context"
+        },
+        {
+          "text": "dt.cost.costcenter and dt.cost.product",
+          "href": "/docs/ingest-from/setup-on-k8s/kubernetes-cost-allocation"
+        },
+        {
+          "text": "Configure monitoring for namespaces and pods",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/deployment-and-configuration/monitoring-and-instrumentation/annotate"
+        },
+        {
+          "text": "Kubernetes telemetry enrichment",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment"
+        },
+        {
+          "text": "migration steps",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment#migration-steps"
+        },
+        {
+          "text": "OpenPipeline processing step",
+          "href": "/docs/platform/openpipeline/concepts/processing"
+        },
+        {
+          "text": "primary Grail tags",
+          "href": "/docs/semantic-dictionary/fields#primary-grail-tags"
+        },
+        {
+          "text": "primary Grail tags",
+          "href": "/docs/semantic-dictionary/fields#primary-grail-tags"
+        },
+        {
+          "text": "DynaKube API reference",
+          "href": "/docs/ingest-from/setup-on-k8s/reference/dynakube-parameters"
+        },
+        {
+          "text": "OpenPipeline",
+          "href": "/docs/platform/openpipeline/concepts/processing"
+        },
+        {
+          "text": "Distributed traces powered by Grail",
+          "href": "/docs/observe/application-observability/distributed-tracing"
+        },
+        {
+          "text": "Prometheus metrics scraping",
+          "href": "/docs/observe/infrastructure-observability/container-platform-monitoring/kubernetes-monitoring/monitor-prometheus-metrics"
+        },
+        {
+          "text": "Primary Grail fields and tags",
+          "href": "/docs/manage/tags/primary-tags"
+        },
+        {
+          "text": "Organize your data with primary Grail fields and tags",
+          "href": "/docs/manage/tags"
+        },
+        {
+          "text": "Enrich OneAgent telemetry with primary Grail fields and tags",
+          "href": "/docs/manage/tags/tags-domain-oneagent"
+        },
+        {
+          "text": "Set up Grail permissions for telemetry from Kubernetes and Kubernetes workloads",
+          "href": "/docs/ingest-from/setup-on-k8s/k8-security-context"
+        },
+        {
+          "text": "Set up Cost Allocation for Kubernetes deployments",
+          "href": "/docs/ingest-from/setup-on-k8s/kubernetes-cost-allocation"
+        },
+        {
+          "text": "Global field reference",
+          "href": "/docs/semantic-dictionary/fields"
+        },
+        {
+          "text": "Primary Grail fields",
+          "href": "/docs/semantic-dictionary/tags/primary-fields"
+        },
+        {
+          "text": "Plan your tagging strategy",
+          "href": "/docs/manage/tags/tags-strategy"
+        },
+        {
+          "text": "Best practices for enriching primary Grail fields and tags",
+          "href": "/docs/manage/tags/tags-best-practices"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:28:59.624Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\grail__docs-manage-tags-tags-domain-k8s.md",
+      "lastmod": "2026-07-07T00:00:00.000Z"
+    },
+    "cdda74c721b10305": {
+      "id": "cdda74c721b10305",
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2",
+      "title": "Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "slug": "docs-whats-new-dynatrace-operator-dto-fix-0-11-2",
+      "contentHash": "86c6559855728109963316dde86dd517cbe20a5d148e459fe20585bbfcfda4ae",
+      "headings": [
+        "Dynatrace Operator release notes version 0.11.2",
+        "New features and enhancements",
+        "Feature flags",
+        "Resolved issues"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "CSI Inline Ephemeral Volume Security",
+          "href": "https://dt-url.net/6i0345m"
+        },
+        {
+          "text": "feature flag",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/networking-security-compliance/security-configurations/seccomp#init-container"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:00.838Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\kubernetes__docs-whats-new-dynatrace-operator-dto-fix-0-11-2.md",
+      "lastmod": "2023-05-17T00:00:00.000Z"
+    },
+    "b90ff047cf4899da": {
+      "id": "b90ff047cf4899da",
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0",
+      "title": "Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "slug": "docs-whats-new-dynatrace-operator-dto-fix-1-10-0",
+      "contentHash": "a0fd289a565553841004117c10c9a8ab610d522ce4ae6bdae38493d237221c75",
+      "headings": [
+        "Dynatrace Operator release notes version 1.10.0",
+        "Announcements",
+        "Enrich Kubernetes telemetry with primary Grail fields and tags",
+        "Auto-update for public registry images",
+        "Dynatrace Operator now supports Platform Tokens",
+        "New features and enhancements",
+        "Known issues",
+        "Resolved issues",
+        "Removal and deprecation notices",
+        "Upgrade from Dynatrace Operator version 1.9"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "version 1.10.2",
+          "href": "/docs/whats-new/dynatrace-operator/dto-fix-1-10-2"
+        },
+        {
+          "text": "Enrich Kubernetes telemetry with primary Grail fields and tags",
+          "href": "/docs/manage/tags/tags-domain-k8s"
+        },
+        {
+          "text": "Supported public registries",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/container-registries/use-public-registry#supported-public-registries"
+        },
+        {
+          "text": "Use a public registry",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/container-registries/use-public-registry#automatic-image-resolution"
+        },
+        {
+          "text": "platform tokens",
+          "href": "/docs/manage/identity-access-management/access-tokens-and-oauth-clients/platform-tokens"
+        },
+        {
+          "text": "Tokens and permissions",
+          "href": "/docs/ingest-from/setup-on-k8s/deployment/tokens-permissions"
+        },
+        {
+          "text": "Declarative process grouping",
+          "href": "/docs/observe/infrastructure-observability/process-groups/configuration/declarative-process-grouping"
+        },
+        {
+          "text": "Migrate from CSI driver to ephemeral volumes",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/migration/csi-to-ephemeral-volumes"
+        },
+        {
+          "text": "AppArmor annotation",
+          "href": "https://kubernetes.io/docs/reference/labels-annotations-taints/#container-apparmor-security-beta-kubernetes-io"
+        },
+        {
+          "text": "container security context",
+          "href": "https://kubernetes.io/docs/tutorials/security/apparmor/#appArmorProfile"
+        },
+        {
+          "text": "Enable AppArmor for enhanced security",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/networking-security-compliance/security-configurations/enable-app-armor"
+        },
+        {
+          "text": "Deployment permissions",
+          "href": "/docs/ingest-from/setup-on-k8s/reference/security#deployment-permissions"
+        },
+        {
+          "text": "SecurityContextConstraints (SCCs)",
+          "href": "https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/authentication_and_authorization/managing-pod-security-policies"
+        },
+        {
+          "text": "Disable seccomp profile for Dynatrace init containers",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/networking-security-compliance/security-configurations/seccomp#init-container"
+        },
+        {
+          "text": "Fine-Grained Kubelet API Authorization is now GA",
+          "href": "https://kubernetes.io/blog/2026/04/24/kubernetes-v1-36-fine-grained-kubelet-authorization-ga/"
+        },
+        {
+          "text": "DynaKube feature flags",
+          "href": "/docs/ingest-from/setup-on-k8s/reference/dynakube-feature-flags"
+        },
+        {
+          "text": "DynaKube API version migration",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/migration/dynakube#deprecation"
+        },
+        {
+          "text": "migration guide",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/migration/dynakube#deprecation"
+        },
+        {
+          "text": "Enable AppArmor for enhanced security",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/networking-security-compliance/security-configurations/enable-app-armor"
+        },
+        {
+          "text": "DynaKube feature flags",
+          "href": "/docs/ingest-from/setup-on-k8s/reference/dynakube-feature-flags"
+        },
+        {
+          "text": "Kubernetes recommended labels",
+          "href": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:02.090Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\kubernetes__docs-whats-new-dynatrace-operator-dto-fix-1-10-0.md",
+      "lastmod": "2026-07-29T00:00:00.000Z"
+    },
+    "6f29cb3db35a5504": {
+      "id": "6f29cb3db35a5504",
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-1",
+      "title": "Dynatrace Operator release notes version 1.10.1 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "slug": "docs-whats-new-dynatrace-operator-dto-fix-1-10-1",
+      "contentHash": "7856bca7cf24e668b4d8ab9cb021672fc9871a333e56c4e0c0ef0c0bf1d76672",
+      "headings": [
+        "Dynatrace Operator release notes version 1.10.1",
+        "Resolved issues",
+        "Removal and deprecation notices",
+        "Upgrade from Dynatrace Operator version 1.9"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "release notes for version 1.10.0",
+          "href": "/docs/whats-new/dynatrace-operator/dto-fix-1-10-0"
+        },
+        {
+          "text": "DynaKube API version migration",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/migration/dynakube#deprecation"
+        },
+        {
+          "text": "migration guide",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/migration/dynakube#deprecation"
+        },
+        {
+          "text": "Enable AppArmor for enhanced security",
+          "href": "/docs/ingest-from/setup-on-k8s/guides/networking-security-compliance/security-configurations/enable-app-armor"
+        },
+        {
+          "text": "upgrade notes for version 1.10.0",
+          "href": "/docs/whats-new/dynatrace-operator/dto-fix-1-10-0#upgrade-from-dto-1-9"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:02.651Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\kubernetes__docs-whats-new-dynatrace-operator-dto-fix-1-10-1.md",
+      "lastmod": "2026-07-20T00:00:00.000Z"
+    },
+    "403d017af0d7ee12": {
+      "id": "403d017af0d7ee12",
+      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events",
+      "title": "Pipeline observability — Dynatrace Docs",
+      "domain": "openpipeline",
+      "slug": "docs-deliver-pipeline-observability-sdlc-events",
+      "contentHash": "634df00fb1cd05510f89b75d1982413d786a7f51c473ce7840b433d7cc1bb262",
+      "headings": [
+        "Pipeline observability",
+        "Software development lifecycle events",
+        "Software development lifecycle event use cases",
+        "Software development lifecycle dataflow",
+        "Ingest SDLC events",
+        "Analyse using examples",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "SDLC events",
+          "href": "/docs/semantic-dictionary/model/sdlc-events"
+        },
+        {
+          "text": "SDLC events",
+          "href": "/docs/semantic-dictionary/model/sdlc-events"
+        },
+        {
+          "text": "Ingest SDLC eventsIngest SDLC events via API.",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/sdlc-events"
+        },
+        {
+          "text": "Analyse using examplesAnalyze SDLC events from your pipeline using the examples we provided.",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze"
+        },
+        {
+          "text": "Observe GitLab pipelines and merge requests with Dashboards and SDLC events",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-gitlab"
+        },
+        {
+          "text": "Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-azdo"
+        },
+        {
+          "text": "Observe Argo CD deployment and application health with Dashboards and SDLC events",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/tutorials/deployment-observability-use-case-argocd"
+        },
+        {
+          "text": "Optimize engineering flow metrics using Jira data",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-tutorial-jira"
+        },
+        {
+          "text": "Observe GitHub workflow actions and pull requests with Dashboards and SDLC events",
+          "href": "/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-github"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:29.860Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\openpipeline__docs-deliver-pipeline-observability-sdlc-events.md",
+      "lastmod": "2026-06-09T00:00:00.000Z"
+    },
+    "4f2e0f6cb01fbaa6": {
+      "id": "4f2e0f6cb01fbaa6",
+      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze",
+      "title": "Analyze SDLC events from your pipeline — Dynatrace Docs",
+      "domain": "openpipeline",
+      "slug": "docs-deliver-pipeline-observability-sdlc-events-pipeline-observability-analyze",
+      "contentHash": "2ae655bc2e888528d759c2ee30557d9cff841352cd5d4336be5d9db6df22f301",
+      "headings": [
+        "Analyze SDLC events from your pipeline",
+        "Query SDLC events using Dynatrace API",
+        "Find Grail - DQL Query definition in Swagger documentation",
+        "Query SDLC events",
+        "Analyze with our examples",
+        "Average duration of test executions",
+        "Average duration of open change requests",
+        "Percentage of failed validations",
+        "Distribution of pipeline executions by 2-minute buckets"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "software development lifecycle event",
+          "href": "/docs/semantic-dictionary/model/sdlc-events"
+        },
+        {
+          "text": "Dynatrace Query Language",
+          "href": "/docs/platform/grail/dynatrace-query-language"
+        },
+        {
+          "text": "Configure a simple custom alert",
+          "href": "/docs/dynatrace-intelligence/anomaly-detection/anomaly-detection-app/configure-a-simple-ad"
+        },
+        {
+          "text": "Dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "platform search",
+          "href": "/docs/discover-dynatrace/get-started/dynatrace-ui#search"
+        },
+        {
+          "text": "POST /query:execute",
+          "href": "/docs/observe/business-observability/bo-events-capturing/bo-events-capturing-external-sources#query-execute"
+        },
+        {
+          "text": "GET /query:poll",
+          "href": "/docs/observe/business-observability/bo-events-capturing/bo-events-capturing-external-sources#query-poll"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:30.947Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\openpipeline__docs-deliver-pipeline-observability-sdlc-events-pipeline-observability-analyze.md",
+      "lastmod": "2024-08-25T00:00:00.000Z"
+    },
+    "7234e699c0b77391": {
+      "id": "7234e699c0b77391",
+      "url": "https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding",
+      "title": "Get started with AWS Cloud Platform Monitoring — Dynatrace Docs",
+      "domain": "openpipeline",
+      "slug": "docs-ingest-from-amazon-web-services-aws-onboarding",
+      "contentHash": "808f5d9553addfcc431736ff77846581a538d727ee29b6552ec048422a7b3c8a",
+      "headings": [
+        "Get started with AWS Cloud Platform Monitoring",
+        "What will you learn?",
+        "Eliminate heavy lifting",
+        "Enriched telemetry for powerful cloud insights",
+        "CloudWatch metrics",
+        "AWS logs",
+        "AWS topology",
+        "AWS EventBridge events",
+        "Next steps"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Subscribe CloudWatch log groups",
+          "href": "/docs/ingest-from/amazon-web-services/ingest-telemetry/aws-logs/amazon-data-firehose/aws-subscribe-log-groups"
+        },
+        {
+          "text": "AWS logs",
+          "href": "/docs/ingest-from/amazon-web-services/ingest-telemetry/aws-logs"
+        },
+        {
+          "text": "AWS topology",
+          "href": "/docs/ingest-from/amazon-web-services/ingest-telemetry/aws-topology"
+        },
+        {
+          "text": "Events in Amazon EventBridge",
+          "href": "/docs/ingest-from/amazon-web-services/ingest-telemetry/aws-events"
+        },
+        {
+          "text": "Clouds app",
+          "href": "/docs/observe/infrastructure-observability/cloud-platform-monitoring/clouds-app"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:29:32.263Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\openpipeline__docs-ingest-from-amazon-web-services-aws-onboarding.md",
+      "lastmod": "2025-09-25T00:00:00.000Z"
+    },
+    "11cc58a5b5ae4bb8": {
+      "id": "11cc58a5b5ae4bb8",
+      "url": "https://docs.dynatrace.com/docs/platform/appengine",
+      "title": "AppEngine — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-platform-appengine",
+      "contentHash": "a3e21e2b6c72444aec4aac5461e3b34ca4f9890f88bd1fa5f041566d418b7c1e",
+      "headings": [
+        "AppEngine",
+        "Why AppEngine?",
+        "Building blocks",
+        "Learn more",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "intent concept",
+          "href": "https://developer.dynatrace.com/develop/intents/"
+        },
+        {
+          "text": "intents",
+          "href": "https://developer.dynatrace.com/develop/intents/"
+        },
+        {
+          "text": "Strato design system",
+          "href": "https://developer.dynatrace.com/reference/design-system/"
+        },
+        {
+          "text": "TypeScript SDKs",
+          "href": "https://developer.dynatrace.com/reference/sdks/"
+        },
+        {
+          "text": "Dynatrace platform services",
+          "href": "https://developer.dynatrace.com/platform-services/"
+        },
+        {
+          "text": "app functions",
+          "href": "https://developer.dynatrace.com/develop/functions/"
+        },
+        {
+          "text": "Dynatrace JavaScript runtime",
+          "href": "https://developer.dynatrace.com/reference/javascript-runtime/"
+        },
+        {
+          "text": "Dynatrace app Toolkit",
+          "href": "https://developer.dynatrace.com/reference/app-toolkit/"
+        },
+        {
+          "text": "Dynatrace Developer",
+          "href": "https://dt-url.net/developers"
+        },
+        {
+          "text": "AppEngine empowers organizations to create custom apps for better data insights",
+          "href": "https://www.dynatrace.com/news/blog/appengine-custom-apps-for-data-insights/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:05.528Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-platform-appengine.md",
+      "lastmod": "2026-04-10T00:00:00.000Z"
+    },
+    "a38ae5bb3cfda3f5": {
+      "id": "a38ae5bb3cfda3f5",
+      "url": "https://docs.dynatrace.com/docs/discover-dynatrace/dynatrace-apps",
+      "title": "Dynatrace Apps — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-discover-dynatrace-dynatrace-apps",
+      "contentHash": "12d6c7d4bc6e49dfc56d95f43998fab6251ddc03602a06c73af5252483deaab2",
+      "headings": [
+        "Dynatrace Apps"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:06.806Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-discover-dynatrace-dynatrace-apps.md",
+      "lastmod": "2026-02-27T00:00:00.000Z"
+    },
+    "f957afd5d1b38d5d": {
+      "id": "f957afd5d1b38d5d",
+      "url": "https://docs.dynatrace.com/docs/license/capabilities/appengine-functions/consumption-details",
+      "title": "Calculate your consumption of AppEngine Functions (DPS) — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-license-capabilities-appengine-functions-consumption-details",
+      "contentHash": "fa42de19d19547ed5405fac73dabeb3b8bcc689241d34548d84ff0928585a3b2",
+      "headings": [
+        "Calculate your consumption of AppEngine Functions (DPS)",
+        "How consumption is calculated: invocations",
+        "Track your consumption and costs",
+        "Track your consumption with DQL queries",
+        "Track your consumption and costs in Account Management",
+        "Track your consumption and costs via API",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "AppEngine Functions (Serverless Functions) overview (DPS)",
+          "href": "/docs/license/capabilities/appengine-functions"
+        },
+        {
+          "text": "Account Management",
+          "href": "https://myaccount.dynatrace.com/"
+        },
+        {
+          "text": "Environment API - Metrics API v2",
+          "href": "/docs/dynatrace-api/environment-api/metric-v2"
+        },
+        {
+          "text": "AppEngine Functions (Serverless Functions) overview (DPS)",
+          "href": "/docs/license/capabilities/appengine-functions"
+        },
+        {
+          "text": "AppEngine",
+          "href": "/docs/platform/appengine"
+        },
+        {
+          "text": "App functions",
+          "href": "https://developer.dynatrace.com/develop/functions/"
+        },
+        {
+          "text": "Dynatrace pricing",
+          "href": "https://www.dynatrace.com/pricing/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:08.025Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-license-capabilities-appengine-functions-consumption-details.md",
+      "lastmod": "2025-08-12T00:00:00.000Z"
+    },
+    "7d9255a48e02fe98": {
+      "id": "7d9255a48e02fe98",
+      "url": "https://docs.dynatrace.com/docs/license/capabilities/appengine-functions",
+      "title": "AppEngine Functions (Serverless Functions) overview (DPS) — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-license-capabilities-appengine-functions",
+      "contentHash": "1502bc82bb049a7e304cffa701eeb2fb3457a92224beac15647d30e73f0d7ecd",
+      "headings": [
+        "AppEngine Functions (Serverless Functions) overview (DPS)",
+        "Related topics"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Dynatrace JavaScript runtime",
+          "href": "https://developer.dynatrace.com/reference/javascript-runtime/"
+        },
+        {
+          "text": "AppEngine",
+          "href": "/docs/platform/appengine"
+        },
+        {
+          "text": "App functions",
+          "href": "https://developer.dynatrace.com/develop/functions/"
+        },
+        {
+          "text": "License Dynatrace",
+          "href": "/docs/license"
+        },
+        {
+          "text": "Dynatrace pricing",
+          "href": "https://www.dynatrace.com/pricing/"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:09.155Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-license-capabilities-appengine-functions.md",
+      "lastmod": "2025-05-22T00:00:00.000Z"
+    },
+    "f7a4d452c7c2448c": {
+      "id": "f7a4d452c7c2448c",
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/app-dynatrace-azure-connector-microsoft-entra-identity-developer-connection",
+      "title": "Settings API - Microsoft Entra ID schema table — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-dynatrace-api-environment-api-settings-schemas-app-dynatrace-azure-connector-microsoft-entra-identity-developer-connection",
+      "contentHash": "70d76e4ba637fea835d6269188ee9b45b7a036b2eff9e196814b0779af1715d3",
+      "headings": [
+        "Settings API - Microsoft Entra ID schema table",
+        "Microsoft Entra ID (app:dynatrace.azure.connector:microsoft-entra-identity-developer-connection)",
+        "Authentication",
+        "Parameters"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Tokens and authentication",
+          "href": "/docs/discover-dynatrace/references/dynatrace-api/basics/dynatrace-api-authentication"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:10.411Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-dynatrace-api-environment-api-settings-schemas-app-dynatrace-azure-connector-microsoft-entra-identity-developer-connection.md",
+      "lastmod": "2024-07-31T00:00:00.000Z"
+    },
+    "5441005f427ba0f2": {
+      "id": "5441005f427ba0f2",
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/developer-tools",
+      "title": "Developer Tools — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-semantic-dictionary-model-smartscape-azure-developer-tools",
+      "contentHash": "5d80c797888e8eec485141d9b18698d1f8f4110ec5665ca605464184fe4243d5",
+      "headings": [
+        "Developer Tools",
+        "Query",
+        "Permission fields",
+        "App configuration store",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Azure playwright service accounts",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Controllers",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Dev centers",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "DevHub workflows",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "IaC profiles",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Load test mappings",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Load test profile mappings",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Load tests",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Network connections",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Plans",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Playwright workspaces",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Projects",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Schedulers",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Templates",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields",
+        "Test base accounts",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Azure resource fields",
+        "Azure entity fields",
+        "Cloud entity fields"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:11.908Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-semantic-dictionary-model-smartscape-azure-developer-tools.md",
+      "lastmod": "2026-07-27T00:00:00.000Z"
+    },
+    "d42655691b928976": {
+      "id": "d42655691b928976",
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/appengine",
+      "title": "App Engine — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-semantic-dictionary-model-smartscape-gcp-appengine",
+      "contentHash": "d1a195436a9c0ab8dd93f422e9ed6489e1c267b74cc5ac5f84afbde3c22d4945",
+      "headings": [
+        "App Engine",
+        "App Engine admin application",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields",
+        "Cloud entity fields",
+        "App Engine admin service",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields",
+        "Cloud entity fields",
+        "App Engine admin version",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields",
+        "Cloud entity fields"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:13.216Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-semantic-dictionary-model-smartscape-gcp-appengine.md",
+      "lastmod": "2026-07-27T00:00:00.000Z"
+    },
+    "399ac64787ad9993": {
+      "id": "399ac64787ad9993",
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/developerconnect",
+      "title": "Developer Connect — Dynatrace Docs",
+      "domain": "appengine",
+      "slug": "docs-semantic-dictionary-model-smartscape-gcp-developerconnect",
+      "contentHash": "b5ac87df58b990cf2a53718b01f6765c7827d801a7180ba1d2f0301ce8a182e7",
+      "headings": [
+        "Developer Connect",
+        "Developer Connect Git repository link",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields",
+        "Cloud entity fields",
+        "Developer Connect connection",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields",
+        "Cloud entity fields"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        },
+        {
+          "text": "Smartscape conversion functions",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/conversion-and-casting-functions#toSmartscapeId"
+        }
+      ],
+      "crawledAt": "2026-08-20T19:47:14.623Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-semantic-dictionary-model-smartscape-gcp-developerconnect.md",
+      "lastmod": "2026-07-27T00:00:00.000Z"
+    }
+  }
+}

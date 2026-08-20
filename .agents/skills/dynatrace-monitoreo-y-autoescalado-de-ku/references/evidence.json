@@ -1,0 +1,92 @@
+{
+  "skillName": "dynatrace-monitoreo-y-autoescalado-de-ku",
+  "targetDomain": "kubernetes",
+  "requestedCapability": "Monitoreo y autoescalado de Kubernetes con Dynatrace Operator",
+  "classification": {
+    "skillType": "operational-runbook",
+    "domain": "kubernetes",
+    "objective": "Proveer procedimientos operativos, DQL, configuración y diagnóstico para Monitoreo y autoescalado de Kubernetes con Dynatrace Operator",
+    "applicableDocCategories": [
+      "kubernetes"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Respaldada por 4 páginas oficiales indexadas de Dynatrace Docs."
+  },
+  "sources": [
+    {
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0",
+      "title": "Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-20T19:30:19.066Z",
+      "relevance": "Score: 85",
+      "extractedConcepts": [
+        "Dynatrace Operator release notes version 1.10.0"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/self-service-kubernetes-use-case",
+      "title": "Predict and autoscale Kubernetes workloads — Dynatrace Docs",
+      "domain": "kubernetes",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-20T19:30:19.066Z",
+      "relevance": "Score: 62",
+      "extractedConcepts": [
+        "Predict and autoscale Kubernetes workloads"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-1",
+      "title": "Dynatrace Operator release notes version 1.10.1 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-20T19:30:19.066Z",
+      "relevance": "Score: 62",
+      "extractedConcepts": [
+        "Dynatrace Operator release notes version 1.10.1"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2",
+      "title": "Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs",
+      "domain": "kubernetes",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-20T19:30:19.066Z",
+      "relevance": "Score: 52",
+      "extractedConcepts": [
+        "Dynatrace Operator release notes version 0.11.2"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: Dynatrace Operator release notes version 1.10.0",
+      "backedByUrl": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0",
+      "evidenceExcerpt": "# Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs *Fuente oficial:* [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0](https://docs.dyna",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Predict and autoscale Kubernetes workloads",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/self-service-kubernetes-use-case",
+      "evidenceExcerpt": "# Predict and autoscale Kubernetes workloads — Dynatrace Docs *Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/self-service-kubernetes-use-case](https://docs.dynatrace.co",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dynatrace Operator release notes version 1.10.1",
+      "backedByUrl": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-1",
+      "evidenceExcerpt": "# Dynatrace Operator release notes version 1.10.1 — Dynatrace Docs *Fuente oficial:* [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-1](https://docs.dyna",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dynatrace Operator release notes version 0.11.2",
+      "backedByUrl": "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2",
+      "evidenceExcerpt": "# Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs *Fuente oficial:* [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2](https://docs.dyna",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-08-20T19:30:19.066Z",
+  "version": "1.0.0"
+}

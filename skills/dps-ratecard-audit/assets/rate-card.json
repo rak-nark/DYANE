@@ -1,0 +1,95 @@
+{
+  "$comment": "Rate card DPS. Copia este archivo por cliente y confirma cada tarifa contra el contrato firmado antes de reportar un dólar. source=verified está comprobado en campo; source=pending debe llenarse; NO inventar valores.",
+  "schemaVersion": 1,
+  "cliente": "<NOMBRE>",
+  "tenant": "<tenant>.apps.dynatrace.com",
+  "moneda": "USD",
+  "vigenciaDesde": "<YYYY-MM-DD>",
+  "compromisoAnualDPS": null,
+
+  "capabilities": [
+    {
+      "id": "logs-query",
+      "nombre": "Logs/Traces/Events — Query",
+      "tarifa": 0.0035,
+      "unidad": "GiB escaneado",
+      "source": "verified",
+      "formula": "GiB_escaneados * 0.0035",
+      "fuenteDato": "sum(scanned_bytes) en dt.system.query_executions / 1073741824",
+      "calidad": "exacto"
+    },
+    {
+      "id": "logs-ingest",
+      "nombre": "Logs/Traces/Events — Ingest & Process",
+      "tarifa": 0.20,
+      "unidad": "GiB ingerido",
+      "source": "verified",
+      "formula": "GiB_almacenados * 0.20",
+      "fuenteDato": "estimated_uncompressed_bytes en dt.system.buckets",
+      "calidad": "estimado"
+    },
+    {
+      "id": "logs-retain",
+      "nombre": "Logs/Traces/Events — Retain",
+      "tarifa": 0.0007,
+      "unidad": "GiB-día",
+      "source": "verified",
+      "formula": "GiB_promedio * dias * 0.0007",
+      "fuenteDato": "GiB_promedio ~= GiB_actual / 2 (crecimiento lineal)",
+      "calidad": "estimado"
+    },
+    {
+      "id": "logs-retain-included-queries",
+      "nombre": "Logs/Traces/Events — Retain with Included Queries",
+      "tarifa": 0.02,
+      "unidad": "GiB-día",
+      "source": "verified",
+      "formula": "GiB_promedio * dias * 0.02",
+      "fuenteDato": "mismo dato que Retain; excluye cargo de Query",
+      "calidad": "estimado",
+      "nota": "Alternativa contractual. Calcular siempre y comparar contra (Query + Retain) cuando Query domine la factura."
+    },
+    {
+      "id": "metrics-ingest",
+      "nombre": "Metrics — Ingest & Process",
+      "tarifa": 0.15,
+      "unidad": "100000 datapoints",
+      "source": "verified",
+      "formula": "(datapoints / 100000) * 0.15",
+      "fuenteDato": "sum(dt.sfm.metrics.ingest.datapoints)",
+      "calidad": "parcial",
+      "nota": "La metrica de self-monitoring retiene ~24-30 dias. No se puede reconstruir historico anual."
+    },
+    {
+      "id": "security-posture",
+      "nombre": "Security Posture Management",
+      "tarifa": 0.007,
+      "unidad": "host-hora",
+      "source": "verified",
+      "formula": "nodos_en_alcance * horas_desde_habilitacion * 0.007",
+      "fuenteDato": "scope en builtin:kubernetes.security-posture-management + primer COMPLIANCE_FINDING",
+      "calidad": "exacto en alcance, estimado en continuidad"
+    },
+
+    { "id": "fullstack",        "nombre": "Full-Stack Monitoring",                        "tarifa": null, "unidad": "host-hora (unidad de 8 GiB RAM)", "source": "pending" },
+    { "id": "infra",            "nombre": "Infrastructure Monitoring",                    "tarifa": null, "unidad": "host-hora",        "source": "pending" },
+    { "id": "k8s-platform",     "nombre": "Kubernetes Platform Monitoring",               "tarifa": null, "unidad": "pod-hora",         "source": "pending" },
+    { "id": "rum",              "nombre": "Real User Monitoring",                         "tarifa": null, "unidad": "sesion",           "source": "pending" },
+    { "id": "rum-replay",       "nombre": "Real User Monitoring + Session Replay",        "tarifa": null, "unidad": "sesion",           "source": "pending" },
+    { "id": "synthetic-http",   "nombre": "Synthetic — HTTP monitor",                     "tarifa": null, "unidad": "ejecucion",        "source": "pending" },
+    { "id": "synthetic-browser","nombre": "Synthetic — Browser monitor",                  "tarifa": null, "unidad": "ejecucion",        "source": "pending" },
+    { "id": "rva",              "nombre": "AppSec — Runtime Vulnerability Analytics",     "tarifa": null, "unidad": "host-hora",        "source": "pending" },
+    { "id": "rap",              "nombre": "AppSec — Runtime Application Protection",      "tarifa": null, "unidad": "host-hora",        "source": "pending" },
+    { "id": "appengine-fn",     "nombre": "AppEngine Functions",                          "tarifa": null, "unidad": "GiB-segundo",      "source": "pending" },
+    { "id": "workflows",        "nombre": "Automations / Workflow actions",               "tarifa": null, "unidad": "nodo ejecutado",   "source": "pending" },
+    { "id": "bizevents-ingest", "nombre": "Business Events — Ingest & Process",           "tarifa": null, "unidad": "GiB",              "source": "pending" },
+    { "id": "bizevents-query",  "nombre": "Business Events — Query",                      "tarifa": null, "unidad": "GiB escaneado",    "source": "pending" },
+    { "id": "ddu",              "nombre": "Davis Data Units (modelo clasico)",            "tarifa": null, "unidad": "DDU",              "source": "pending" }
+  ],
+
+  "constantes": {
+    "bytesPorGiB": 1073741824,
+    "bytesPorGB": 1000000000,
+    "factorGBaGiB": 0.9313225746154785
+  }
+}
