@@ -5,6 +5,7 @@ import { Heading, Text, Strong } from "@dynatrace/strato-components/typography";
 import { SearchInput } from "@dynatrace/strato-components/forms";
 import { SimpleTable } from "@dynatrace/strato-components/tables";
 import { HealthIndicator } from "@dynatrace/strato-components/content";
+import { Button } from "@dynatrace/strato-components/buttons";
 import { useAppFunction } from "@dynatrace-sdk/react-hooks";
 
 type Document = {
@@ -23,6 +24,14 @@ type DocumentsResponse = {
   documents: Document[];
   total: number;
 };
+
+type SyncResult = {
+  success: boolean;
+  document?: Document & { content: string; contentHash: string };
+  error?: string;
+};
+
+const SYNC_URL = "https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace";
 
 const columns = [
   {
@@ -73,26 +82,84 @@ const columns = [
 
 export const Documentation = () => {
   const [search, setSearch] = useState("");
+  const [syncResult, setSyncResult] = useState<SyncResult | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+
   const { data, error, isLoading } = useAppFunction<DocumentsResponse>({
     name: "getDocuments",
     data: undefined,
   });
 
+  const { refetch: syncDocument } = useAppFunction<SyncResult>(
+    { name: "syncDocument", data: { url: SYNC_URL } },
+    { autoFetch: false, autoFetchOnUpdate: false },
+  );
+
+  const handleSync = async () => {
+    setIsSyncing(true);
+    setSyncResult(null);
+    try {
+      const result = await syncDocument();
+      setSyncResult(result ?? { success: false, error: "No result" });
+    } catch (err) {
+      setSyncResult({
+        success: false,
+        error: err instanceof Error ? err.message : "Sync failed",
+      });
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const documents = useMemo(() => {
-    if (!data?.documents) return [];
-    if (!search.trim()) return data.documents;
+    const list: Document[] = data?.documents ? [...data.documents] : [];
+
+    if (syncResult?.success && syncResult.document) {
+      const doc = syncResult.document;
+      const exists = list.find((d) => d.id === doc.id);
+      if (!exists) {
+        list.unshift({
+          id: doc.id,
+          title: doc.title,
+          url: doc.url,
+          source: doc.source,
+          category: doc.category,
+          currentVersion: doc.currentVersion,
+          createdAt: doc.createdAt,
+          updatedAt: doc.lastSyncedAt ?? doc.createdAt,
+          lastSyncedAt: doc.lastSyncedAt ?? null,
+        });
+      }
+    }
+
+    if (!search.trim()) return list;
     const q = search.toLowerCase();
-    return data.documents.filter(
+    return list.filter(
       (d) =>
         d.title.toLowerCase().includes(q) ||
         d.source.toLowerCase().includes(q) ||
         d.category.toLowerCase().includes(q)
     );
-  }, [data?.documents, search]);
+  }, [data?.documents, search, syncResult]);
 
   return (
     <Flex flexDirection="column" padding={32} gap={24}>
-      <Heading level={2}>Documentation</Heading>
+      <Flex justifyContent="space-between" alignItems="center">
+        <Heading level={2}>Documentation</Heading>
+        <Button onClick={handleSync} disabled={isSyncing}>
+          {isSyncing ? "Syncing..." : "Sync"}
+        </Button>
+      </Flex>
+
+      {syncResult && (
+        <HealthIndicator status={syncResult.success ? "ideal" : "critical"}>
+          <HealthIndicator.Label>
+            {syncResult.success
+              ? `Synced: ${syncResult.document?.title}`
+              : `Error: ${syncResult.error}`}
+          </HealthIndicator.Label>
+        </HealthIndicator>
+      )}
 
       <SearchInput
         placeholder="Search documentation..."
