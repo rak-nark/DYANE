@@ -9,11 +9,16 @@ type SyncDocumentResult = {
   document?: {
     id: string;
     title: string;
+    description: string;
     url: string;
     source: string;
     category: string;
     content: string;
+    normalizedContent: string;
     contentHash: string;
+    headings: string[];
+    codeBlocks: string[];
+    links: { text: string; href: string }[];
     currentVersion: number;
     createdAt: string;
     lastSyncedAt: string;
@@ -21,33 +26,139 @@ type SyncDocumentResult = {
   error?: string;
 };
 
-function normalizeContent(html: string): string {
+// ─── HTML → Main Content Extraction ──────────────────────────────────────────
+
+function extractMainContent(html: string): string {
+  const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+  if (mainMatch) return mainMatch[1];
+
+  const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
+  if (articleMatch) return articleMatch[1];
+
+  const contentMatch = html.match(
+    /<div[^>]*class="[^"]*(?:content|main|article|page)[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+  );
+  if (contentMatch) return contentMatch[1];
+
+  return html;
+}
+
+function stripNoise(html: string): string {
   return html
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
     .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
     .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
     .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, "")
-    .replace(/<[^>]+>/g, " ")
+    .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
+}
+
+// ─── Structured Extraction ───────────────────────────────────────────────────
+
+function decodeHtmlEntities(text: string): string {
+  return text
     .replace(/&nbsp;/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
-    .replace(/&#\d+;/g, "")
-    .replace(/[ \t]+/g, " ")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
+function stripTags(html: string): string {
+  return decodeHtmlEntities(html.replace(/<[^>]+>/g, ""));
 }
 
 function extractTitle(html: string): string {
   const ogTitle = html.match(/<meta\s+property="og:title"\s+content="([^"]+)"/i);
-  if (ogTitle) return ogTitle[1];
+  if (ogTitle) return decodeHtmlEntities(ogTitle[1]);
 
   const titleTag = html.match(/<title[^>]*>([^<]+)<\/title>/i);
-  if (titleTag) return titleTag[1].trim();
+  if (titleTag) return decodeHtmlEntities(titleTag[1].trim());
+
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (h1) return stripTags(h1[1]).trim();
 
   return "Untitled";
 }
+
+function extractDescription(html: string): string {
+  const ogDesc = html.match(/<meta\s+property="og:description"\s+content="([^"]+)"/i);
+  if (ogDesc) return decodeHtmlEntities(ogDesc[1]);
+
+  const metaDesc = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+  if (metaDesc) return decodeHtmlEntities(metaDesc[1]);
+
+  return "";
+}
+
+function extractHeadings(html: string): string[] {
+  const headings: string[] = [];
+  const regex = /<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    headings.push(stripTags(match[2]).trim());
+  }
+  return headings;
+}
+
+function extractCodeBlocks(html: string): string[] {
+  const blocks: string[] = [];
+
+  const preCodeRegex = /<pre[^>]*>\s*<code[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/gi;
+  let match;
+  while ((match = preCodeRegex.exec(html)) !== null) {
+    blocks.push(stripTags(match[1]).trim());
+  }
+
+  const preRegex = /<pre[^>]*>([\s\S]*?)<\/pre>/gi;
+  while ((match = preRegex.exec(html)) !== null) {
+    const text = stripTags(match[1]).trim();
+    if (text && !blocks.includes(text)) blocks.push(text);
+  }
+
+  return blocks;
+}
+
+function extractLinks(html: string): { text: string; href: string }[] {
+  const links: { text: string; href: string }[] = [];
+  const regex = /<a\s+[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    const href = match[1];
+    const text = stripTags(match[2]).trim();
+    if (text && href && !href.startsWith("#") && !href.startsWith("javascript:")) {
+      links.push({ text, href });
+    }
+  }
+  return links;
+}
+
+// ─── Normalization ───────────────────────────────────────────────────────────
+
+function normalizeContent(raw: string): string {
+  return raw
+    .replace(/[ \t]+/g, " ")
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .split("\n")
+    .map((line) => line.trim())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+// ─── Hashing ─────────────────────────────────────────────────────────────────
+
+function sha256(content: string): string {
+  return createHash("sha256").update(content).digest("hex");
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function extractCategory(url: string): string {
   const parts = url.replace("https://docs.dynatrace.com/", "").split("/").filter(Boolean);
@@ -63,6 +174,8 @@ function generateId(url: string): string {
     .replace(/^-|-$/g, "")
     .toLowerCase();
 }
+
+// ─── Main ────────────────────────────────────────────────────────────────────
 
 export default async function (payload: unknown) {
   const input = payload as SyncDocumentInput;
@@ -83,9 +196,17 @@ export default async function (payload: unknown) {
     }
 
     const html = await response.text();
+
     const title = extractTitle(html);
-    const content = normalizeContent(html);
-    const contentHash = createHash("sha256").update(content).digest("hex");
+    const description = extractDescription(html);
+    const headings = extractHeadings(html);
+    const codeBlocks = extractCodeBlocks(html);
+    const links = extractLinks(html);
+
+    const mainHtml = stripNoise(extractMainContent(html));
+    const rawContent = stripTags(mainHtml);
+    const normalized = normalizeContent(rawContent);
+    const contentHash = sha256(normalized);
     const now = new Date().toISOString();
 
     return {
@@ -93,11 +214,16 @@ export default async function (payload: unknown) {
       document: {
         id: generateId(input.url),
         title,
+        description,
         url: input.url,
         source: "dynatrace-docs",
         category: extractCategory(input.url),
-        content,
+        content: rawContent,
+        normalizedContent: normalized,
         contentHash,
+        headings,
+        codeBlocks,
+        links,
         currentVersion: 1,
         createdAt: now,
         lastSyncedAt: now,

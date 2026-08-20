@@ -3,7 +3,7 @@
   "environmentUrl": "https://rqb20988.apps.dynatrace.com/",
   "app": {
     "name": "DYANE",
-    "version": "0.3.0",
+    "version": "0.4.1",
     "description": "A starting project with routing, fetching data, and charting",
     "id": "my.dyane",
     "scopes": [

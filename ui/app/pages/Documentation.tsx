@@ -11,10 +11,14 @@ import { useAppFunction } from "@dynatrace-sdk/react-hooks";
 type Document = {
   id: string;
   title: string;
+  description: string;
   url: string;
   source: string;
   category: string;
   currentVersion: number;
+  headings: string[];
+  codeBlocks: string[];
+  links: { text: string; href: string }[];
   createdAt: string;
   updatedAt: string;
   lastSyncedAt: string | null;
@@ -27,7 +31,11 @@ type DocumentsResponse = {
 
 type SyncResult = {
   success: boolean;
-  document?: Document & { content: string; contentHash: string };
+  document?: Document & {
+    content: string;
+    normalizedContent: string;
+    contentHash: string;
+  };
   error?: string;
 };
 
@@ -41,7 +49,7 @@ const columns = [
     cell: (props: { rowData: Document }) => (
       <Flex flexDirection="column" gap={4}>
         <Strong>{props.rowData.title}</Strong>
-        <Text textStyle="small">{props.rowData.url}</Text>
+        <Text textStyle="small">{props.rowData.description || props.rowData.url}</Text>
       </Flex>
     ),
   },
@@ -64,6 +72,21 @@ const columns = [
     ),
   },
   {
+    id: "structure",
+    header: "Structure",
+    accessor: "headings" as const,
+    cell: (props: { rowData: Document }) => {
+      const h = props.rowData.headings?.length ?? 0;
+      const c = props.rowData.codeBlocks?.length ?? 0;
+      const l = props.rowData.links?.length ?? 0;
+      return (
+        <Text textStyle="small">
+          {h}H / {c}C / {l}L
+        </Text>
+      );
+    },
+  },
+  {
     id: "status",
     header: "Status",
     accessor: "lastSyncedAt" as const,
@@ -72,7 +95,7 @@ const columns = [
       return (
         <HealthIndicator status={synced ? "ideal" : "warning"}>
           <HealthIndicator.Label>
-            {synced ? "Synchronized" : "Never synced"}
+            {synced ? `v${props.rowData.currentVersion} Synced` : "Never synced"}
           </HealthIndicator.Label>
         </HealthIndicator>
       );
@@ -117,14 +140,29 @@ export const Documentation = () => {
     if (syncResult?.success && syncResult.document) {
       const doc = syncResult.document;
       const exists = list.find((d) => d.id === doc.id);
-      if (!exists) {
+      if (exists) {
+        Object.assign(exists, {
+          title: doc.title,
+          description: doc.description,
+          currentVersion: doc.currentVersion,
+          headings: doc.headings,
+          codeBlocks: doc.codeBlocks,
+          links: doc.links,
+          lastSyncedAt: doc.lastSyncedAt,
+          updatedAt: doc.lastSyncedAt ?? doc.updatedAt,
+        });
+      } else {
         list.unshift({
           id: doc.id,
           title: doc.title,
+          description: doc.description,
           url: doc.url,
           source: doc.source,
           category: doc.category,
           currentVersion: doc.currentVersion,
+          headings: doc.headings,
+          codeBlocks: doc.codeBlocks,
+          links: doc.links,
           createdAt: doc.createdAt,
           updatedAt: doc.lastSyncedAt ?? doc.createdAt,
           lastSyncedAt: doc.lastSyncedAt ?? null,
@@ -136,9 +174,10 @@ export const Documentation = () => {
     const q = search.toLowerCase();
     return list.filter(
       (d) =>
-        d.title.toLowerCase().includes(q) ||
-        d.source.toLowerCase().includes(q) ||
-        d.category.toLowerCase().includes(q)
+        d.title?.toLowerCase().includes(q) ||
+        d.description?.toLowerCase().includes(q) ||
+        d.source?.toLowerCase().includes(q) ||
+        d.category?.toLowerCase().includes(q)
     );
   }, [data?.documents, search, syncResult]);
 
@@ -155,7 +194,7 @@ export const Documentation = () => {
         <HealthIndicator status={syncResult.success ? "ideal" : "critical"}>
           <HealthIndicator.Label>
             {syncResult.success
-              ? `Synced: ${syncResult.document?.title}`
+              ? `Synced: ${syncResult.document?.title} (${syncResult.document?.headings?.length ?? 0} headings, ${syncResult.document?.codeBlocks?.length ?? 0} code blocks, ${syncResult.document?.links?.length ?? 0} links)`
               : `Error: ${syncResult.error}`}
           </HealthIndicator.Label>
         </HealthIndicator>
