@@ -1,60 +1,112 @@
 import { createHash } from "crypto";
 
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+type Document = {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  sourceUrl: string;
+  source: string;
+  category: string;
+  currentVersion: number;
+  headings: string[];
+  codeBlocks: string[];
+  links: { text: string; href: string }[];
+  createdAt: string;
+  updatedAt: string;
+  lastSyncedAt: string | null;
+};
+
+type DocumentVersion = {
+  id: string;
+  documentId: string;
+  version: number;
+  content: string;
+  normalizedContent: string;
+  contentHash: string;
+  headings: string[];
+  codeBlocks: string[];
+  links: { text: string; href: string }[];
+  retrievedAt: string;
+};
+
 type SyncDocumentInput = {
   url: string;
 };
 
 type SyncDocumentResult = {
   success: boolean;
-  document?: {
-    id: string;
-    title: string;
-    description: string;
-    url: string;
-    source: string;
-    category: string;
-    content: string;
-    normalizedContent: string;
-    contentHash: string;
-    headings: string[];
-    codeBlocks: string[];
-    links: { text: string; href: string }[];
-    currentVersion: number;
-    createdAt: string;
-    lastSyncedAt: string;
-  };
+  action?: "created" | "updated" | "unchanged";
+  document?: Document;
+  version?: DocumentVersion;
   error?: string;
 };
 
-// ─── HTML → Main Content Extraction ──────────────────────────────────────────
+// ─── In-Memory Repository ────────────────────────────────────────────────────
 
-function extractMainContent(html: string): string {
-  const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-  if (mainMatch) return mainMatch[1];
+const documents = new Map<string, Document>();
+const versions = new Map<string, DocumentVersion[]>();
 
-  const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
-  if (articleMatch) return articleMatch[1];
-
-  const contentMatch = html.match(
-    /<div[^>]*class="[^"]*(?:content|main|article|page)[^"]*"[^>]*>([\s\S]*?)<\/div>/i
-  );
-  if (contentMatch) return contentMatch[1];
-
-  return html;
+function getDocument(id: string): Document | null {
+  return documents.get(id) ?? null;
 }
 
-function stripNoise(html: string): string {
-  return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
-    .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
-    .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
-    .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, "")
-    .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, "")
-    .replace(/<!--[\s\S]*?-->/g, "");
+function getLatestVersion(documentId: string): DocumentVersion | null {
+  const docVersions = versions.get(documentId);
+  if (!docVersions || docVersions.length === 0) return null;
+  return docVersions[docVersions.length - 1];
 }
 
-// ─── Structured Extraction ───────────────────────────────────────────────────
+function createDocument(doc: Document): void {
+  documents.set(doc.id, doc);
+  versions.set(doc.id, []);
+}
+
+function updateDocument(doc: Document): void {
+  documents.set(doc.id, doc);
+}
+
+function createVersion(ver: DocumentVersion): void {
+  const docVersions = versions.get(ver.documentId) ?? [];
+  docVersions.push(ver);
+  versions.set(ver.documentId, docVersions);
+
+  const doc = documents.get(ver.documentId);
+  if (doc) {
+    doc.currentVersion = ver.version;
+    doc.updatedAt = ver.retrievedAt;
+    doc.headings = ver.headings;
+    doc.codeBlocks = ver.codeBlocks;
+    doc.links = ver.links;
+  }
+}
+
+function listDocuments(): Document[] {
+  return Array.from(documents.values());
+}
+
+// ─── Versioning ──────────────────────────────────────────────────────────────
+
+function sha256(content: string): string {
+  return createHash("sha256").update(content).digest("hex");
+}
+
+function normalizeContent(content: string): string {
+  return content
+    .replace(/[ \t]+/g, " ")
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .split("\n")
+    .map((line) => line.trim())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+// ─── HTML Parser ─────────────────────────────────────────────────────────────
 
 function decodeHtmlEntities(text: string): string {
   return text
@@ -70,6 +122,27 @@ function decodeHtmlEntities(text: string): string {
 
 function stripTags(html: string): string {
   return decodeHtmlEntities(html.replace(/<[^>]+>/g, ""));
+}
+
+function extractMainContent(html: string): string {
+  const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+  if (mainMatch) return mainMatch[1];
+
+  const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
+  if (articleMatch) return articleMatch[1];
+
+  return html;
+}
+
+function stripNoise(html: string): string {
+  return html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
+    .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
+    .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, "")
+    .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
 }
 
 function extractTitle(html: string): string {
@@ -107,19 +180,16 @@ function extractHeadings(html: string): string[] {
 
 function extractCodeBlocks(html: string): string[] {
   const blocks: string[] = [];
-
   const preCodeRegex = /<pre[^>]*>\s*<code[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/gi;
   let match;
   while ((match = preCodeRegex.exec(html)) !== null) {
     blocks.push(stripTags(match[1]).trim());
   }
-
   const preRegex = /<pre[^>]*>([\s\S]*?)<\/pre>/gi;
   while ((match = preRegex.exec(html)) !== null) {
     const text = stripTags(match[1]).trim();
     if (text && !blocks.includes(text)) blocks.push(text);
   }
-
   return blocks;
 }
 
@@ -135,27 +205,6 @@ function extractLinks(html: string): { text: string; href: string }[] {
     }
   }
   return links;
-}
-
-// ─── Normalization ───────────────────────────────────────────────────────────
-
-function normalizeContent(raw: string): string {
-  return raw
-    .replace(/[ \t]+/g, " ")
-    .replace(/\r\n/g, "\n")
-    .replace(/\r/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .split("\n")
-    .map((line) => line.trim())
-    .join("\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-}
-
-// ─── Hashing ─────────────────────────────────────────────────────────────────
-
-function sha256(content: string): string {
-  return createHash("sha256").update(content).digest("hex");
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -190,7 +239,6 @@ export default async function (payload: unknown) {
 
   try {
     const response = await fetch(input.url);
-
     if (!response.ok) {
       return { success: false, error: `HTTP ${response.status}` } as SyncDocumentResult;
     }
@@ -206,28 +254,94 @@ export default async function (payload: unknown) {
     const mainHtml = stripNoise(extractMainContent(html));
     const rawContent = stripTags(mainHtml);
     const normalized = normalizeContent(rawContent);
-    const contentHash = sha256(normalized);
+    const hash = sha256(normalized);
     const now = new Date().toISOString();
+    const id = generateId(input.url);
 
-    return {
-      success: true,
-      document: {
-        id: generateId(input.url),
+    const existing = getDocument(id);
+
+    if (!existing) {
+      const doc: Document = {
+        id,
         title,
         description,
         url: input.url,
+        sourceUrl: input.url,
         source: "dynatrace-docs",
         category: extractCategory(input.url),
-        content: rawContent,
-        normalizedContent: normalized,
-        contentHash,
+        currentVersion: 1,
         headings,
         codeBlocks,
         links,
-        currentVersion: 1,
         createdAt: now,
+        updatedAt: now,
         lastSyncedAt: now,
-      },
+      };
+
+      const ver: DocumentVersion = {
+        id: `${id}-v1`,
+        documentId: id,
+        version: 1,
+        content: rawContent,
+        normalizedContent: normalized,
+        contentHash: hash,
+        headings,
+        codeBlocks,
+        links,
+        retrievedAt: now,
+      };
+
+      createDocument(doc);
+      createVersion(ver);
+
+      return {
+        success: true,
+        action: "created",
+        document: doc,
+        version: ver,
+      } as SyncDocumentResult;
+    }
+
+    const latest = getLatestVersion(id);
+
+    if (latest && latest.contentHash === hash) {
+      existing.lastSyncedAt = now;
+      updateDocument(existing);
+      return {
+        success: true,
+        action: "unchanged",
+        document: existing,
+        version: latest,
+      } as SyncDocumentResult;
+    }
+
+    const newVersion = existing.currentVersion + 1;
+    const ver: DocumentVersion = {
+      id: `${id}-v${newVersion}`,
+      documentId: id,
+      version: newVersion,
+      content: rawContent,
+      normalizedContent: normalized,
+      contentHash: hash,
+      headings,
+      codeBlocks,
+      links,
+      retrievedAt: now,
+    };
+
+    existing.currentVersion = newVersion;
+    existing.lastSyncedAt = now;
+    existing.headings = headings;
+    existing.codeBlocks = codeBlocks;
+    existing.links = links;
+    updateDocument(existing);
+    createVersion(ver);
+
+    return {
+      success: true,
+      action: "updated",
+      document: existing,
+      version: ver,
     } as SyncDocumentResult;
   } catch (err) {
     return {

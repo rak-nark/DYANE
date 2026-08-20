@@ -13,6 +13,7 @@ type Document = {
   title: string;
   description: string;
   url: string;
+  sourceUrl: string;
   source: string;
   category: string;
   currentVersion: number;
@@ -24,6 +25,19 @@ type Document = {
   lastSyncedAt: string | null;
 };
 
+type DocumentVersion = {
+  id: string;
+  documentId: string;
+  version: number;
+  content: string;
+  normalizedContent: string;
+  contentHash: string;
+  headings: string[];
+  codeBlocks: string[];
+  links: { text: string; href: string }[];
+  retrievedAt: string;
+};
+
 type DocumentsResponse = {
   documents: Document[];
   total: number;
@@ -31,11 +45,9 @@ type DocumentsResponse = {
 
 type SyncResult = {
   success: boolean;
-  document?: Document & {
-    content: string;
-    normalizedContent: string;
-    contentHash: string;
-  };
+  action?: "created" | "updated" | "unchanged";
+  document?: Document;
+  version?: DocumentVersion;
   error?: string;
 };
 
@@ -52,16 +64,6 @@ const columns = [
         <Text textStyle="small">{props.rowData.description || props.rowData.url}</Text>
       </Flex>
     ),
-  },
-  {
-    id: "source",
-    header: "Source",
-    accessor: "source" as const,
-  },
-  {
-    id: "category",
-    header: "Category",
-    accessor: "category" as const,
   },
   {
     id: "version",
@@ -87,6 +89,16 @@ const columns = [
     },
   },
   {
+    id: "lastSyncedAt",
+    header: "Last sync",
+    accessor: "lastSyncedAt" as const,
+    cell: (props: { rowData: Document }) => {
+      if (!props.rowData.lastSyncedAt) return <Text textStyle="small">—</Text>;
+      const date = new Date(props.rowData.lastSyncedAt);
+      return <Text textStyle="small">{date.toLocaleTimeString()}</Text>;
+    },
+  },
+  {
     id: "status",
     header: "Status",
     accessor: "lastSyncedAt" as const,
@@ -107,6 +119,7 @@ export const Documentation = () => {
   const [search, setSearch] = useState("");
   const [syncResult, setSyncResult] = useState<SyncResult | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
 
   const { data, error, isLoading } = useAppFunction<DocumentsResponse>({
     name: "getDocuments",
@@ -152,21 +165,7 @@ export const Documentation = () => {
           updatedAt: doc.lastSyncedAt ?? doc.updatedAt,
         });
       } else {
-        list.unshift({
-          id: doc.id,
-          title: doc.title,
-          description: doc.description,
-          url: doc.url,
-          source: doc.source,
-          category: doc.category,
-          currentVersion: doc.currentVersion,
-          headings: doc.headings,
-          codeBlocks: doc.codeBlocks,
-          links: doc.links,
-          createdAt: doc.createdAt,
-          updatedAt: doc.lastSyncedAt ?? doc.createdAt,
-          lastSyncedAt: doc.lastSyncedAt ?? null,
-        });
+        list.unshift(doc);
       }
     }
 
@@ -181,6 +180,8 @@ export const Documentation = () => {
     );
   }, [data?.documents, search, syncResult]);
 
+  const syncHash = syncResult?.version?.contentHash;
+
   return (
     <Flex flexDirection="column" padding={32} gap={24}>
       <Flex justifyContent="space-between" alignItems="center">
@@ -191,13 +192,20 @@ export const Documentation = () => {
       </Flex>
 
       {syncResult && (
-        <HealthIndicator status={syncResult.success ? "ideal" : "critical"}>
-          <HealthIndicator.Label>
-            {syncResult.success
-              ? `Synced: ${syncResult.document?.title} (${syncResult.document?.headings?.length ?? 0} headings, ${syncResult.document?.codeBlocks?.length ?? 0} code blocks, ${syncResult.document?.links?.length ?? 0} links)`
-              : `Error: ${syncResult.error}`}
-          </HealthIndicator.Label>
-        </HealthIndicator>
+        <Flex flexDirection="column" gap={8}>
+          <HealthIndicator status={syncResult.success ? "ideal" : "critical"}>
+            <HealthIndicator.Label>
+              {syncResult.success
+                ? `${syncResult.action}: ${syncResult.document?.title}`
+                : `Error: ${syncResult.error}`}
+            </HealthIndicator.Label>
+          </HealthIndicator>
+          {syncHash && (
+            <Text textStyle="small">
+              Hash: {syncHash.substring(0, 16)}...
+            </Text>
+          )}
+        </Flex>
       )}
 
       <SearchInput
@@ -222,7 +230,51 @@ export const Documentation = () => {
             </Text>
           </Flex>
 
-          <SimpleTable data={documents} columns={columns} />
+          <SimpleTable
+            data={documents}
+            columns={columns}
+          />
+        </Flex>
+      )}
+
+      {selectedDoc && (
+        <Flex
+          flexDirection="column"
+          gap={16}
+          padding={24}
+          style={{
+            border: "1px solid var(--dt-colors-foreground-base-usual)",
+            borderRadius: 8,
+          }}
+        >
+          <Flex justifyContent="space-between" alignItems="center">
+            <Heading level={3}>{selectedDoc.title}</Heading>
+            <Button onClick={() => setSelectedDoc(null)} variant="default">
+              Close
+            </Button>
+          </Flex>
+
+          <Flex flexDirection="column" gap={8}>
+            <Text><Strong>Source:</Strong> {selectedDoc.source}</Text>
+            <Text><Strong>Category:</Strong> {selectedDoc.category}</Text>
+            <Text><Strong>URL:</Strong> {selectedDoc.url}</Text>
+            <Text><Strong>Current version:</Strong> v{selectedDoc.currentVersion}</Text>
+            <Text>
+              <Strong>Last sync:</Strong>{" "}
+              {selectedDoc.lastSyncedAt
+                ? new Date(selectedDoc.lastSyncedAt).toLocaleString()
+                : "Never"}
+            </Text>
+          </Flex>
+
+          <Flex flexDirection="column" gap={8}>
+            <Strong>Structure</Strong>
+            <Text textStyle="small">
+              {selectedDoc.headings?.length ?? 0} headings ·{" "}
+              {selectedDoc.codeBlocks?.length ?? 0} code blocks ·{" "}
+              {selectedDoc.links?.length ?? 0} links
+            </Text>
+          </Flex>
         </Flex>
       )}
     </Flex>

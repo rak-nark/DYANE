@@ -12,68 +12,107 @@ export class VersioningEngine {
 
   private normalizeContent(content: string): string {
     return content
-      .replace(/\s+/g, " ")
-      .replace(/\n+/g, "\n")
+      .replace(/[ \t]+/g, " ")
+      .replace(/\r\n/g, "\n")
+      .replace(/\r/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .split("\n")
+      .map((line) => line.trim())
+      .join("\n")
+      .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
-  async processDocument(
-    id: string,
-    url: string,
-    title: string,
-    source: string,
-    content: string
-  ): Promise<{ action: "created" | "updated" | "unchanged"; version?: number }> {
-    const normalized = this.normalizeContent(content);
+  async processDocument(params: {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    sourceUrl: string;
+    source: string;
+    category: string;
+    content: string;
+    headings: string[];
+    codeBlocks: string[];
+    links: { text: string; href: string }[];
+  }): Promise<{
+    action: "created" | "updated" | "unchanged";
+    document: Document;
+    version: DocumentVersion;
+  }> {
+    const normalized = this.normalizeContent(params.content);
     const hash = this.calculateHash(normalized);
     const now = new Date().toISOString();
 
-    const existing = await this.repository.getDocument(id);
+    const existing = await this.repository.getDocument(params.id);
 
     if (!existing) {
       const document: Document = {
-        id,
-        url,
-        title,
-        source,
+        id: params.id,
+        title: params.title,
+        description: params.description,
+        url: params.url,
+        sourceUrl: params.sourceUrl,
+        source: params.source,
+        category: params.category,
         currentVersion: 1,
+        headings: params.headings,
+        codeBlocks: params.codeBlocks,
+        links: params.links,
         createdAt: now,
         updatedAt: now,
+        lastSyncedAt: now,
       };
 
       const version: DocumentVersion = {
-        id: `${id}-v1`,
-        documentId: id,
+        id: `${params.id}-v1`,
+        documentId: params.id,
         version: 1,
-        content: normalized,
+        content: params.content,
+        normalizedContent: normalized,
         contentHash: hash,
+        headings: params.headings,
+        codeBlocks: params.codeBlocks,
+        links: params.links,
         retrievedAt: now,
       };
 
       await this.repository.createDocument(document);
       await this.repository.createVersion(version);
 
-      return { action: "created", version: 1 };
+      return { action: "created", document, version };
     }
 
-    const latest = await this.repository.getLatestVersion(id);
+    const latest = await this.repository.getLatestVersion(params.id);
 
     if (latest && latest.contentHash === hash) {
-      return { action: "unchanged" };
+      existing.lastSyncedAt = now;
+      await this.repository.updateDocument(existing);
+      return { action: "unchanged", document: existing, version: latest };
     }
 
     const newVersion = existing.currentVersion + 1;
     const version: DocumentVersion = {
-      id: `${id}-v${newVersion}`,
-      documentId: id,
+      id: `${params.id}-v${newVersion}`,
+      documentId: params.id,
       version: newVersion,
-      content: normalized,
+      content: params.content,
+      normalizedContent: normalized,
       contentHash: hash,
+      headings: params.headings,
+      codeBlocks: params.codeBlocks,
+      links: params.links,
       retrievedAt: now,
     };
 
+    existing.currentVersion = newVersion;
+    existing.lastSyncedAt = now;
+    existing.headings = params.headings;
+    existing.codeBlocks = params.codeBlocks;
+    existing.links = params.links;
+    await this.repository.updateDocument(existing);
     await this.repository.createVersion(version);
 
-    return { action: "updated", version: newVersion };
+    return { action: "updated", document: existing, version };
   }
 }

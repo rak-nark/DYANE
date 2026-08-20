@@ -3,6 +3,7 @@ type Document = {
   title: string;
   description: string;
   url: string;
+  sourceUrl: string;
   source: string;
   category: string;
   currentVersion: number;
@@ -20,6 +21,7 @@ const documents: Document[] = [
     title: "Dynatrace Platform Overview",
     description: "Overview of the Dynatrace platform",
     url: "https://docs.dynatrace.com/platform",
+    sourceUrl: "https://docs.dynatrace.com/platform",
     source: "dynatrace-docs",
     category: "getting-started",
     currentVersion: 1,
@@ -35,6 +37,7 @@ const documents: Document[] = [
     title: "Dynatrace REST API",
     description: "REST API reference documentation",
     url: "https://docs.dynatrace.com/api",
+    sourceUrl: "https://docs.dynatrace.com/api",
     source: "dynatrace-docs",
     category: "api",
     currentVersion: 1,
@@ -50,6 +53,7 @@ const documents: Document[] = [
     title: "Dynatrace MCP Integration",
     description: "MCP integration guide",
     url: "https://docs.dynatrace.com/mcp",
+    sourceUrl: "https://docs.dynatrace.com/mcp",
     source: "dynatrace-docs",
     category: "integration",
     currentVersion: 1,

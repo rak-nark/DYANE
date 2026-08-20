@@ -35,6 +35,11 @@ export class InMemoryRepository implements DocumentRepository {
     return Promise.resolve();
   }
 
+  updateDocument(document: Document): Promise<void> {
+    this.documents.set(document.id, document);
+    return Promise.resolve();
+  }
+
   createVersion(version: DocumentVersion): Promise<void> {
     const docVersions = this.versions.get(version.documentId) ?? [];
     docVersions.push(version);
@@ -44,6 +49,9 @@ export class InMemoryRepository implements DocumentRepository {
     if (doc) {
       doc.currentVersion = version.version;
       doc.updatedAt = version.retrievedAt;
+      doc.headings = version.headings;
+      doc.codeBlocks = version.codeBlocks;
+      doc.links = version.links;
     }
     return Promise.resolve();
   }
