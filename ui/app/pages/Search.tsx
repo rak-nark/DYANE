@@ -33,12 +33,12 @@ type SearchResponse = {
 };
 
 const fieldLabels: Record<MatchedField, string> = {
-  title: "Title",
-  description: "Description",
-  heading: "Heading",
-  content: "Content",
-  code: "Code",
-  link: "Link",
+  title: "Título",
+  description: "Descripción",
+  heading: "Encabezado",
+  content: "Contenido",
+  code: "Código",
+  link: "Enlace",
 };
 
 const fieldColors: Record<MatchedField, "success" | "primary" | "warning" | "critical" | "neutral"> = {
@@ -86,12 +86,12 @@ const ResultCard = ({ result }: { result: SearchResult }) => {
         <Flex justifyContent="space-between" alignItems="center">
           <Text textStyle="small">
             {result.lastSyncedAt
-              ? `Synced ${new Date(result.lastSyncedAt).toLocaleDateString()}`
-              : "Not synced"}
+              ? `Sincronizado ${new Date(result.lastSyncedAt).toLocaleDateString()}`
+              : "No sincronizado"}
           </Text>
           <a href={result.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <Button variant="default" size="condensed">
-              Open document
+              Abrir documento
             </Button>
           </a>
         </Flex>
@@ -124,35 +124,35 @@ export const Search = () => {
 
   return (
     <Flex flexDirection="column" padding={32} gap={24}>
-      <Heading level={2}>Search Dynatrace Knowledge</Heading>
+      <Heading level={2}>Buscar Conocimiento de Dynatrace</Heading>
 
       <Surface elevation="raised" padding={16}>
         <Flex flexDirection="column" gap={12}>
           <Flex gap={8} alignItems="center">
             <SearchInput
-              placeholder="Search documentation..."
+              placeholder="Buscar documentación..."
               value={query}
               onChange={(value) => setQuery(value)}
             />
             <Button onClick={handleSearch} variant="emphasized">
-              Search
+              Buscar
             </Button>
           </Flex>
 
           <Flex gap={16} alignItems="center">
-            <Text textStyle="small">Source:</Text>
+            <Text textStyle="small">Fuente:</Text>
             <select
               value={sourceFilter}
               onChange={(e) => setSourceFilter(e.target.value)}
               style={{ padding: "4px 8px", borderRadius: 4, border: "1px solid #ccc" }}
             >
-              <option value="">All sources</option>
-              <option value="dynatrace-docs">Dynatrace Docs</option>
+              <option value="">Todas las fuentes</option>
+              <option value="dynatrace-docs">Documentación de Dynatrace</option>
             </select>
 
-            <Text textStyle="small">Category:</Text>
+            <Text textStyle="small">Categoría:</Text>
             <SearchInput
-              placeholder="Filter..."
+              placeholder="Filtrar..."
               value={categoryFilter}
               onChange={(value) => setCategoryFilter(value)}
             />
@@ -163,22 +163,22 @@ export const Search = () => {
       {isLoading && (
         <Flex flexDirection="column" gap={8}>
           <ProgressBar />
-          <Text textStyle="small">Searching...</Text>
+          <Text textStyle="small">Buscando...</Text>
         </Flex>
       )}
 
       {response && !isLoading && (
         <Flex flexDirection="column" gap={16}>
           <Text textStyle="small-emphasized">
-            {response.total} result{response.total !== 1 ? "s" : ""} for &ldquo;{response.query}&rdquo;
+            {response.total} resultado{response.total !== 1 ? "s" : ""} para &ldquo;{response.query}&rdquo;
           </Text>
 
           {response.results.length === 0 ? (
             <Surface elevation="flat" padding={32}>
               <Flex flexDirection="column" gap={8} alignItems="center">
-                <Heading level={3}>No results found</Heading>
+                <Heading level={3}>No se encontraron resultados</Heading>
                 <Text textStyle="small">
-                  Try different keywords or remove filters.
+                  Intenta con diferentes palabras clave o elimina los filtros.
                 </Text>
               </Flex>
             </Surface>
@@ -196,7 +196,7 @@ export const Search = () => {
         <Surface elevation="flat" padding={32}>
           <Flex flexDirection="column" gap={8} alignItems="center">
             <Text textStyle="small">
-              Enter a search query to find documentation.
+              Ingresa una consulta de búsqueda para encontrar documentación.
             </Text>
           </Flex>
         </Surface>

@@ -18,24 +18,13 @@ type Document = {
   category: string;
   currentVersion: number;
   headings: string[];
+  sections: { heading: string; level: number; content: string }[];
   codeBlocks: string[];
   links: { text: string; href: string }[];
+  parserWarnings: string[];
   createdAt: string;
   updatedAt: string;
   lastSyncedAt: string | null;
-};
-
-type DocumentVersion = {
-  id: string;
-  documentId: string;
-  version: number;
-  content: string;
-  normalizedContent: string;
-  contentHash: string;
-  headings: string[];
-  codeBlocks: string[];
-  links: { text: string; href: string }[];
-  retrievedAt: string;
 };
 
 type DocumentsResponse = {
@@ -47,7 +36,6 @@ type SyncResult = {
   success: boolean;
   action?: "created" | "updated" | "unchanged";
   document?: Document;
-  version?: DocumentVersion;
   error?: string;
 };
 
@@ -77,7 +65,7 @@ const SYNC_URL = "https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dyn
 const columns = [
   {
     id: "title",
-    header: "Document",
+    header: "Documento",
     accessor: "title" as const,
     cell: (props: { rowData: Document }) => (
       <Flex flexDirection="column" gap={4}>
@@ -88,7 +76,7 @@ const columns = [
   },
   {
     id: "version",
-    header: "Version",
+    header: "Versión",
     accessor: "currentVersion" as const,
     cell: (props: { rowData: Document }) => (
       <Text>v{props.rowData.currentVersion}</Text>
@@ -96,7 +84,7 @@ const columns = [
   },
   {
     id: "structure",
-    header: "Structure",
+    header: "Estructura",
     accessor: "headings" as const,
     cell: (props: { rowData: Document }) => {
       const h = props.rowData.headings?.length ?? 0;
@@ -110,28 +98,27 @@ const columns = [
     },
   },
   {
+    id: "quality",
+    header: "Calidad",
+    accessor: "parserWarnings" as const,
+    cell: (props: { rowData: Document }) => {
+      const warnings = props.rowData.parserWarnings?.length ?? 0;
+      const status = warnings === 0 ? "ideal" : warnings <= 2 ? "warning" : "critical";
+      return (
+        <HealthIndicator status={status}>
+          <HealthIndicator.Label>{warnings === 0 ? "OK" : `${warnings} warns`}</HealthIndicator.Label>
+        </HealthIndicator>
+      );
+    },
+  },
+  {
     id: "lastSyncedAt",
-    header: "Last sync",
+    header: "Última sincronización",
     accessor: "lastSyncedAt" as const,
     cell: (props: { rowData: Document }) => {
       if (!props.rowData.lastSyncedAt) return <Text textStyle="small">—</Text>;
       const date = new Date(props.rowData.lastSyncedAt);
       return <Text textStyle="small">{date.toLocaleTimeString()}</Text>;
-    },
-  },
-  {
-    id: "status",
-    header: "Status",
-    accessor: "lastSyncedAt" as const,
-    cell: (props: { rowData: Document }) => {
-      const synced = props.rowData.lastSyncedAt !== null;
-      return (
-        <HealthIndicator status={synced ? "ideal" : "warning"}>
-          <HealthIndicator.Label>
-            {synced ? `v${props.rowData.currentVersion} Synced` : "Never synced"}
-          </HealthIndicator.Label>
-        </HealthIndicator>
-      );
     },
   },
 ];
@@ -203,8 +190,10 @@ export const Documentation = () => {
           description: doc.description,
           currentVersion: doc.currentVersion,
           headings: doc.headings,
+          sections: doc.sections,
           codeBlocks: doc.codeBlocks,
           links: doc.links,
+          parserWarnings: doc.parserWarnings,
           lastSyncedAt: doc.lastSyncedAt,
           updatedAt: doc.lastSyncedAt ?? doc.updatedAt,
         });
@@ -224,19 +213,18 @@ export const Documentation = () => {
     );
   }, [data?.documents, search, syncResult]);
 
-  const syncHash = syncResult?.version?.contentHash;
   const job = crawlResult?.job;
 
   return (
     <Flex flexDirection="column" padding={32} gap={24}>
       <Flex justifyContent="space-between" alignItems="center">
-        <Heading level={2}>Documentation</Heading>
+        <Heading level={2}>Documentación</Heading>
         <Flex gap={8}>
           <Button onClick={handleSync} disabled={isSyncing}>
-            {isSyncing ? "Syncing..." : "Sync"}
+            {isSyncing ? "Sincronizando..." : "Sincronizar"}
           </Button>
           <Button onClick={handleCrawl} disabled={isCrawling}>
-            {isCrawling ? "Crawling..." : "Crawl All"}
+            {isCrawling ? "Rastreando..." : "Rastrear Todo"}
           </Button>
         </Flex>
       </Flex>
@@ -250,113 +238,94 @@ export const Documentation = () => {
                 : `Error: ${syncResult.error}`}
             </HealthIndicator.Label>
           </HealthIndicator>
-          {syncHash && (
-            <Text textStyle="small">
-              Hash: {syncHash.substring(0, 16)}...
-            </Text>
-          )}
         </Flex>
       )}
 
       {job && (
-        <Flex
-          flexDirection="column"
-          gap={8}
-          padding={16}
-          style={{
-            border: "1px solid var(--dt-colors-foreground-base-usual)",
-            borderRadius: 8,
-          }}
-        >
+        <Flex flexDirection="column" gap={8} padding={16} style={{ border: "1px solid var(--dt-colors-foreground-base-usual)", borderRadius: 8 }}>
           <Flex justifyContent="space-between" alignItems="center">
-            <Strong>Crawl Results</Strong>
+            <Strong>Resultados del Rastreo</Strong>
             <HealthIndicator status={job.status === "completed" ? "ideal" : job.status === "failed" ? "critical" : "warning"}>
               <HealthIndicator.Label>{job.status}</HealthIndicator.Label>
             </HealthIndicator>
           </Flex>
           <Flex gap={24}>
-            <Text textStyle="small"><Strong>{job.discovered}</Strong> discovered</Text>
-            <Text textStyle="small"><Strong>{job.processed}</Strong> processed</Text>
-            <Text textStyle="small"><Strong>{job.created}</Strong> new</Text>
-            <Text textStyle="small"><Strong>{job.updated}</Strong> updated</Text>
-            <Text textStyle="small"><Strong>{job.unchanged}</Strong> unchanged</Text>
-            <Text textStyle="small"><Strong>{job.failed}</Strong> failed</Text>
+            <Text textStyle="small"><Strong>{job.discovered}</Strong> descubiertos</Text>
+            <Text textStyle="small"><Strong>{job.processed}</Strong> procesados</Text>
+            <Text textStyle="small"><Strong>{job.created}</Strong> nuevos</Text>
+            <Text textStyle="small"><Strong>{job.updated}</Strong> actualizados</Text>
+            <Text textStyle="small"><Strong>{job.unchanged}</Strong> sin cambios</Text>
+            <Text textStyle="small"><Strong>{job.failed}</Strong> fallidos</Text>
           </Flex>
           {job.finishedAt && job.startedAt && (
             <Text textStyle="small">
-              Duration: {Math.round((new Date(job.finishedAt).getTime() - new Date(job.startedAt).getTime()) / 1000)}s
+              Duración: {Math.round((new Date(job.finishedAt).getTime() - new Date(job.startedAt).getTime()) / 1000)}s
             </Text>
           )}
         </Flex>
       )}
 
       <SearchInput
-        placeholder="Search documentation..."
+        placeholder="Buscar documentación..."
         value={search}
         onChange={(e) => setSearch(e)}
       />
 
       {isLoading && (
-        <Text>Loading documents...</Text>
+        <Text>Cargando documentos...</Text>
       )}
 
       {error && (
-        <Text>Error loading documents: {error.message}</Text>
+        <Text>Error al cargar documentos: {error.message}</Text>
       )}
 
       {!isLoading && !error && (
         <Flex flexDirection="column" gap={8}>
           <Flex justifyContent="space-between" alignItems="center">
             <Text>
-              <Strong>{documents.length}</Strong> documents
+              <Strong>{documents.length}</Strong> documentos
             </Text>
           </Flex>
 
-          <SimpleTable
-            data={documents}
-            columns={columns}
-          />
+          <SimpleTable data={documents} columns={columns} />
         </Flex>
       )}
 
       {selectedDoc && (
-        <Flex
-          flexDirection="column"
-          gap={16}
-          padding={24}
-          style={{
-            border: "1px solid var(--dt-colors-foreground-base-usual)",
-            borderRadius: 8,
-          }}
-        >
+        <Flex flexDirection="column" gap={16} padding={24} style={{ border: "1px solid var(--dt-colors-foreground-base-usual)", borderRadius: 8 }}>
           <Flex justifyContent="space-between" alignItems="center">
             <Heading level={3}>{selectedDoc.title}</Heading>
-            <Button onClick={() => setSelectedDoc(null)} variant="default">
-              Close
-            </Button>
+            <Button onClick={() => setSelectedDoc(null)} variant="default">Cerrar</Button>
           </Flex>
 
           <Flex flexDirection="column" gap={8}>
-            <Text><Strong>Source:</Strong> {selectedDoc.source}</Text>
-            <Text><Strong>Category:</Strong> {selectedDoc.category}</Text>
+            <Text><Strong>Fuente:</Strong> {selectedDoc.source}</Text>
+            <Text><Strong>Categoría:</Strong> {selectedDoc.category}</Text>
             <Text><Strong>URL:</Strong> {selectedDoc.url}</Text>
-            <Text><Strong>Current version:</Strong> v{selectedDoc.currentVersion}</Text>
+            <Text><Strong>Versión actual:</Strong> v{selectedDoc.currentVersion}</Text>
             <Text>
-              <Strong>Last sync:</Strong>{" "}
-              {selectedDoc.lastSyncedAt
-                ? new Date(selectedDoc.lastSyncedAt).toLocaleString()
-                : "Never"}
+              <Strong>Última sincronización:</Strong>{" "}
+              {selectedDoc.lastSyncedAt ? new Date(selectedDoc.lastSyncedAt).toLocaleString() : "Nunca"}
             </Text>
           </Flex>
 
           <Flex flexDirection="column" gap={8}>
-            <Strong>Structure</Strong>
+            <Strong>Estructura</Strong>
             <Text textStyle="small">
-              {selectedDoc.headings?.length ?? 0} headings ·{" "}
-              {selectedDoc.codeBlocks?.length ?? 0} code blocks ·{" "}
-              {selectedDoc.links?.length ?? 0} links
+              {selectedDoc.headings?.length ?? 0} encabezados ·{" "}
+              {selectedDoc.codeBlocks?.length ?? 0} bloques de código ·{" "}
+              {selectedDoc.links?.length ?? 0} enlaces
             </Text>
           </Flex>
+
+          {selectedDoc.parserWarnings && selectedDoc.parserWarnings.length > 0 && (
+            <Flex flexDirection="column" gap={8}>
+              <Strong>Advertencias del Parser</Strong>
+              {selectedDoc.parserWarnings.map((w, i) => (
+                <Text key={i} textStyle="small">• {w}</Text>
+              ))}
+            </Flex>
+          )}
         </Flex>
       )}
     </Flex>

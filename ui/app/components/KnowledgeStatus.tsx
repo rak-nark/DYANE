@@ -39,20 +39,16 @@ export const KnowledgeStatus = () => {
     <Flex gap={24} flexFlow="wrap">
       <Surface elevation="raised" style={{ padding: 24, minWidth: 220 }}>
         <Flex flexDirection="column" gap={12}>
-          <Text textStyle="small">Documentation</Text>
+          <Text textStyle="small">Documentación</Text>
           {isLoading ? (
-            <Text>Loading...</Text>
+            <Text>Cargando...</Text>
           ) : syncedDocs > 0 ? (
             <HealthIndicator status="ideal">
-              <HealthIndicator.Label>
-                Synchronized
-              </HealthIndicator.Label>
+              <HealthIndicator.Label>Sincronizada</HealthIndicator.Label>
             </HealthIndicator>
           ) : (
             <HealthIndicator status="warning">
-              <HealthIndicator.Label>
-                Not synchronized
-              </HealthIndicator.Label>
+              <HealthIndicator.Label>No sincronizada</HealthIndicator.Label>
             </HealthIndicator>
           )}
         </Flex>
@@ -60,25 +56,25 @@ export const KnowledgeStatus = () => {
 
       <Surface elevation="raised" style={{ padding: 24, minWidth: 220 }}>
         <Flex flexDirection="column" gap={12}>
-          <Text textStyle="small">Last sync</Text>
+          <Text textStyle="small">Última sincronización</Text>
           {lastSync ? (
             <Strong>{new Date(lastSync).toLocaleString()}</Strong>
           ) : (
-            <Strong>Never</Strong>
+            <Strong>Nunca</Strong>
           )}
         </Flex>
       </Surface>
 
       <Surface elevation="raised" style={{ padding: 24, minWidth: 220 }}>
         <Flex flexDirection="column" gap={12}>
-          <Text textStyle="small">Documents</Text>
+          <Text textStyle="small">Documentos</Text>
           <SingleValue data={totalDocs} alignment="start" />
         </Flex>
       </Surface>
 
       <Surface elevation="raised" style={{ padding: 24, minWidth: 220 }}>
         <Flex flexDirection="column" gap={12}>
-          <Text textStyle="small">Changes detected</Text>
+          <Text textStyle="small">Cambios detectados</Text>
           <SingleValue data={changes > 0 ? changes : 0} alignment="start" />
         </Flex>
       </Surface>

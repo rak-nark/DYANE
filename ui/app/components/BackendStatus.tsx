@@ -24,9 +24,9 @@ export const BackendStatus = () => {
     return (
       <Surface elevation="raised" style={{ padding: 24, width: "100%" }}>
         <Flex flexDirection="column" gap={12}>
-          <Heading level={3}>Backend Status</Heading>
+          <Heading level={3}>Estado del Sistema</Heading>
           <HealthIndicator status="neutral">
-            <HealthIndicator.Label>Checking...</HealthIndicator.Label>
+            <HealthIndicator.Label>Verificando...</HealthIndicator.Label>
           </HealthIndicator>
         </Flex>
       </Surface>
@@ -37,7 +37,7 @@ export const BackendStatus = () => {
     return (
       <Surface elevation="raised" style={{ padding: 24, width: "100%" }}>
         <Flex flexDirection="column" gap={12}>
-          <Heading level={3}>Backend Status</Heading>
+          <Heading level={3}>Estado del Sistema</Heading>
           <HealthIndicator status="critical">
             <HealthIndicator.Label>Offline</HealthIndicator.Label>
           </HealthIndicator>
@@ -52,29 +52,29 @@ export const BackendStatus = () => {
   return (
     <Surface elevation="raised" style={{ padding: 24, width: "100%" }}>
       <Flex flexDirection="column" gap={16}>
-        <Heading level={3}>Backend Status</Heading>
+        <Heading level={3}>Estado del Sistema</Heading>
 
         <Flex alignItems="center" gap={8}>
           <HealthIndicator status="ideal" visual="icon">
-            <HealthIndicator.Label>Online</HealthIndicator.Label>
+            <HealthIndicator.Label>En línea</HealthIndicator.Label>
           </HealthIndicator>
         </Flex>
 
         <Flex flexDirection="column" gap={8}>
           <Flex justifyContent="space-between">
-            <Text textStyle="small">Last check:</Text>
+            <Text textStyle="small">Última verificación:</Text>
             <Strong>{lastCheck}</Strong>
           </Flex>
           <Flex justifyContent="space-between">
-            <Text textStyle="small">Environment:</Text>
+            <Text textStyle="small">Entorno:</Text>
             <Strong>{data.environment}</Strong>
           </Flex>
           <Flex justifyContent="space-between">
-            <Text textStyle="small">App:</Text>
+            <Text textStyle="small">Aplicación:</Text>
             <Strong>{data.appName}</Strong>
           </Flex>
           <Flex justifyContent="space-between">
-            <Text textStyle="small">Version:</Text>
+            <Text textStyle="small">Versión:</Text>
             <Strong>{data.appVersion}</Strong>
           </Flex>
         </Flex>

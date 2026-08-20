@@ -11,101 +11,113 @@ import { KnowledgeStatus } from "../components/KnowledgeStatus";
 
 type SyncState = {
   source: string;
-  status: "idle" | "running" | "completed" | "partial" | "failed";
+  status: string;
+  lock: { locked: boolean };
   lastStartedAt?: string;
   lastCompletedAt?: string;
   lastResult?: {
     discovered: number;
+    valid: number;
+    excluded: number;
+    duplicate: number;
+    new: number;
+    known: number;
     processed: number;
     created: number;
     updated: number;
     unchanged: number;
     failed: number;
+    retried: number;
   };
   lastDuration?: number;
+  nextScheduledAt?: string;
 };
 
-type SyncStateResponse = {
-  state: SyncState;
-  reports: any[];
-  totalReports: number;
-};
+type SyncStateResponse = { state: SyncState; reports: any[]; totalReports: number };
+type RunSyncResult = { success: boolean; state: SyncState; report?: any; error?: string };
 
-type RunSyncResult = {
-  success: boolean;
-  state: SyncState;
-  report?: any;
-  error?: string;
+const formatDuration = (seconds: number) => {
+  if (seconds < 60) return `${seconds}s`;
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}m ${s}s`;
 };
 
 const SyncStatusCard = ({ state, onRunSync, isRunning }: { state: SyncState; onRunSync: () => void; isRunning: boolean }) => {
-  const statusColor = state.status === "completed" ? "ideal" : state.status === "failed" ? "critical" : state.status === "running" ? "warning" : "neutral";
+  const isLocked = state.lock?.locked ?? false;
+  const statusColor = state.status === "completed" ? "ideal" : state.status === "failed" ? "critical" : state.status === "running" || isLocked ? "warning" : "neutral";
+  const statusLabel = isLocked ? "sincronizando" : state.status === "idle" ? "inactivo" : state.status === "completed" ? "completado" : state.status === "failed" ? "fallido" : state.status;
 
   return (
     <Surface elevation="raised" padding={24}>
       <Flex flexDirection="column" gap={16}>
         <Flex justifyContent="space-between" alignItems="center">
           <Flex alignItems="center" gap={8}>
-            <Heading level={3}>Sync Status</Heading>
+            <Heading level={3}>Sincronización de Conocimiento</Heading>
             <HealthIndicator status={statusColor}>
-              <HealthIndicator.Label>{state.status}</HealthIndicator.Label>
+              <HealthIndicator.Label>{statusLabel}</HealthIndicator.Label>
             </HealthIndicator>
           </Flex>
-          <Button onClick={onRunSync} disabled={isRunning} variant="emphasized">
-            {isRunning ? "Syncing..." : "Run Sync Now"}
+          <Button onClick={onRunSync} disabled={isRunning || isLocked} variant="emphasized">
+            {isRunning || isLocked ? "Sincronizando..." : "Ejecutar Sincronización"}
           </Button>
         </Flex>
 
-        {state.status === "running" && (
-          <ProgressBar value="indeterminate" />
-        )}
+        {(state.status === "running" || isLocked) && <ProgressBar value="indeterminate" />}
 
         {state.lastResult && (
-          <Flex gap={24} flexWrap="wrap">
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">Discovered</Text>
-              <Strong>{state.lastResult.discovered}</Strong>
+          <Flex flexDirection="column" gap={12}>
+            <Flex justifyContent="space-between">
+              <Text textStyle="small-emphasized">Descubrimiento</Text>
             </Flex>
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">Processed</Text>
-              <Strong>{state.lastResult.processed}</Strong>
+            <Flex gap={16} flexWrap="wrap">
+              <Text textStyle="small"><Strong>{state.lastResult.discovered}</Strong> descubiertos</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.valid}</Strong> válidos</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.excluded}</Strong> excluidos</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.duplicate}</Strong> duplicados</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.new}</Strong> nuevos</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.known}</Strong> conocidos</Text>
             </Flex>
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">New</Text>
-              <Strong>{state.lastResult.created}</Strong>
+
+            <Flex justifyContent="space-between">
+              <Text textStyle="small-emphasized">Resultados</Text>
             </Flex>
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">Updated</Text>
-              <Strong>{state.lastResult.updated}</Strong>
-            </Flex>
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">Unchanged</Text>
-              <Strong>{state.lastResult.unchanged}</Strong>
-            </Flex>
-            <Flex flexDirection="column" gap={2}>
-              <Text textStyle="small">Failed</Text>
-              <Strong>{state.lastResult.failed}</Strong>
+            <Flex gap={16} flexWrap="wrap">
+              <Text textStyle="small"><Strong>{state.lastResult.processed}</Strong> procesados</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.created}</Strong> creados</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.updated}</Strong> actualizados</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.unchanged}</Strong> sin cambios</Text>
+              <Text textStyle="small"><Strong>{state.lastResult.failed}</Strong> fallidos</Text>
+              {state.lastResult.retried > 0 && (
+                <Text textStyle="small"><Strong>{state.lastResult.retried}</Strong> reintentados</Text>
+              )}
             </Flex>
           </Flex>
         )}
 
-        {state.lastCompletedAt && (
-          <Flex gap={16}>
-            <Text textStyle="small">
-              Last sync: {new Date(state.lastCompletedAt).toLocaleString()}
-            </Text>
-            {state.lastDuration && (
-              <Text textStyle="small">
-                Duration: {state.lastDuration}s
-              </Text>
-            )}
-          </Flex>
-        )}
+        <Flex gap={24} flexWrap="wrap">
+          {state.lastCompletedAt && (
+            <Flex flexDirection="column" gap={2}>
+              <Text textStyle="small">Última sincronización</Text>
+              <Text textStyle="small-emphasized">{new Date(state.lastCompletedAt).toLocaleString()}</Text>
+            </Flex>
+          )}
+          {state.lastDuration && (
+            <Flex flexDirection="column" gap={2}>
+              <Text textStyle="small">Duración</Text>
+              <Text textStyle="small-emphasized">{formatDuration(state.lastDuration)}</Text>
+            </Flex>
+          )}
+          {state.nextScheduledAt && (
+            <Flex flexDirection="column" gap={2}>
+              <Text textStyle="small">Próxima sincronización</Text>
+              <Text textStyle="small-emphasized">{new Date(state.nextScheduledAt).toLocaleString()}</Text>
+            </Flex>
+          )}
+        </Flex>
 
         {!state.lastCompletedAt && state.status === "idle" && (
-          <Text textStyle="small">
-            No sync has been run yet. Click "Run Sync Now" to start.
-          </Text>
+          <Text textStyle="small">No se ha ejecutado ninguna sincronización. Haz clic en "Ejecutar Sincronización" para comenzar.</Text>
         )}
       </Flex>
     </Surface>
@@ -113,32 +125,20 @@ const SyncStatusCard = ({ state, onRunSync, isRunning }: { state: SyncState; onR
 };
 
 export const Overview = () => {
-  const { data: syncData, isLoading: syncLoading } = useAppFunction<SyncStateResponse>({
-    name: "getSyncState",
-    data: undefined,
-  });
-
+  const { data: syncData } = useAppFunction<SyncStateResponse>({ name: "getSyncState", data: undefined });
   const { refetch: runSync, isLoading: syncRunning } = useAppFunction<RunSyncResult>(
     { name: "runSync", data: {} },
     { autoFetch: false, autoFetchOnUpdate: false },
   );
 
-  const handleRunSync = async () => {
-    await runSync();
-  };
-
-  const syncState = syncData?.state || { source: "dynatrace-docs", status: "idle" as const };
+  const syncState = syncData?.state || { source: "dynatrace-docs", status: "idle", lock: { locked: false }, lastResult: undefined, lastCompletedAt: undefined, lastDuration: undefined, nextScheduledAt: undefined };
 
   return (
     <Flex flexDirection="column" padding={32} gap={32}>
-      <Heading level={2}>DYANE Knowledge Status</Heading>
-
-      <SyncStatusCard state={syncState} onRunSync={handleRunSync} isRunning={syncRunning} />
-
+      <Heading level={2}>DYANE Estado del Conocimiento</Heading>
+      <SyncStatusCard state={syncState} onRunSync={runSync} isRunning={syncRunning} />
       <KnowledgeStatus />
-
-      <Heading level={3}>System</Heading>
-
+      <Heading level={3}>Sistema</Heading>
       <BackendStatus />
     </Flex>
   );

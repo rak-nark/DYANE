@@ -4,11 +4,11 @@ import { AppHeader } from "@dynatrace/strato-components/layouts";
 import { Text } from "@dynatrace/strato-components/typography";
 
 const navItems = [
-  { path: "/", label: "Overview" },
-  { path: "/documentation", label: "Documentation" },
-  { path: "/changes", label: "Changes" },
-  { path: "/search", label: "Search" },
-  { path: "/settings", label: "Settings" },
+  { path: "/", label: "Estado" },
+  { path: "/documentation", label: "Documentación" },
+  { path: "/changes", label: "Cambios" },
+  { path: "/search", label: "Buscar" },
+  { path: "/settings", label: "Configuración" },
 ];
 
 export const Header = () => {
@@ -26,7 +26,7 @@ export const Header = () => {
           textStyle="small"
           style={{ opacity: 0.7, alignSelf: "center", marginLeft: -8 }}
         >
-          Dynatrace Assistant for Network & Engineering
+          Asistente de Dynatrace para Network & Engineering
         </Text>
         {navItems.map((item) => (
           <AppHeader.NavigationItem

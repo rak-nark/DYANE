@@ -93,7 +93,8 @@ type SitemapEntry = {
 
 const DYANE_TYPE = "dyane-document";
 const CRAWL_JOB_TYPE = "dyane-crawl-job";
-const DEFAULT_BATCH_SIZE = 50;
+const DEFAULT_BATCH_SIZE = 25;
+const MAX_DOCUMENTS = 5;
 
 const SOURCES: Record<string, CrawlSource> = {
   "dynatrace-docs": {
@@ -361,12 +362,13 @@ function extractCategory(url: string): string {
 }
 
 function generateId(url: string): string {
-  return url
-    .replace("https://docs.dynatrace.com/", "dynatrace-")
+  const id = url
+    .replace("https://docs.dynatrace.com/", "dy-")
     .replace(/[^a-zA-Z0-9]/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "")
     .toLowerCase();
+  return id.length > 80 ? id.substring(0, 80) : id;
 }
 
 // ─── Sync Single Document ────────────────────────────────────────────────────
@@ -552,8 +554,8 @@ export default async function (payload: unknown) {
     const filtered = filterByPattern(entries, source.allowedPatterns);
     job.discovered = filtered.length;
 
-    // Split into batches
-    const urls = filtered.map((e) => e.url);
+    // Split into batches - limit to MAX_DOCUMENTS
+    const urls = filtered.map((e) => e.url).slice(0, MAX_DOCUMENTS);
     const batches: string[][] = [];
     for (let i = 0; i < urls.length; i += batchSize) {
       batches.push(urls.slice(i, i + batchSize));
