@@ -51,6 +51,27 @@ type SyncResult = {
   error?: string;
 };
 
+type CrawlJob = {
+  id: string;
+  source: string;
+  startedAt: string;
+  finishedAt?: string;
+  discovered: number;
+  processed: number;
+  created: number;
+  updated: number;
+  unchanged: number;
+  failed: number;
+  status: "running" | "completed" | "failed";
+  errors: string[];
+};
+
+type CrawlResult = {
+  success: boolean;
+  job?: CrawlJob;
+  error?: string;
+};
+
 const SYNC_URL = "https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace";
 
 const columns = [
@@ -119,6 +140,8 @@ export const Documentation = () => {
   const [search, setSearch] = useState("");
   const [syncResult, setSyncResult] = useState<SyncResult | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [crawlResult, setCrawlResult] = useState<CrawlResult | null>(null);
+  const [isCrawling, setIsCrawling] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
 
   const { data, error, isLoading } = useAppFunction<DocumentsResponse>({
@@ -128,6 +151,11 @@ export const Documentation = () => {
 
   const { refetch: syncDocument } = useAppFunction<SyncResult>(
     { name: "syncDocument", data: { url: SYNC_URL } },
+    { autoFetch: false, autoFetchOnUpdate: false },
+  );
+
+  const { refetch: crawlDocuments } = useAppFunction<CrawlResult>(
+    { name: "crawlDocuments", data: {} },
     { autoFetch: false, autoFetchOnUpdate: false },
   );
 
@@ -144,6 +172,22 @@ export const Documentation = () => {
       });
     } finally {
       setIsSyncing(false);
+    }
+  };
+
+  const handleCrawl = async () => {
+    setIsCrawling(true);
+    setCrawlResult(null);
+    try {
+      const result = await crawlDocuments();
+      setCrawlResult(result ?? { success: false, error: "No result" });
+    } catch (err) {
+      setCrawlResult({
+        success: false,
+        error: err instanceof Error ? err.message : "Crawl failed",
+      });
+    } finally {
+      setIsCrawling(false);
     }
   };
 
@@ -181,14 +225,20 @@ export const Documentation = () => {
   }, [data?.documents, search, syncResult]);
 
   const syncHash = syncResult?.version?.contentHash;
+  const job = crawlResult?.job;
 
   return (
     <Flex flexDirection="column" padding={32} gap={24}>
       <Flex justifyContent="space-between" alignItems="center">
         <Heading level={2}>Documentation</Heading>
-        <Button onClick={handleSync} disabled={isSyncing}>
-          {isSyncing ? "Syncing..." : "Sync"}
-        </Button>
+        <Flex gap={8}>
+          <Button onClick={handleSync} disabled={isSyncing}>
+            {isSyncing ? "Syncing..." : "Sync"}
+          </Button>
+          <Button onClick={handleCrawl} disabled={isCrawling}>
+            {isCrawling ? "Crawling..." : "Crawl All"}
+          </Button>
+        </Flex>
       </Flex>
 
       {syncResult && (
@@ -203,6 +253,38 @@ export const Documentation = () => {
           {syncHash && (
             <Text textStyle="small">
               Hash: {syncHash.substring(0, 16)}...
+            </Text>
+          )}
+        </Flex>
+      )}
+
+      {job && (
+        <Flex
+          flexDirection="column"
+          gap={8}
+          padding={16}
+          style={{
+            border: "1px solid var(--dt-colors-foreground-base-usual)",
+            borderRadius: 8,
+          }}
+        >
+          <Flex justifyContent="space-between" alignItems="center">
+            <Strong>Crawl Results</Strong>
+            <HealthIndicator status={job.status === "completed" ? "ideal" : job.status === "failed" ? "critical" : "warning"}>
+              <HealthIndicator.Label>{job.status}</HealthIndicator.Label>
+            </HealthIndicator>
+          </Flex>
+          <Flex gap={24}>
+            <Text textStyle="small"><Strong>{job.discovered}</Strong> discovered</Text>
+            <Text textStyle="small"><Strong>{job.processed}</Strong> processed</Text>
+            <Text textStyle="small"><Strong>{job.created}</Strong> new</Text>
+            <Text textStyle="small"><Strong>{job.updated}</Strong> updated</Text>
+            <Text textStyle="small"><Strong>{job.unchanged}</Strong> unchanged</Text>
+            <Text textStyle="small"><Strong>{job.failed}</Strong> failed</Text>
+          </Flex>
+          {job.finishedAt && job.startedAt && (
+            <Text textStyle="small">
+              Duration: {Math.round((new Date(job.finishedAt).getTime() - new Date(job.startedAt).getTime()) / 1000)}s
             </Text>
           )}
         </Flex>
