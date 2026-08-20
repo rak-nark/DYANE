@@ -4,6 +4,6 @@ export default function () {
     timestamp: new Date().toISOString(),
     environment: "Dynatrace",
     appName: "DYANE",
-    appVersion: "0.8.0",
+    appVersion: "0.9.0",
   };
 }

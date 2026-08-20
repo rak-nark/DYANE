@@ -36,7 +36,7 @@ export default async function () {
   try {
     const { documentsClient } = await import("@dynatrace-sdk/client-document");
     const result = await documentsClient.listDocuments({
-      filter: `type == "${CRAWL_JOB_TYPE}"`,
+      filter: `type == '${CRAWL_JOB_TYPE}'`,
       pageSize: 100,
     });
 

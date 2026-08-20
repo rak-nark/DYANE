@@ -87,7 +87,7 @@ export class DocumentServiceRepository implements DocumentRepository {
 
   async listDocuments(): Promise<Document[]> {
     const result = await documentsClient.listDocuments({
-      filter: `type == "${DYANE_TYPE}"`,
+      filter: `type == '${DYANE_TYPE}'`,
       pageSize: 1000,
     });
 

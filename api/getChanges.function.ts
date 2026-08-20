@@ -185,7 +185,7 @@ async function getAllDocuments(): Promise<StoredData[]> {
   try {
     const { documentsClient } = await import("@dynatrace-sdk/client-document");
     const result = await documentsClient.listDocuments({
-      filter: `type == "${DYANE_TYPE}"`,
+      filter: `type == '${DYANE_TYPE}'`,
       pageSize: 1000,
     });
 

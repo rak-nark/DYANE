@@ -25,15 +25,15 @@ const DYANE_TYPE = "dyane-document";
 const memoryStore = new Map<string, StoredData>();
 
 export async function getDocuments(): Promise<{ documents: Document[]; total: number; storage: string }> {
+  const documents: Document[] = [];
+
   // Try Document Service first
   try {
     const { documentsClient } = await import("@dynatrace-sdk/client-document");
     const result = await documentsClient.listDocuments({
-      filter: `type == "${DYANE_TYPE}"`,
+      filter: `type == '${DYANE_TYPE}'`,
       pageSize: 1000,
     });
-
-    const documents: Document[] = [];
 
     for (const meta of result.documents) {
       try {
@@ -50,34 +50,32 @@ export async function getDocuments(): Promise<{ documents: Document[]; total: nu
           text = String(content);
         }
         const data = JSON.parse(text) as StoredData;
-        documents.push(data.document);
+        if (data.document) {
+          documents.push(data.document);
+        }
       } catch {
-        // Skip broken documents
+        // Skip documents that can't be retrieved
       }
     }
-
-    if (documents.length > 0) {
-      return { documents, total: documents.length, storage: "document-service" };
-    }
   } catch {
-    // Fall through to memory
+    // Document Service unavailable, fall through to memory
   }
 
-  // Fallback to memory
-  const documents: Document[] = [];
+  // Also add any documents from memory that aren't already in the list
+  const existingIds = new Set(documents.map((d) => d.id));
   for (const data of memoryStore.values()) {
-    documents.push(data.document);
+    if (!existingIds.has(data.document.id)) {
+      documents.push(data.document);
+    }
   }
 
-  return { documents, total: documents.length, storage: "memory" };
+  return { documents, total: documents.length, storage: documents.length > 0 ? "combined" : "empty" };
 }
 
-// Called by syncDocument/crawlDocuments to persist data
 export function setDocument(id: string, data: StoredData) {
   memoryStore.set(id, data);
 }
 
-// For App Function export
 export default async function () {
   return getDocuments();
 }
