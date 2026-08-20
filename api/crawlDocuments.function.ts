@@ -32,7 +32,12 @@ type DocumentVersion = {
   retrievedAt: string;
 };
 
-type CrawlJobStatus = "running" | "completed" | "failed";
+type StoredData = {
+  document: Document;
+  versions: DocumentVersion[];
+};
+
+type CrawlJobStatus = "running" | "completed" | "failed" | "partial";
 
 type CrawlJob = {
   id: string;
@@ -47,10 +52,22 @@ type CrawlJob = {
   failed: number;
   status: CrawlJobStatus;
   errors: string[];
+  batches: BatchResult[];
+};
+
+type BatchResult = {
+  batchIndex: number;
+  urls: string[];
+  created: number;
+  updated: number;
+  unchanged: number;
+  failed: number;
+  errors: string[];
 };
 
 type CrawlDocumentsInput = {
   source?: string;
+  batchSize?: number;
 };
 
 type CrawlDocumentsResult = {
@@ -59,74 +76,138 @@ type CrawlDocumentsResult = {
   error?: string;
 };
 
-// ─── Source Config ───────────────────────────────────────────────────────────
-
 type CrawlSource = {
-  name: string;
-  baseUrl: string;
-  sitemapUrl: string;
+  id: string;
+  host: string;
+  type: "sitemap" | "rss" | "api" | "page-discovery";
+  sitemapUrl?: string;
+  baseUrl?: string;
   allowedPatterns: string[];
+  enabled: boolean;
 };
-
-const SOURCES: Record<string, CrawlSource> = {
-  "dynatrace-docs": {
-    name: "dynatrace-docs",
-    baseUrl: "https://docs.dynatrace.com",
-    sitemapUrl: "https://docs.dynatrace.com/docs/sitemap.xml",
-    allowedPatterns: ["https://docs.dynatrace.com/docs/*"],
-  },
-};
-
-// ─── In-Memory Repository ────────────────────────────────────────────────────
-
-const documents = new Map<string, Document>();
-const versions = new Map<string, DocumentVersion[]>();
-const crawlJobs = new Map<string, CrawlJob>();
-
-function getDocument(id: string): Document | null {
-  return documents.get(id) ?? null;
-}
-
-function getLatestVersion(documentId: string): DocumentVersion | null {
-  const docVersions = versions.get(documentId);
-  if (!docVersions || docVersions.length === 0) return null;
-  return docVersions[docVersions.length - 1];
-}
-
-function createDocument(doc: Document): void {
-  documents.set(doc.id, doc);
-  versions.set(doc.id, []);
-}
-
-function updateDocument(doc: Document): void {
-  documents.set(doc.id, doc);
-}
-
-function createVersion(ver: DocumentVersion): void {
-  const docVersions = versions.get(ver.documentId) ?? [];
-  docVersions.push(ver);
-  versions.set(ver.documentId, docVersions);
-
-  const doc = documents.get(ver.documentId);
-  if (doc) {
-    doc.currentVersion = ver.version;
-    doc.updatedAt = ver.retrievedAt;
-    doc.headings = ver.headings;
-    doc.codeBlocks = ver.codeBlocks;
-    doc.links = ver.links;
-  }
-}
-
-function saveCrawlJob(job: CrawlJob): void {
-  crawlJobs.set(job.id, job);
-}
-
-// ─── Sitemap Parser ──────────────────────────────────────────────────────────
 
 type SitemapEntry = {
   url: string;
   lastmod?: string;
 };
+
+const DYANE_TYPE = "dyane-document";
+const CRAWL_JOB_TYPE = "dyane-crawl-job";
+const DEFAULT_BATCH_SIZE = 50;
+
+const SOURCES: Record<string, CrawlSource> = {
+  "dynatrace-docs": {
+    id: "dynatrace-docs",
+    host: "docs.dynatrace.com",
+    type: "sitemap",
+    baseUrl: "https://docs.dynatrace.com",
+    sitemapUrl: "https://docs.dynatrace.com/docs/sitemap.xml",
+    allowedPatterns: ["https://docs.dynatrace.com/docs/*"],
+    enabled: true,
+  },
+};
+
+// ─── In-Memory Fallback ──────────────────────────────────────────────────────
+
+const memoryStore = new Map<string, StoredData>();
+const jobMemoryStore = new Map<string, CrawlJob>();
+
+// ─── Document Service (with fallback) ────────────────────────────────────────
+
+async function getStoredData(id: string): Promise<StoredData | null> {
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    const result = await documentsClient.getDocument({ id });
+    const content = result.content;
+    let text: string;
+    if (typeof content === "string") {
+      text = content;
+    } else if (content instanceof Blob) {
+      text = await content.text();
+    } else if (content instanceof ArrayBuffer) {
+      text = new TextDecoder().decode(content);
+    } else {
+      text = String(content);
+    }
+    return JSON.parse(text) as StoredData;
+  } catch {
+    return memoryStore.get(id) ?? null;
+  }
+}
+
+async function saveStoredData(id: string, data: StoredData, createSnapshot: boolean): Promise<void> {
+  memoryStore.set(id, data);
+
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    const existing = await documentsClient.getDocument({ id });
+    await documentsClient.updateDocument({
+      id,
+      optimisticLockingVersion: existing.metadata.version,
+      createSnapshot,
+      body: {
+        name: data.document.title,
+        type: DYANE_TYPE,
+        description: data.document.description,
+        content: new Blob([JSON.stringify(data)], { type: "application/json" }),
+      },
+    });
+  } catch {
+    try {
+      const { documentsClient } = await import("@dynatrace-sdk/client-document");
+      await documentsClient.createDocument({
+        body: {
+          name: data.document.title,
+          type: DYANE_TYPE,
+          description: data.document.description,
+          id,
+          isPrivate: false,
+          content: new Blob([JSON.stringify(data)], { type: "application/json" }),
+        },
+      });
+    } catch {
+      // Memory fallback already saved
+    }
+  }
+}
+
+async function saveCrawlJob(job: CrawlJob): Promise<void> {
+  const id = `crawl-job-${job.id}`;
+  jobMemoryStore.set(id, job);
+
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    try {
+      const existing = await documentsClient.getDocument({ id });
+      await documentsClient.updateDocument({
+        id,
+        optimisticLockingVersion: existing.metadata.version,
+        createSnapshot: false,
+        body: {
+          name: `Crawl Job ${job.id}`,
+          type: CRAWL_JOB_TYPE,
+          description: `Crawl job for ${job.source}`,
+          content: new Blob([JSON.stringify(job)], { type: "application/json" }),
+        },
+      });
+    } catch {
+      await documentsClient.createDocument({
+        body: {
+          name: `Crawl Job ${job.id}`,
+          type: CRAWL_JOB_TYPE,
+          description: `Crawl job for ${job.source}`,
+          id,
+          isPrivate: false,
+          content: new Blob([JSON.stringify(job)], { type: "application/json" }),
+        },
+      });
+    }
+  } catch {
+    // Memory fallback already saved
+  }
+}
+
+// ─── Sitemap Parser ──────────────────────────────────────────────────────────
 
 async function parseSitemap(sitemapUrl: string): Promise<SitemapEntry[]> {
   const response = await fetch(sitemapUrl);
@@ -154,10 +235,7 @@ async function parseSitemap(sitemapUrl: string): Promise<SitemapEntry[]> {
   return entries;
 }
 
-function filterByPattern(
-  entries: SitemapEntry[],
-  patterns: string[]
-): SitemapEntry[] {
+function filterByPattern(entries: SitemapEntry[], patterns: string[]): SitemapEntry[] {
   return entries.filter((entry) =>
     patterns.some((pattern) => {
       const regex = pattern.replace(/\*/g, ".*").replace(/\?/g, ".");
@@ -321,7 +399,7 @@ async function syncSingleDocument(
     const now = new Date().toISOString();
     const id = generateId(url);
 
-    const existing = getDocument(id);
+    const existing = await getStoredData(id);
 
     if (!existing) {
       const doc: Document = {
@@ -354,20 +432,19 @@ async function syncSingleDocument(
         retrievedAt: now,
       };
 
-      createDocument(doc);
-      createVersion(ver);
+      await saveStoredData(id, { document: doc, versions: [ver] }, false);
       return { success: true, action: "created" };
     }
 
-    const latest = getLatestVersion(id);
+    const latest = existing.versions[existing.versions.length - 1];
 
     if (latest && latest.contentHash === hash) {
-      existing.lastSyncedAt = now;
-      updateDocument(existing);
+      existing.document.lastSyncedAt = now;
+      await saveStoredData(id, existing, false);
       return { success: true, action: "unchanged" };
     }
 
-    const newVersion = existing.currentVersion + 1;
+    const newVersion = existing.document.currentVersion + 1;
     const ver: DocumentVersion = {
       id: `${id}-v${newVersion}`,
       documentId: id,
@@ -381,13 +458,14 @@ async function syncSingleDocument(
       retrievedAt: now,
     };
 
-    existing.currentVersion = newVersion;
-    existing.lastSyncedAt = now;
-    existing.headings = headings;
-    existing.codeBlocks = codeBlocks;
-    existing.links = links;
-    updateDocument(existing);
-    createVersion(ver);
+    existing.document.currentVersion = newVersion;
+    existing.document.lastSyncedAt = now;
+    existing.document.headings = headings;
+    existing.document.codeBlocks = codeBlocks;
+    existing.document.links = links;
+    existing.versions.push(ver);
+
+    await saveStoredData(id, existing, true);
     return { success: true, action: "updated" };
   } catch (err) {
     return {
@@ -397,11 +475,54 @@ async function syncSingleDocument(
   }
 }
 
+// ─── Batch Processing ────────────────────────────────────────────────────────
+
+async function processBatch(
+  urls: string[],
+  sourceName: string,
+  batchIndex: number
+): Promise<BatchResult> {
+  const batch: BatchResult = {
+    batchIndex,
+    urls,
+    created: 0,
+    updated: 0,
+    unchanged: 0,
+    failed: 0,
+    errors: [],
+  };
+
+  for (const url of urls) {
+    const result = await syncSingleDocument(url, sourceName);
+
+    if (!result.success) {
+      batch.failed++;
+      batch.errors.push(`${url}: ${result.error}`);
+      continue;
+    }
+
+    switch (result.action) {
+      case "created":
+        batch.created++;
+        break;
+      case "updated":
+        batch.updated++;
+        break;
+      case "unchanged":
+        batch.unchanged++;
+        break;
+    }
+  }
+
+  return batch;
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 export default async function (payload: unknown) {
   const input = payload as CrawlDocumentsInput;
   const sourceName = input?.source ?? "dynatrace-docs";
+  const batchSize = input?.batchSize ?? DEFAULT_BATCH_SIZE;
   const source = SOURCES[sourceName];
 
   if (!source) {
@@ -423,47 +544,45 @@ export default async function (payload: unknown) {
     failed: 0,
     status: "running",
     errors: [],
+    batches: [],
   };
 
   try {
-    const entries = await parseSitemap(source.sitemapUrl);
+    const entries = await parseSitemap(source.sitemapUrl!);
     const filtered = filterByPattern(entries, source.allowedPatterns);
     job.discovered = filtered.length;
 
-    for (const entry of filtered) {
-      const result = await syncSingleDocument(entry.url, sourceName);
-      job.processed++;
-
-      if (!result.success) {
-        job.failed++;
-        job.errors.push(`${entry.url}: ${result.error}`);
-        continue;
-      }
-
-      switch (result.action) {
-        case "created":
-          job.created++;
-          break;
-        case "updated":
-          job.updated++;
-          break;
-        case "unchanged":
-          job.unchanged++;
-          break;
-      }
+    // Split into batches
+    const urls = filtered.map((e) => e.url);
+    const batches: string[][] = [];
+    for (let i = 0; i < urls.length; i += batchSize) {
+      batches.push(urls.slice(i, i + batchSize));
     }
 
-    job.status = "completed";
+    for (let i = 0; i < batches.length; i++) {
+      const batchResult = await processBatch(batches[i], sourceName, i);
+      job.batches.push(batchResult);
+
+      job.created += batchResult.created;
+      job.updated += batchResult.updated;
+      job.unchanged += batchResult.unchanged;
+      job.failed += batchResult.failed;
+      job.processed += batchResult.created + batchResult.updated + batchResult.unchanged + batchResult.failed;
+      job.errors.push(...batchResult.errors);
+    }
+
+    job.status = job.failed > 0 ? (job.processed === job.failed ? "failed" : "partial") : "completed";
   } catch (err) {
     job.status = "failed";
     job.errors.push(err instanceof Error ? err.message : "Unknown error");
   }
 
   job.finishedAt = new Date().toISOString();
-  saveCrawlJob(job);
+
+  await saveCrawlJob(job);
 
   return {
-    success: job.status === "completed",
+    success: job.status === "completed" || job.status === "partial",
     job,
   } as CrawlDocumentsResult;
 }

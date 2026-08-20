@@ -15,60 +15,69 @@ type Document = {
   lastSyncedAt: string | null;
 };
 
-const documents: Document[] = [
-  {
-    id: "dynatrace-doc-001",
-    title: "Dynatrace Platform Overview",
-    description: "Overview of the Dynatrace platform",
-    url: "https://docs.dynatrace.com/platform",
-    sourceUrl: "https://docs.dynatrace.com/platform",
-    source: "dynatrace-docs",
-    category: "getting-started",
-    currentVersion: 1,
-    headings: [],
-    codeBlocks: [],
-    links: [],
-    createdAt: "2026-08-19T00:00:00Z",
-    updatedAt: "2026-08-19T00:00:00Z",
-    lastSyncedAt: null,
-  },
-  {
-    id: "dynatrace-doc-002",
-    title: "Dynatrace REST API",
-    description: "REST API reference documentation",
-    url: "https://docs.dynatrace.com/api",
-    sourceUrl: "https://docs.dynatrace.com/api",
-    source: "dynatrace-docs",
-    category: "api",
-    currentVersion: 1,
-    headings: [],
-    codeBlocks: [],
-    links: [],
-    createdAt: "2026-08-19T00:00:00Z",
-    updatedAt: "2026-08-19T00:00:00Z",
-    lastSyncedAt: null,
-  },
-  {
-    id: "dynatrace-doc-003",
-    title: "Dynatrace MCP Integration",
-    description: "MCP integration guide",
-    url: "https://docs.dynatrace.com/mcp",
-    sourceUrl: "https://docs.dynatrace.com/mcp",
-    source: "dynatrace-docs",
-    category: "integration",
-    currentVersion: 1,
-    headings: [],
-    codeBlocks: [],
-    links: [],
-    createdAt: "2026-08-19T00:00:00Z",
-    updatedAt: "2026-08-19T00:00:00Z",
-    lastSyncedAt: null,
-  },
-];
+type StoredData = {
+  document: Document;
+  versions: unknown[];
+};
 
-export default function () {
-  return {
-    documents,
-    total: documents.length,
-  };
+const DYANE_TYPE = "dyane-document";
+
+const memoryStore = new Map<string, StoredData>();
+
+export async function getDocuments(): Promise<{ documents: Document[]; total: number; storage: string }> {
+  // Try Document Service first
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    const result = await documentsClient.listDocuments({
+      filter: `type == "${DYANE_TYPE}"`,
+      pageSize: 1000,
+    });
+
+    const documents: Document[] = [];
+
+    for (const meta of result.documents) {
+      try {
+        const docResult = await documentsClient.getDocument({ id: meta.id });
+        const content = docResult.content;
+        let text: string;
+        if (typeof content === "string") {
+          text = content;
+        } else if (content instanceof Blob) {
+          text = await content.text();
+        } else if (content instanceof ArrayBuffer) {
+          text = new TextDecoder().decode(content);
+        } else {
+          text = String(content);
+        }
+        const data = JSON.parse(text) as StoredData;
+        documents.push(data.document);
+      } catch {
+        // Skip broken documents
+      }
+    }
+
+    if (documents.length > 0) {
+      return { documents, total: documents.length, storage: "document-service" };
+    }
+  } catch {
+    // Fall through to memory
+  }
+
+  // Fallback to memory
+  const documents: Document[] = [];
+  for (const data of memoryStore.values()) {
+    documents.push(data.document);
+  }
+
+  return { documents, total: documents.length, storage: "memory" };
+}
+
+// Called by syncDocument/crawlDocuments to persist data
+export function setDocument(id: string, data: StoredData) {
+  memoryStore.set(id, data);
+}
+
+// For App Function export
+export default async function () {
+  return getDocuments();
 }

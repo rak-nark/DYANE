@@ -32,6 +32,11 @@ type DocumentVersion = {
   retrievedAt: string;
 };
 
+type StoredData = {
+  document: Document;
+  versions: DocumentVersion[];
+};
+
 type SyncDocumentInput = {
   url: string;
 };
@@ -44,47 +49,75 @@ type SyncDocumentResult = {
   error?: string;
 };
 
-// ─── In-Memory Repository ────────────────────────────────────────────────────
+const DYANE_TYPE = "dyane-document";
 
-const documents = new Map<string, Document>();
-const versions = new Map<string, DocumentVersion[]>();
+// ─── In-Memory Fallback ──────────────────────────────────────────────────────
 
-function getDocument(id: string): Document | null {
-  return documents.get(id) ?? null;
-}
+const memoryStore = new Map<string, StoredData>();
 
-function getLatestVersion(documentId: string): DocumentVersion | null {
-  const docVersions = versions.get(documentId);
-  if (!docVersions || docVersions.length === 0) return null;
-  return docVersions[docVersions.length - 1];
-}
+// ─── Document Service (with fallback) ────────────────────────────────────────
 
-function createDocument(doc: Document): void {
-  documents.set(doc.id, doc);
-  versions.set(doc.id, []);
-}
-
-function updateDocument(doc: Document): void {
-  documents.set(doc.id, doc);
-}
-
-function createVersion(ver: DocumentVersion): void {
-  const docVersions = versions.get(ver.documentId) ?? [];
-  docVersions.push(ver);
-  versions.set(ver.documentId, docVersions);
-
-  const doc = documents.get(ver.documentId);
-  if (doc) {
-    doc.currentVersion = ver.version;
-    doc.updatedAt = ver.retrievedAt;
-    doc.headings = ver.headings;
-    doc.codeBlocks = ver.codeBlocks;
-    doc.links = ver.links;
+async function getStoredData(id: string): Promise<StoredData | null> {
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    const result = await documentsClient.getDocument({ id });
+    const content = result.content;
+    let text: string;
+    if (typeof content === "string") {
+      text = content;
+    } else if (content instanceof Blob) {
+      text = await content.text();
+    } else if (content instanceof ArrayBuffer) {
+      text = new TextDecoder().decode(content);
+    } else {
+      text = String(content);
+    }
+    return JSON.parse(text) as StoredData;
+  } catch {
+    // Fallback to memory
+    return memoryStore.get(id) ?? null;
   }
 }
 
-function listDocuments(): Document[] {
-  return Array.from(documents.values());
+async function saveStoredData(
+  id: string,
+  data: StoredData,
+  createSnapshot: boolean
+): Promise<void> {
+  // Always save to memory as fallback
+  memoryStore.set(id, data);
+
+  try {
+    const { documentsClient } = await import("@dynatrace-sdk/client-document");
+    const existing = await documentsClient.getDocument({ id });
+    await documentsClient.updateDocument({
+      id,
+      optimisticLockingVersion: existing.metadata.version,
+      createSnapshot,
+      body: {
+        name: data.document.title,
+        type: DYANE_TYPE,
+        description: data.document.description,
+        content: new Blob([JSON.stringify(data)], { type: "application/json" }),
+      },
+    });
+  } catch {
+    try {
+      const { documentsClient } = await import("@dynatrace-sdk/client-document");
+      await documentsClient.createDocument({
+        body: {
+          name: data.document.title,
+          type: DYANE_TYPE,
+          description: data.document.description,
+          id,
+          isPrivate: false,
+          content: new Blob([JSON.stringify(data)], { type: "application/json" }),
+        },
+      });
+    } catch {
+      // Memory fallback already saved
+    }
+  }
 }
 
 // ─── Versioning ──────────────────────────────────────────────────────────────
@@ -127,10 +160,8 @@ function stripTags(html: string): string {
 function extractMainContent(html: string): string {
   const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   if (mainMatch) return mainMatch[1];
-
   const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
   if (articleMatch) return articleMatch[1];
-
   return html;
 }
 
@@ -148,23 +179,18 @@ function stripNoise(html: string): string {
 function extractTitle(html: string): string {
   const ogTitle = html.match(/<meta\s+property="og:title"\s+content="([^"]+)"/i);
   if (ogTitle) return decodeHtmlEntities(ogTitle[1]);
-
   const titleTag = html.match(/<title[^>]*>([^<]+)<\/title>/i);
   if (titleTag) return decodeHtmlEntities(titleTag[1].trim());
-
   const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (h1) return stripTags(h1[1]).trim();
-
   return "Untitled";
 }
 
 function extractDescription(html: string): string {
   const ogDesc = html.match(/<meta\s+property="og:description"\s+content="([^"]+)"/i);
   if (ogDesc) return decodeHtmlEntities(ogDesc[1]);
-
   const metaDesc = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
   if (metaDesc) return decodeHtmlEntities(metaDesc[1]);
-
   return "";
 }
 
@@ -184,11 +210,6 @@ function extractCodeBlocks(html: string): string[] {
   let match;
   while ((match = preCodeRegex.exec(html)) !== null) {
     blocks.push(stripTags(match[1]).trim());
-  }
-  const preRegex = /<pre[^>]*>([\s\S]*?)<\/pre>/gi;
-  while ((match = preRegex.exec(html)) !== null) {
-    const text = stripTags(match[1]).trim();
-    if (text && !blocks.includes(text)) blocks.push(text);
   }
   return blocks;
 }
@@ -244,7 +265,6 @@ export default async function (payload: unknown) {
     }
 
     const html = await response.text();
-
     const title = extractTitle(html);
     const description = extractDescription(html);
     const headings = extractHeadings(html);
@@ -258,7 +278,7 @@ export default async function (payload: unknown) {
     const now = new Date().toISOString();
     const id = generateId(input.url);
 
-    const existing = getDocument(id);
+    const existing = await getStoredData(id);
 
     if (!existing) {
       const doc: Document = {
@@ -291,8 +311,7 @@ export default async function (payload: unknown) {
         retrievedAt: now,
       };
 
-      createDocument(doc);
-      createVersion(ver);
+      await saveStoredData(id, { document: doc, versions: [ver] }, false);
 
       return {
         success: true,
@@ -302,20 +321,20 @@ export default async function (payload: unknown) {
       } as SyncDocumentResult;
     }
 
-    const latest = getLatestVersion(id);
+    const latest = existing.versions[existing.versions.length - 1];
 
     if (latest && latest.contentHash === hash) {
-      existing.lastSyncedAt = now;
-      updateDocument(existing);
+      existing.document.lastSyncedAt = now;
+      await saveStoredData(id, existing, false);
       return {
         success: true,
         action: "unchanged",
-        document: existing,
+        document: existing.document,
         version: latest,
       } as SyncDocumentResult;
     }
 
-    const newVersion = existing.currentVersion + 1;
+    const newVersion = existing.document.currentVersion + 1;
     const ver: DocumentVersion = {
       id: `${id}-v${newVersion}`,
       documentId: id,
@@ -329,18 +348,19 @@ export default async function (payload: unknown) {
       retrievedAt: now,
     };
 
-    existing.currentVersion = newVersion;
-    existing.lastSyncedAt = now;
-    existing.headings = headings;
-    existing.codeBlocks = codeBlocks;
-    existing.links = links;
-    updateDocument(existing);
-    createVersion(ver);
+    existing.document.currentVersion = newVersion;
+    existing.document.lastSyncedAt = now;
+    existing.document.headings = headings;
+    existing.document.codeBlocks = codeBlocks;
+    existing.document.links = links;
+    existing.versions.push(ver);
+
+    await saveStoredData(id, existing, true);
 
     return {
       success: true,
       action: "updated",
-      document: existing,
+      document: existing.document,
       version: ver,
     } as SyncDocumentResult;
   } catch (err) {

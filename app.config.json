@@ -3,12 +3,15 @@
   "environmentUrl": "https://rqb20988.apps.dynatrace.com/",
   "app": {
     "name": "DYANE",
-    "version": "0.6.0",
-    "description": "A starting project with routing, fetching data, and charting",
+    "version": "0.8.0",
+    "description": "Dynatrace Assistant for Network & Engineering",
     "id": "my.dyane",
     "scopes": [
-      { "name": "storage:logs:read", "comment": "default template" },
-      { "name": "storage:buckets:read", "comment": "default template" }
+      { "name": "storage:logs:read", "comment": "Read logs from Grail" },
+      { "name": "storage:buckets:read", "comment": "Read from Grail buckets" },
+      { "name": "document:documents:read", "comment": "Read crawled documents" },
+      { "name": "document:documents:write", "comment": "Create/update crawled documents" },
+      { "name": "document:documents:delete", "comment": "Delete crawled documents" }
     ]
   }
 }
