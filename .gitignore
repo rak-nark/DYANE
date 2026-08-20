@@ -5,6 +5,11 @@ dist/
 # Entorno y secretos
 .env
 .env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+*.secret
 
 # Sistema
 .DS_Store

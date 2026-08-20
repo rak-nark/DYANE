@@ -3,10 +3,10 @@
   "mcp": {
     "dynatrace-mcp": {
       "type": "remote",
-      "url": "https://zow79349.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp",
-      "enabled": true,
+      "url": "https://<your-env-id>.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp",
+      "enabled": false,
       "headers": {
-        "Authorization": "Bearer dt0s16.NP3Z3XZE.FFX4G26MHJAGPSICVYFEZMCTSLJ4KHZTWNXER3FHZWRGCXWWY64RZQMLTM45BBMZ"
+        "Authorization": "Bearer <DT_PLATFORM_TOKEN>"
       }
     }
   }
