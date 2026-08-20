@@ -6,6 +6,7 @@ import type { EvidenceItem, SkillEvidenceReport } from "./types.js";
 
 const PROJECT_ROOT = resolve(process.cwd());
 const SKILLS_DIR = join(PROJECT_ROOT, "skills");
+const AGENTS_SKILLS_DIR = join(PROJECT_ROOT, ".agents", "skills");
 
 export interface SkillRequestInput {
   prompt: string;
@@ -230,21 +231,26 @@ export async function executeSkillPipeline(input: SkillRequestInput): Promise<Pi
   };
 
   // Paso 11: Despliegue en skills/ y .agents/skills/
+  const deployDirs = [
+    { base: SKILLS_DIR, name: skillName },
+    { base: AGENTS_SKILLS_DIR, name: skillName },
+  ];
+
+  for (const target of deployDirs) {
+    const dir = join(target.base, target.name);
+    const refDir = join(dir, "references");
+    const scDir = join(dir, "scripts");
+    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+    if (!existsSync(refDir)) mkdirSync(refDir, { recursive: true });
+    if (!existsSync(scDir)) mkdirSync(scDir, { recursive: true });
+
+    writeFileSync(join(dir, "SKILL.md"), generatedSkill, "utf8");
+    writeFileSync(join(refDir, "evidence.json"), JSON.stringify(evidenceReport, null, 2), "utf8");
+  }
+
   const skillDir = join(SKILLS_DIR, skillName);
-  const referencesDir = join(skillDir, "references");
-  const scriptsDir = join(skillDir, "scripts");
-
-  if (!existsSync(skillDir)) mkdirSync(skillDir, { recursive: true });
-  if (!existsSync(referencesDir)) mkdirSync(referencesDir, { recursive: true });
-  if (!existsSync(scriptsDir)) mkdirSync(scriptsDir, { recursive: true });
-
-  // Escribir SKILL.md
   const skillFilePath = join(skillDir, "SKILL.md");
-  writeFileSync(skillFilePath, generatedSkill, "utf8");
-
-  // Escribir evidence.json
-  const evidenceFilePath = join(referencesDir, "evidence.json");
-  writeFileSync(evidenceFilePath, JSON.stringify(evidenceReport, null, 2), "utf8");
+  const evidenceFilePath = join(skillDir, "references", "evidence.json");
 
   console.log(`[Pipeline] 11. Skill desplegada y disponible para Antigravity, Claude Code y OpenCode:`);
   console.log(`  -> ${skillFilePath}`);

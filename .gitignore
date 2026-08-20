@@ -2,6 +2,10 @@
 node_modules/
 dist/
 
+# Documentación extraída y datos locales
+docs/
+data/
+
 # Entorno y secretos
 .env
 .env.local

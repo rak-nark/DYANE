@@ -16,66 +16,72 @@ integrando las tres vías de acceso a la plataforma:
 - **`opencode.json`** — configuración del MCP remoto de Dynatrace para opencode.
 - **`docs/`** — guías de instalación, autenticación, MCP, dtctl y API.
 
-## Documentación
+## Dónde se almacena la Documentación Oficial Extraída
 
-0. [Contrato de variables de entorno](docs/00-environment-contract.md) — variables globales, tokens, scopes y ruta MCP
-1. [Instalación](docs/01-instalacion.md) — requisitos y puesta en marcha
-2. [Autenticación](docs/02-autenticacion.md) — tokens y scopes necesarios
-3. [Integración MCP](docs/03-mcp.md) — servidor remoto y configuración en opencode
-4. [CLI dtctl](docs/04-dtctl.md) — el CLI oficial y su proxy `dtx dtctl`
-5. [API](docs/05-api.md) — DQL en Grail y Environment API v2
-6. [Verificación](docs/06-verificacion.md) — cómo probar que MCP, CLI y API funcionan
-7. [Distribución de skills](docs/07-skills-distribution.md) — core skills y domain skills
-8. [Documentación local](docs/08-documentacion-local.md) — KB local para reducir búsquedas web y consumo de tokens
+Toda la documentación oficial de Dynatrace descargada se guarda en la carpeta local [`docs/`](file:///c:/Users/USER/Documents/ENTORNO%20DE%20TRABAJO/docs):
 
-## Skills
+- **[`docs/`](file:///c:/Users/USER/Documents/ENTORNO%20DE%20TRABAJO/docs):** Contiene los artículos descargados convertidos a Markdown enriquecido (`<dominio>__<slug>.md`) con metadatos YAML, encabezados, bloques de código DQL/API y enlaces oficiales.
+- **[`docs/index.json`](file:///c:/Users/USER/Documents/ENTORNO%20DE%20TRABAJO/docs/index.json):** Índice maestro centralizado que registra el catálogo completo de URLs, hashes de contenido, fechas de rastreo y conteo por dominios.
+- **[`docs/records/`](file:///c:/Users/USER/Documents/ENTORNO%20DE%20TRABAJO/docs/records):** Registros individuales en JSON estructurado por cada documento descargado (`<id>.json`).
 
-- **`skills-core/`** — skills madre obligatorias para todo proyecto: instalación, environment, documentación local, Strato y gobierno de skills.
-- **`skills/`** — skills de dominio Dynatrace: AppEngine, OpenPipeline, IAM, sintéticos, RUM, DPS, Kubernetes, dashboards y API.
+---
 
-## Arranque rápido
+## Comandos del CLI `dtx`
 
+### 1. Ingestión y Búsqueda de Documentación Oficial
 ```powershell
-# 1. Preparar (instala deps, crea .env, compila, instala dtctl)
-.\scripts\setup.ps1 -InstallDtctl
+# Descargar documentación oficial desde el sitemap oficial (4,400+ páginas)
+dtx docs scrape                          # Descarga incremental completa
+dtx docs scrape --domain grail --limit 10 # Descarga por dominio específico con límite
+dtx docs scrape --force                  # Fuerza la re-descarga de documentos
 
-# 2. Editar credenciales
-notepad .env
-
-# 3. Verificar
-dtx doctor
-dtx config
+# Buscar en la documentación local indexada
+dtx docs search "grail dql"
+dtx docs search "openpipeline processors" --domain openpipeline
 ```
 
-En Windows, si PowerShell bloquea scripts `.ps1`, usa comandos desde Command Prompt:
+### 2. Creación y Validación de Skills con Trazabilidad Documental
+```powershell
+# Listar inventario clasificado de skills (Core y Dominio)
+dtx skill list
 
-```cmd
-cmd /c npm run build
-cmd /c node dist/index.js test --smoke
+# Validar la trazabilidad y respaldo oficial de una skill (comprueba SKILL.md y references/evidence.json)
+dtx skill validate dynatrace-pipeline-observability
+
+# Crear una nueva skill validada automáticamente contra la base documental
+dtx skill create "Monitoreo y autoescalado en Kubernetes" --domain kubernetes
 ```
 
-## Ejemplos
-
+### 3. Operación de Plataforma (DQL, API y MCP)
 ```powershell
-# DQL (logs de la última hora)
+# Ejecutar consultas DQL en Grail
 dtx dql "fetch logs | limit 10" --output table
+dtx dql "fetch events | summarize count(), by:{event.kind}"
 
-# Entidades de tipo servicio
+# Entidades y problemas
 dtx entities --type SERVICE --output json
-
-# Problemas abiertos
 dtx problems --status OPEN
+dtx metrics
 
-# Todo lo que hace dtctl
+# Proxy oficial a dtctl
 dtx dtctl get workflows
 dtx dtctl query "fetch metrics { A = dem:builtin:service.request.total } | limit 5"
 
-# GET genérico a la API v2
+# GET genérico a Environment API v2
 dtx api "/api/v2/entityTypes"
+
+# Diagnóstico, estado y test de conectividad
+dtx doctor
+dtx config
+dtx test
+dtx mcp
 ```
+
+## Estructura de Skills
+
+- **`skills-core/`** — Skills base obligatorias de gobernanza: `documentation-first`, `environment-contract`, `skill-governance` y `project-bootstrap`.
+- **`skills/`** y **`.agents/skills/`** — Skills de dominio técnico validadas contra Dynatrace Docs (`SKILL.md` + `references/evidence.json`).
 
 ## Nota sobre seguridad
 
-Nunca comitees `.env` ni tokens. El `.gitignore` ya lo excluye. El `opencode.json` usa
-placeholders; reemplázalos localmente (o usa autenticación por OAuth para que opencode
-gestione el refresco del token).
+Nunca comitees `.env` ni tokens. El `.gitignore` ya lo excluye. El `opencode.json` usa placeholders; tus credenciales reales se mantienen de forma segura en tu `.env` local.

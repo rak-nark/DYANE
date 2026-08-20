@@ -6,7 +6,7 @@ import type { DocMetadata, DocRecord, DocsIndex } from "./types.js";
 const DOCS_BASE_URL = "https://docs.dynatrace.com";
 const SITEMAP_URL = "https://docs.dynatrace.com/docs/sitemap.xml";
 const PROJECT_ROOT = resolve(process.cwd());
-const DATA_DIR = join(PROJECT_ROOT, "data", "docs");
+const DATA_DIR = join(PROJECT_ROOT, "docs");
 const RECORDS_DIR = join(DATA_DIR, "records");
 const INDEX_FILE = join(DATA_DIR, "index.json");
 const DOC_FORMAT_VERSION = "2.0.0";
@@ -14,7 +14,6 @@ const DOC_FORMAT_VERSION = "2.0.0";
 const DOMAIN_PATTERNS: Record<string, RegExp[]> = {
   grail: [/grail/i, /dql/i, /query/i, /analyze-explore-automate/i],
   openpipeline: [/openpipeline/i, /pipeline/i, /ingest/i],
-  appengine: [/appengine/i, /dynatrace-apps/i, /strato/i, /developer/i],
   kubernetes: [/kubernetes/i, /k8s/i, /dynakube/i, /operator/i],
   dashboards: [/dashboard/i, /notebook/i],
   logs: [/logs/i, /log-monitoring/i],
@@ -296,8 +295,7 @@ function getSeedUrls(): Array<{ url: string; lastmod?: string }> {
     { url: "https://docs.dynatrace.com/docs/grail/dynatrace-query-language" },
     { url: "https://docs.dynatrace.com/docs/platform-services/openpipeline" },
     { url: "https://docs.dynatrace.com/docs/platform-services/openpipeline/processors" },
-    { url: "https://docs.dynatrace.com/docs/dynatrace-apps" },
-    { url: "https://docs.dynatrace.com/docs/platform-services/appengine" },
+    { url: "https://docs.dynatrace.com/docs/dynatrace-api" },
     { url: "https://docs.dynatrace.com/docs/setup-and-configuration/setup-on-cloud-platforms/kubernetes" },
     { url: "https://docs.dynatrace.com/docs/discover-dynatrace/dashboards" },
     { url: "https://docs.dynatrace.com/docs/observe-and-explore/metrics" },

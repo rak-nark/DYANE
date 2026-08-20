@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-20T19:47:17.718Z",
-  "totalDocuments": 30,
+  "lastUpdated": "2026-08-20T22:21:43.329Z",
+  "totalDocuments": 35,
   "domains": {
     "general": 8,
     "kubernetes": 4,
     "openpipeline": 5,
-    "grail": 5,
+    "grail": 10,
     "appengine": 8
   },
   "documents": {
@@ -2783,6 +2783,355 @@
       "crawledAt": "2026-08-20T19:47:14.623Z",
       "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\data\\docs\\appengine__docs-semantic-dictionary-model-smartscape-gcp-developerconnect.md",
       "lastmod": "2026-07-27T00:00:00.000Z"
+    },
+    "ee1bf40c614477c3": {
+      "id": "ee1bf40c614477c3",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/differences-dashboards-notebooks",
+      "title": "When to use Dashboards or Notebooks — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-dashboards-and-notebooks-differences-dashboards-notebooks",
+      "formatVersion": "2.0.0",
+      "contentHash": "82efd2d62d0473875f874c48452c727570b8df2c8abc01d9c5014d2bec280d3a",
+      "headings": [
+        "When to use Dashboards or Notebooks",
+        "Notebooks",
+        "Dashboards"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        }
+      ],
+      "crawledAt": "2026-08-20T22:21:42.203Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\grail__docs-analyze-explore-automate-dashboards-and-notebooks-differences-dashboards-notebooks.md",
+      "recordPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\records\\ee1bf40c614477c3.json",
+      "lastmod": "2022-07-08T00:00:00.000Z"
+    },
+    "644ae4dbbe1c367b": {
+      "id": "644ae4dbbe1c367b",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/document-version",
+      "title": "Manage document versions — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-dashboards-and-notebooks-document-version",
+      "formatVersion": "2.0.0",
+      "contentHash": "bf93386cf1966026fd43ac6ad516de90cd5c32d1e9b008d32c4efa954ac8e521",
+      "headings": [
+        "Manage document versions",
+        "History menu",
+        "Preview",
+        "Restore",
+        "Make a copy",
+        "Download",
+        "Preview in new tab",
+        "Delete this version",
+        "Show all",
+        "Version",
+        "Updated on",
+        "Updated by",
+        "Actions"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        }
+      ],
+      "crawledAt": "2026-08-20T22:21:42.444Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\grail__docs-analyze-explore-automate-dashboards-and-notebooks-document-version.md",
+      "recordPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\records\\644ae4dbbe1c367b.json",
+      "lastmod": "2022-07-08T00:00:00.000Z"
+    },
+    "3de55653ff5305a0": {
+      "id": "3de55653ff5305a0",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/drilldowns-and-navigation",
+      "title": "Drilldowns and navigation — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-dashboards-and-notebooks-drilldowns-and-navigation",
+      "formatVersion": "2.0.0",
+      "contentHash": "8b01c1bc48a064474514a098dedbc2da2e39af11acbb69ceac412253c9c347b6",
+      "headings": [
+        "Drilldowns and navigation",
+        "Use cases",
+        "Automatic context passing: explore details in Dynatrace apps",
+        "Manual context passing: Link to external systems or dashboards",
+        "Open with",
+        "General usage",
+        "Examples",
+        "Suggested app links",
+        "Link from visualization via custom links",
+        "Add and manage links",
+        "Add a link",
+        "Manage links",
+        "Use dynamic placeholders",
+        "Encoding links and placeholder values",
+        "Static parts of the URL",
+        "Dynamic placeholders",
+        "Supported visualizations and link behavior",
+        "Link from table via a markdown column",
+        "Basic: auto-detected, raw links",
+        "Intermediate: links with a display name",
+        "Advanced: intent-based links"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "intents",
+          "href": "https://dt-url.net/intents"
+        },
+        {
+          "text": "Intents",
+          "href": "https://dt-url.net/intents"
+        },
+        {
+          "text": "Workflows",
+          "href": "/docs/analyze-explore-automate/workflows"
+        },
+        {
+          "text": "URL Encoder/Decoder",
+          "href": "https://www.url-encode-decode.com/"
+        },
+        {
+          "text": "Choropleth",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-map-choropleth"
+        },
+        {
+          "text": "Dot",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-map-dot"
+        },
+        {
+          "text": "Connection",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-map-connection"
+        },
+        {
+          "text": "Bubble",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-map-bubble"
+        },
+        {
+          "text": "intent",
+          "href": "https://dt-url.net/intents"
+        },
+        {
+          "text": "Dynatrace playground",
+          "href": "https://wkf10640.apps.dynatrace.com/ui/apps/dynatrace.dashboards/dashboard/35295fb4-3d3d-4919-994d-3f8869cab1b7#from=2026-01-21T14%3A19%3A00.000Z&amp;to=2026-01-21T16%3A20%3A00.000Z&amp;tileIds=27"
+        },
+        {
+          "text": "Dynatrace playground",
+          "href": "https://wkf10640.apps.dynatrace.com/ui/apps/dynatrace.dashboards/dashboard/35295fb4-3d3d-4919-994d-3f8869cab1b7#from=2026-01-21T14%3A19%3A00.000Z&amp;to=2026-01-21T16%3A20%3A00.000Z&amp;tileIds=27"
+        },
+        {
+          "text": "Dynatrace playground",
+          "href": "https://wkf10640.apps.dynatrace.com/ui/apps/dynatrace.dashboards/dashboard/35295fb4-3d3d-4919-994d-3f8869cab1b7#from=2026-01-21T14%3A19%3A00.000Z&amp;to=2026-01-21T16%3A20%3A00.000Z&amp;tileIds=22"
+        }
+      ],
+      "crawledAt": "2026-08-20T22:21:42.688Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\grail__docs-analyze-explore-automate-dashboards-and-notebooks-drilldowns-and-navigation.md",
+      "recordPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\records\\3de55653ff5305a0.json",
+      "lastmod": "2026-01-26T00:00:00.000Z"
+    },
+    "42b425f3c994a141": {
+      "id": "42b425f3c994a141",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/explore-data",
+      "title": "Explore data — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-dashboards-and-notebooks-explore-data",
+      "formatVersion": "2.0.0",
+      "contentHash": "58a512b2994e1ae662a01a904bda892cff52318421f3a055b6ae0ecfaeb8e47f",
+      "headings": [
+        "Explore data",
+        "Get started",
+        "Transition to Smartscape fields",
+        "What this means for you",
+        "What you should do",
+        "Learn more",
+        "Prompt",
+        "Generative AI in your dashboard",
+        "Generative AI in your notebook",
+        "Logs",
+        "Filter by log.source",
+        "Filter by content",
+        "Filter by status",
+        "Summarize",
+        "Convert to time series",
+        "Bucketize",
+        "Sort",
+        "Limit",
+        "Metrics",
+        "Add",
+        "Additional metric-specific options",
+        "Add another metric or expression",
+        "Hide or show",
+        "Duplicate",
+        "Delete",
+        "Filter",
+        "Split by (Aggregate)",
+        "Compare to previous period",
+        "Default value",
+        "Rate",
+        "Reduce to single value",
+        "Alias",
+        "Bucketize",
+        "Expressions",
+        "Sort",
+        "Limit",
+        "Interval",
+        "Business events",
+        "Filter by event.provider",
+        "Filter by event.type",
+        "Summarize",
+        "Convert to time series",
+        "Bucketize",
+        "Sort",
+        "Limit",
+        "Explore other areas",
+        "Query Grail",
+        "Show DQL",
+        "Create a DQL query"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "Dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "Notebooks",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/notebooks"
+        },
+        {
+          "text": "how the filter field works",
+          "href": "/docs/discover-dynatrace/get-started/dynatrace-ui/ui-filter-field"
+        },
+        {
+          "text": "matchesPhrase",
+          "href": "/docs/platform/grail/dynatrace-query-language/functions/string-functions#matchesPhrase"
+        },
+        {
+          "text": "search",
+          "href": "/docs/platform/grail/dynatrace-query-language/commands/filtering-commands#search"
+        },
+        {
+          "text": "create a DQL query",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/explore-data#create-a-dql-query"
+        },
+        {
+          "text": "Smartscape on Grail",
+          "href": "/docs/platform/grail/smartscape-on-grail"
+        },
+        {
+          "text": "Dynatrace Intelligence agentic and generative AI",
+          "href": "/docs/dynatrace-intelligence/agentic-and-generative-ai/dynatrace-generative-ai-overview"
+        },
+        {
+          "text": "Dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "visualization-specific documentation",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations"
+        },
+        {
+          "text": "visualization-specific documentation",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations"
+        },
+        {
+          "text": "Single value",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-chart-single-value"
+        },
+        {
+          "text": "Table",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-table"
+        },
+        {
+          "text": "Categorical bar chart",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations/visualization-chart-bar-categorical"
+        },
+        {
+          "text": "operators",
+          "href": "/docs/platform/grail/dynatrace-query-language/operators"
+        },
+        {
+          "text": "timeseries",
+          "href": "/docs/platform/grail/dynatrace-query-language/commands/metric-commands#timeseries"
+        },
+        {
+          "text": "DQL",
+          "href": "/docs/platform/grail/dynatrace-query-language"
+        }
+      ],
+      "crawledAt": "2026-08-20T22:21:42.927Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\grail__docs-analyze-explore-automate-dashboards-and-notebooks-explore-data.md",
+      "recordPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\records\\42b425f3c994a141.json",
+      "lastmod": "2026-02-17T00:00:00.000Z"
+    },
+    "fb56a41d02816d6c": {
+      "id": "fb56a41d02816d6c",
+      "url": "https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks",
+      "title": "Dashboards and Notebooks — Dynatrace Docs",
+      "domain": "grail",
+      "slug": "docs-analyze-explore-automate-dashboards-and-notebooks",
+      "formatVersion": "2.0.0",
+      "contentHash": "470c6ddcd903cb15d77ac7e7086fa9147eb29e80bcbb7dfdf1ff4c2c2c745fc1",
+      "headings": [
+        "Dashboards and Notebooks",
+        "Dashboards and Notebooks",
+        "What&#x27;s the difference?",
+        "Dashboards",
+        "Notebooks",
+        "Share",
+        "Open with",
+        "Explore data",
+        "Visualizations"
+      ],
+      "codeBlocks": [],
+      "links": [
+        {
+          "text": "Try it free",
+          "href": "https://www.dynatrace.com/try-free/"
+        },
+        {
+          "text": "What&#x27;s the difference?How to choose between  Dashboards and  Notebooks.",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/differences-dashboards-notebooks"
+        },
+        {
+          "text": "Dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new"
+        },
+        {
+          "text": "Notebooks",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/notebooks"
+        },
+        {
+          "text": "ShareShare your dashboards and notebooks with other users in your Dynatrace environment.",
+          "href": "/docs/discover-dynatrace/get-started/dynatrace-ui/share"
+        },
+        {
+          "text": "Open withReuse content from one Dynatrace application in another application. (Not just notebooks and dashboards?)",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/drilldowns-and-navigation"
+        },
+        {
+          "text": "Explore dataUse our point-and-click interface or natural language questions to explore your data",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/explore-data"
+        },
+        {
+          "text": "VisualizationsCreate visualizations for notebooks and dashboards",
+          "href": "/docs/analyze-explore-automate/dashboards-and-notebooks/edit-visualizations"
+        }
+      ],
+      "crawledAt": "2026-08-20T22:21:43.172Z",
+      "localPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\grail__docs-analyze-explore-automate-dashboards-and-notebooks.md",
+      "recordPath": "C:\\Users\\USER\\Documents\\ENTORNO DE TRABAJO\\docs\\records\\fb56a41d02816d6c.json",
+      "lastmod": "2025-11-25T00:00:00.000Z"
     }
   }
 }

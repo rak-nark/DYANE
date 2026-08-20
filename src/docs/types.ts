@@ -36,6 +36,7 @@ export interface DocRecord {
   crawledAt: string;
   lastmod?: string;
   localPath: string;
+  recordPath?: string;
   headings: string[];
   links: Array<{ text: string; href: string }>;
   codeBlocks: Array<{ language: string; code: string }>;
