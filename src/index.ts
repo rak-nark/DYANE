@@ -20,6 +20,12 @@ import {
   cmdSkillCreate,
   cmdSkillValidate,
   cmdSkillList,
+  cmdPlanCreate,
+  cmdPlanList,
+  cmdPlanShow,
+  cmdPlanValidate,
+  cmdPlanStatus,
+  cmdPlanReindex,
   type CliOptions,
 } from "./commands.js";
 
@@ -76,6 +82,22 @@ function parseOptions(args: string[]): { options: CliOptions; rest: string[] } {
       }
       case "--name": {
         options.name = args[++i];
+        break;
+      }
+      case "--skill": {
+        options.skill = args[++i];
+        break;
+      }
+      case "--ref": {
+        options.ref = args[++i];
+        break;
+      }
+      case "--priority": {
+        options.priority = args[++i];
+        break;
+      }
+      case "--owner": {
+        options.owner = args[++i];
         break;
       }
       default:
@@ -169,6 +191,30 @@ async function main(): Promise<void> {
         cmdSkillList();
       } else {
         console.error(`Subcomando skill desconocido: ${subCommand}. Usa: create | validate | list`);
+        process.exitCode = 1;
+      }
+      break;
+    }
+
+    // Planes de trabajo por sugerencia de implementación
+    case "plan": {
+      const subCommand = rest[0];
+      if (subCommand === "create") {
+        cmdPlanCreate(rest.slice(1).join(" ") || "", options);
+      } else if (subCommand === "list" || !subCommand) {
+        cmdPlanList(options);
+      } else if (subCommand === "show") {
+        cmdPlanShow(rest[1] ?? "");
+      } else if (subCommand === "validate") {
+        cmdPlanValidate(rest[1] ?? "");
+      } else if (subCommand === "status") {
+        cmdPlanStatus(rest[1] ?? "", rest[2] ?? "");
+      } else if (subCommand === "reindex") {
+        cmdPlanReindex();
+      } else {
+        console.error(
+          `Subcomando plan desconocido: ${subCommand}. Usa: create | list | show | validate | status | reindex`,
+        );
         process.exitCode = 1;
       }
       break;

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-08-23T15:24:49.834Z",
+  "totalPlans": 1,
+  "plans": [
+    {
+      "id": "PLAN-2026-0001",
+      "title": "Reemplazar cadena de reglas de security context por lookup",
+      "status": "in-progress",
+      "priority": "high",
+      "originType": "skill-reference",
+      "skill": "dynatrace-ingesta-openpipeline",
+      "file": "PLAN-2026-0001-reemplazar-cadena-de-reglas-de-security-context-por-lookup.md",
+      "created": "2026-08-23T15:22:38.610Z",
+      "updated": "2026-08-23T15:24:49.833Z"
+    }
+  ]
+}
