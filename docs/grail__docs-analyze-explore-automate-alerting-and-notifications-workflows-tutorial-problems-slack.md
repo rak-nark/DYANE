@@ -1,15 +1,37 @@
 ---
+formatVersion: "2.0.0"
 id: "7ba9622b36fc53c0"
 url: "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack"
 title: "Send Slack notifications for problems — Dynatrace Docs"
 domain: "grail"
-crawledAt: "2026-08-20T19:28:50.525Z"
-contentHash: "2ed0507f0a184098a070ce96fc09a01175ce3dde255c895bb7ebc1959406a683"
+crawledAt: "2026-08-23T14:58:43.359Z"
+contentHash: "ef9549a86408d4b64f7f7b488c983f9d1ae417306e86ead8beba3c7656b5905a"
+source: "docs.dynatrace.com"
 ---
 
 # Send Slack notifications for problems — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-slack)
+- Domain: `grail`
+- Document ID: `7ba9622b36fc53c0`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Send Slack notifications for problems
+- What will you learn
+- Prerequisites
+- Steps
+- Conclusion
+- Related topics
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Send Slack notifications for problems — Dynatrace Docs 
 # Send Slack notifications for problems
@@ -28,7 +50,7 @@ In **Workflows**, build a
 This guide shows you how.
 ## What will you learn
 
-In this tutorial, you&#x27;ll learn how to alert your team in real time by automatically messaging the details of a new problem to a specific Slack channel.
+In this tutorial, you'll learn how to alert your team in real time by automatically messaging the details of a new problem to a specific Slack channel.
 
 At a short glance, you will: 
 - Create a simple workflow . Add an event trigger for 
@@ -93,7 +115,7 @@ Select a Slack channel for your message from the **Channel** drop-down list.
 
 In the **Message** field, enter the following:
 
- { "blocks": [ { "type": "header", "text": { "type": "plain_text", "text": "{{ &#x27;:white_check_mark:&#x27; if event()[&#x27;event.status&#x27;] == &#x27;CLOSED&#x27; else &#x27;:warning:&#x27; }} {{ &#x27;RESOLVED&#x27; if event()[&#x27;event.status&#x27;] == &#x27;CLOSED&#x27; else &#x27;OPEN&#x27; }} - {{ event()[&#x27;event.name&#x27;]}}", "emoji": true } }, { "type": "section", "text": { "type": "mrkdwn", "text": "- *Problem link*: <{{ environment().url }}/ui/intent/dynatrace.davis.problems/view-problem#%7B%22event.id%22%3A%22{{ event()[&#x27;event.id&#x27;] }}%22,%22event.kind%22%3A%22{{event()[&#x27;event.kind&#x27;]}}%22%7D|{{ event()[&#x27;display_id&#x27;] }}> \n- *Impacted Entities:* `{{ event()[&#x27;affected_entity_ids&#x27;] }}`\n- *Problem duration:* `{{ (event().get(&#x27;resolved_problem_duration&#x27;, 0) | int) / 1000000 / 1000 / 60 }} minutes`" } }, { "type": "section", "text": { "type": "mrkdwn", "text": {{ (&#x27;>&#x27; ~ event()[&#x27;event.description&#x27;]) | replace(&#x27;\n&#x27;, &#x27;\n>&#x27;) | to_json }} } }, { "type": "divider" }, { "type": "section", "text": { "type": "mrkdwn", "text": "*Workflow link*: <{{ environment().url }}/ui/apps/dynatrace.automations/workflows/{{ execution().workflow.id }}|Workflow>" } } ] } 
+ { "blocks": [ { "type": "header", "text": { "type": "plain_text", "text": "{{ ':white_check_mark:' if event()['event.status'] == 'CLOSED' else ':warning:' }} {{ 'RESOLVED' if event()['event.status'] == 'CLOSED' else 'OPEN' }} - {{ event()['event.name']}}", "emoji": true } }, { "type": "section", "text": { "type": "mrkdwn", "text": "- *Problem link*: <{{ environment().url }}/ui/intent/dynatrace.davis.problems/view-problem#%7B%22event.id%22%3A%22{{ event()['event.id'] }}%22,%22event.kind%22%3A%22{{event()['event.kind']}}%22%7D|{{ event()['display_id'] }}> \n- *Impacted Entities:* `{{ event()['affected_entity_ids'] }}`\n- *Problem duration:* `{{ (event().get('resolved_problem_duration', 0) | int) / 1000000 / 1000 / 60 }} minutes`" } }, { "type": "section", "text": { "type": "mrkdwn", "text": {{ ('>' ~ event()['event.description']) | replace('\n', '\n>') | to_json }} } }, { "type": "divider" }, { "type": "section", "text": { "type": "mrkdwn", "text": "*Workflow link*: <{{ environment().url }}/ui/apps/dynatrace.automations/workflows/{{ execution().workflow.id }}|Workflow>" } } ] } 
 
 This configuration uses event context placeholders to populate the Slack message with relevant problem details dynamically.
 
@@ -119,7 +141,7 @@ Select **Run**.
 
 Select **Run** again to execute the workflow.
 
-Execution logs aren&#x27;t available for a simple workflow.
+Execution logs aren't available for a simple workflow.
 If an error occurs, you can find the error details on the right in the task details pane.
 
 ## Conclusion

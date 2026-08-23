@@ -1,15 +1,43 @@
 ---
+formatVersion: "2.0.0"
 id: "0f2e77723f80dcb3"
 url: "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications"
 title: "Alerting and notifications — Dynatrace Docs"
 domain: "grail"
-crawledAt: "2026-08-20T19:28:49.829Z"
-contentHash: "bdee2c24e0e4eea269b080bf55bbc8df02f293dc28966020e6bddaa2b47f306c"
+crawledAt: "2026-08-23T14:58:41.166Z"
+contentHash: "a43c0fc5001f2b16caea451440bcc5372bc5cca703825b43ca23f1fec23c806e"
+source: "docs.dynatrace.com"
 ---
 
 # Alerting and notifications — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications)
+- Domain: `grail`
+- Document ID: `0f2e77723f80dcb3`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Alerting and notifications
+- Alerting
+- Automatic detection
+- Custom alerts
+- Problem detection
+- Workflows for external notifications
+- Workflow trigger
+- Integration with external systems via Workflows connectors
+- Simple workflows vs standard workflows
+- Simple workflows
+- Standard workflows
+- Related topics
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Alerting and notifications — Dynatrace Docs 
 # Alerting and notifications
@@ -37,7 +65,7 @@ Use agentic workflows when you want Dynatrace Intelligence to assess a situation
 The diagram illustrates how Dynatrace Intelligence detects and creates alerts, such as health alerts , OpenPipeline extraction rules , or custom alerts in your environment.
 It then groups them into problems. The problem triggers two workflows when it meets the criteria.
 
-For example, the triggers for a problem&#x27;s severity or impact are these workflows: An agentic workflow that enables auto-remediation or problem remediation ﻿ 
+For example, the triggers for a problem's severity or impact are these workflows: An agentic workflow that enables auto-remediation or problem remediation ﻿ 
 
  to resolve issues. 
 - A workflow to send a notification via email or Slack message .
@@ -115,7 +143,7 @@ For a complete list, see Workflows Connectors and actions .
 Dynatrace provides two workflow types to support different use cases: simple workflows and standard workflows.
 #### Simple workflows
 
-Simple workflows are designed for basic, single-task operations such as sending notifications. They&#x27;re lightweight and don&#x27;t consume workflow hours.
+Simple workflows are designed for basic, single-task operations such as sending notifications. They're lightweight and don't consume workflow hours.
 
 Examples include: 
 - Notifying on-call engineers about critical issues. 
@@ -123,7 +151,7 @@ Examples include:
  
 #### Standard workflows
 
-Standard workflows support advanced scenarios with multiple tasks, task conditions, and escalation rules. They&#x27;re suited for complex environments and multi-step automation.
+Standard workflows support advanced scenarios with multiple tasks, task conditions, and escalation rules. They're suited for complex environments and multi-step automation.
 
 Examples include: 
 - Routing alerts to specific teams based on severity or issue type. 

@@ -1,15 +1,38 @@
 ---
+formatVersion: "2.0.0"
 id: "403d017af0d7ee12"
 url: "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events"
 title: "Pipeline observability — Dynatrace Docs"
 domain: "openpipeline"
-crawledAt: "2026-08-20T19:29:29.859Z"
-contentHash: "634df00fb1cd05510f89b75d1982413d786a7f51c473ce7840b433d7cc1bb262"
+crawledAt: "2026-08-23T14:58:47.966Z"
+contentHash: "bd8625597d428bb8771a1ac6ea1b3ba6008607af7d2d32bc9c133337cdbc67e8"
+source: "docs.dynatrace.com"
 ---
 
 # Pipeline observability — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events)
+- Domain: `openpipeline`
+- Document ID: `403d017af0d7ee12`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Pipeline observability
+- Software development lifecycle events
+- Software development lifecycle event use cases
+- Software development lifecycle dataflow
+- Ingest SDLC events
+- Analyse using examples
+- Related topics
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Pipeline observability — Dynatrace Docs 
 # Pipeline observability
@@ -21,7 +44,7 @@ Pipeline observability — Dynatrace Docs
  1-min read 
 - Updated on Jun 09, 2026 
 
-People often say, "You can&#x27;t manage what you can&#x27;t measure."
+People often say, "You can't manage what you can't measure."
 This principle holds especially true for the software development lifecycle.
 Pipeline observability is the practice of capturing telemetry data across the entire lifecycle to gain actionable insights and calculate key delivery metrics — as illustrated in the figure below. 
 

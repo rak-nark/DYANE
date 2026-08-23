@@ -1,15 +1,39 @@
 ---
+formatVersion: "2.0.0"
 id: "3e017b5a3144ecb8"
 url: "https://docs.dynatrace.com/docs/deliver/test-pipeline-observability"
 title: "Test pipeline observability — Dynatrace Docs"
 domain: "openpipeline"
-crawledAt: "2026-08-20T19:26:26.226Z"
-contentHash: "0de0cac11794777f4521a0f564f9e96b98741a07117a308c3f4625696468fb8e"
+crawledAt: "2026-08-23T14:57:53.094Z"
+contentHash: "82ad815426b84eee68fa7bbab400098658a24ae7760dd30aeb23ad044251b64c"
+source: "docs.dynatrace.com"
 ---
 
 # Test pipeline observability — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/test-pipeline-observability](https://docs.dynatrace.com/docs/deliver/test-pipeline-observability)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver/test-pipeline-observability](https://docs.dynatrace.com/docs/deliver/test-pipeline-observability)
+- Domain: `openpipeline`
+- Document ID: `3e017b5a3144ecb8`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Test pipeline observability
+- Target audience
+- Scenario
+- Prerequisites
+- Access and permissions
+- Knowledge
+- Steps
+- Conclusion
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Test pipeline observability — Dynatrace Docs 
 # Test pipeline observability
@@ -37,7 +61,7 @@ In a fast-paced software development environment, a team of developers and QA en
 
 The team seeks a solution that allows them to centralize test-related data, providing a clear overview of the entire testing pipeline. They want to be alerted only about significant test failures or anomalies, reducing the noise from routine test results. The ideal solution would automatically notify responsible team members about failing tests, offering insights into potential root causes and suggested actions for remediation. Additionally, they aim to minimize manual monitoring of test pipelines, enabling developers and QA engineers to focus more on addressing critical issues rather than sifting through test data.
 
-By implementing the Test Pipeline Observability solution from Dynatrace, the team can achieve these objectives. This approach will allow them to ingest test execution data and metadata from various tools into a centralized platform. With analytics provided by Dynatrace, they can set up dashboards for real-time monitoring and automate the detection of test anomalies. The solution will provide clear visibility into test results, trends, and potential issues, enhancing the team&#x27;s ability to maintain high-quality software releases.
+By implementing the Test Pipeline Observability solution from Dynatrace, the team can achieve these objectives. This approach will allow them to ingest test execution data and metadata from various tools into a centralized platform. With analytics provided by Dynatrace, they can set up dashboards for real-time monitoring and automate the detection of test anomalies. The solution will provide clear visibility into test results, trends, and potential issues, enhancing the team's ability to maintain high-quality software releases.
 ## Prerequisites
 
 Make sure all of these are true before you start:
@@ -67,11 +91,11 @@ Gather and ingest test execution data
 Based on your source test pipeline tools and frameworks, collect test execution data. Ingest this data as business events into Dynatrace using the Business events API . For example, you can code helpers or post to business events API directly.
  Show me a code example 
 
- #!groovy /** * Sends biz_event to a given Dynatrace environment. * @param monitoringTenant url to monitoring environment * @param oauthClientId OAuth client id * @param oauthClientSecret OAuth client secret * @param payload biz_event payload * @return */ def call( def monitoringTenant, def oauthClientId, def oauthClientSecret, def payload ) { // Get Access Token via OAuth - see https://developer.dynatrace.com/develop/access-platform-apis-from-outside/ for reference def ssoResponse = sh(script: """ set +x curl --location --request POST &#x27;https://sso.dynatrace.com/sso/oauth2/token&#x27; \\ --header &#x27;Content-Type: application/x-www-form-urlencoded&#x27; \\ --data-urlencode &#x27;grant_type=client_credentials&#x27; \\ --data-urlencode &#x27;client_id=${oauthClientId}&#x27; \\ --data-urlencode &#x27;client_secret=${oauthClientSecret}&#x27; \\ --data-urlencode &#x27;scope=storage:events:write&#x27; set -x """, returnStdout: true).trim() // Note: readJSON needs pipeline-utility-steps -> https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#readjson-read-json-from-files-in-the-workspace def ssoResponseJSON = readJSON(text: ssoResponse) if (ssoResponseJSON.errorCode) { error(message: "Authentication failed: ${ssoResponse}") } 
+ #!groovy /** * Sends biz_event to a given Dynatrace environment. * @param monitoringTenant url to monitoring environment * @param oauthClientId OAuth client id * @param oauthClientSecret OAuth client secret * @param payload biz_event payload * @return */ def call( def monitoringTenant, def oauthClientId, def oauthClientSecret, def payload ) { // Get Access Token via OAuth - see https://developer.dynatrace.com/develop/access-platform-apis-from-outside/ for reference def ssoResponse = sh(script: """ set +x curl --location --request POST 'https://sso.dynatrace.com/sso/oauth2/token' \\ --header 'Content-Type: application/x-www-form-urlencoded' \\ --data-urlencode 'grant_type=client_credentials' \\ --data-urlencode 'client_id=${oauthClientId}' \\ --data-urlencode 'client_secret=${oauthClientSecret}' \\ --data-urlencode 'scope=storage:events:write' set -x """, returnStdout: true).trim() // Note: readJSON needs pipeline-utility-steps -> https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#readjson-read-json-from-files-in-the-workspace def ssoResponseJSON = readJSON(text: ssoResponse) if (ssoResponseJSON.errorCode) { error(message: "Authentication failed: ${ssoResponse}") } 
  def accessToken = ssoResponseJSON.access_token 
- // Ingest BizEvent println("Sending BizEvent: ${payload}") sh(script: """ set +x curl --location --request POST &#x27;${monitoringTenant}/platform/classic/environment-api/v2/bizevents/ingest&#x27; \\ --header &#x27;Content-Type: application/json&#x27; \\ --header &#x27;Authorization: Bearer ${accessToken}&#x27; \\ --data-raw &#x27;${payload}&#x27; set -x """) } 
+ // Ingest BizEvent println("Sending BizEvent: ${payload}") sh(script: """ set +x curl --location --request POST '${monitoringTenant}/platform/classic/environment-api/v2/bizevents/ingest' \\ --header 'Content-Type: application/json' \\ --header 'Authorization: Bearer ${accessToken}' \\ --data-raw '${payload}' set -x """) } 
 
-The data submitted in events depends on your specific goal. You can send each test execution results as a business event, adding the critical information as the payload. This way, you&#x27;re able to trigger workflows and Grail will store all your important text execution to be queried by DQL for ad-hoc analysis in Notebooks or as input for your dashboards.
+The data submitted in events depends on your specific goal. You can send each test execution results as a business event, adding the critical information as the payload. This way, you're able to trigger workflows and Grail will store all your important text execution to be queried by DQL for ad-hoc analysis in Notebooks or as input for your dashboards.
 
 Create a dashboard 
 
@@ -81,7 +105,7 @@ Set up a workflow
 
 The workflow can be triggered on sending a business event after a test execution. Then, you can create follow-up actions based on the ingested test data. For instance, you can determine the owners of the failing property using the Ownership action and then notify the test owners about test results via a workflow Slack action.
 
-Here&#x27;s an example of a simple workflow sending the test execution results to a Slack channel:
+Here's an example of a simple workflow sending the test execution results to a Slack channel:
 
 Trigger the execution on a regular interval using CRON
 
@@ -92,7 +116,7 @@ Query the data ingested through the business event you set at the beginning of t
 Run the custom JavaScript code to generate the message containing the data retrieved in the previous step.
  Show me code 
 
- // optional import of sdk modules import { execution } from &#x27;@dynatrace-sdk/automation-utils&#x27; ; 
+ // optional import of sdk modules import { execution } from '@dynatrace-sdk/automation-utils' ; 
  export default async function ( ) { // your code goes here // e.g. get the current execution const ex = await execution ( ) ; const res = await ex . result ( "query_biz_events" ) ; const records = res . records ; 
  var message = "EXECUTED TESTS:" ; 
  records . forEach ( ( record , index ) => { if ( record [ "test.execution.result" ] == "Success" ) { message += "\n " + "[ Owner: " + record [ "test.owner.name" ] + " ] [ Team: " + record [ "test.owner.team" ] + " ] [ Departement: " + record [ "test.owner.capability" ] + " ]" message += "\n * " + record [ "test.name" ] + " [" + record [ "test.execution.stage" ] + "]" + " - :green_heavy_check_mark: *Success*" ; message += "\n * " + "Pipeline URL: " + record [ "sdlc.pipeline.run.url" ] ; 
@@ -109,8 +133,8 @@ Use the Slack action to send the message to the test owner.
 
  Show me the workflow template 
 
- metadata : version : "1" dependencies : apps : - id : dynatrace.automations version : ^1.269.0 - id : dynatrace.slack version : ^1.3.6 inputs : - type : connection schema : app : dynatrace.slack : connection targets : - tasks.send_message.connection workflow : title : E2E Test slack notifications tasks : send_message : name : send_message description : Send a message to a Slack workspace action : dynatrace.slack : slack - send - message input : channel : C05UMMXSZ2R message : &#x27;{{ result("generate_message") }}&#x27; reaction : [ ] connection : "" workflowID : "{{ execution().workflow.id }}" channelType : id executionID : "{{ execution().id }}" executionDate : "{{ execution().started_at }}" appendToThread : false selectedRequestType : 0 attachmentToggleValue : none position : x : 0 y : 3 predecessors : - generate_message conditions : states : generate_message : OK generate_message : name : generate_message description : Build a custom task running js Code action : dynatrace.automations : run - javascript input : script : > - // optional import of sdk modules 
- import { execution } from &#x27;@dynatrace - sdk/automation - utils&#x27;; 
+ metadata : version : "1" dependencies : apps : - id : dynatrace.automations version : ^1.269.0 - id : dynatrace.slack version : ^1.3.6 inputs : - type : connection schema : app : dynatrace.slack : connection targets : - tasks.send_message.connection workflow : title : E2E Test slack notifications tasks : send_message : name : send_message description : Send a message to a Slack workspace action : dynatrace.slack : slack - send - message input : channel : C05UMMXSZ2R message : '{{ result("generate_message") }}' reaction : [ ] connection : "" workflowID : "{{ execution().workflow.id }}" channelType : id executionID : "{{ execution().id }}" executionDate : "{{ execution().started_at }}" appendToThread : false selectedRequestType : 0 attachmentToggleValue : none position : x : 0 y : 3 predecessors : - generate_message conditions : states : generate_message : OK generate_message : name : generate_message description : Build a custom task running js Code action : dynatrace.automations : run - javascript input : script : > - // optional import of sdk modules 
+ import { execution } from '@dynatrace - sdk/automation - utils'; 
  export default async function () { // your code goes here // e.g. get the current execution const ex = await execution(); const res = await ex.result("query_biz_events"); const records = res.records; 
  var message = "EXECUTED TESTS : "; 
  records.forEach((record , index) = > { if (record [ "test.execution.result" ] == "Success") { message += "\n " + " [ Owner : " + record [ "test.owner.name" ] + " ] [ Team : " + record [ "test.owner.team" ] + " ] [ Departement : " + record [ "test.owner.capability" ] + " ] " message += "\n * " + record [ "test.name" ] + " [ " + record [ "test.execution.stage" ] + " ] " + " - :green_heavy_check_mark : *Success*"; message += "\n * " + "Pipeline URL : " + record [ "sdlc.pipeline.run.url" ] ; } } ); 

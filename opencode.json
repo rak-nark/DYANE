@@ -1,12 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "dynatrace-mcp": {
+    "dynatrace": {
       "type": "remote",
-      "url": "https://<your-env-id>.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp",
-      "enabled": false,
+      "url": "https://zow79349.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp",
+      "enabled": true,
       "headers": {
-        "Authorization": "Bearer <DT_PLATFORM_TOKEN>"
+        "Authorization": "Bearer {file:C:/Users/USER/Documents/ENTORNO DE TRABAJO/dt-platform-token.secret}"
       }
     }
   }

@@ -1,15 +1,39 @@
 ---
+formatVersion: "2.0.0"
 id: "ff4853d49d161077"
 url: "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity"
 title: "Standardized event severity — Dynatrace Docs"
 domain: "grail"
-crawledAt: "2026-08-20T19:28:50.064Z"
-contentHash: "2d43538bf812be2dce81236e540f230d3a5581341efd3483bd743ffe4d39d9b7"
+crawledAt: "2026-08-23T14:58:41.995Z"
+contentHash: "8c383f6b1dfd3c71c3beea9fca24a6b9ed75213baaec1da36b999f2715b209a0"
+source: "docs.dynatrace.com"
 ---
 
 # Standardized event severity — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/standardized-event-severity)
+- Domain: `grail`
+- Document ID: `ff4853d49d161077`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Standardized event severity
+- Severity levels
+- Severity storage in Grail
+- Severity for events and problems
+- Single events
+- Problems
+- Set severity for anomaly detectors
+- Severity in workflows
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Standardized event severity — Dynatrace Docs 
 # Standardized event severity
@@ -31,7 +55,7 @@ Severity is expressed as a numeric value from `1` (the most critical state) to `
 
 Complete outage with direct customer impact. The system is down.
 
-For example: SSO is unavailable, users can&#x27;t log in, or customer data is lost or exposed. 
+For example: SSO is unavailable, users can't log in, or customer data is lost or exposed. 
 
 `2` 
 
@@ -39,7 +63,7 @@ For example: SSO is unavailable, users can&#x27;t log in, or customer data is lo
 
 Severe interruption of a service with significant customer impact. The service is operational but significantly degraded.
 
-For example: a large portion of users can&#x27;t log in. 
+For example: a large portion of users can't log in. 
 
 `3` 
 
@@ -66,23 +90,23 @@ Grail stores severity as a numeric value. You can query severity from individual
 
  fetch dt.davis.events | fieldsKeep event.name, event.severity 
 
-This returns a table of event names alongside their corresponding severity values. If an event source doesn&#x27;t set severity, the field is empty.
+This returns a table of event names alongside their corresponding severity values. If an event source doesn't set severity, the field is empty.
 ## Severity for events and problems
 
 ### Single events
 
-A single event carries exactly one severity value, or none if the event source doesn&#x27;t set it.
+A single event carries exactly one severity value, or none if the event source doesn't set it.
 ### Problems
 
 A problem can group multiple events that carry different severities. Dynatrace applies the following aggregation logic: 
-- The problem inherits the **highest (most critical) severity** across all grouped events. For example, if a **Minor** (`3`) event and a **Critical** (`1`) event are grouped into one problem, the problem&#x27;s severity is **Critical** (`1`).
+- The problem inherits the **highest (most critical) severity** across all grouped events. For example, if a **Minor** (`3`) event and a **Critical** (`1`) event are grouped into one problem, the problem's severity is **Critical** (`1`).
 - Severity can only increase, never decrease. Once a problem reaches a severity level, it permanently retains that level—even after the original conditions are resolved. The problem can only be closed. 
 
 The reason severity can increase but never decrease is to preserve historical reporting accuracy. If resolved problems were downgraded, a monthly report of **Critical** incidents would show incorrect data retroactively. 
 
 The severity column shows only **Critical**, **Major**, and **Minor** (levels `1`–`3`).
 
-**Warning** and **Informational** events appear in the event list and can be grouped into a problem by problem correlation, but they don&#x27;t raise problems on their own. 
+**Warning** and **Informational** events appear in the event list and can be grouped into a problem by problem correlation, but they don't raise problems on their own. 
 ## Set severity for anomaly detectors
 
 You can configure severity configuration in two ways: 

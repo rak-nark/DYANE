@@ -28,10 +28,17 @@ Toda la documentación oficial de Dynatrace descargada se guarda en la carpeta l
 
 ## Comandos del CLI `dtx`
 
-### 1. Ingestión y Búsqueda de Documentación Oficial
+### 1. Ingestión, Consulta y Estadísticas de Documentación Oficial
 ```powershell
+# Ver el total de registros en existencia, desglose y almacenamiento consumido
+dtx docs stats                           # Total de documentos, almacenamiento y desglose por dominio
+dtx docs details                         # Alias detallado con almacenamiento total y desglose
+dtx docs count                           # Alias rápido de conteo
+dtx docs list --limit 10                 # Lista los primeros 10 documentos descargados
+dtx docs list --domain grail             # Lista documentos descargados del dominio Grail
+
 # Descargar documentación oficial desde el sitemap oficial (4,400+ páginas)
-dtx docs scrape                          # Descarga incremental completa
+dtx docs scrape                          # Descarga incremental completa sin límite
 dtx docs scrape --domain grail --limit 10 # Descarga por dominio específico con límite
 dtx docs scrape --force                  # Fuerza la re-descarga de documentos
 

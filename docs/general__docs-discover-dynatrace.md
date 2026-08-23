@@ -1,15 +1,40 @@
 ---
+formatVersion: "2.0.0"
 id: "900bc51e764e96d1"
 url: "https://docs.dynatrace.com/docs/discover-dynatrace"
 title: "Discover Dynatrace — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-20T19:26:26.823Z"
-contentHash: "edf25dae0478ddb0c867418e0b3973dbafdebe3893ed34b90895c7cb99f4da78"
+crawledAt: "2026-08-23T14:57:54.646Z"
+contentHash: "d038b4730bf7b22797dac157263b98a8b26611230461a85e433b5f41597de2aa"
+source: "docs.dynatrace.com"
 ---
 
 # Discover Dynatrace — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/discover-dynatrace](https://docs.dynatrace.com/docs/discover-dynatrace)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/discover-dynatrace](https://docs.dynatrace.com/docs/discover-dynatrace)
+- Domain: `general`
+- Document ID: `900bc51e764e96d1`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Discover Dynatrace
+- What is Dynatrace
+- Get started
+- Resources
+- Playground
+- Trial
+- Dynatrace Community
+- Dynatrace Developer
+- Dynatrace University
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Discover Dynatrace — Dynatrace Docs 
 # Discover Dynatrace
@@ -30,7 +55,7 @@ Get started with Dynatrace in just a few steps.
 
 To see Dynatrace in action, explore Dynatrace live in the Playground environment, or sign up for a trial account to try Dynatrace in your own environment.
 
-And when you&#x27;re ready to learn more, you can ask the experts at Dynatrace Community , learn at Dynatrace University , and access developer resources at Dynatrace Developer .
+And when you're ready to learn more, you can ask the experts at Dynatrace Community , learn at Dynatrace University , and access developer resources at Dynatrace Developer .
 ### Playground 
 
 The Dynatrace Playground is a public sandbox environment provided by Dynatrace. It allows users to explore and interact with sample data without needing to install any software. This environment is designed to help users get familiar with Dynatrace’s features and capabilities, such as application observability, infrastructure analysis, and security diagnostics. In the Playground, you can: 

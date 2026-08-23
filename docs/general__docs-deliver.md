@@ -1,15 +1,45 @@
 ---
+formatVersion: "2.0.0"
 id: "c90b9692f413f7ae"
 url: "https://docs.dynatrace.com/docs/deliver"
 title: "Software Delivery — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-20T19:26:25.474Z"
+crawledAt: "2026-08-23T14:57:43.658Z"
 contentHash: "b7df1b610c557b434f0deb2566457ccec741e18f0f85a243466fe8e36a8362d2"
+source: "docs.dynatrace.com"
 ---
 
 # Software Delivery — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver](https://docs.dynatrace.com/docs/deliver)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver](https://docs.dynatrace.com/docs/deliver)
+- Domain: `general`
+- Document ID: `c90b9692f413f7ae`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Software Delivery
+- Release monitoring
+- Quality gates and release validation
+- Pipeline observability
+- Ownership
+- Configuration as Code
+- Backstage
+- Software Delivery Apps
+- Site Reliability Guardian
+- Ownership
+- Service-Level Objectives
+- Explore in Dynatrace Hub
+- Dynatrace Classic
+- Service-level objectives classic (SLOs)
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Software Delivery — Dynatrace Docs 
 # Software Delivery

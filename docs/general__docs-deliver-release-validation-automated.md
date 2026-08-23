@@ -1,15 +1,44 @@
 ---
+formatVersion: "2.0.0"
 id: "4e6c6a1a988f1661"
 url: "https://docs.dynatrace.com/docs/deliver/release-validation-automated"
 title: "Automate release validation — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-20T19:26:25.711Z"
-contentHash: "63816b53c40e5de1934f73282407920c7739aaad822d35f629ff67f6e3bc25d2"
+crawledAt: "2026-08-23T14:57:44.452Z"
+contentHash: "95dcd1d139450b2151246f9c8b4403c538d8f00efcc6fef43a507f4b1b94b9c5"
+source: "docs.dynatrace.com"
 ---
 
 # Automate release validation — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/release-validation-automated](https://docs.dynatrace.com/docs/deliver/release-validation-automated)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver/release-validation-automated](https://docs.dynatrace.com/docs/deliver/release-validation-automated)
+- Domain: `general`
+- Document ID: `4e6c6a1a988f1661`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Automate release validation
+- Target audience
+- What will you learn
+- Prerequisites
+- Steps
+- Setup steps
+- Create a guardian using a template
+- Create a workflow to trigger the SRG automatically
+- Baseline your SRG
+- Automate the release validation steps
+- Run your trained guardian
+- Informational-only objectives
+- Conclusion
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Automate release validation — Dynatrace Docs 
 # Automate release validation
@@ -21,9 +50,9 @@ Automate release validation — Dynatrace Docs
  6-min read 
 - Updated on Nov 25, 2025 
 
-Business-critical services require thorough validation before any changes are deployed to production. The goal is to prevent potential faults that negatively impact overall stability, performance, and resilience. Site Reliability Guardian (SRG) and Workflows can help you extend your delivery process by automatically validating the impact of a change. You can also automatically validate your key health objectives during the delivery and change process. A guardian can validate up to 50 dimensions of health on Dynatrace data, whether it&#x27;s logs, metrics, traces, events, and business data. 
+Business-critical services require thorough validation before any changes are deployed to production. The goal is to prevent potential faults that negatively impact overall stability, performance, and resilience. Site Reliability Guardian (SRG) and Workflows can help you extend your delivery process by automatically validating the impact of a change. You can also automatically validate your key health objectives during the delivery and change process. A guardian can validate up to 50 dimensions of health on Dynatrace data, whether it's logs, metrics, traces, events, and business data. 
 
- Screenshot of a guardian&#x27;s validation history triggered by a workflow 
+ Screenshot of a guardian's validation history triggered by a workflow 
 
 For example, an infrastructure configuration change or an application deployment can trigger your guardian through a workflow. The workflow triggering events represent changes that Dynatrace automatically detects or events sent from your delivery pipeline or change management process.
 
@@ -31,17 +60,17 @@ As part of the workflow execution, your guardian validates all your objectives a
 
 We have prepared a hands-on release validation demo tutorial ﻿ 
 
- on GitHub for you. In the GitHub hands-on tutorial, you&#x27;ll learn how to: 
-- Ingest data from an application that you&#x27;ll deploy in an environment that Dynatrace monitors. 
+ on GitHub for you. In the GitHub hands-on tutorial, you'll learn how to: 
+- Ingest data from an application that you'll deploy in an environment that Dynatrace monitors. 
 - Create a workflow that triggers a guardian when a change happens. 
 
-You&#x27;ll go through a scenario of multiple app deployments. For each deployment change, the guardian, triggered by a workflow, validates the health of your environment based on a set of defined health objectives. Experience the benefit of integrating the Dynatrace guardian and workflows into your software delivery and change process and see how the guardian classifies if a change as red (**Failure**), yellow (**Warning**), or green (**Pass**).
+You'll go through a scenario of multiple app deployments. For each deployment change, the guardian, triggered by a workflow, validates the health of your environment based on a set of defined health objectives. Experience the benefit of integrating the Dynatrace guardian and workflows into your software delivery and change process and see how the guardian classifies if a change as red (**Failure**), yellow (**Warning**), or green (**Pass**).
 ## Target audience
 
 This page is intended for application developers, DevOps engineers, and product managers looking for a mechanism to automatically ensure the quality of software they deliver.
 ## What will you learn
 
-You&#x27;ll learn how to use a guardian to automatically detect negative impacts on your application after a new release in your environment.
+You'll learn how to use a guardian to automatically detect negative impacts on your application after a new release in your environment.
 
 In this tutorial, you will learn how to 
 - Create a Site Reliability Guardian. 
@@ -53,7 +82,7 @@ You can see how Site Reliability Guardian in the playground ﻿
  works.
 ### Prerequisites
 
-You&#x27;ve completed the release validation demo tutorial ﻿ 
+You've completed the release validation demo tutorial ﻿ 
 
  and would like to know how to apply it to your environment.
 ## Steps
@@ -101,7 +130,7 @@ Select **Query past events**.
 
 Go to the **run validation** task. This task will start your Site Reliability Guardian validation.
 
-In the **From** field, replace `event.timeframe.from` with `now-{{ event()[&#x27;duration&#x27;] }}`.
+In the **From** field, replace `event.timeframe.from` with `now-{{ event()['duration'] }}`.
 
 In the **From** field, replace `event.timeframe.to` with `now`.
 
@@ -117,7 +146,7 @@ For a more detailed explanation, see Automate the Site Reliability Guardian - Gi
 
 #### Baseline your SRG 
 
-Objectives set to **Auto-adaptive thresholds** in the guardian require five runs to enable the baseline. In a real-life scenario, these test runs will run over hours, days, or weeks, providing Dynatrace time to gather sufficient usage data. To enable the baseline, you&#x27;ll trigger five load tests, one after another. After baselining, you can view the completed training runs by selecting **Workflows** and **Executions**. You should see five successful workflow executions.
+Objectives set to **Auto-adaptive thresholds** in the guardian require five runs to enable the baseline. In a real-life scenario, these test runs will run over hours, days, or weeks, providing Dynatrace time to gather sufficient usage data. To enable the baseline, you'll trigger five load tests, one after another. After baselining, you can view the completed training runs by selecting **Workflows** and **Executions**. You should see five successful workflow executions.
 
 You could use this DQL query to see the Site Reliability Guardian results in a notebook: 
 
@@ -138,7 +167,7 @@ Different triggers allow you to continuously test your service, for example, in 
 After you train the guardian, you should run it by triggering a load test. In the **Validation history** panel of your guardian, select **Refresh** . Your **Heatmap** will show some errors.
 #### Informational-only objectives
 
-It is possible to add an objective that is informational-only and doesn&#x27;t contribute to the pass / fail decisions of the Site Reliability Guardian. They are useful for new services where you&#x27;re trying to get an idea for the real-world data values of your metrics.
+It is possible to add an objective that is informational-only and doesn't contribute to the pass / fail decisions of the Site Reliability Guardian. They are useful for new services where you're trying to get an idea for the real-world data values of your metrics.
 
 To set an objective as information-only 
 - Select the objective to open the side panel. 
@@ -147,6 +176,6 @@ To set an objective as information-only
  
 ## Conclusion
 
-The techniques described here work with any metric from any source. You&#x27;re encouraged to use metrics from other devices and sources such as business-related metrics like revenue. Learn more about Site Reliability Guardian and follow the learning modules to create guardians for your applications and infrastructure. Related tags 
+The techniques described here work with any metric from any source. You're encouraged to use metrics from other devices and sources such as business-related metrics like revenue. Learn more about Site Reliability Guardian and follow the learning modules to create guardians for your applications and infrastructure. Related tags 
 
  Software Delivery

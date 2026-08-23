@@ -15,6 +15,8 @@ import {
   cmdDocsScrape,
   cmdDocsUpdate,
   cmdDocsSearch,
+  cmdDocsStats,
+  cmdDocsList,
   cmdSkillCreate,
   cmdSkillValidate,
   cmdSkillList,
@@ -137,8 +139,20 @@ async function main(): Promise<void> {
         await cmdDocsUpdate();
       } else if (subCommand === "search") {
         cmdDocsSearch(rest.slice(1).join(" ") || "", options);
+      } else if (
+        subCommand === "stats" ||
+        subCommand === "count" ||
+        subCommand === "total" ||
+        subCommand === "status" ||
+        subCommand === "details" ||
+        subCommand === "info" ||
+        !subCommand
+      ) {
+        cmdDocsStats(options);
+      } else if (subCommand === "list") {
+        cmdDocsList(options);
       } else {
-        console.error(`Subcomando docs desconocido: ${subCommand}. Usa: scrape | update | search`);
+        console.error(`Subcomando docs desconocido: ${subCommand}. Usa: stats | details | count | list | search | scrape | update`);
         process.exitCode = 1;
       }
       break;

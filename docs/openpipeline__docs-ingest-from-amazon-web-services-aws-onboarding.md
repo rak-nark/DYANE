@@ -1,15 +1,40 @@
 ---
+formatVersion: "2.0.0"
 id: "7234e699c0b77391"
 url: "https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding"
 title: "Get started with AWS Cloud Platform Monitoring — Dynatrace Docs"
 domain: "openpipeline"
-crawledAt: "2026-08-20T19:29:32.262Z"
-contentHash: "808f5d9553addfcc431736ff77846581a538d727ee29b6552ec048422a7b3c8a"
+crawledAt: "2026-08-23T14:59:42.953Z"
+contentHash: "863756fb455a8cdc0d5ec1bd1c974e08baee9efa94dd8abb93bd52f9bc5206d8"
+source: "docs.dynatrace.com"
 ---
 
 # Get started with AWS Cloud Platform Monitoring — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding](https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding](https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/aws-onboarding)
+- Domain: `openpipeline`
+- Document ID: `7234e699c0b77391`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Get started with AWS Cloud Platform Monitoring
+- What will you learn?
+- Eliminate heavy lifting
+- Enriched telemetry for powerful cloud insights
+- CloudWatch metrics
+- AWS logs
+- AWS topology
+- AWS EventBridge events
+- Next steps
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Get started with AWS Cloud Platform Monitoring — Dynatrace Docs 
 # Get started with AWS Cloud Platform Monitoring
@@ -30,7 +55,7 @@ Ingest metrics, logs, topology, and AWS EventBridge events to unlock actionable 
 
 Onboard your AWS accounts and turn them into native Dynatrace AWS connections, managing them from a dedicated **Clouds** app app.
 
-You&#x27;ll learn how to: 
+You'll learn how to: 
 - Easily create an AWS connection using a streamlined user interface. 
 - All AWS connection creation methods are powered by CloudFormation as Infrastructure-as-Code (IaC) engine. 
 - Dynatrace administrators can define monitoring configurations and delegate deployment to AWS administrators—either via web UI or programmatically—supporting clear separation of duties. 

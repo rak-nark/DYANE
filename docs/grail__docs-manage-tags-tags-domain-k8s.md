@@ -1,15 +1,44 @@
 ---
+formatVersion: "2.0.0"
 id: "517bc494e08257a3"
 url: "https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s"
 title: "Enrich Kubernetes telemetry with primary Grail fields and tags — Dynatrace Docs"
 domain: "grail"
-crawledAt: "2026-08-20T19:28:59.624Z"
-contentHash: "f9ad97d52697c0d61947a1c3940a844122606b938dac17bb2990f63bd8afcf40"
+crawledAt: "2026-08-23T15:00:45.429Z"
+contentHash: "44d88ec339f60a2a81ddde45e25eee402fd7c1335bd9b7f8bdf145c95585cb21"
+source: "docs.dynatrace.com"
 ---
 
 # Enrich Kubernetes telemetry with primary Grail fields and tags — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s](https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s](https://docs.dynatrace.com/docs/manage/tags/tags-domain-k8s)
+- Domain: `grail`
+- Document ID: `517bc494e08257a3`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Enrich Kubernetes telemetry with primary Grail fields and tags
+- Enrichment guidance
+- 1. Out-of-the-box primary Grail fields
+- 2. Promote existing namespace labels or annotations
+- 3. Enrich with dedicated metadata.dynatrace.com annotations
+- 4. Configure attributes in the DynaKube
+- 5. OpenPipeline (last resort)
+- Precedence
+- Coverage by signal type
+- Query enriched data in Grail
+- Central configuration setup checks
+- Limitations
+- Related topics
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Enrich Kubernetes telemetry with primary Grail fields and tags — Dynatrace Docs 
 # Enrich Kubernetes telemetry with primary Grail fields and tags
@@ -64,7 +93,7 @@ All enrichment options require `metadataEnrichment` to be enabled in your DynaKu
 
  spec : metadataEnrichment : enabled : true 
 
-By default, enrichment applies to all namespaces. 1 If you configure a `namespaceSelector`, only matching namespaces receive enrichment. Excluded namespaces won&#x27;t have complete primary Grail fields or tags populated on their telemetry. For complete coverage, prefer omitting the selector or configuring it to match all monitored namespaces. 1 
+By default, enrichment applies to all namespaces. 1 If you configure a `namespaceSelector`, only matching namespaces receive enrichment. Excluded namespaces won't have complete primary Grail fields or tags populated on their telemetry. For complete coverage, prefer omitting the selector or configuring it to match all monitored namespaces. 1 
 
 Except `kube-*`, `openshift-*`, and the Dynatrace Operator namespace. See Configure monitoring for namespaces and pods for details. 
 ### 1 . Out-of-the-box primary Grail fields 
@@ -72,7 +101,7 @@ Except `kube-*`, `openshift-*`, and the Dynatrace Operator namespace. See Config
 Dynatrace automatically populates `k8s.cluster.name` and `k8s.namespace.name` on all telemetry from Kubernetes workloads, with no configuration required. If filtering, routing, and access control at the cluster or namespace level cover your use case, no additional setup is needed. 
 ### 2 . Promote existing namespace labels or annotations 
 
-Central configuration is the recommended approach and will be made available mid-summer. Until it&#x27;s shipped, use Kubernetes telemetry enrichment to enrich your workloads. If you&#x27;re already using that setup, see the migration steps . 
+Central configuration is the recommended approach and will be made available mid-summer. Until it's shipped, use Kubernetes telemetry enrichment to enrich your workloads. If you're already using that setup, see the migration steps . 
 
 If your namespaces already carry labels or annotations that represent the context you want, such as team ownership, environment, cost center, security boundary, use central configuration to promote them to primary Grail tags or fields.
 No changes to workload manifests are required.
@@ -90,7 +119,7 @@ Configuration changes to central rules can take up to 15 minutes to take effect.
  
 ### 3 . Enrich with dedicated `metadata.dynatrace.com` annotations 
 
-If your namespaces don&#x27;t carry suitable existing labels or annotations, or if you need pod-level granularity that central configuration can&#x27;t provide, add dedicated `metadata.dynatrace.com/primary_tags.<key>:<value>` annotations directly to your Kubernetes manifests to set primary Grail tags . The same convention also accepts the supported primary fields `dt.security_context`, `dt.cost.costcenter`, and `dt.cost.product`. Any other `metadata.dynatrace.com/<key>` annotation is ignored for enrichment on signals. Pod or namespace annotation example 
+If your namespaces don't carry suitable existing labels or annotations, or if you need pod-level granularity that central configuration can't provide, add dedicated `metadata.dynatrace.com/primary_tags.<key>:<value>` annotations directly to your Kubernetes manifests to set primary Grail tags . The same convention also accepts the supported primary fields `dt.security_context`, `dt.cost.costcenter`, and `dt.cost.product`. Any other `metadata.dynatrace.com/<key>` annotation is ignored for enrichment on signals. Pod or namespace annotation example 
 
  metadata : annotations : # Primary tags: metadata.dynatrace.com/primary_tags.team : payments metadata.dynatrace.com/primary_tags.environment : production 
  # Supported primary fields: metadata.dynatrace.com/dt.security_context : confidential metadata.dynatrace.com/dt.cost.costcenter : it_services metadata.dynatrace.com/dt.cost.product : fin_app 
@@ -143,7 +172,7 @@ Dynatrace Operator validates attribute keys and reports the following:
 For the full parameter reference, see the DynaKube API reference . 
 ### 5 . OpenPipeline (last resort) 
 
-If none of these options apply, derive or assign primary tags at ingest with OpenPipeline and the processing stage. Use this as a fallback for environments where source-side or central enrichment isn&#x27;t possible. 
+If none of these options apply, derive or assign primary tags at ingest with OpenPipeline and the processing stage. Use this as a fallback for environments where source-side or central enrichment isn't possible. 
 ### Precedence
 
 When the same key is set at multiple levels, the most specific definition wins: 
@@ -203,7 +232,7 @@ The following checks apply to the central configuration setup described in Promo
 Confirm that each rule points to the correct metadata type `Label`, `Annotation`, or `Literal`, and that the source key exactly matches the key on the namespace. Check that the source metadata exists.
 Open the namespace in the **Kubernetes app** and look for the expected labels and annotations, or run `kubectl get namespace <name> -o yaml` and inspect the `metadata.labels` and `metadata.annotations` sections. Validate that metadata enrichment is turned on.
 The feature works only if `metadataEnrichment` is allowed in your DynaKube.
-If you specify a `namespaceSelector`, make sure it matches the namespace you&#x27;re testing. Confirm that enrichment reached the pods.
+If you specify a `namespaceSelector`, make sure it matches the namespace you're testing. Confirm that enrichment reached the pods.
 Run `kubectl get pod <pod-name> -o yaml` on a pod in the namespace and look for annotations starting with `metadata.dynatrace.com/`.
 Their presence means the metadata reached the pod. 
  

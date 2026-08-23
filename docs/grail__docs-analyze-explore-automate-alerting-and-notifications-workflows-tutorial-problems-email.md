@@ -1,15 +1,37 @@
 ---
+formatVersion: "2.0.0"
 id: "a9048baa80c28adc"
 url: "https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email"
 title: "Send email notifications for problems — Dynatrace Docs"
 domain: "grail"
-crawledAt: "2026-08-20T19:28:50.294Z"
-contentHash: "f02c470f56abda441f3001956faf164151753f3c2f6781fa50d91e409db96468"
+crawledAt: "2026-08-23T14:58:42.672Z"
+contentHash: "d107e9bdd5decdd0da07f94018ac996f1c918888e0335861fbd20d9e5d428845"
+source: "docs.dynatrace.com"
 ---
 
 # Send email notifications for problems — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email](https://docs.dynatrace.com/docs/analyze-explore-automate/alerting-and-notifications/workflows-tutorial-problems-email)
+- Domain: `grail`
+- Document ID: `a9048baa80c28adc`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Send email notifications for problems
+- What will you learn
+- Prerequisites
+- Steps
+- Conclusion
+- Related topics
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Send email notifications for problems — Dynatrace Docs 
 # Send email notifications for problems
@@ -31,7 +53,7 @@ This guide shows you how.
 
 ## What will you learn
 
-In this tutorial, you&#x27;ll learn how to alert your team in real time by emailing the details of a new problem to a specific email recipient.
+In this tutorial, you'll learn how to alert your team in real time by emailing the details of a new problem to a specific email recipient.
 
 At a short glance, you will: 
 - Create a simple workflow . Add an event trigger for 
@@ -86,7 +108,7 @@ Select
 In the **Choose action** section, select **Send email** action type.
 Give the action type a meaningful title.
 
-Enter the recipient&#x27;s email address in the **To** field.
+Enter the recipient's email address in the **To** field.
 
 In the **Subject** field, enter the following:
 
@@ -122,7 +144,7 @@ Select **Run**.
 Select **Run** again to execute the workflow.
 
 After the workflow has executed, you should see a **Success** state at the top of the workflow editor.
-Execution logs aren&#x27;t available for a simple workflow.
+Execution logs aren't available for a simple workflow.
 If an error occurs, you can find the error details on the right in the task details pane.
 
  Screenshot of a successfully run email notification workflow. 

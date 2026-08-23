@@ -1,15 +1,56 @@
 ---
+formatVersion: "2.0.0"
 id: "e8c7223c8d719363"
 url: "https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace"
 title: "What is Dynatrace — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-20T19:26:27.059Z"
-contentHash: "c3ff69fd811bab74fbe5c06caf4c26a22a2bd2b596e5fdc70f73259a7aef9c92"
+crawledAt: "2026-08-23T14:57:55.061Z"
+contentHash: "dd29fc1ee3bf50d45ef5e05c4069580d6e4c8b71a92d2e8ead318b89008091ed"
+source: "docs.dynatrace.com"
 ---
 
 # What is Dynatrace — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace](https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace](https://docs.dynatrace.com/docs/discover-dynatrace/what-is-dynatrace)
+- Domain: `general`
+- Document ID: `e8c7223c8d719363`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- What is Dynatrace
+- What can you do with Dynatrace?
+- Platform capabilities
+- Application Observability
+- Log Analytics
+- AI/LLM Observability
+- Application Security
+- Digital Experience
+- Business Observability
+- Developer Experience
+- Infrastructure Observability
+- Extend the platform
+- How Dynatrace works
+- Dynatrace Intelligence
+- AppEngine
+- AutomationEngine
+- Grail
+- Smartscape
+- OpenPipeline
+- OneAgent
+- FAQ
+- Get started with Dynatrace
+- Free trial
+- Playground
+- Learn more about Dynatrace
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 What is Dynatrace — Dynatrace Docs 
 # What is Dynatrace
@@ -45,7 +86,7 @@ Dynatrace addresses a comprehensive range of use cases across observability, sec
 
 *Monitor, analyze, and optimize application performance across distributed and cloud-native environments.*
 
-The Dynatrace platform provides deep visibility into application behavior using PurePath® distributed tracing, code-level diagnostics, service dependency mapping, and AI-driven performance insights. With native OpenTelemetry support, teams can instrument once and immediately enrich that data with the platform&#x27;s full AI and automation capabilities. The result is faster identification of latency, errors, and bottlenecks across microservices and APIs, continuously improving reliability and user experience. For details, see Application Observability .
+The Dynatrace platform provides deep visibility into application behavior using PurePath® distributed tracing, code-level diagnostics, service dependency mapping, and AI-driven performance insights. With native OpenTelemetry support, teams can instrument once and immediately enrich that data with the platform's full AI and automation capabilities. The result is faster identification of latency, errors, and bottlenecks across microservices and APIs, continuously improving reliability and user experience. For details, see Application Observability .
 ### Log Analytics
 
 *Analyze massive volumes of log data with context and speed.*
@@ -116,7 +157,7 @@ Grail™ is a causational data lakehouse with a massively parallel processing (M
 Smartscape® dynamic environment-topology mapping visualizes the dynamic relationships among all application components across every tier. 
 ### OpenPipeline
 
-Dynatrace OpenPipeline manages all aspects of Dynatrace&#x27;s unified ingestion with powerful, scalable, and flexible stream processing and data extraction options. 
+Dynatrace OpenPipeline manages all aspects of Dynatrace's unified ingestion with powerful, scalable, and flexible stream processing and data extraction options. 
 
 ### OneAgent
 
@@ -155,9 +196,9 @@ The Dynatrace platform offers flexible consumption-based pricing models includin
 Organizations can begin their Dynatrace journey through multiple pathways depending on their specific requirements and maturity level.
 ### Free trial
 
-If you&#x27;re new to Dynatrace, sign up for a free trial ﻿ 
+If you're new to Dynatrace, sign up for a free trial ﻿ 
 
- . You&#x27;ll get access to all major features, including automatic instrumentation and AI-powered analytics.
+ . You'll get access to all major features, including automatic instrumentation and AI-powered analytics.
 ### Playground
 
 Explore Dynatrace in the public sandbox environment ﻿ 

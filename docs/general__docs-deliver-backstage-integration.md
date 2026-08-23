@@ -1,15 +1,41 @@
 ---
+formatVersion: "2.0.0"
 id: "5d7d3021c6cdae15"
 url: "https://docs.dynatrace.com/docs/deliver/backstage-integration"
 title: "Backstage integration — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-20T19:26:25.234Z"
-contentHash: "a776b078b525081de66c39912d135239fd93036700ae1c1686136562de5ef240"
+crawledAt: "2026-08-23T14:57:42.960Z"
+contentHash: "bb9a8065285b4e519b56d02577eae0e5be04c700d33f8ac395f234e0a736c458"
+source: "docs.dynatrace.com"
 ---
 
 # Backstage integration — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/backstage-integration](https://docs.dynatrace.com/docs/deliver/backstage-integration)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver/backstage-integration](https://docs.dynatrace.com/docs/deliver/backstage-integration)
+- Domain: `general`
+- Document ID: `5d7d3021c6cdae15`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Backstage integration
+- Introduction
+- Target Audience
+- Scenario
+- Prerequisites
+- Setup and use
+- First, get started
+- Second, leverage additional features
+- Conclusion
+- Further reading
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Backstage integration — Dynatrace Docs 
 # Backstage integration
@@ -52,7 +78,7 @@ For more information, see Backstage Dynatrace plugins ﻿
  .
 ## Target Audience
 
-You&#x27;re a platform engineer who aims to reduce the cognitive load of developers and install processes that provide fast feedback to them. You should know Backstage and DQL to fulfill the developers` requirements to have a security overview of performance as well as the entry points for deeper investigations.
+You're a platform engineer who aims to reduce the cognitive load of developers and install processes that provide fast feedback to them. You should know Backstage and DQL to fulfill the developers` requirements to have a security overview of performance as well as the entry points for deeper investigations.
 ## Scenario
  Goal 
 
@@ -121,7 +147,7 @@ For more information, see customization features ﻿
  :
 ## Conclusion
 
-Congratulations, you have enriched Backstage, as the developer portal of your Internal Development Platform, with real-time monitoring data for the developers. By following this best practice, your developers have observability and security insights at hand allowing them to get immediate feedback from Dynatrace about their services&#x27; behavior during the staging process and in production.
+Congratulations, you have enriched Backstage, as the developer portal of your Internal Development Platform, with real-time monitoring data for the developers. By following this best practice, your developers have observability and security insights at hand allowing them to get immediate feedback from Dynatrace about their services' behavior during the staging process and in production.
 ## Further reading
 
 How We Made Backstage Improve Developer Efficiency of 1000+ Engineers - Wolfgang Gottesheim & Andi Grabner, Dynatrace; Recording ﻿ 

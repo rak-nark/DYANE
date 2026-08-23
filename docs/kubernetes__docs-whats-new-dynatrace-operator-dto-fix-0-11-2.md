@@ -1,15 +1,35 @@
 ---
+formatVersion: "2.0.0"
 id: "cdda74c721b10305"
 url: "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2"
 title: "Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs"
 domain: "kubernetes"
-crawledAt: "2026-08-20T19:29:00.838Z"
+crawledAt: "2026-08-23T15:02:58.768Z"
 contentHash: "86c6559855728109963316dde86dd517cbe20a5d148e459fe20585bbfcfda4ae"
+source: "docs.dynatrace.com"
 ---
 
 # Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2](https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2](https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-0-11-2)
+- Domain: `kubernetes`
+- Document ID: `cdda74c721b10305`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Dynatrace Operator release notes version 0.11.2
+- New features and enhancements
+- Feature flags
+- Resolved issues
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Dynatrace Operator release notes version 0.11.2 — Dynatrace Docs 
 # Dynatrace Operator release notes version 0.11.2

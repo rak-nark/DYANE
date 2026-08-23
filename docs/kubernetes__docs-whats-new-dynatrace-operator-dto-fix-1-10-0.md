@@ -1,15 +1,41 @@
 ---
+formatVersion: "2.0.0"
 id: "b90ff047cf4899da"
 url: "https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0"
 title: "Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs"
 domain: "kubernetes"
-crawledAt: "2026-08-20T19:29:02.089Z"
-contentHash: "a0fd289a565553841004117c10c9a8ab610d522ce4ae6bdae38493d237221c75"
+crawledAt: "2026-08-23T15:02:59.481Z"
+contentHash: "b8d233252797096de13af561bcfacfbc94c2ce986d1ba563523c21494c6f7ea4"
+source: "docs.dynatrace.com"
 ---
 
 # Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0](https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0](https://docs.dynatrace.com/docs/whats-new/dynatrace-operator/dto-fix-1-10-0)
+- Domain: `kubernetes`
+- Document ID: `b90ff047cf4899da`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Dynatrace Operator release notes version 1.10.0
+- Announcements
+- Enrich Kubernetes telemetry with primary Grail fields and tags
+- Auto-update for public registry images
+- Dynatrace Operator now supports Platform Tokens
+- New features and enhancements
+- Known issues
+- Resolved issues
+- Removal and deprecation notices
+- Upgrade from Dynatrace Operator version 1.9
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs 
 # Dynatrace Operator release notes version 1.10.0
@@ -21,9 +47,9 @@ Dynatrace Operator release notes version 1.10.0 — Dynatrace Docs
 
 Release date: July 15, 2026 
 
-If you&#x27;re running Dynatrace Operator version 1.10.0, we recommend upgrading to version 1.10.2 to receive the latest important patches. 
+If you're running Dynatrace Operator version 1.10.0, we recommend upgrading to version 1.10.2 to receive the latest important patches. 
 
-On this page, you&#x27;ll find an overview of what&#x27;s new and improved in Dynatrace Operator version 1.10.0.
+On this page, you'll find an overview of what's new and improved in Dynatrace Operator version 1.10.0.
 ## Announcements
 
 ### Enrich Kubernetes telemetry with primary Grail fields and tags
@@ -108,7 +134,7 @@ Since Dynatrace Operator 1.9.0, a `RuntimeDefault` seccomp profile is applied to
  
 - The Dynatrace OpenTelemetry collector deployed for telemetry ingest is now automatically restarted when the ingest token changes, avoiding interruptions in data ingest. 
  
-- Fixed a regression introduced in version 1.9.0 where the Dynatrace webhook entered `CrashLoopBackOff` when `webhook.hostNetwork` was enabled — a setting required by some CNI plugins such as Calico on AWS EKS. The startup probe&#x27;s DNS lookup for `kubernetes.default.svc` failed in host network mode without the correct DNS policy. Dynatrace Operator now automatically sets `dnsPolicy: ClusterFirstWithHostNet` when `webhook.hostNetwork` is enabled.
+- Fixed a regression introduced in version 1.9.0 where the Dynatrace webhook entered `CrashLoopBackOff` when `webhook.hostNetwork` was enabled — a setting required by some CNI plugins such as Calico on AWS EKS. The startup probe's DNS lookup for `kubernetes.default.svc` failed in host network mode without the correct DNS policy. Dynatrace Operator now automatically sets `dnsPolicy: ClusterFirstWithHostNet` when `webhook.hostNetwork` is enabled.
  
 - Fixed an issue where `spec.templates.otelCollector.annotations` were not consistently propagated to the OpenTelemetry collector.
  

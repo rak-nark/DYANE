@@ -1,15 +1,40 @@
 ---
+formatVersion: "2.0.0"
 id: "4f2e0f6cb01fbaa6"
 url: "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze"
 title: "Analyze SDLC events from your pipeline — Dynatrace Docs"
 domain: "openpipeline"
-crawledAt: "2026-08-20T19:29:30.946Z"
+crawledAt: "2026-08-23T14:58:48.687Z"
 contentHash: "2ae655bc2e888528d759c2ee30557d9cff841352cd5d4336be5d9db6df22f301"
+source: "docs.dynatrace.com"
 ---
 
 # Analyze SDLC events from your pipeline — Dynatrace Docs
 
-*Fuente oficial:* [https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze)
+## Source
+
+- Official URL: [https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze)
+- Domain: `openpipeline`
+- Document ID: `4f2e0f6cb01fbaa6`
+- Format version: `2.0.0`
+
+## Extracted Headings
+
+- Analyze SDLC events from your pipeline
+- Query SDLC events using Dynatrace API
+- Find Grail - DQL Query definition in Swagger documentation
+- Query SDLC events
+- Analyze with our examples
+- Average duration of test executions
+- Average duration of open change requests
+- Percentage of failed validations
+- Distribution of pipeline executions by 2-minute buckets
+
+## Extracted Code Blocks
+
+- No code blocks extracted
+
+## Content
 
 Analyze SDLC events from your pipeline — Dynatrace Docs 
 # Analyze SDLC events from your pipeline

@@ -4,7 +4,7 @@ import { runDtctl, checkDtctl } from "./dtctl.js";
 import { testMcpConnection } from "./mcp.js";
 import { apiFetch, ApiError } from "./http.js";
 import { tokenInfo, hasAnyToken, hasOAuthCredentials } from "./oauth.js";
-import { runScraper } from "./docs/scraper.js";
+import { runScraper, loadDocsIndex, calculateDocsStorage } from "./docs/scraper.js";
 import { searchDocs } from "./docs/search.js";
 import { executeSkillPipeline } from "./docs/skillPipeline.js";
 import { validateSkill, listAllSkills } from "./docs/validator.js";
@@ -41,6 +41,10 @@ USO PRINCIPAL:
   dtx token                           Estado del access token (OAuth client credentials o platform)
 
 DOCUMENTACIÓN Y BASE DE CONOCIMIENTO:
+  dtx docs stats                      Muestra estadísticas y almacenamiento consumido por docs
+  dtx docs details                    Alias con detalle de almacenamiento y desglose por dominio
+  dtx docs count                      Alias de dtx docs stats (conteo total de registros)
+  dtx docs list [--domain <dom>]      Lista los documentos descargados en el repositorio local
   dtx docs scrape [--domain <dom>]    Descarga/ingiere docs oficiales (docs.dynatrace.com)
   dtx docs update                     Actualización incremental de documentos modificados
   dtx docs search "<query>"           Busca en la base de conocimiento local
@@ -63,10 +67,99 @@ export function cmdHelp(): void {
   console.log(HELP);
 }
 
+export function cmdDocsStats(options: CliOptions): void {
+  const index = loadDocsIndex();
+  const storage = calculateDocsStorage();
+
+  if (options.output === "json") {
+    console.log(
+      JSON.stringify(
+        {
+          totalDocuments: index.totalDocuments,
+          lastUpdated: index.lastUpdated,
+          storage: {
+            total: storage.totalFormatted,
+            totalBytes: storage.totalBytes,
+            markdown: storage.markdownFormatted,
+            markdownBytes: storage.markdownBytes,
+            records: storage.recordsFormatted,
+            recordsBytes: storage.recordsBytes,
+            index: storage.indexFormatted,
+            indexBytes: storage.indexBytes,
+            averagePerDoc: storage.averageDocFormatted,
+          },
+          domains: index.domains,
+          domainStorage: storage.domainStorage,
+        },
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+
+  console.log("\n  BASE DE CONOCIMIENTO LOCAL (Dynatrace Official Docs)");
+  console.log("  " + "=".repeat(70));
+  console.log(`  Total de registros en existencia: ${index.totalDocuments} documentos`);
+  console.log(
+    `  Última actualización:             ${index.lastUpdated ? new Date(index.lastUpdated).toLocaleString() : "Nunca"}`,
+  );
+  console.log(
+    `  Almacenamiento total consumido:   ${storage.totalFormatted} (Markdown: ${storage.markdownFormatted}, Records: ${storage.recordsFormatted}, Index: ${storage.indexFormatted})`,
+  );
+  console.log(`  Tamaño promedio por documento:    ${storage.averageDocFormatted}`);
+  console.log("\n  DESGLOSE POR DOMINIO:");
+  console.log(
+    `  ${"DOMINIO".padEnd(18)}   ${"DOCUMENTOS".padEnd(12)}   ${"ALMACENAMIENTO".padEnd(16)}   PORCENTAJE`,
+  );
+  console.log("  " + "-".repeat(70));
+
+  const sortedDomains = Object.entries(index.domains || {}).sort((a, b) => b[1] - a[1]);
+  for (const [domain, count] of sortedDomains) {
+    const domStorage = storage.domainStorage[domain]?.formatted ?? "0 B";
+    const pct = storage.domainStorage[domain]?.percentage ?? (index.totalDocuments > 0 ? `${((count / index.totalDocuments) * 100).toFixed(1)}%` : "0.0%");
+    console.log(
+      `  ${domain.padEnd(18)}   ${count.toString().padEnd(12)}   ${domStorage.padEnd(16)}   ${pct}`,
+    );
+  }
+  console.log("  " + "-".repeat(70));
+  console.log(
+    `  ${"TOTAL".padEnd(18)}   ${index.totalDocuments.toString().padEnd(12)}   ${storage.markdownFormatted.padEnd(16)}   100.0%\n`,
+  );
+}
+
+export function cmdDocsList(options: CliOptions): void {
+  const index = loadDocsIndex();
+  let docs = Object.values(index.documents || {});
+  if (options.domain) {
+    const target = options.domain.toLowerCase();
+    docs = docs.filter((d) => d.domain.toLowerCase() === target || d.url.toLowerCase().includes(target));
+  }
+  const limit = options.limit ?? 20;
+
+  if (options.output === "json") {
+    console.log(JSON.stringify(docs.slice(0, limit), null, 2));
+    return;
+  }
+
+  if (docs.length === 0) {
+    console.log("\n(No hay documentos descargados que coincidan con el criterio)\n");
+    return;
+  }
+
+  console.log(`\nDocumentos descargados (${Math.min(docs.length, limit)} de ${docs.length}):\n`);
+  for (const doc of docs.slice(0, limit)) {
+    console.log(`• [${doc.domain.toUpperCase()}] ${doc.title}`);
+    console.log(`  URL:     ${doc.url}`);
+    console.log(`  Archivo: ${doc.localPath || doc.slug || doc.id}`);
+    console.log("");
+  }
+}
+
 export async function cmdDocsScrape(options: CliOptions): Promise<void> {
   await runScraper({
     domain: options.domain,
-    limit: options.limit ?? 25,
+    limit: options.limit,
     force: options.force,
   });
 }
