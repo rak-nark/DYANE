@@ -19,6 +19,7 @@ import {
   cmdDocsList,
   cmdSkillCreate,
   cmdSkillValidate,
+  cmdSkillBackfill,
   cmdSkillList,
   cmdPlanCreate,
   cmdPlanList,
@@ -187,10 +188,12 @@ async function main(): Promise<void> {
         await cmdSkillCreate(rest.slice(1).join(" ") || "", options);
       } else if (subCommand === "validate") {
         cmdSkillValidate(rest[1] ?? "");
+      } else if (subCommand === "backfill") {
+        cmdSkillBackfill(rest[1] ?? "", options);
       } else if (subCommand === "list" || !subCommand) {
         cmdSkillList();
       } else {
-        console.error(`Subcomando skill desconocido: ${subCommand}. Usa: create | validate | list`);
+        console.error(`Subcomando skill desconocido: ${subCommand}. Usa: create | validate | backfill | list`);
         process.exitCode = 1;
       }
       break;

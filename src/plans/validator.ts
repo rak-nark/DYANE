@@ -147,10 +147,11 @@ function validateEvidence(plan: PlanDocument): { check: PlanValidationCheck } {
 }
 
 function detectOrphans(): string[] {
-  const files = listPlanFiles();
+  const planFilePattern = /^PLAN-\d{4}-\d{4}-.+\.md$/;
+  const files = listPlanFiles().filter((f) => planFilePattern.test(f));
   const index = loadPlansIndex();
   const indexedFiles = new Set(index.plans.map((p) => p.file));
-  return files.filter((f) => f !== "index.json" && !indexedFiles.has(f) && !index.plans.some((p) => f.startsWith(p.id)));
+  return files.filter((f) => !indexedFiles.has(f) && !index.plans.some((p) => f.startsWith(p.id)));
 }
 
 export function reindexPlans(): number {

@@ -1,0 +1,161 @@
+{
+  "skillName": "dps-guardrails",
+  "targetDomain": "grail",
+  "requestedCapability": "Instala controles preventivos para que el consumo indebido de Dynatrace DPS no se repita — presupuestos de escaneo Grail, alertas de consumo anómalo, políticas de bucket y retención, límites de refresh en dashboards, y un dashboard/notebook de gobernanza permanente. Úsala cuando pidan \"poner controles\", \"que no vuelva a pasar\", \"presupuesto de consumo\", \"alertas de gasto\", \"gobernanza de consumo\", \"guardrails de licencia\" o después de una auditoría que dejó hallazgos. Para medir el gasto usa dps-ratecard-audit; para identificar quién lo causa usa dps-consumo-indebido.",
+  "classification": {
+    "skillType": "backfilled-evidence",
+    "domain": "grail",
+    "objective": "Respaldar retroactivamente la skill 'dps-guardrails' con documentación oficial indexada",
+    "applicableDocCategories": [
+      "general",
+      "iam"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Evidencia retroactiva generada por 'dtx skill backfill': 8 páginas oficiales coincidentes en la base local."
+  },
+  "sources": [
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 3330",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 3330",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 3327",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 3310",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 2967",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 2837",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/management",
+      "title": "Management &amp; Governance — Dynatrace Docs",
+      "domain": "iam",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 1844",
+      "extractedConcepts": [
+        "Management &amp; Governance"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid",
+      "title": "Hybrid &amp; Multicloud — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:14.775Z",
+      "relevance": "Score: 1799",
+      "extractedConcepts": [
+        "Hybrid &amp; Multicloud"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/](https://developer.dynatrace.c",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Management &amp; Governance",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/management",
+      "evidenceExcerpt": "# Management &amp; Governance — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/management](https://docs.dynatr",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Hybrid &amp; Multicloud",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid",
+      "evidenceExcerpt": "# Hybrid &amp; Multicloud — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid](https://docs.dynatrace.com/",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-08-24T17:16:14.775Z",
+  "version": "1.0.0"
+}

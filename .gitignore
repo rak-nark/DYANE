@@ -5,6 +5,7 @@ dist/
 # Documentación extraída y datos locales
 docs/
 data/
+plans/
 
 # Entorno y secretos
 .env

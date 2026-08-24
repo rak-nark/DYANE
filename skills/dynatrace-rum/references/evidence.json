@@ -1,0 +1,160 @@
+{
+  "skillName": "dynatrace-rum",
+  "targetDomain": "rum",
+  "requestedCapability": "Analiza la experiencia digital de usuarios reales (Real User Monitoring / RUM), rendimiento web y móvil, errores de frontend (JavaScript/Crash), sesiones de usuario (User Sessions), embudos de conversión (Funnels) y Apdex en Dynatrace mediante consultas DQL a Grail y llamadas a la API/MCP. Úsala cuando pidan \"analizar RUM\", \"sesiones de usuarios\", \"errores javascript\", \"experiencia de usuario\", \"apdex\", \"core web vitals\", \"performance web\" o \"tasa de conversión\".",
+  "classification": {
+    "skillType": "backfilled-evidence",
+    "domain": "rum",
+    "objective": "Respaldar retroactivamente la skill 'dynatrace-rum' con documentación oficial indexada",
+    "applicableDocCategories": [
+      "rum"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Evidencia retroactiva generada por 'dtx skill backfill': 8 páginas oficiales coincidentes en la base local."
+  },
+  "sources": [
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-android-app/instrumentation-via-plugin/monitoring-capabilities",
+      "title": "Configure monitoring capabilities of Dynatrace Android Gradle plugin in RUM Classic — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 353",
+      "extractedConcepts": [
+        "Configure monitoring capabilities of Dynatrace Android Gradle plugin in RUM Classic"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontends/new-javascript-api",
+      "title": "Customize web frontend monitoring using the JavaScript API — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 308",
+      "extractedConcepts": [
+        "Customize web frontend monitoring using the JavaScript API"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/web-applications/additional-configuration/customize-rum",
+      "title": "Customize Real User Monitoring Classic with the JavaScript API for web applications — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 290",
+      "extractedConcepts": [
+        "Customize Real User Monitoring Classic with the JavaScript API for web applications"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-ios-app/customization/oneagent-sdk-for-ios",
+      "title": "OneAgent SDK for iOS in RUM Classic — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 288",
+      "extractedConcepts": [
+        "OneAgent SDK for iOS in RUM Classic"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-android-app/instrumentation-via-oneagent-sdk/oneagent-sdk-for-android",
+      "title": "Instrumentation via OneAgent SDK for Android in RUM Classic — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 283",
+      "extractedConcepts": [
+        "Instrumentation via OneAgent SDK for Android in RUM Classic"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/web-applications/additional-configuration/identify-individual-users-for-session-analysis",
+      "title": "Tag specific users for web applications in RUM Classic — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 272",
+      "extractedConcepts": [
+        "Tag specific users for web applications in RUM Classic"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/rum-concepts/user-actions",
+      "title": "User actions in RUM Classic — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 270",
+      "extractedConcepts": [
+        "User actions in RUM Classic"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontends/concepts/user-sessions-web",
+      "title": "User sessions in web frontends — Dynatrace Docs",
+      "domain": "rum",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:11:05.031Z",
+      "relevance": "Score: 265",
+      "extractedConcepts": [
+        "User sessions in web frontends"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: Configure monitoring capabilities of Dynatrace Android Gradle plugin in RUM Classic",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-android-app/instrumentation-via-plugin/monitoring-capabilities",
+      "evidenceExcerpt": "# Configure monitoring capabilities of Dynatrace Android Gradle plugin in RUM Classic — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-ex",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Customize web frontend monitoring using the JavaScript API",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontends/new-javascript-api",
+      "evidenceExcerpt": "# Customize web frontend monitoring using the JavaScript API — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontend",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Customize Real User Monitoring Classic with the JavaScript API for web applications",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/web-applications/additional-configuration/customize-rum",
+      "evidenceExcerpt": "# Customize Real User Monitoring Classic with the JavaScript API for web applications — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-ex",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: OneAgent SDK for iOS in RUM Classic",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-ios-app/customization/oneagent-sdk-for-ios",
+      "evidenceExcerpt": "# OneAgent SDK for iOS in RUM Classic — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrum",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Instrumentation via OneAgent SDK for Android in RUM Classic",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mobile-applications/instrument-android-app/instrumentation-via-oneagent-sdk/oneagent-sdk-for-android",
+      "evidenceExcerpt": "# Instrumentation via OneAgent SDK for Android in RUM Classic — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/mob",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Tag specific users for web applications in RUM Classic",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/web-applications/additional-configuration/identify-individual-users-for-session-analysis",
+      "evidenceExcerpt": "# Tag specific users for web applications in RUM Classic — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/web-appl",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: User actions in RUM Classic",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/rum-concepts/user-actions",
+      "evidenceExcerpt": "# User actions in RUM Classic — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum-classic/rum-concepts/user-actions](https://",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: User sessions in web frontends",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontends/concepts/user-sessions-web",
+      "evidenceExcerpt": "# User sessions in web frontends — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/observe/digital-experience/rum/web-frontends/concepts/user-sessions-web",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-08-24T17:11:05.031Z",
+  "version": "1.0.0"
+}

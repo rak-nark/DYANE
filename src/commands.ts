@@ -6,7 +6,7 @@ import { apiFetch, ApiError } from "./http.js";
 import { tokenInfo, hasAnyToken, hasOAuthCredentials } from "./oauth.js";
 import { runScraper, loadDocsIndex, calculateDocsStorage } from "./docs/scraper.js";
 import { searchDocs } from "./docs/search.js";
-import { executeSkillPipeline } from "./docs/skillPipeline.js";
+import { executeSkillPipeline, backfillSkillEvidence } from "./docs/skillPipeline.js";
 import { validateSkill, listAllSkills } from "./docs/validator.js";
 import {
   buildScaffold,
@@ -76,6 +76,7 @@ DOCUMENTACIÓN Y BASE DE CONOCIMIENTO:
 DESARROLLO AUTÓNOMO DE SKILLS:
   dtx skill create "<solicitud>"      Genera una skill validada por el pipeline de 11 pasos
   dtx skill validate <nombre>         Valida la trazabilidad y respaldo documental de una skill
+  dtx skill backfill <nombre>         Genera evidence.json para una skill buscando en la base documental local
   dtx skill list                      Lista todas las skills del entorno y su estado de verificación
 
 PLANES DE TRABAJO:
@@ -269,6 +270,50 @@ export function cmdSkillValidate(skillName: string): void {
     for (const s of res.sources) {
       console.log(`    • ${s}`);
     }
+  }
+  console.log("");
+}
+
+export function cmdSkillBackfill(skillName: string, options: CliOptions): void {
+  if (!skillName) {
+    console.error("Uso: dtx skill backfill <nombre-de-la-skill> [--domain <dominio>] [--limit <n>]");
+    process.exitCode = 1;
+    return;
+  }
+
+  const res = backfillSkillEvidence({
+    skillName,
+    domain: options.domain,
+    limit: options.limit,
+  });
+
+  console.log(`\nBackfill de evidencia documental: Skill '${res.skillName}'`);
+
+  if (res.status === "NOT_FOUND" || res.status === "NO_EVIDENCE") {
+    console.error(`  [X] ${res.message}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  const shortQuery = res.query.length > 90 ? `${res.query.slice(0, 87)}...` : res.query;
+  console.log(`  - Consulta de búsqueda: "${shortQuery}"`);
+  console.log(`  - Fuentes encontradas:  ${res.sourcesCount} páginas oficiales`);
+  console.log(`  - evidence.json escrito en:`);
+  for (const dir of res.writtenTo) {
+    console.log(`    • ${dir}\\references\\evidence.json`);
+  }
+  const beforeStatus = res.before?.status ?? "?";
+  const afterStatus = res.after?.status ?? "?";
+  const afterDocs = res.after?.backedByDocsCount ?? 0;
+  console.log(`  - Estado de validación: ${beforeStatus} -> ${afterStatus} (${afterDocs} docs)`);
+
+  const sources = res.after?.sources ?? [];
+  if (sources.length > 0) {
+    console.log(`  - Fuentes respaldadas:`);
+    for (const s of sources.slice(0, 5)) {
+      console.log(`    • ${s}`);
+    }
+    if (sources.length > 5) console.log(`    • ... y ${sources.length - 5} más`);
   }
   console.log("");
 }

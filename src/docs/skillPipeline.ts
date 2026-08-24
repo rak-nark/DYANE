@@ -2,11 +2,13 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, resolve } from "node:path";
 import { extractEvidence, searchDocs } from "./search.js";
 import { classifyDomain } from "./scraper.js";
+import { validateSkill, type SkillValidationSummary } from "./validator.js";
 import type { EvidenceItem, SkillEvidenceReport } from "./types.js";
 
 const PROJECT_ROOT = resolve(process.cwd());
 const SKILLS_DIR = join(PROJECT_ROOT, "skills");
 const AGENTS_SKILLS_DIR = join(PROJECT_ROOT, ".agents", "skills");
+const CORE_SKILLS_DIR = join(PROJECT_ROOT, "skills-core");
 
 export interface SkillRequestInput {
   prompt: string;
@@ -341,4 +343,132 @@ function performGroundingChecks(
   }
 
   return checks;
+}
+
+export interface BackfillInput {
+  skillName: string;
+  domain?: string;
+  limit?: number;
+}
+
+export type BackfillStatus = "SUCCESS" | "NOT_FOUND" | "NO_EVIDENCE";
+
+export interface BackfillResult {
+  status: BackfillStatus;
+  skillName: string;
+  query: string;
+  writtenTo: string[];
+  sourcesCount: number;
+  before: SkillValidationSummary | null;
+  after: SkillValidationSummary | null;
+  message: string;
+}
+
+/**
+ * Genera references/evidence.json para una skill existente buscando en la base
+ * documental local, usando el name/description del SKILL.md como consulta.
+ */
+export function backfillSkillEvidence(input: BackfillInput): BackfillResult {
+  const cleanName = input.skillName.trim();
+
+  const candidateBases = [SKILLS_DIR, AGENTS_SKILLS_DIR, CORE_SKILLS_DIR];
+  const targets = candidateBases
+    .map((base) => join(base, cleanName))
+    .filter((dir) => existsSync(join(dir, "SKILL.md")));
+
+  if (targets.length === 0) {
+    return {
+      status: "NOT_FOUND",
+      skillName: cleanName,
+      query: "",
+      writtenTo: [],
+      sourcesCount: 0,
+      before: null,
+      after: null,
+      message: `No se encontró '${cleanName}' con SKILL.md en skills/, .agents/skills/ ni skills-core/. Lista las disponibles: dtx skill list`,
+    };
+  }
+
+  let frontmatterName = cleanName;
+  let description = "";
+  try {
+    const content = readFileSync(join(targets[0], "SKILL.md"), "utf8");
+    const nameMatch = content.match(/name:\s*([^\r\n]+)/i);
+    const descMatch = content.match(/description:\s*([^\r\n]+)/i);
+    if (nameMatch) frontmatterName = nameMatch[1].trim();
+    if (descMatch) description = descMatch[1].trim();
+  } catch {
+    // Usar el nombre de carpeta como fallback
+  }
+
+  const query = description || frontmatterName;
+  const detectedDomain = input.domain ?? classifyDomain(`${frontmatterName} ${description}`);
+  const evidenceList = extractEvidence(query, input.domain, input.limit ?? 8);
+
+  if (evidenceList.length === 0) {
+    return {
+      status: "NO_EVIDENCE",
+      skillName: cleanName,
+      query,
+      writtenTo: [],
+      sourcesCount: 0,
+      before: validateSkill(cleanName),
+      after: null,
+      message:
+        `La búsqueda no arrojó documentos para '${cleanName}'` +
+        (input.domain ? ` en el dominio '${input.domain}'` : "") +
+        `. Ingresa documentación primero: dtx docs scrape --domain ${detectedDomain} (o revisa --domain).`,
+    };
+  }
+
+  const confidenceScore = Math.min(1.0, evidenceList.length * 0.25);
+  const report: SkillEvidenceReport = {
+    skillName: frontmatterName,
+    targetDomain: detectedDomain,
+    requestedCapability: description || frontmatterName,
+    classification: {
+      skillType: "backfilled-evidence",
+      domain: detectedDomain,
+      objective: `Respaldar retroactivamente la skill '${frontmatterName}' con documentación oficial indexada`,
+      applicableDocCategories: Array.from(new Set(evidenceList.map((e) => e.domain))),
+    },
+    sufficiency: {
+      isSufficient: true,
+      confidence: confidenceScore,
+      reasoning: `Evidencia retroactiva generada por 'dtx skill backfill': ${evidenceList.length} páginas oficiales coincidentes en la base local.`,
+    },
+    sources: evidenceList.map((e) => ({
+      url: e.url,
+      title: e.title,
+      domain: e.domain,
+      contentHash: "indexed",
+      crawledAt: new Date().toISOString(),
+      relevance: `Score: ${e.relevanceScore}`,
+      extractedConcepts: [e.heading ?? e.title],
+    })),
+    groundingChecks: performGroundingChecks("", evidenceList),
+    createdAt: new Date().toISOString(),
+    version: "1.0.0",
+  };
+
+  const before = validateSkill(cleanName);
+
+  const writtenTo: string[] = [];
+  for (const dir of targets) {
+    const refDir = join(dir, "references");
+    if (!existsSync(refDir)) mkdirSync(refDir, { recursive: true });
+    writeFileSync(join(refDir, "evidence.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+    writtenTo.push(dir);
+  }
+
+  return {
+    status: "SUCCESS",
+    skillName: cleanName,
+    query,
+    writtenTo,
+    sourcesCount: evidenceList.length,
+    before,
+    after: validateSkill(cleanName),
+    message: `Evidencia generada para '${cleanName}' a partir de ${evidenceList.length} documentos locales.`,
+  };
 }

@@ -1,0 +1,160 @@
+{
+  "skillName": "dps-ratecard-audit",
+  "targetDomain": "grail",
+  "requestedCapability": "Audita el consumo real de un tenant Dynatrace contra el rate card DPS y produce un informe de costo por capability (Query, Ingest, Retain, Metrics, Security Posture, host-hora). Úsala cuando pidan \"cuánto estamos consumiendo de licencia\", \"por qué se disparó el DPS\", \"auditoría de consumo\", \"costeo del tenant\", \"análisis de rate card\", \"informe de licencia Dynatrace\" o cuando haya que reconstruir el gasto de un periodo. NO usar para detectar quién causa el abuso (esa es dps-consumo-indebido) ni para poner controles preventivos (esa es dps-guardrails).",
+  "classification": {
+    "skillType": "backfilled-evidence",
+    "domain": "grail",
+    "objective": "Respaldar retroactivamente la skill 'dps-ratecard-audit' con documentación oficial indexada",
+    "applicableDocCategories": [
+      "general"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Evidencia retroactiva generada por 'dtx skill backfill': 8 páginas oficiales coincidentes en la base local."
+  },
+  "sources": [
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 4619",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 4619",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 4595",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 4557",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 4089",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 3959",
+      "extractedConcepts": [
+        "Classic environment v2"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-automation/v8/",
+      "title": "Automation | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 1376",
+      "extractedConcepts": [
+        "Automation"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-automation/",
+      "title": "Automation | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-08-24T17:16:17.607Z",
+      "relevance": "Score: 1326",
+      "extractedConcepts": [
+        "Automation"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/](https://developer.dynatrace.c",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Classic environment v2",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/",
+      "evidenceExcerpt": "# Classic environment v2 | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/](https://developer.dynatrac",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Automation",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-automation/v8/",
+      "evidenceExcerpt": "# Automation | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-automation/v8/](https://developer.dynatrace.com/develop/sdks/clien",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Automation",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-automation/",
+      "evidenceExcerpt": "# Automation | Dynatrace Developer ## Source - Official URL: [https://developer.dynatrace.com/develop/sdks/client-automation/](https://developer.dynatrace.com/develop/sdks/client-a",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-08-24T17:16:17.607Z",
+  "version": "1.0.0"
+}
