@@ -1,0 +1,373 @@
+{
+  "skillName": "dynatrace-alertas-best-practices",
+  "targetDomain": "general",
+  "requestedCapability": "Alerting best practices anomaly detection default alerts and alerting profiles",
+  "classification": {
+    "skillType": "draft-research-brief",
+    "domain": "general",
+    "objective": "Destilar documentación oficial para la síntesis de la skill 'dynatrace-alertas-best-practices'",
+    "applicableDocCategories": [
+      "general"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Brief generado desde 24 documentos oficiales completos (12 consultas multi-query)."
+  },
+  "sources": [
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "8762757ca88ecc292ff50f91cf7be8804dcc42f596190799c608339917c5c83f",
+      "crawledAt": "2026-08-24T17:07:06.741Z",
+      "relevance": "Score: 75 · Código: 264",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient ​",
+        "createToken ​",
+        "Parameters ​",
+        "Returns ​",
+        "Throws ​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "5ed16cd8d8730700979afd906ccc714b504b52be6e1a6a6b9ed849fe93028f6f",
+      "crawledAt": "2026-08-24T17:07:10.878Z",
+      "relevance": "Score: 75 · Código: 263",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient ​",
+        "createToken ​",
+        "Parameters ​",
+        "Returns ​",
+        "Throws ​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "1737bcde97a2d4570a40abfd4045f642b8f938d85f05ab74030f10690c1e729d",
+      "crawledAt": "2026-08-24T17:07:09.936Z",
+      "relevance": "Score: 75 · Código: 259",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient ​",
+        "createToken ​",
+        "Parameters ​",
+        "Returns ​",
+        "Throws ​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "479af34b86a8ddb43ccd229aba90882e89935975568569ed06ffe3cb2775c2ff",
+      "crawledAt": "2026-08-24T17:07:09.016Z",
+      "relevance": "Score: 75 · Código: 227",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient ​",
+        "createToken ​",
+        "Parameters ​",
+        "Returns ​",
+        "Throws ​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/fields",
+      "title": "Global field reference — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "1f7b8d2a4fc419bbc3b0f07b6deaf26c0c92beed8e3de7503236f4af45d114d5",
+      "crawledAt": "2026-08-23T15:02:04.847Z",
+      "relevance": "Score: 88 · Código: 0",
+      "extractedConcepts": [
+        "Base fields",
+        "Actor",
+        "Actor fields",
+        "Adobe",
+        "Adobe fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/use-cases/avoid-overalerting",
+      "title": "Best practices for avoiding overalerting — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "183b37057a1fa9724e581ca48410eeba7774e52b909a3f259a276d8364e24888",
+      "crawledAt": "2026-08-23T14:59:36.998Z",
+      "relevance": "Score: 188 · Código: 0",
+      "extractedConcepts": [
+        "Identify false positive alerts",
+        "Understand the 0.1% threshold in practice",
+        "Why an alert appears too often",
+        "How to use the 0.1% threshold rule",
+        "Identify your noisiest detectors with DQL"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/platform/upgrade/metric-alerting",
+      "title": "Upgrade Guide - Metric Alerting — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "7bd78f87b3680024a318f70baa05ae1f5fdf4a1c51fda7b07585eb543630d67c",
+      "crawledAt": "2026-08-23T15:01:19.944Z",
+      "relevance": "Score: 145 · Código: 0",
+      "extractedConcepts": [
+        "New concepts",
+        "Anomaly detection",
+        "Prerequisites",
+        "Metric alerting in Dynatrace Classic",
+        "Out-of-the-box detectors in the previous Dynatrace"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/infrastructure-observability/hosts/configuration/anomaly-detection",
+      "title": "Host anomaly detection — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "97b881ed29184698bdc8f5f1ee81c2d78b440c3c21a560cc3acfe10429ce5f1b",
+      "crawledAt": "2026-08-24T16:51:40.232Z",
+      "relevance": "Score: 145 · Código: 0",
+      "extractedConcepts": [
+        "Access anomaly detection",
+        "Set problem-creation thresholds",
+        "Hosts",
+        "Networks",
+        "Set event thresholds"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/application-observability/services/service-detection/service-detection-v2/endpoint-detection-v2",
+      "title": "Customize endpoint detection in Service Detection v2 — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c75d5c6b3f8aa44cb142a90d356f68b2d76861dac3d6bcaf6cc087752151ae4c",
+      "crawledAt": "2026-08-24T16:57:05.317Z",
+      "relevance": "Score: 82 · Código: 0",
+      "extractedConcepts": [
+        "Aim and context",
+        "Endpoint detection rules",
+        "New endpoint detection opt-in",
+        "Default endpoint detection rules",
+        "Automatic naming for services without `http.route`"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/infrastructure-observability/networks/network-devices/networks-cost-optimization",
+      "title": "Best practices for optimizing network monitoring cost — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "b671614d249e465ad87fcd27b2f2e21d0b20427262ea3923cd9a3334db90b763",
+      "crawledAt": "2026-08-24T16:52:00.695Z",
+      "relevance": "Score: 77 · Código: 0",
+      "extractedConcepts": [
+        "Core concepts",
+        "Understand cost",
+        "Understand how Dynatrace bills for network monitoring",
+        "Select only the feature sets you need",
+        "Basic device and interface monitoring"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/anomaly-detection-configuration",
+      "title": "Anomaly detection configuration — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "55445be556e3a992be40cc9e746f628f42d7a13abde8a9fc34884592e9dccabf",
+      "crawledAt": "2026-08-23T14:59:25.065Z",
+      "relevance": "Score: 109 · Código: 0",
+      "extractedConcepts": [
+        "Data source",
+        "Delay",
+        "Data type",
+        "Timeseries",
+        "Analyzer type and parameters"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/automated-multidimensional-baselining",
+      "title": "Automated multi-dimensional baselining — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "59cc9599245384a2d388505c3340e29171d6cc36a29136c2fe765c1e16b91d3e",
+      "crawledAt": "2026-08-23T14:59:26.501Z",
+      "relevance": "Score: 92 · Código: 0",
+      "extractedConcepts": [
+        "Traffic",
+        "Error rate",
+        "Response time",
+        "Multi-dimensionality",
+        "Baselining dimensions"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection",
+      "title": "Anomaly detection — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "d7e17483f438eff35942bf3dab5d1dcaf3b77442889f608e18a351d87f68cac2",
+      "crawledAt": "2026-08-23T14:59:27.201Z",
+      "relevance": "Score: 124 · Código: 0",
+      "extractedConcepts": [
+        "Use cases",
+        "Concepts",
+        "Auto-adaptive thresholds for anomaly detection",
+        "Static thresholds for anomaly detection",
+        "Anomaly detection configuration"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/use-cases/use-segments-anomaly-detection",
+      "title": "Use segments with Anomaly Detection custom alerts — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "83f89b6ae127d481d7cba53186478160783a73a3d1552d68236f4e955f9c4ac5",
+      "crawledAt": "2026-08-23T14:59:42.261Z",
+      "relevance": "Score: 97 · Código: 0",
+      "extractedConcepts": [
+        "Before you begin",
+        "Prior knowledge",
+        "Prerequisites",
+        "Apply segments to a custom alert",
+        "Why use segments for custom alert"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection/adjust-sensitivity-services",
+      "title": "Adjust the sensitivity of anomaly detection for services — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "5095122635664070437c80bafb8040b7d41d1f44b092d9df0a811e6c5105338c",
+      "crawledAt": "2026-08-23T15:09:55.374Z",
+      "relevance": "Score: 99 · Código: 0",
+      "extractedConcepts": [
+        "Response time degradation",
+        "Failure rate increase",
+        "Service load drops",
+        "Service load spikes",
+        "Reference period"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection/adjust-sensitivity-services-database",
+      "title": "Adjust the sensitivity of anomaly detection for database services — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c50d67c92e028edd703d65ca168c8dbfb96ffa92bbc4dc7200ed6a1362c30ce9",
+      "crawledAt": "2026-08-23T15:09:54.680Z",
+      "relevance": "Score: 96 · Código: 0",
+      "extractedConcepts": [
+        "Response time degradation",
+        "Failure rate increase",
+        "Service load drops",
+        "Service load spikes",
+        "Reference period"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection/adjust-sensitivity-applications",
+      "title": "Adjust the sensitivity of anomaly detection for applications — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "2169a675b2edd2fa7f19cf3591059973dd14fbb4957a7393a28b2674982afb83",
+      "crawledAt": "2026-08-23T15:09:52.870Z",
+      "relevance": "Score: 96 · Código: 0",
+      "extractedConcepts": [
+        "Key performance metric degradation",
+        "Traffic drops",
+        "Traffic spikes",
+        "Failure rate increase",
+        "Reference period"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection/adjust-sensitivity-infastructure",
+      "title": "Adjust the sensitivity of anomaly detection for infrastructure — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "519d9baeece51e170a87e9323577f2b414a347e71cfda252d6610958f6ad598b",
+      "crawledAt": "2026-08-23T15:09:54.303Z",
+      "relevance": "Score: 102 · Código: 0",
+      "extractedConcepts": [
+        "Thresholds for specific disks",
+        "Anomaly detection configuration hierarchy",
+        "Thresholds for a specific host group",
+        "Thresholds for a specific host",
+        "Related topics"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/anomaly-detection-app",
+      "title": "Anomaly Detection app — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "7655b1121d9d73e37ca74cfdfdde9631deef3c299003f6d3f90794ba921c16d7",
+      "crawledAt": "2026-08-23T15:10:00.415Z",
+      "relevance": "Score: 80 · Código: 0",
+      "extractedConcepts": [
+        "Permissions",
+        "Installation",
+        "Learning modules",
+        "Custom alert actors",
+        "Actor"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/anomaly-detection-app/anomaly-detection-status-types",
+      "title": "Anomaly Detection status types — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "200ae18d1c13837829c776e863b7cf7dd17faa4a8d10de62cc355d233cd5a3b1",
+      "crawledAt": "2026-08-23T15:09:58.262Z",
+      "relevance": "Score: 76 · Código: 0",
+      "extractedConcepts": [
+        "Anomaly Detection status list",
+        "Throttling behavior after sustained query failure",
+        "Troubleshooting",
+        "Related topics"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/auto-adaptive-threshold",
+      "title": "Auto-adaptive thresholds for anomaly detection — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "3e732d6b33115d0372191537898eeb500053d3fc25e10d51ce83e49cca497a6f",
+      "crawledAt": "2026-08-23T14:59:25.800Z",
+      "relevance": "Score: 76 · Código: 0",
+      "extractedConcepts": [
+        "Auto-adaptive vs. static threshold",
+        "Threshold calculation",
+        "Related topics"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/ownership/ownership-classic/best-practices",
+      "title": "Best practices for entity ownership — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "45a6c5b3e531973e3bc15d2b9b2869f4b1a0bbd3161d9ca7c9227c60db4440d8",
+      "crawledAt": "2026-08-23T15:06:33.393Z",
+      "relevance": "Score: 78 · Código: 0",
+      "extractedConcepts": [
+        "Ownership assignment",
+        "Kubernetes",
+        "Tags",
+        "Advantages and uses of tags",
+        "Important considerations when using tags for ownership"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/anomaly-detection/adjust-sensitivity-anomaly-detection",
+      "title": "Adjust the sensitivity of anomaly detection — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "f2d9109978a1cd72044c1676c758613c1b221c0a073a09147111933571ba7982",
+      "crawledAt": "2026-08-23T15:09:56.118Z",
+      "relevance": "Score: 78 · Código: 0",
+      "extractedConcepts": [
+        "Related topics"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/infrastructure-observability/process-groups/monitoring/process-group-availability-monitoring-and-alerting",
+      "title": "Process group availability monitoring and alerting — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "6196f55477d68a2e47f84a7dbf6c9f1b5720529524ad8a822359b075dee42555",
+      "crawledAt": "2026-08-24T16:52:10.646Z",
+      "relevance": "Score: 76 · Código: 0",
+      "extractedConcepts": [
+        "Enable process-group availability monitoring",
+        "When to activate this setting"
+      ]
+    }
+  ],
+  "groundingChecks": [],
+  "createdAt": "2026-08-25T17:03:37.778Z",
+  "version": "2.0.0"
+}
