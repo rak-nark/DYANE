@@ -1,11 +1,11 @@
 ---
-formatVersion: "2.0.0"
+formatVersion: "3.0.0"
 id: "c90b9692f413f7ae"
 url: "https://docs.dynatrace.com/docs/deliver"
 title: "Software Delivery — Dynatrace Docs"
 domain: "general"
-crawledAt: "2026-08-23T14:57:43.658Z"
-contentHash: "b7df1b610c557b434f0deb2566457ccec741e18f0f85a243466fe8e36a8362d2"
+crawledAt: "2026-08-25T21:20:10.118Z"
+contentHash: "c9917a4e077532e978bda3860d6dbf40bf79b78cefb6d9035104e128ed5e55d2"
 source: "docs.dynatrace.com"
 ---
 
@@ -16,24 +16,7 @@ source: "docs.dynatrace.com"
 - Official URL: [https://docs.dynatrace.com/docs/deliver](https://docs.dynatrace.com/docs/deliver)
 - Domain: `general`
 - Document ID: `c90b9692f413f7ae`
-- Format version: `2.0.0`
-
-## Extracted Headings
-
-- Software Delivery
-- Release monitoring
-- Quality gates and release validation
-- Pipeline observability
-- Ownership
-- Configuration as Code
-- Backstage
-- Software Delivery Apps
-- Site Reliability Guardian
-- Ownership
-- Service-Level Objectives
-- Explore in Dynatrace Hub
-- Dynatrace Classic
-- Service-level objectives classic (SLOs)
+- Format version: `3.0.0`
 
 ## Extracted Code Blocks
 
@@ -41,51 +24,38 @@ source: "docs.dynatrace.com"
 
 ## Content
 
-Software Delivery — Dynatrace Docs 
 # Software Delivery
 
- Latest Dynatrace 
+- Latest Dynatrace
+- Overview
+- 2-min read
+- Updated on Apr 14, 2026
 
- Overview 
+Empower DevOps platform engineers, SREs, and development teams to deliver higher quality software, faster, and more securely. ### Release monitoring
 
- 2-min read 
-- Updated on Apr 14, 2026 
+Release monitoring enables an easy evaluation of the performance of individual release versions.### Quality gates and release validation
 
-Empower DevOps platform engineers, SREs, and development teams to deliver higher quality software, faster, and more securely. 
-### Release monitoring
+Validate the releases of your business-critical services.### Pipeline observability
 
-Release monitoring enables an easy evaluation of the performance of individual release versions. 
-### Quality gates and release validation
+With insights into your pipelines and processes, you can observe and analyze software engineering practices within an organization.### Ownership
 
-Validate the releases of your business-critical services. 
-### Pipeline observability
+Map team ownership to monitored entities for better collaboration, task assignment, incident and vulnerability response, and service-level management.### Configuration as Code
 
-With insights into your pipelines and processes, you can observe and analyze software engineering practices within an organization. 
-### Ownership
-
-Map team ownership to monitored entities for better collaboration, task assignment, incident and vulnerability response, and service-level management. 
-### Configuration as Code
-
-Learn how to use Dynatrace Configuration as Code. 
-### Backstage
+Learn how to use Dynatrace Configuration as Code.### Backstage
 
 Integrate Dynatrace into Backstage to level up developer experience. 
 ## Software Delivery Apps
- 
+ ![Site Reliability Guardian](https://dt-cdn.net/images/site-reliability-guardian-ec19b393a6.svg)
 ### Site Reliability Guardian
 
-Make the right release decisions and empower SREs to apply Service-Level Objectives (SLOs) for their critical services using Site Reliability Guardian. 
-### Ownership
+Make the right release decisions and empower SREs to apply Service-Level Objectives (SLOs) for their critical services using Site Reliability Guardian.### Ownership
 
-Ownership in the latest Dynatrace provides custom actions to define workflows integrating entity owners and their contact information. 
-### Service-Level Objectives
+Ownership in the latest Dynatrace provides custom actions to define workflows integrating entity owners and their contact information.### Service-Level Objectives
 
-With **Service-Level Objectives**, you can define and review your service-level objectives (SLOs) utilizing Dynatrace Query Language (DQL). 
-### Explore in Dynatrace Hub
+With **Service-Level Objectives**, you can define and review your service-level objectives (SLOs) utilizing Dynatrace Query Language (DQL). [### Explore in Dynatrace Hub
 
-Empower DevOps platform engineers, SREs, and development teams to deliver software faster, more securely, and of a higher quality. 
+Empower DevOps platform engineers, SREs, and development teams to deliver software faster, more securely, and of a higher quality.](https://www.dynatrace.com/hub/detail/automations/?internal_source=doc&internal_medium=link&internal_campaign=cross) 
 ## Dynatrace Classic
- 
-### Service-level objectives classic (SLOs)
+ ### Service-level objectives classic (SLOs)
 
 Service-level objectives classic (SLOs) enable DevOps teams to accelerate and scale their site reliability engineering (SRE) efforts.

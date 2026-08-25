@@ -10,9 +10,10 @@ Esta skill proporciona las instrucciones técnicas, validaciones y procedimiento
 ## 1. Fuentes Oficiales de Evidencia
 
 Esta skill ha sido generada y validada contra la documentación oficial de Dynatrace:
-- [Analyze SDLC events from your pipeline — Dynatrace Docs](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze) (*openpipeline*)
-- [Pipeline observability — Dynatrace Docs](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events) (*openpipeline*)
-- [Test pipeline observability — Dynatrace Docs](https://docs.dynatrace.com/docs/deliver/test-pipeline-observability) (*openpipeline*)
+- [Settings API - Ingest pipelines configuration (events.sdlc) schema table — Dynatrace Docs](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-pipelines) (*openpipeline*)
+- [Observe GitLab pipelines and merge requests with Dashboards and SDLC events — Dynatrace Docs](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-gitlab) (*openpipeline*)
+- [Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events — Dynatrace Docs](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-azdo) (*openpipeline*)
+- [Settings API - Ingest pipelines configuration (application.snapshots) schema table — Dynatrace Docs](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-application-snapshots-pipelines) (*openpipeline*)
 
 ## 2. Consultas y Comandos Operativos
 

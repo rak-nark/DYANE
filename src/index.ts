@@ -14,6 +14,8 @@ import {
   cmdToken,
   cmdDocsScrape,
   cmdDocsUpdate,
+  cmdDocsUpdateFormat,
+  cmdDocsRefreshVideos,
   cmdDocsSearch,
   cmdDocsStats,
   cmdDocsList,
@@ -78,8 +80,30 @@ function parseOptions(args: string[]): { options: CliOptions; rest: string[] } {
         if (Number.isFinite(value)) options.limit = value;
         break;
       }
+      case "--budget":
+      case "--max-bytes":
+      case "--maxBytes": {
+        const value = Number(args[++i]);
+        if (Number.isFinite(value)) options.budget = value;
+        break;
+      }
+      case "--max-code-chars":
+      case "--maxCodeChars": {
+        const value = Number(args[++i]);
+        if (Number.isFinite(value)) options.maxCodeChars = value;
+        break;
+      }
       case "--force": {
         options.force = true;
+        break;
+      }
+      case "--source": {
+        options.source = args[++i];
+        break;
+      }
+      case "--dry-run":
+      case "--dryRun": {
+        options.dryRun = true;
         break;
       }
       case "--name": {
@@ -161,6 +185,10 @@ async function main(): Promise<void> {
         await cmdDocsScrape(options);
       } else if (subCommand === "update") {
         await cmdDocsUpdate();
+      } else if (subCommand === "update-format" || subCommand === "migrate-format") {
+        await cmdDocsUpdateFormat(options);
+      } else if (subCommand === "refresh-videos" || subCommand === "videos") {
+        await cmdDocsRefreshVideos(options);
       } else if (subCommand === "search") {
         cmdDocsSearch(rest.slice(1).join(" ") || "", options);
       } else if (
@@ -176,7 +204,7 @@ async function main(): Promise<void> {
       } else if (subCommand === "list") {
         cmdDocsList(options);
       } else {
-        console.error(`Subcomando docs desconocido: ${subCommand}. Usa: stats | details | count | list | search | scrape | update`);
+        console.error(`Subcomando docs desconocido: ${subCommand}. Usa: stats | details | count | list | search | scrape | update | update-format`);
         process.exitCode = 1;
       }
       break;

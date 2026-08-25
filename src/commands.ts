@@ -4,7 +4,7 @@ import { runDtctl, checkDtctl } from "./dtctl.js";
 import { testMcpConnection } from "./mcp.js";
 import { apiFetch, ApiError } from "./http.js";
 import { tokenInfo, hasAnyToken, hasOAuthCredentials } from "./oauth.js";
-import { runScraper, loadDocsIndex, calculateDocsStorage } from "./docs/scraper.js";
+import { runScraper, loadDocsIndex, calculateDocsStorage, listStaleFormatDocs, DOC_FORMAT_VERSION } from "./docs/scraper.js";
 import { searchDocs } from "./docs/search.js";
 import { executeSkillPipeline, backfillSkillEvidence } from "./docs/skillPipeline.js";
 import { buildResearchDraft } from "./docs/distill.js";
@@ -40,7 +40,12 @@ export interface CliOptions {
   smoke?: boolean;
   domain?: string;
   limit?: number;
+  maxBytes?: number;
+  budget?: number;
+  maxCodeChars?: number;
   force?: boolean;
+  source?: string;
+  dryRun?: boolean;
   name?: string;
   skill?: string;
   ref?: string;
@@ -68,12 +73,10 @@ USO PRINCIPAL:
 DOCUMENTACIÓN Y BASE DE CONOCIMIENTO:
   dtx docs stats                      Muestra estadísticas y almacenamiento consumido por docs
   dtx docs details                    Alias con detalle de almacenamiento y desglose por dominio
-  dtx docs count                      Alias de dtx docs stats (conteo total de registros)
-  dtx docs list [--domain <dom>]      Lista los documentos descargados en el repositorio local
-  dtx docs scrape [--domain <dom>]    Descarga/ingiere docs oficiales (docs.dynatrace.com)
-  dtx docs update                     Actualización incremental de documentos modificados
-  dtx docs search "<query>"           Busca en la base de conocimiento local
-
+  dtx docs update-format              Migra al formato vigente solo los docs sin formato 3.0.0
+     [--domain <dom>] [--limit <n>]   (sin consultar sitemap; --dry-run para previsualizar)
+  dtx docs refresh-videos             Regenera solo los docs con videos para añadir sección "## Videos"
+     [--limit <n>]                    (--dry-run lista los documentos afectados)
 DESARROLLO AUTÓNOMO DE SKILLS:
   dtx skill draft "<capacidad>"       SEMIAUTOMÁTICO paso 1: destila la KB local en references/research-brief.md
      [--domain <dom>] [--limit <n>]   (determinista, 0 tokens IA; --limit = máx docs a destilar, default 24)
@@ -96,6 +99,8 @@ OPCIONES GLOBALES:
   --domain <dominio>                  Filtra por dominio (grail, k8s, openpipeline, appengine, etc.)
   --limit <n>                         Límite de resultados / páginas
   --force                             Fuerza re-descarga completa en scraper
+  --source docs|developer             Sitio del scraper: docs.dynatrace.com o developer.dynatrace.com
+  --dry-run                           Previsualiza cuántos docs migraría update-format sin descargar
   --smoke                             Modo de prueba sin credenciales
   --help, -h                          Muestra esta ayuda
 `.trim();
@@ -198,12 +203,67 @@ export async function cmdDocsScrape(options: CliOptions): Promise<void> {
     domain: options.domain,
     limit: options.limit,
     force: options.force,
+    source: options.source,
   });
 }
 
 export async function cmdDocsUpdate(): Promise<void> {
   console.log("[Docs] Ejecutando actualización incremental de documentación...");
   await runScraper({ force: false });
+}
+
+export async function cmdDocsUpdateFormat(options: CliOptions): Promise<void> {
+  const stale = listStaleFormatDocs({ domain: options.domain, source: options.source });
+
+  if (options.dryRun) {
+    if (options.output === "json") {
+      console.log(JSON.stringify({ total: stale.length, urls: stale.slice(0, options.limit ?? 50).map((d) => d.url) }, null, 2));
+      return;
+    }
+    console.log(`\n[Docs] Dry-run: ${stale.length} documentos requieren migración al formato ${DOC_FORMAT_VERSION} (no se descargó nada).`);
+    const byDomain: Record<string, number> = {};
+    for (const doc of stale) {
+      byDomain[doc.domain] = (byDomain[doc.domain] ?? 0) + 1;
+    }
+    for (const [dom, count] of Object.entries(byDomain).sort((a, b) => b[1] - a[1]).slice(0, 15)) {
+      console.log(`  - ${dom.padEnd(18)} ${count}`);
+    }
+    return;
+  }
+
+  console.log(`[Docs] Migración de formato: ${stale.length} documentos desactualizados serán re-descargados...`);
+  await runScraper({
+    staleFormatOnly: true,
+    domain: options.domain,
+    limit: options.limit,
+    source: options.source,
+  });
+}
+
+export async function cmdDocsRefreshVideos(options: CliOptions): Promise<void> {
+  const index = loadDocsIndex();
+  let withVideos = Object.values(index.documents).filter((doc) => doc.media?.some((item) => item.role === "video"));
+
+  if (options.domain) {
+    const targetDomain = options.domain.toLowerCase();
+    withVideos = withVideos.filter(
+      (doc) =>
+        doc.domain.toLowerCase() === targetDomain ||
+        doc.url.toLowerCase().includes(targetDomain),
+    );
+  }
+
+  if (options.dryRun) {
+    console.log(`\n[Docs] Dry-run: ${withVideos.length} documentos con videos en la KB (no se descargó nada).`);
+    for (const doc of withVideos.slice(0, options.limit ?? 20)) {
+      const count = doc.media?.filter((item) => item.role === "video").length ?? 0;
+      console.log(`  - [${count} video(s)] ${doc.title}`);
+    }
+    return;
+  }
+
+  console.log(`[Docs] Regenerando ${withVideos.length} documentos con videos (añade sección "## Videos")...`);
+  await runScraper({ urls: withVideos.map((doc) => doc.url), limit: options.limit });
 }
 
 export function cmdDocsSearch(query: string, options: CliOptions): void {
@@ -257,16 +317,22 @@ export async function cmdSkillCreate(prompt: string, options: CliOptions): Promi
 
 export function cmdSkillDraft(prompt: string, options: CliOptions): void {
   if (!prompt) {
-    console.error('Uso: dtx skill draft "<capacidad>" [--domain <dominio>] [--limit <n>] [--name <nombre>]');
+    console.error('Uso: dtx skill draft "<capacidad>" [--domain <dominio>] [--limit <n>] [--budget <bytes>] [--name <nombre>]');
     process.exitCode = 1;
     return;
   }
+
+  const maxDocs = options.limit ?? 40;
+  const maxBriefBytes = options.maxBytes ?? options.budget ?? 120_000;
+  const maxCodeChars = options.maxCodeChars ?? 3500;
 
   const res = buildResearchDraft({
     prompt,
     domain: options.domain,
     skillName: options.name,
-    maxDocs: options.limit ?? 24,
+    maxDocs,
+    maxBriefBytes,
+    maxCodeCharsPerBlock: maxCodeChars,
   });
 
   console.log(`\nDraft de investigación (semiautomático, paso 1):`);

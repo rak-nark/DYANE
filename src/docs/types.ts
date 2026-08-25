@@ -1,3 +1,11 @@
+export type MediaRole = "icon" | "diagram" | "screenshot" | "video" | "other";
+
+export interface DocMediaItem {
+  url: string;
+  alt: string;
+  role: MediaRole;
+}
+
 export interface DocMetadata {
   id: string;
   url: string;
@@ -12,6 +20,7 @@ export interface DocMetadata {
   headings: string[];
   codeBlocks: Array<{ language: string; code: string }>;
   links: Array<{ text: string; href: string }>;
+  media: DocMediaItem[];
   crawledAt: string;
   localPath: string;
   recordPath?: string;
@@ -40,6 +49,7 @@ export interface DocRecord {
   headings: string[];
   links: Array<{ text: string; href: string }>;
   codeBlocks: Array<{ language: string; code: string }>;
+  media: DocMediaItem[];
   textPreview: string;
 }
 

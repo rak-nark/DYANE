@@ -52,7 +52,7 @@ export function decomposeQueries(prompt: string): string[] {
   for (const t of tokens) {
     if (t.length >= 5) queries.add(t);
   }
-  return Array.from(queries).slice(0, 12);
+  return Array.from(queries).slice(0, 16);
 }
 
 /**
@@ -61,7 +61,7 @@ export function decomposeQueries(prompt: string): string[] {
 export function multiQuerySearch(queries: string[], options: SearchOptions = {}): SearchResult[] {
   const byUrl = new Map<string, SearchResult>();
   for (const q of queries) {
-    for (const res of searchDocs(q, { ...options, limit: options.limit ?? 25 })) {
+    for (const res of searchDocs(q, { ...options, limit: options.limit ?? 40 })) {
       const existing = byUrl.get(res.doc.url);
       if (!existing || res.score > existing.score) {
         byUrl.set(res.doc.url, { ...res, score: Math.max(res.score, existing?.score ?? 0) });
