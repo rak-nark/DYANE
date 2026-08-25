@@ -7,6 +7,7 @@ import { tokenInfo, hasAnyToken, hasOAuthCredentials } from "./oauth.js";
 import { runScraper, loadDocsIndex, calculateDocsStorage } from "./docs/scraper.js";
 import { searchDocs } from "./docs/search.js";
 import { executeSkillPipeline, backfillSkillEvidence } from "./docs/skillPipeline.js";
+import { buildResearchDraft } from "./docs/distill.js";
 import { validateSkill, listAllSkills } from "./docs/validator.js";
 import {
   buildScaffold,
@@ -74,8 +75,10 @@ DOCUMENTACIÓN Y BASE DE CONOCIMIENTO:
   dtx docs search "<query>"           Busca en la base de conocimiento local
 
 DESARROLLO AUTÓNOMO DE SKILLS:
-  dtx skill create "<solicitud>"      Genera una skill validada por el pipeline de 11 pasos
-  dtx skill validate <nombre>         Valida la trazabilidad y respaldo documental de una skill
+  dtx skill draft "<capacidad>"       SEMIAUTOMÁTICO paso 1: destila la KB local en references/research-brief.md
+     [--domain <dom>] [--limit <n>]   (determinista, 0 tokens IA; --limit = máx docs a destilar, default 24)
+  dtx skill create "<solicitud>"      Genera una skill validada por el pipeline de 11 pasos [--limit <n>]
+  dtx skill validate <nombre>         Valida trazabilidad documental + calidad de contenido
   dtx skill backfill <nombre>         Genera evidence.json para una skill buscando en la base documental local
   dtx skill list                      Lista todas las skills del entorno y su estado de verificación
 
@@ -233,7 +236,7 @@ export function cmdDocsSearch(query: string, options: CliOptions): void {
 
 export async function cmdSkillCreate(prompt: string, options: CliOptions): Promise<void> {
   if (!prompt) {
-    console.error('Uso: dtx skill create "<solicitud o capacidad>" [--domain <dominio>] [--force]');
+    console.error('Uso: dtx skill create "<solicitud o capacidad>" [--domain <dominio>] [--limit <n>] [--force]');
     process.exitCode = 1;
     return;
   }
@@ -242,6 +245,7 @@ export async function cmdSkillCreate(prompt: string, options: CliOptions): Promi
     prompt,
     domain: options.domain,
     skillName: options.name,
+    evidenceLimit: options.limit,
     autoDeploy: true,
     forceRecreate: options.force,
   });
@@ -249,6 +253,49 @@ export async function cmdSkillCreate(prompt: string, options: CliOptions): Promi
   if (result.status !== "SUCCESS" && result.status !== "REUSED") {
     process.exitCode = 1;
   }
+}
+
+export function cmdSkillDraft(prompt: string, options: CliOptions): void {
+  if (!prompt) {
+    console.error('Uso: dtx skill draft "<capacidad>" [--domain <dominio>] [--limit <n>] [--name <nombre>]');
+    process.exitCode = 1;
+    return;
+  }
+
+  const res = buildResearchDraft({
+    prompt,
+    domain: options.domain,
+    skillName: options.name,
+    maxDocs: options.limit ?? 24,
+  });
+
+  console.log(`\nDraft de investigación (semiautomático, paso 1):`);
+
+  if (res.status === "NO_EVIDENCE") {
+    console.error(`  [X] ${res.message}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  const s = res.stats;
+  console.log(`  - Skill objetivo:        ${s.skillName}`);
+  console.log(`  - Dominio:               ${s.domain}`);
+  console.log(`  - Consultas ejecutadas:  ${s.queriesRun} (multi-query)`);
+  console.log(`  - Candidatos encontrados:${s.candidatesFound}`);
+  console.log(`  - Docs destilados:       ${s.docsDistilled} (contenido completo leído de disco)`);
+  console.log(`  - Bloques de código:     ${s.codeBlocksExtracted} extraídos completos`);
+  console.log(`  - Encabezados (outline): ${s.headingsExtracted}`);
+  console.log(`  - Tamaño del brief:      ${(s.briefBytes / 1024).toFixed(1)} KB (~${s.estimatedTokens.toLocaleString()} tokens)`);
+  console.log(`  - Brief escrito en:      ${s.briefPath}`);
+  console.log(`  - Evidencia escrita en:  ${s.evidencePath}`);
+
+  console.log(`\n  Top fuentes:`);
+  for (const src of res.topSources) {
+    console.log(`    • [${src.score}] (${src.codeBlocks} bloques) ${src.title}`);
+  }
+
+  console.log(`\n  Siguiente paso (IA): leer SOLO references/research-brief.md y sintetizar SKILL.md.`);
+  console.log(`  Luego validar con: dtx skill validate ${s.skillName}\n`);
 }
 
 export function cmdSkillValidate(skillName: string): void {
@@ -264,6 +311,12 @@ export function cmdSkillValidate(skillName: string): void {
   console.log(`  - Evidencia (evidence.json): ${res.hasEvidence ? "PRESENTE (OK)" : "FALTA"}`);
   console.log(`  - Fuentes documentales:     ${res.backedByDocsCount} páginas oficiales`);
   console.log(`  - Estado de Verificación:   ${res.status}`);
+  if (res.quality && res.quality !== "N/A") {
+    console.log(`  - Calidad de contenido:     ${res.quality} (${(res.sectionCount ?? 0)} secciones H2, ${((res.contentBytes ?? 0) / 1024).toFixed(1)} KB)`);
+    for (const w of res.qualityWarnings) {
+      console.log(`      ⚠ ${w}`);
+    }
+  }
 
   if (res.sources.length > 0) {
     console.log(`  - Fuentes respaldadas:`);
@@ -284,7 +337,7 @@ export function cmdSkillBackfill(skillName: string, options: CliOptions): void {
   const res = backfillSkillEvidence({
     skillName,
     domain: options.domain,
-    limit: options.limit,
+    limit: options.limit ?? 15,
   });
 
   console.log(`\nBackfill de evidencia documental: Skill '${res.skillName}'`);
@@ -330,19 +383,22 @@ export function cmdSkillList(): void {
     if (group.length === 0) continue;
 
     console.log(`\n  ${family.label}`);
-    console.log(`  ${"SKILL".padEnd(32)}   ${"ESTADO".padEnd(12)}   ${"FUENTES".padEnd(8)}   DETALLE`);
-    console.log("  " + "-".repeat(75));
+    console.log(`  ${"SKILL".padEnd(32)}   ${"ESTADO".padEnd(12)}   ${"FUENTES".padEnd(8)}   ${"CALIDAD".padEnd(8)}   DETALLE`);
+    console.log("  " + "-".repeat(90));
 
     for (const s of group) {
       const statusLabel = s.status === "VERIFIED" ? "VERIFICADA" : s.status === "PARTIAL" ? "PARCIAL   " : "LEGACY    ";
       const sourcesCount = `${s.backedByDocsCount} docs`.padEnd(8);
+      const quality = (s.quality ?? "N/A").padEnd(8);
       const detail =
-        s.status === "VERIFIED"
-          ? "100% respaldada por docs"
-          : s.validFrontmatter
-            ? "Frontmatter OK, sin evidence.json"
-            : "Incompleta o frontmatter inválido";
-      console.log(`  ${s.skillName.padEnd(32)}   ${statusLabel.padEnd(12)}   ${sourcesCount}   ${detail}`);
+        s.qualityWarnings.length > 0
+          ? `avisos: ${s.qualityWarnings[0]}`
+          : s.status === "VERIFIED"
+            ? "100% respaldada por docs"
+            : s.validFrontmatter
+              ? "Frontmatter OK, sin evidence.json"
+              : "Incompleta o frontmatter inválido";
+      console.log(`  ${s.skillName.padEnd(32)}   ${statusLabel.padEnd(12)}   ${sourcesCount}   ${quality}   ${detail}`);
     }
   }
   console.log("");

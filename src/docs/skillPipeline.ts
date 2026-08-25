@@ -14,6 +14,7 @@ export interface SkillRequestInput {
   prompt: string;
   domain?: string;
   skillName?: string;
+  evidenceLimit?: number;
   autoDeploy?: boolean;
   forceRecreate?: boolean;
 }
@@ -141,7 +142,7 @@ export async function executeSkillPipeline(input: SkillRequestInput): Promise<Pi
 
   // Paso 3 & 4: Búsqueda en Knowledge Base y Recuperación de Evidencia
   console.log(`[Pipeline] 3. Consultando Knowledge Base local...`);
-  const evidenceList = extractEvidence(input.prompt, detectedDomain, 8);
+  const evidenceList = extractEvidence(input.prompt, detectedDomain, input.evidenceLimit ?? 20);
 
   console.log(`[Pipeline] 4. Evidencia técnica recuperada: ${evidenceList.length} fuentes`);
   for (const ev of evidenceList.slice(0, 3)) {

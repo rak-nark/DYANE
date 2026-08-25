@@ -18,6 +18,7 @@ import {
   cmdDocsStats,
   cmdDocsList,
   cmdSkillCreate,
+  cmdSkillDraft,
   cmdSkillValidate,
   cmdSkillBackfill,
   cmdSkillList,
@@ -186,6 +187,8 @@ async function main(): Promise<void> {
       const subCommand = rest[0];
       if (subCommand === "create") {
         await cmdSkillCreate(rest.slice(1).join(" ") || "", options);
+      } else if (subCommand === "draft") {
+        cmdSkillDraft(rest.slice(1).join(" ") || "", options);
       } else if (subCommand === "validate") {
         cmdSkillValidate(rest[1] ?? "");
       } else if (subCommand === "backfill") {
@@ -193,7 +196,7 @@ async function main(): Promise<void> {
       } else if (subCommand === "list" || !subCommand) {
         cmdSkillList();
       } else {
-        console.error(`Subcomando skill desconocido: ${subCommand}. Usa: create | validate | backfill | list`);
+        console.error(`Subcomando skill desconocido: ${subCommand}. Usa: draft | create | validate | backfill | list`);
         process.exitCode = 1;
       }
       break;

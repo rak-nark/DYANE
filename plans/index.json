@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-24T17:34:37.807Z",
-  "totalPlans": 3,
+  "lastUpdated": "2026-08-24T17:44:40.347Z",
+  "totalPlans": 4,
   "plans": [
     {
       "id": "PLAN-2026-0001",
@@ -35,6 +35,17 @@
       "file": "PLAN-2026-0003-implementar-observabilidad-360-de-proceso-de-negocio-con-pil.md",
       "created": "2026-08-24T17:32:21.000Z",
       "updated": "2026-08-24T17:34:00.000Z"
+    },
+    {
+      "id": "PLAN-2026-0004",
+      "title": "Diagnosticar saturacion de memoria OOMKilled y reinicios de pods en cluster Kubernetes de produccion",
+      "status": "in-progress",
+      "priority": "high",
+      "originType": "skill-reference",
+      "skill": "dynatrace-kubernetes",
+      "file": "PLAN-2026-0004-diagnosticar-saturacion-de-memoria-oomkilled-y-reinicios-de-.md",
+      "created": "2026-08-24T17:44:11.000Z",
+      "updated": "2026-08-24T17:45:00.000Z"
     }
   ]
 }
