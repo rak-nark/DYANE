@@ -1,0 +1,623 @@
+{
+  "skillName": "dynatrace-diccionario",
+  "targetDomain": "general",
+  "requestedCapability": "semantic dictionary data dictionary topology entity types monitored entities built-in semantic fields",
+  "classification": {
+    "skillType": "draft-research-brief",
+    "domain": "general",
+    "objective": "Destilar documentación oficial para la síntesis de la skill 'dynatrace-diccionario'",
+    "applicableDocCategories": [
+      "general"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Brief generado desde 40 documentos oficiales completos (16 consultas multi-query)."
+  },
+  "sources": [
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid",
+      "title": "Hybrid & Multicloud — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "0f0e11b81d7ee284e2527253386ba032b6d39f037d14a8694b18d12fc29e7e32",
+      "crawledAt": "2026-08-25T21:48:04.021Z",
+      "relevance": "Score: 4912 · Código: 187",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "API gateway REST APIS",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/networking",
+      "title": "Networking — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "b11726eb6806ed87df05c10527f24016d90457613c01bb750e3306374ad916e9",
+      "crawledAt": "2026-08-25T21:48:05.873Z",
+      "relevance": "Score: 4804 · Código: 186",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "AAAA",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "6dbb00ad3d0bec5a0c1a05b82d3c13f1b5303338b8127c907ec1a5f0202ba2ab",
+      "crawledAt": "2026-08-25T21:19:33.611Z",
+      "relevance": "Score: 1283 · Código: 264",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v8/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "45b3ad7fabe3fe25b21a680a8dff13260989ea6de91076dc219127c33aa145b1",
+      "crawledAt": "2026-08-25T21:19:34.152Z",
+      "relevance": "Score: 1283 · Código: 264",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v7/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "9872b1fec909ea92ef139dfc9313b11b899583740d08e43b7ea58029169c31b7",
+      "crawledAt": "2026-08-25T21:19:33.920Z",
+      "relevance": "Score: 1278 · Código: 263",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v6/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "dd2918246a4925e7511af1a878cedd54099dd9db588e7a5a8ac3872f9e965897",
+      "crawledAt": "2026-08-25T21:19:34.017Z",
+      "relevance": "Score: 1268 · Código: 259",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v5/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "9c0d5e092f5dd50763388d27911c143cfd9f5a062a0627555415b60e7b309d3d",
+      "crawledAt": "2026-08-25T21:19:33.784Z",
+      "relevance": "Score: 1031 · Código: 227",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/v4/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "0a825618c6f200fb7d3beeb65e8fd6e93a566926ede1df7ab4d2cbb7a82cd95c",
+      "crawledAt": "2026-08-25T21:19:33.701Z",
+      "relevance": "Score: 1018 · Código: 222",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/compute",
+      "title": "Compute — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "dfe8b60c1f93888987cf66a600fa5ad21be8d749433c7954d52b69fa7f764203",
+      "crawledAt": "2026-08-25T21:48:01.595Z",
+      "relevance": "Score: 1870 · Código: 70",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Application types",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/migration",
+      "title": "Migration — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "ab9d0577915f848ac9a0d8d10c94aa5bf0034ca2e5c4f15b6fbcb06b62806b48",
+      "crawledAt": "2026-08-25T21:48:04.477Z",
+      "relevance": "Score: 1850 · Código: 67",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "AKS assessment cluster",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/integration",
+      "title": "Integration — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "637aeef26aa3d71acce09dd0d1da42a4641e592e00dc0bfa18b2c17f812d5c87",
+      "crawledAt": "2026-08-25T21:48:03.202Z",
+      "relevance": "Score: 1648 · Código: 61",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "API center",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/compute",
+      "title": "Google Compute Engine — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "ef99dd384150ca96ae0913c065e9ce0b03adb6881a3175ff649beb8e1ba06c4d",
+      "crawledAt": "2026-08-25T21:48:16.919Z",
+      "relevance": "Score: 1695 · Código: 62",
+      "extractedConcepts": [
+        "Cloud Armor network edge security service",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/dt-entities",
+      "title": "Classic topology — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "a83a26921b627ee54a279185927f3d89a5ca318ee63385235e8bd3e75620876e",
+      "crawledAt": "2026-08-25T21:47:43.621Z",
+      "relevance": "Score: 1267 · Código: 107",
+      "extractedConcepts": [
+        "Query",
+        "Entity relationships",
+        "Entity relationship fields",
+        "Relationship mapping table",
+        "AWS Application Load Balancer (Classic)"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/monitoring",
+      "title": "Monitor — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "6149c0bfee1ac59e6e76a4a32a1d37ccd443eb1377bb39669915ca23f8df2522",
+      "crawledAt": "2026-08-25T21:48:04.591Z",
+      "relevance": "Score: 1164 · Código: 42",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Activity log alerts",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/containers",
+      "title": "Containers — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "7995aa0fe71381a2527567866f3ab722ac3ca2869f5a679a7d421f7e7c9a521c",
+      "crawledAt": "2026-08-25T21:48:00.952Z",
+      "relevance": "Score: 1107 · Código: 41",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "AKS AI managers",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/analytics",
+      "title": "Analytics — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "8f92365859528cf4f46abdd337b0ded2118e63178cc60ab4e102784598e2d29e",
+      "crawledAt": "2026-08-25T21:48:01.042Z",
+      "relevance": "Score: 1185 · Código: 39",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Access connectors",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/databases",
+      "title": "Databases — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c0b026eee8b927c34666b9975acab01ec8d2ce6364e4a047b72db45385592426",
+      "crawledAt": "2026-08-25T21:48:02.029Z",
+      "relevance": "Score: 1141 · Código: 38",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Azure SQL Elastic pool",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/space-5g",
+      "title": "5G & Space — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "f5ccd3354718367c5a6b7e00cef6bbb6874f9130e270fabac63da1fbb133401d",
+      "crawledAt": "2026-08-25T21:48:05.534Z",
+      "relevance": "Score: 903 · Código: 33",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Access bridges",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/web",
+      "title": "Web — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "aa42a62ed13a49db9dd2cce941ca06dd4f1fa702afefc9e7e03edac23ab39792",
+      "crawledAt": "2026-08-25T21:48:06.999Z",
+      "relevance": "Score: 877 · Código: 32",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "API",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/aws/ec2",
+      "title": "Amazon EC2 — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "39d93ea777e2555fffead64068f85863e8f51b7ed522513f0cd35a1c4f7fd81a",
+      "crawledAt": "2026-08-25T21:47:54.170Z",
+      "relevance": "Score: 764 · Código: 36",
+      "extractedConcepts": [
+        "AWS Client VPN endpoint",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Cloud entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/partner",
+      "title": "Partner & ISV Services — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "6f042c3cbf17558d8fbb90f717cedb334fd9dd4d39ccd608890052701a6ac886",
+      "crawledAt": "2026-08-25T21:48:05.944Z",
+      "relevance": "Score: 858 · Código: 29",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Agreements",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/ai",
+      "title": "AI & Machine Learning — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "e306d7fc4fd4a63c509535fe142c43817e89f9d3519caf008bd4e915ff39d31a",
+      "crawledAt": "2026-08-25T21:48:00.256Z",
+      "relevance": "Score: 759 · Código: 27",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Accounts",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/storage",
+      "title": "Storage — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "f9c9303e55b0d78162038cac560c074647a61917d3723cc01a8fff140ea5ed31",
+      "crawledAt": "2026-08-25T21:48:06.363Z",
+      "relevance": "Score: 750 · Código: 27",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Active directory configs",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/aiplatform",
+      "title": "Vertex AI — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "14ce31f123acdad6cdcd838ce48fc904959e21a9bb5a19ebc13e04c0e7138696",
+      "crawledAt": "2026-08-25T21:48:10.063Z",
+      "relevance": "Score: 804 · Código: 26",
+      "extractedConcepts": [
+        "Vertex AI NAS job",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/iot",
+      "title": "Internet of Things — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "329a019fafc7cbd4529fdba27dd11bd1b4377cf54d1e57a125e7957fc30c21cd",
+      "crawledAt": "2026-08-25T21:48:03.557Z",
+      "relevance": "Score: 705 · Código: 25",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Accounts",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/fields",
+      "title": "Global field reference — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "69dad95351888111830ae23b3ef6bdeaf87a776e38329f75e7fc71f1ee1e316b",
+      "crawledAt": "2026-08-25T21:47:42.358Z",
+      "relevance": "Score: 835 · Código: 1",
+      "extractedConcepts": [
+        "Base fields",
+        "Actor",
+        "Actor fields",
+        "Adobe",
+        "Adobe fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/networkservices",
+      "title": "Network Services — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "8c1cdc040deb2f3f633bcb0fb27d5bba9fc16f7c5b34f96a35b938af070026e7",
+      "crawledAt": "2026-08-25T21:48:27.796Z",
+      "relevance": "Score: 534 · Código: 17",
+      "extractedConcepts": [
+        "Network Services HTTP route",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/developer-tools",
+      "title": "Developer Tools — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "36b07477efff01e7f80bcc606f3215d0a482061c22c99b89ef19882cc6b5093c",
+      "crawledAt": "2026-08-25T21:48:01.978Z",
+      "relevance": "Score: 501 · Código: 17",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "App configuration store",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/dataplex",
+      "title": "Dataplex — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "2c9f92fbb04c2b43f634e9dd396a76f6ede6e5e78ebf799141d7ebb06ad2aab8",
+      "crawledAt": "2026-08-25T21:48:19.012Z",
+      "relevance": "Score: 528 · Código: 12",
+      "extractedConcepts": [
+        "Dataplex aspect type",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/azure-stack",
+      "title": "Azure Stack — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "dd81e819f4be604fce9e937674ab3f75ea02442396b4c7f4667e32ec23f71613",
+      "crawledAt": "2026-08-25T21:48:00.983Z",
+      "relevance": "Score: 393 · Código: 13",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "Azure Fabric admin fabriclocations",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/dataform",
+      "title": "Dataform — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "743c830d73e15bb12a492b521c5091ddbb6fbd7590fb5dfb864de47f484f407b",
+      "crawledAt": "2026-08-25T21:48:18.157Z",
+      "relevance": "Score: 395 · Código: 8",
+      "extractedConcepts": [
+        "Dataform compilation result",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/core",
+      "title": "Core & Platform — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "cce3114105bc294c4d451dd67e9853acad372a6d09acbce56793c4a0ff277d58",
+      "crawledAt": "2026-08-25T21:48:01.846Z",
+      "relevance": "Score: 316 · Código: 10",
+      "extractedConcepts": [
+        "Query",
+        "Permission fields",
+        "App links",
+        "ID input",
+        "Base entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/vmmigration",
+      "title": "VM Migration — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "98a1ac369ccf139bf224faaf151c62d406b7531e46ba7d3afdbf7060bf43a700",
+      "crawledAt": "2026-08-25T21:48:34.244Z",
+      "relevance": "Score: 340 · Código: 9",
+      "extractedConcepts": [
+        "VM Migration clone job",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/clouddeploy",
+      "title": "Deploy — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "e2c0ab62a5ba2d450565c8e7a95a49f39083a271a9b99550bb73fd57eadb7b76",
+      "crawledAt": "2026-08-25T21:48:15.488Z",
+      "relevance": "Score: 332 · Código: 9",
+      "extractedConcepts": [
+        "Automation",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/netapp",
+      "title": "NetApp — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "74864b4bf8b690e20fac828e07261782a780d0b463330e14eaf4a619f4c857c0",
+      "crawledAt": "2026-08-25T21:48:26.828Z",
+      "relevance": "Score: 330 · Código: 9",
+      "extractedConcepts": [
+        "NetApp Active Directory",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/db/mssql",
+      "title": "SQL Server — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "3727ce46d9010af3298d09e00853d52ec4dd4b6d9ce238fc562afe6362d9733e",
+      "crawledAt": "2026-08-25T21:48:08.414Z",
+      "relevance": "Score: 356 · Código: 9",
+      "extractedConcepts": [
+        "SQL Server availability database",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Database entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/backupdr",
+      "title": "Backup and DR service — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "684a0c63c9bd83a7e2be4da54a819987f18ceca82f142448edb6c642df95126f",
+      "crawledAt": "2026-08-25T21:48:12.611Z",
+      "relevance": "Score: 333 · Código: 8",
+      "extractedConcepts": [
+        "Backup and DR backup",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/aws/rds",
+      "title": "Amazon Relational Database Service — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "085793f0ef30542577a945f30b3d7e1d1bf84a3998831de1e7aef806a7fe54da",
+      "crawledAt": "2026-08-25T21:47:58.694Z",
+      "relevance": "Score: 328 · Código: 6",
+      "extractedConcepts": [
+        "Amazon Relational Database Service DB cluster",
+        "Query",
+        "ID input",
+        "Base entity fields",
+        "Cloud entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/db/oracle",
+      "title": "Oracle Database — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c214b68e23b425cbc331d266e46f81801ddfb3cb3ea9d6ccb6f6b733e5acdd1b",
+      "crawledAt": "2026-08-25T21:48:08.799Z",
+      "relevance": "Score: 310 · Código: 8",
+      "extractedConcepts": [
+        "Query",
+        "Oracle Database ASM disk group",
+        "ID input",
+        "Base entity fields",
+        "Database entity fields"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/gcp/dataproc",
+      "title": "Dataproc — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "868634177a7155eb22ff1546b1438237fb6a574071af1a187791bd6bd67592a8",
+      "crawledAt": "2026-08-25T21:48:18.971Z",
+      "relevance": "Score: 324 · Código: 6",
+      "extractedConcepts": [
+        "Dataproc autoscaling policy",
+        "Query",
+        "Base entity fields",
+        "GCP resource fields",
+        "GCP entity fields"
+      ]
+    }
+  ],
+  "groundingChecks": [],
+  "createdAt": "2026-09-02T03:01:52.374Z",
+  "version": "2.0.0"
+}

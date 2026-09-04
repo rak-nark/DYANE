@@ -89,8 +89,9 @@ El comando `dtx skill draft` permite calibrar el volumen de destilación según 
 # 1. Validar trazabilidad y calidad
 .\dtx.cmd skill validate <nombre>
 
-# 2. Desplegar en el directorio de agentes (si no estuviese ya enlazado)
-Copy-Item -Recurse -Force "skills\<nombre>" ".agents\skills\<nombre>"
+# 2. Desplegar en el directorio de agentes (copiando el contenido para evitar anidación)
+if (-not (Test-Path ".agents\skills\<nombre>")) { New-Item -ItemType Directory -Path ".agents\skills\<nombre>" }
+Copy-Item -Recurse -Force "skills\<nombre>\*" ".agents\skills\<nombre>\"
 ```
 
 ---
