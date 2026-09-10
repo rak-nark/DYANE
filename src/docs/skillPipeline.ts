@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
-import { extractEvidence, searchDocs } from "./search.js";
+import { basename, join, resolve } from "node:path";
+import { dedupeNearDuplicates, extractEvidence, searchDocs } from "./search.js";
 import { classifyDomain } from "./scraper.js";
 import { validateSkill, type SkillValidationSummary } from "./validator.js";
 import type { EvidenceItem, SkillEvidenceReport } from "./types.js";
@@ -19,6 +19,18 @@ export interface SkillRequestInput {
   forceRecreate?: boolean;
 }
 
+function uniqueByUrl(items: EvidenceItem[]): EvidenceItem[] {
+  const seen = new Set<string>();
+  const out: EvidenceItem[] = [];
+  for (const ev of items) {
+    const url = ev.url.trim();
+    if (seen.has(url)) continue;
+    seen.add(url);
+    out.push(ev);
+  }
+  return dedupeNearDuplicates(out);
+}
+
 export interface PipelineResult {
   step: number;
   status: "SUCCESS" | "REUSED" | "NEEDS_INFO" | "FAILED";
@@ -34,8 +46,14 @@ export interface PipelineResult {
  * Busca si ya existe una skill que cubra la solicitud para reutilizarla.
  */
 export function findMatchingSkill(prompt: string, domain?: string): { name: string; description: string; score: number } | null {
-  if (!existsSync(SKILLS_DIR)) return null;
-  const entries = readdirSync(SKILLS_DIR, { withFileTypes: true });
+  const bases = [SKILLS_DIR, AGENTS_SKILLS_DIR];
+  const entries: string[] = [];
+  for (const base of bases) {
+    if (!existsSync(base)) continue;
+    for (const entry of readdirSync(base, { withFileTypes: true })) {
+      if (entry.isDirectory() && entry.name !== "references") entries.push(join(base, entry.name));
+    }
+  }
 
   const tokens = prompt
     .toLowerCase()
@@ -45,16 +63,15 @@ export function findMatchingSkill(prompt: string, domain?: string): { name: stri
 
   let bestMatch: { name: string; description: string; score: number } | null = null;
 
-  for (const entry of entries) {
-    if (!entry.isDirectory() || entry.name === "references") continue;
-    const skillMdPath = join(SKILLS_DIR, entry.name, "SKILL.md");
+  for (const skillDir of entries) {
+    const skillMdPath = join(skillDir, "SKILL.md");
     if (!existsSync(skillMdPath)) continue;
 
     try {
       const content = readFileSync(skillMdPath, "utf8");
       const nameMatch = content.match(/name:\s*([^\r\n]+)/i);
       const descMatch = content.match(/description:\s*([^\r\n]+)/i);
-      const skillName = nameMatch ? nameMatch[1].trim() : entry.name;
+      const skillName = nameMatch ? nameMatch[1].trim() : basename(skillDir);
       const skillDesc = descMatch ? descMatch[1].trim() : "";
 
       let score = 0;
@@ -116,7 +133,8 @@ export async function executeSkillPipeline(input: SkillRequestInput): Promise<Pi
       console.log(`  - Puntuación:   ${existing.score}`);
       console.log(`[Pipeline] 💡 Reutilizando skill existente sin necesidad de crearla de nuevo.\n`);
 
-      const skillDir = join(SKILLS_DIR, existing.name);
+      const skillCandidates = [SKILLS_DIR, AGENTS_SKILLS_DIR, CORE_SKILLS_DIR].map((base) => join(base, existing.name));
+      const skillDir = skillCandidates.find((dir) => existsSync(join(dir, "SKILL.md"))) ?? skillCandidates[0];
       const skillContent = existsSync(join(skillDir, "SKILL.md")) ? readFileSync(join(skillDir, "SKILL.md"), "utf8") : undefined;
 
       return {
@@ -142,9 +160,9 @@ export async function executeSkillPipeline(input: SkillRequestInput): Promise<Pi
 
   // Paso 3 & 4: Búsqueda en Knowledge Base y Recuperación de Evidencia
   console.log(`[Pipeline] 3. Consultando Knowledge Base local...`);
-  const evidenceList = extractEvidence(input.prompt, detectedDomain, input.evidenceLimit ?? 20);
+  const evidenceList = uniqueByUrl(extractEvidence(input.prompt, detectedDomain, input.evidenceLimit ?? Number.POSITIVE_INFINITY));
 
-  console.log(`[Pipeline] 4. Evidencia técnica recuperada: ${evidenceList.length} fuentes`);
+  console.log(`[Pipeline] 4. Evidencia técnica recuperada: ${evidenceList.length} fuentes (URLs únicas)`);
   for (const ev of evidenceList.slice(0, 3)) {
     console.log(`  • [${ev.domain}] ${ev.title} -> ${ev.url}`);
   }
@@ -404,7 +422,7 @@ export function backfillSkillEvidence(input: BackfillInput): BackfillResult {
 
   const query = description || frontmatterName;
   const detectedDomain = input.domain ?? classifyDomain(`${frontmatterName} ${description}`);
-  const evidenceList = extractEvidence(query, input.domain, input.limit ?? 8);
+  const evidenceList = uniqueByUrl(extractEvidence(query, input.domain, input.limit ?? Number.POSITIVE_INFINITY));
 
   if (evidenceList.length === 0) {
     return {

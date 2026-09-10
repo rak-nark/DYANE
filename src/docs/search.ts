@@ -23,6 +23,39 @@ export function isNoiseUrl(url: string): boolean {
   return NOISE_URL_PATTERNS.some((p) => p.test(url));
 }
 
+/**
+ * Clave canónica para detectar URLs casi-duplicadas: ignora el sufijo versionado
+ * (/v<digits>/), el query string, el ancla y la barra final. Ej:
+ * .../client-classic-environment-v2/v6/ y .../client-classic-environment-v2/ colapsan.
+ */
+export function canonicalUrlKey(url: string): string {
+  return url
+    .trim()
+    .toLowerCase()
+    .replace(/#.*$/, "")
+    .replace(/\/+$/, "")
+    .replace(/\/v\d+\/?$/, "");
+}
+
+/** Filtra una lista de evidencia manteniendo una única entrada por clave canónica (la de mayor score). */
+export function dedupeNearDuplicates<T extends { url: string; relevanceScore?: number }>(items: T[]): T[] {
+  const seen = new Map<string, T>();
+  const out: T[] = [];
+  for (const item of items) {
+    const key = canonicalUrlKey(item.url);
+    const existing = seen.get(key);
+    if (!existing) {
+      seen.set(key, item);
+      out.push(item);
+    } else if ((item.relevanceScore ?? 0) > (existing.relevanceScore ?? 0)) {
+      const idx = out.indexOf(existing);
+      out[idx] = item;
+      seen.set(key, item);
+    }
+  }
+  return out;
+}
+
 export function tokenize(text: string): string[] {
   const STOPWORDS = new Set([
     "que", "como", "para", "con", "los", "las", "una", "del", "por", "sus",
@@ -199,8 +232,13 @@ function extractSnippet(text: string, terms: string[]): string {
 export function extractEvidence(query: string, domain?: string, limit = 20): EvidenceItem[] {
   const searchResults = searchDocs(query, { domain, limit });
   const evidence: EvidenceItem[] = [];
+  const seenUrls = new Set<string>();
 
   for (const res of searchResults) {
+    const url = res.doc.url.trim();
+    if (seenUrls.has(url)) continue;
+    seenUrls.add(url);
+
     let bestCode: string | undefined;
     if (res.doc.codeBlocks && res.doc.codeBlocks.length > 0) {
       const blocks = res.doc.codeBlocks

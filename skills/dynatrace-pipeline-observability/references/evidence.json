@@ -17,12 +17,23 @@
   },
   "sources": [
     {
+      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze",
+      "title": "Analyze SDLC events from your pipeline — Dynatrace Docs",
+      "domain": "openpipeline",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 43",
+      "extractedConcepts": [
+        "Analyze SDLC events from your pipeline"
+      ]
+    },
+    {
       "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-pipelines",
       "title": "Settings API - Ingest pipelines configuration (events.sdlc) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 59",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 39",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (events.sdlc) schema table"
       ]
@@ -32,8 +43,8 @@
       "title": "Observe GitLab pipelines and merge requests with Dashboards and SDLC events — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 49",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 33",
       "extractedConcepts": [
         "Observe GitLab pipelines and merge requests with Dashboards and SDLC events"
       ]
@@ -43,10 +54,32 @@
       "title": "Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 46",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 28",
       "extractedConcepts": [
         "Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/platform/openpipeline/use-cases/pipeline-groups-multicloud",
+      "title": "Configure multi-cloud ingest governance with pipeline groups — Dynatrace Docs",
+      "domain": "openpipeline",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 22",
+      "extractedConcepts": [
+        "Configure multi-cloud ingest governance with pipeline groups"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events",
+      "title": "Pipeline observability — Dynatrace Docs",
+      "domain": "openpipeline",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
+      "extractedConcepts": [
+        "Pipeline observability"
       ]
     },
     {
@@ -54,8 +87,8 @@
       "title": "Settings API - Ingest pipelines configuration (application.snapshots) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (application.snapshots) schema table"
       ]
@@ -65,8 +98,8 @@
       "title": "Settings API - Ingest pipelines configuration (bizevents) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (bizevents) schema table"
       ]
@@ -76,8 +109,8 @@
       "title": "Settings API - Ingest pipelines configuration (davis.events) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (davis.events) schema table"
       ]
@@ -87,8 +120,8 @@
       "title": "Settings API - Ingest pipelines configuration (davis.problems) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (davis.problems) schema table"
       ]
@@ -98,10 +131,32 @@
       "title": "Settings API - Ingest pipelines configuration (events) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (events) schema table"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-data-forwarding",
+      "title": "Settings API - Data forwarding configuration (events.sdlc) schema table — Dynatrace Docs",
+      "domain": "openpipeline",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
+      "extractedConcepts": [
+        "Settings API - Data forwarding configuration (events.sdlc) schema table"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-ingest-sources",
+      "title": "Settings API - Ingest sources configuration (events.sdlc) schema table — Dynatrace Docs",
+      "domain": "openpipeline",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
+      "extractedConcepts": [
+        "Settings API - Ingest sources configuration (events.sdlc) schema table"
       ]
     },
     {
@@ -109,8 +164,8 @@
       "title": "Settings API - Ingest pipelines configuration (events.security) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (events.security) schema table"
       ]
@@ -120,8 +175,8 @@
       "title": "Settings API - Ingest pipelines configuration (logs) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (logs) schema table"
       ]
@@ -131,8 +186,8 @@
       "title": "Settings API - Ingest pipelines configuration (metrics) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (metrics) schema table"
       ]
@@ -142,8 +197,8 @@
       "title": "Settings API - Ingest pipelines configuration (security.events) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (security.events) schema table"
       ]
@@ -153,8 +208,8 @@
       "title": "Settings API - Ingest pipelines configuration (smartscape.events) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (smartscape.events) schema table"
       ]
@@ -164,8 +219,8 @@
       "title": "Settings API - Ingest pipelines configuration (spans) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (spans) schema table"
       ]
@@ -175,177 +230,14 @@
       "title": "Settings API - Ingest pipelines configuration (system.events) schema table — Dynatrace Docs",
       "domain": "openpipeline",
       "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
+      "crawledAt": "2026-09-09T23:31:34.237Z",
+      "relevance": "Score: 21",
       "extractedConcepts": [
         "Settings API - Ingest pipelines configuration (system.events) schema table"
-      ]
-    },
-    {
-      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-user-events-pipelines",
-      "title": "Settings API - Ingest pipelines configuration (user.events) schema table — Dynatrace Docs",
-      "domain": "openpipeline",
-      "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
-      "extractedConcepts": [
-        "Settings API - Ingest pipelines configuration (user.events) schema table"
-      ]
-    },
-    {
-      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-usersessions-pipelines",
-      "title": "Settings API - Ingest pipelines configuration (usersessions) schema table — Dynatrace Docs",
-      "domain": "openpipeline",
-      "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 37",
-      "extractedConcepts": [
-        "Settings API - Ingest pipelines configuration (usersessions) schema table"
-      ]
-    },
-    {
-      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-data-forwarding",
-      "title": "Settings API - Data forwarding configuration (events.sdlc) schema table — Dynatrace Docs",
-      "domain": "openpipeline",
-      "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 34",
-      "extractedConcepts": [
-        "Settings API - Data forwarding configuration (events.sdlc) schema table"
-      ]
-    },
-    {
-      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze",
-      "title": "Analyze SDLC events from your pipeline — Dynatrace Docs",
-      "domain": "openpipeline",
-      "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 33",
-      "extractedConcepts": [
-        "Analyze SDLC events from your pipeline"
-      ]
-    },
-    {
-      "url": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/deployment-observability-use-case-argocd",
-      "title": "Observe Argo CD deployment and application health with Dashboards and SDLC events — Dynatrace Docs",
-      "domain": "openpipeline",
-      "contentHash": "indexed",
-      "crawledAt": "2026-08-25T19:39:16.154Z",
-      "relevance": "Score: 32",
-      "extractedConcepts": [
-        "Observe Argo CD deployment and application health with Dashboards and SDLC events"
       ]
     }
   ],
   "groundingChecks": [
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events.sdlc) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (events.sdlc) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Observe GitLab pipelines and merge requests with Dashboards and SDLC events",
-      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-gitlab",
-      "evidenceExcerpt": "# Observe GitLab pipelines and merge requests with Dashboards and SDLC events — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/deliver/pipeline-observabi",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events",
-      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-azdo",
-      "evidenceExcerpt": "# Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/deliver/pipeline-obse",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (application.snapshots) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-application-snapshots-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (application.snapshots) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/envir",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (bizevents) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-bizevents-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (bizevents) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/s",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (davis.events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-davis-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (davis.events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-ap",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (davis.problems) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-davis-problems-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (davis.problems) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/sett",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events.security) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-security-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (events.security) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (logs) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-logs-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (logs) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settin",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (metrics) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-metrics-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (metrics) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/set",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (security.events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-security-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (security.events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (smartscape.events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-smartscape-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (smartscape.events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environme",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (spans) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-spans-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (spans) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/setti",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (system.events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-system-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (system.events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-a",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (user.events) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-user-events-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (user.events) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (usersessions) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-usersessions-pipelines",
-      "evidenceExcerpt": "# Settings API - Ingest pipelines configuration (usersessions) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-ap",
-      "status": "VERIFIED"
-    },
-    {
-      "claimOrInstruction": "Respaldado por sección: Settings API - Data forwarding configuration (events.sdlc) schema table",
-      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-data-forwarding",
-      "evidenceExcerpt": "# Settings API - Data forwarding configuration (events.sdlc) schema table — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/dynatrace-api/environment-api/",
-      "status": "VERIFIED"
-    },
     {
       "claimOrInstruction": "Respaldado por sección: Analyze SDLC events from your pipeline",
       "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/pipeline-observability-analyze",
@@ -353,12 +245,120 @@
       "status": "VERIFIED"
     },
     {
-      "claimOrInstruction": "Respaldado por sección: Observe Argo CD deployment and application health with Dashboards and SDLC events",
-      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/deployment-observability-use-case-argocd",
-      "evidenceExcerpt": "... go CD deployment and application health with Dashboards and SDLC events — Dynatrace Docs ## Source - Official URL: [https://docs.dynatrace.com/docs/deliver/pipeline-observabili",
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events.sdlc) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (events.sdlc) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Observe GitLab pipelines and merge requests with Dashboards and SDLC events",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-gitlab",
+      "evidenceExcerpt": "Observe GitLab pipelines and merge requests with Dashboards and SDLC events — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events/tutorials/pipeline-observability-use-case-azdo",
+      "evidenceExcerpt": "Observe Azure DevOps pipelines and pull requests with Dashboards and SDLC events — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Configure multi-cloud ingest governance with pipeline groups",
+      "backedByUrl": "https://docs.dynatrace.com/docs/platform/openpipeline/use-cases/pipeline-groups-multicloud",
+      "evidenceExcerpt": "Configure multi-cloud ingest governance with pipeline groups — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Pipeline observability",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events",
+      "evidenceExcerpt": "... ps://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events](https://docs.dynatrace.com/docs/deliver/pipeline-observability-sdlc-events) - Domain: `openpipeline` - ",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (application.snapshots) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-application-snapshots-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (application.snapshots) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (bizevents) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-bizevents-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (bizevents) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (davis.events) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-davis-events-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (davis.events) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (davis.problems) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-davis-problems-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (davis.problems) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (events) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Data forwarding configuration (events.sdlc) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-data-forwarding",
+      "evidenceExcerpt": "Settings API - Data forwarding configuration (events.sdlc) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest sources configuration (events.sdlc) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-sdlc-ingest-sources",
+      "evidenceExcerpt": "Settings API - Ingest sources configuration (events.sdlc) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (events.security) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-events-security-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (events.security) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (logs) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-logs-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (logs) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (metrics) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-metrics-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (metrics) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (security.events) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-security-events-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (security.events) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (smartscape.events) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-smartscape-events-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (smartscape.events) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (spans) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-spans-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (spans) schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Ingest pipelines configuration (system.events) schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-openpipeline-system-events-pipelines",
+      "evidenceExcerpt": "Settings API - Ingest pipelines configuration (system.events) schema table — Dynatrace Docs",
       "status": "VERIFIED"
     }
   ],
-  "createdAt": "2026-08-25T19:39:16.154Z",
+  "createdAt": "2026-09-09T23:31:34.237Z",
   "version": "1.0.0"
 }

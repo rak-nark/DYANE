@@ -1,9 +1,12 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { loadDocsIndex } from "./scraper.js";
+import { canonicalUrlKey } from "./search.js";
 import type { SkillEvidenceReport } from "./types.js";
 
 const PROJECT_ROOT = resolve(process.cwd());
 const SKILLS_DIR = join(PROJECT_ROOT, "skills");
+const AGENTS_SKILLS_DIR = join(PROJECT_ROOT, ".agents", "skills");
 const CORE_SKILLS_DIR = join(PROJECT_ROOT, "skills-core");
 
 export interface SkillValidationSummary {
@@ -20,6 +23,9 @@ export interface SkillValidationSummary {
   contentBytes?: number;
   sectionCount?: number;
   qualityWarnings: string[];
+  duplicateUrls?: number;
+  nearDuplicateUrls?: number;
+  groundedSources?: number;
 }
 
 /** Umbrales mínimos de calidad de contenido para una skill de dominio. */
@@ -74,6 +80,9 @@ export function validateSkill(skillName: string, family?: "core" | "domain"): Sk
   let validFrontmatter = false;
   let backedByDocsCount = 0;
   let confidenceScore: number | undefined;
+  let duplicateUrls = 0;
+  let nearDuplicateUrls = 0;
+  let groundedSources = 0;
   const sources: string[] = [];
   let contentBytes = 0;
   let sectionCount = 0;
@@ -92,13 +101,27 @@ export function validateSkill(skillName: string, family?: "core" | "domain"): Sk
   if (hasEvidence) {
     try {
       const report = JSON.parse(readFileSync(evidencePath, "utf8")) as SkillEvidenceReport;
-      backedByDocsCount = report.sources?.length ?? 0;
+      const allSources = report.sources ?? [];
+      const uniqueUrls = Array.from(new Set(allSources.map((s) => s.url)));
+      backedByDocsCount = uniqueUrls.length;
+      duplicateUrls = allSources.length - uniqueUrls.length;
+      nearDuplicateUrls = uniqueUrls.length - new Set(uniqueUrls.map((u) => canonicalUrlKey(u))).size;
       confidenceScore = report.sufficiency?.confidence;
-      for (const s of report.sources ?? []) {
-        sources.push(s.url);
+      for (const u of uniqueUrls) {
+        sources.push(u);
       }
     } catch {
       // JSON inválido
+    }
+  }
+
+  if (backedByDocsCount > 0) {
+    try {
+      const kbIndex = loadDocsIndex();
+      const kbUrls = new Set(Object.values(kbIndex.documents ?? {}).map((d) => d.url));
+      groundedSources = sources.filter((u) => kbUrls.has(u)).length;
+    } catch {
+      groundedSources = 0;
     }
   }
 
@@ -117,6 +140,16 @@ export function validateSkill(skillName: string, family?: "core" | "domain"): Sk
     sectionCount,
   });
 
+  if (duplicateUrls > 0) {
+    warnings.push(`detectadas ${duplicateUrls} URL(s) duplicadas en evidence.json (contabilizadas solo fuentes únicas)`);
+  }
+  if (nearDuplicateUrls > 0) {
+    warnings.push(`detectadas ${nearDuplicateUrls} URL(s) casi-duplicadas (variantes versionadas /vN/ o rutas equivalentes)`);
+  }
+  if (backedByDocsCount > 0 && groundedSources < backedByDocsCount) {
+    warnings.push(`${backedByDocsCount - groundedSources} fuente(s) no están indexadas en la KB local (docs/index.json)`);
+  }
+
   return {
     skillName: cleanName,
     family: resolvedFamily,
@@ -131,6 +164,9 @@ export function validateSkill(skillName: string, family?: "core" | "domain"): Sk
     contentBytes,
     sectionCount,
     qualityWarnings: warnings,
+    duplicateUrls,
+    nearDuplicateUrls,
+    groundedSources,
   };
 }
 
@@ -149,5 +185,15 @@ function listSkillsInDir(dir: string, family: "core" | "domain"): SkillValidatio
 }
 
 export function listAllSkills(): SkillValidationSummary[] {
-  return [...listSkillsInDir(CORE_SKILLS_DIR, "core"), ...listSkillsInDir(SKILLS_DIR, "domain")];
+  const summaries = [
+    ...listSkillsInDir(CORE_SKILLS_DIR, "core"),
+    ...listSkillsInDir(SKILLS_DIR, "domain"),
+    ...listSkillsInDir(AGENTS_SKILLS_DIR, "domain"),
+  ];
+  const seen = new Set<string>();
+  return summaries.filter((s) => {
+    if (seen.has(s.skillName)) return false;
+    seen.add(s.skillName);
+    return true;
+  });
 }

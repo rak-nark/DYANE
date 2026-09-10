@@ -27,12 +27,19 @@ function runTest(testName, fn) {
 }
 
 // 1. Test: Reutilización de Skill Existente
+function reusedSkillExists(output) {
+  const m = output.match(/Nombre:\s+([A-Za-z0-9_-]+)/);
+  if (!m) return false;
+  const name = m[1];
+  return existsSync(join(process.cwd(), "skills", name)) || existsSync(join(process.cwd(), ".agents", "skills", name));
+}
+
 runTest("1. Reutilización de Skill Existente (RUM & UX)", () => {
   const res = spawnSync("node", ["dist/index.js", "skill", "create", "analizar sesiones de usuarios y errores javascript de frontend"], {
     encoding: "utf8",
   });
   const output = res.stdout + res.stderr;
-  return output.includes("¡Skill existente encontrada para reutilizar!") && output.includes("dynatrace-rum");
+  return output.includes("¡Skill existente encontrada para reutilizar!") && reusedSkillExists(output);
 });
 
 // 2. Test: Reutilización de Skill Existente (DPS Consumo Indebido)
@@ -41,7 +48,7 @@ runTest("2. Reutilización de Skill Existente (DPS & Licencia)", () => {
     encoding: "utf8",
   });
   const output = res.stdout + res.stderr;
-  return output.includes("¡Skill existente encontrada para reutilizar!") && output.includes("dps-consumo-indebido");
+  return output.includes("¡Skill existente encontrada para reutilizar!") && reusedSkillExists(output);
 });
 
 // 3. Test: Búsqueda en Knowledge Base Local

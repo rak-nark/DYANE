@@ -1,0 +1,334 @@
+{
+  "skillName": "dynatrace-monaco",
+  "targetDomain": "general",
+  "requestedCapability": "Dynatrace Configuration as Code via Monaco",
+  "classification": {
+    "skillType": "research-draft",
+    "domain": "general",
+    "objective": "Destilar la KB local para la capacidad 'Dynatrace Configuration as Code via Monaco'",
+    "applicableDocCategories": [
+      "general"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Brief determinista con 15 páginas oficiales (102 bloques de código, 213 encabezados)."
+  },
+  "sources": [
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "6dbb00ad3d0bec5a0c1a05b82d3c13f1b5303338b8127c907ec1a5f0202ba2ab",
+      "crawledAt": "2026-08-25T21:19:33.611Z",
+      "relevance": "Score: 402",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​",
+        "createToken​",
+        "Parameters​",
+        "Returns​",
+        "Throws​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation/download-monaco",
+      "title": "Download and verify Dynatrace Monaco CLI — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "6e6524c2c94f4504258973e0bcf585e3d698c2b50c10a6d0cb6922cd7fb3a2fc",
+      "crawledAt": "2026-08-25T21:20:14.559Z",
+      "relevance": "Score: 218",
+      "extractedConcepts": [
+        "Download and verify Dynatrace Monaco CLI",
+        "How to download Monaco?",
+        "1. Download latest version of Dynatrace Monaco",
+        "Linux",
+        "macOS"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/guides",
+      "title": "Guides to using Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "37ea4cba0c4ff38abf1b0e4f70add0a55447fb0a8800dec37a73eefbd2d34112",
+      "crawledAt": "2026-08-25T21:20:12.697Z",
+      "relevance": "Score: 113",
+      "extractedConcepts": [
+        "Guides to using Dynatrace Configuration as Code via Monaco",
+        "Advanced use cases with Go templating",
+        "Create an OAuth client for Dynatrace Monaco CLI",
+        "Create a platform token for Dynatrace Monaco CLI",
+        "Migrate deprecated configuration types"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/commands-saas",
+      "title": "Work with Dynatrace Monaco CLI commands for Latest Dynatrace — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "78b8ae412175e8ed7c350e47139e779726d0e5201554945adce06805f9fcc5e5",
+      "crawledAt": "2026-08-25T21:20:15.344Z",
+      "relevance": "Score: 97",
+      "extractedConcepts": [
+        "Work with Dynatrace Monaco CLI commands for Latest Dynatrace",
+        "Deploy",
+        "Usage",
+        "Arguments",
+        "Options"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/logging",
+      "title": "Logging reference for Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "7189fe606a6bb8523784fb0d70045209f3a86d93de472b4cefc5eeb522cea9c2",
+      "crawledAt": "2026-08-25T21:20:14.984Z",
+      "relevance": "Score: 96",
+      "extractedConcepts": [
+        "Logging reference for Dynatrace Configuration as Code via Monaco",
+        "Debug logging",
+        "Log timestamps",
+        "Support archive for troubleshooting",
+        "Structured JSON logging"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid",
+      "title": "Hybrid & Multicloud — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "0f0e11b81d7ee284e2527253386ba032b6d39f037d14a8694b18d12fc29e7e32",
+      "crawledAt": "2026-08-25T21:48:04.021Z",
+      "relevance": "Score: 96",
+      "extractedConcepts": [
+        "Hybrid & Multicloud",
+        "Query",
+        "Permission fields",
+        "API gateway REST APIS",
+        "Query"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/guides/migrating-to-v2",
+      "title": "Migrate configuration from Monaco 1.x to 2.x — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c37a8df1d518d36e91cd9a1c7352570b83ec917e52245562efc2d7af839cccc5",
+      "crawledAt": "2026-08-25T21:20:13.691Z",
+      "relevance": "Score: 95",
+      "extractedConcepts": [
+        "Migrate configuration from Monaco 1.x to 2.x",
+        "Prerequisites",
+        "Sample project",
+        "Convert your project",
+        "Differences between 1.x and 2.x"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference",
+      "title": "Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "ab82f490a07a2fb45551a42dcda162351b68095a0e3909c81ae4949f442131e2",
+      "crawledAt": "2026-08-25T21:20:15.432Z",
+      "relevance": "Score: 89",
+      "extractedConcepts": [
+        "Dynatrace Configuration as Code via Monaco",
+        "Commands",
+        "Deploy command",
+        "Download command",
+        "Delete command"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/networking",
+      "title": "Networking — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "b11726eb6806ed87df05c10527f24016d90457613c01bb750e3306374ad916e9",
+      "crawledAt": "2026-08-25T21:48:05.873Z",
+      "relevance": "Score: 88",
+      "extractedConcepts": [
+        "Networking",
+        "Query",
+        "Permission fields",
+        "AAAA",
+        "Query"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco",
+      "title": "Configuration as Code via Monaco overview — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "7bad1dfcf33b263765cd40ea923b296cc086dd360dee9108596d1dc171a34c68",
+      "crawledAt": "2026-08-25T21:55:50.489Z",
+      "relevance": "Score: 81",
+      "extractedConcepts": [
+        "Configuration as Code via Monaco overview",
+        "Learn more"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation",
+      "title": "Install Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "b3b05a9c62575b59509d8fe58a90499c65a38e922d38430c977e89afbe3e09fb",
+      "crawledAt": "2026-08-25T21:20:14.231Z",
+      "relevance": "Score: 81",
+      "extractedConcepts": [
+        "Install Dynatrace Configuration as Code via Monaco",
+        "What's next",
+        "Related topics"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/get-started/get-started-with-dynatrace-configuration-for-monaco",
+      "title": "Get started with Dynatrace configuration for Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "2d2a3082c785693ffabc922cb7e8ca31ec55be4a6290ed57083435cd33cb5c17",
+      "crawledAt": "2026-08-25T21:20:12.383Z",
+      "relevance": "Score: 70",
+      "extractedConcepts": [
+        "Get started with Dynatrace configuration for Monaco",
+        "What will you learn?",
+        "Before you begin",
+        "Prerequisites",
+        "Get started with creating Dynatrace configuration for Monaco"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/get-started/get-started-with-configuration-deployment-for-monaco",
+      "title": "Get started with configuration deployment for Monaco — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "363e51f4a7afeae5f26887b3b44dea28bd255b0e41e93b50ad66ded4b3767424",
+      "crawledAt": "2026-08-25T21:20:12.772Z",
+      "relevance": "Score: 69",
+      "extractedConcepts": [
+        "Get started with configuration deployment for Monaco",
+        "What will you learn?",
+        "Before you begin",
+        "Prerequisites",
+        "Get started with deploying a Dynatrace configuration"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation/download-container-image",
+      "title": "Download Monaco container image — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "c6c6c407e5e353540698f2a7fd485d66e6dd09ccbd24c54f1f6dac77e88d24f8",
+      "crawledAt": "2026-08-25T21:20:14.347Z",
+      "relevance": "Score: 68",
+      "extractedConcepts": [
+        "Download Monaco container image",
+        "How to download the Monaco container image",
+        "Download Monaco container image",
+        "Verify container image signature",
+        "What's next"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/terraform/tutorials/terraform-tutorial-set-up-automated-notification",
+      "title": "Configure automated notifications using Terraform and Configuration as Code — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "bb3336779017dfad76de591a30e37cf4468681a897d3bf9714589626c32de6dd",
+      "crawledAt": "2026-08-25T21:20:16.311Z",
+      "relevance": "Score: 68",
+      "extractedConcepts": [
+        "Configure automated notifications using Terraform and Configuration as Code",
+        "Prerequisites",
+        "What will you learn",
+        "Steps",
+        "Build Terraform configuration"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por: Classic environment v2 | Dynatrace Developer",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "evidenceExcerpt": "Classic environment v2 | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Download and verify Dynatrace Monaco CLI — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation/download-monaco",
+      "evidenceExcerpt": "Download and verify Dynatrace Monaco CLI — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Guides to using Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/guides",
+      "evidenceExcerpt": "Guides to using Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Work with Dynatrace Monaco CLI commands for Latest Dynatrace — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/commands-saas",
+      "evidenceExcerpt": "Work with Dynatrace Monaco CLI commands for Latest Dynatrace — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Logging reference for Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/logging",
+      "evidenceExcerpt": "Logging reference for Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Hybrid & Multicloud — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/hybrid",
+      "evidenceExcerpt": "Hybrid & Multicloud — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Migrate configuration from Monaco 1.x to 2.x — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/guides/migrating-to-v2",
+      "evidenceExcerpt": "Migrate configuration from Monaco 1.x to 2.x — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference",
+      "evidenceExcerpt": "Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Networking — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/networking",
+      "evidenceExcerpt": "Networking — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Configuration as Code via Monaco overview — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco",
+      "evidenceExcerpt": "Configuration as Code via Monaco overview — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Install Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation",
+      "evidenceExcerpt": "Install Dynatrace Configuration as Code via Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Get started with Dynatrace configuration for Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/get-started/get-started-with-dynatrace-configuration-for-monaco",
+      "evidenceExcerpt": "Get started with Dynatrace configuration for Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Get started with configuration deployment for Monaco — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/get-started/get-started-with-configuration-deployment-for-monaco",
+      "evidenceExcerpt": "Get started with configuration deployment for Monaco — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Download Monaco container image — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/installation/download-container-image",
+      "evidenceExcerpt": "Download Monaco container image — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por: Configure automated notifications using Terraform and Configuration as Code — Dynatrace Docs",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/configuration-as-code/terraform/tutorials/terraform-tutorial-set-up-automated-notification",
+      "evidenceExcerpt": "Configure automated notifications using Terraform and Configuration as Code — Dynatrace Docs",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-09-09T23:22:29.031Z",
+  "version": "1.0.0"
+}

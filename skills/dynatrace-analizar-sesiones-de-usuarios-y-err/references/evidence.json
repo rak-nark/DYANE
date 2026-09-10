@@ -1,0 +1,262 @@
+{
+  "skillName": "dynatrace-analizar-sesiones-de-usuarios-y-err",
+  "targetDomain": "general",
+  "requestedCapability": "analizar sesiones de usuarios y errores javascript de frontend",
+  "classification": {
+    "skillType": "operational-runbook",
+    "domain": "general",
+    "objective": "Proveer procedimientos operativos, DQL, configuración y diagnóstico para analizar sesiones de usuarios y errores javascript de frontend",
+    "applicableDocCategories": [
+      "general"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Respaldada por 14 páginas oficiales indexadas de Dynatrace Docs."
+  },
+  "sources": [
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "title": "Classic environment v2 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 117",
+      "extractedConcepts": [
+        "accessTokensActiveGateTokensClient​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/application-observability/distributed-tracing/distributed-tracing-app/drill-down-to-frontend",
+      "title": "Drill down to frontend context from Distributed Tracing app — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 27",
+      "extractedConcepts": [
+        "Drill down to frontend context from Distributed Tracing app"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v1/",
+      "title": "Classic environment v1 | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 27",
+      "extractedConcepts": [
+        "clusterConfigClient​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/trace",
+      "title": "Traces — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 12",
+      "extractedConcepts": [
+        "Traces"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/reference/javascript-runtime/",
+      "title": "JavaScript runtime | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 12",
+      "extractedConcepts": [
+        "SDK for TypeScript​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/core",
+      "title": "Smartscape - Core entities — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 11",
+      "extractedConcepts": [
+        "Smartscape - Core entities"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/networking",
+      "title": "Networking — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 10",
+      "extractedConcepts": [
+        "Networking"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/dynatrace-for-ai-observability/sample-use-cases/conversation-and-session-tracking",
+      "title": "Conversation ID and agent session tracking with RUM and OpenTelemetry — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 8",
+      "extractedConcepts": [
+        "Conversation ID and agent session tracking with RUM and OpenTelemetry"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/use-cases/avoid-overalerting",
+      "title": "Best practices for avoiding overalerting — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 7",
+      "extractedConcepts": [
+        "Best practices for avoiding overalerting"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/semantic-dictionary/fields",
+      "title": "Global field reference — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 6",
+      "extractedConcepts": [
+        "Global field reference"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/guides/workflows/use-intents/",
+      "title": "Use intents for Workflows | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 4",
+      "extractedConcepts": [
+        "Create a new workflow​"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-intelligence/agentic-and-generative-ai/chat-with-dynatrace-assist/dynatrace-assist-prompts",
+      "title": "Dynatrace Assist prompt examples — Dynatrace Docs",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 3",
+      "extractedConcepts": [
+        "Dynatrace Assist prompt examples"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/platform-services/services/app-engine/",
+      "title": "AppEngine | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 3",
+      "extractedConcepts": [
+        "Concepts​"
+      ]
+    },
+    {
+      "url": "https://developer.dynatrace.com/develop/reference/",
+      "title": "Reference | Dynatrace Developer",
+      "domain": "general",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:43.975Z",
+      "relevance": "Score: 3",
+      "extractedConcepts": [
+        "API"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: accessTokensActiveGateTokensClient​",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v2/",
+      "evidenceExcerpt": "Classic environment v2 | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Drill down to frontend context from Distributed Tracing app",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/application-observability/distributed-tracing/distributed-tracing-app/drill-down-to-frontend",
+      "evidenceExcerpt": "Drill down to frontend context from Distributed Tracing app — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: clusterConfigClient​",
+      "backedByUrl": "https://developer.dynatrace.com/develop/sdks/client-classic-environment-v1/",
+      "evidenceExcerpt": "Classic environment v1 | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Traces",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/trace",
+      "evidenceExcerpt": "Traces — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: SDK for TypeScript​",
+      "backedByUrl": "https://developer.dynatrace.com/develop/reference/javascript-runtime/",
+      "evidenceExcerpt": "JavaScript runtime | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Smartscape - Core entities",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/core",
+      "evidenceExcerpt": "Smartscape - Core entities — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Networking",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/model/smartscape/azure/networking",
+      "evidenceExcerpt": "Networking — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Conversation ID and agent session tracking with RUM and OpenTelemetry",
+      "backedByUrl": "https://docs.dynatrace.com/docs/observe/dynatrace-for-ai-observability/sample-use-cases/conversation-and-session-tracking",
+      "evidenceExcerpt": "Conversation ID and agent session tracking with RUM and OpenTelemetry — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Best practices for avoiding overalerting",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-intelligence/use-cases/avoid-overalerting",
+      "evidenceExcerpt": "Best practices for avoiding overalerting — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Global field reference",
+      "backedByUrl": "https://docs.dynatrace.com/docs/semantic-dictionary/fields",
+      "evidenceExcerpt": "Global field reference — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Create a new workflow​",
+      "backedByUrl": "https://developer.dynatrace.com/develop/guides/workflows/use-intents/",
+      "evidenceExcerpt": "Use intents for Workflows | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dynatrace Assist prompt examples",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-intelligence/agentic-and-generative-ai/chat-with-dynatrace-assist/dynatrace-assist-prompts",
+      "evidenceExcerpt": "Dynatrace Assist prompt examples — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Concepts​",
+      "backedByUrl": "https://developer.dynatrace.com/develop/platform-services/services/app-engine/",
+      "evidenceExcerpt": "AppEngine | Dynatrace Developer",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: API",
+      "backedByUrl": "https://developer.dynatrace.com/develop/reference/",
+      "evidenceExcerpt": "Reference | Dynatrace Developer",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-09-09T23:22:43.975Z",
+  "version": "1.0.0"
+}

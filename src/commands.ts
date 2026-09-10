@@ -9,26 +9,6 @@ import { searchDocs } from "./docs/search.js";
 import { executeSkillPipeline, backfillSkillEvidence } from "./docs/skillPipeline.js";
 import { buildResearchDraft } from "./docs/distill.js";
 import { validateSkill, listAllSkills } from "./docs/validator.js";
-import {
-  buildScaffold,
-} from "./plans/scaffold.js";
-import {
-  ensurePlansDir,
-  getPlan,
-  loadPlansIndex,
-  nextPlanId,
-  planFileName,
-  upsertIndexEntry,
-  writePlanFile,
-} from "./plans/storage.js";
-import { reindexPlans, validatePlan } from "./plans/validator.js";
-import {
-  PLAN_PRIORITIES,
-  PLAN_STATUSES,
-  type CreatePlanOptions,
-  type PlanPriority,
-  type PlanStatus,
-} from "./plans/types.js";
 
 export interface CliOptions {
   output?: string;
@@ -47,10 +27,6 @@ export interface CliOptions {
   source?: string;
   dryRun?: boolean;
   name?: string;
-  skill?: string;
-  ref?: string;
-  priority?: string;
-  owner?: string;
 }
 
 const HELP = `
@@ -78,21 +54,12 @@ DOCUMENTACIÓN Y BASE DE CONOCIMIENTO:
   dtx docs refresh-videos             Regenera solo los docs con videos para añadir sección "## Videos"
      [--limit <n>]                    (--dry-run lista los documentos afectados)
 DESARROLLO AUTÓNOMO DE SKILLS:
-  dtx skill draft "<capacidad>"       SEMIAUTOMÁTICO paso 1: destila la KB local en references/research-brief.md
-     [--domain <dom>] [--limit <n>]   (determinista, 0 tokens IA; --limit = máx docs a destilar, default 24)
+dtx skill draft "<capacidad>"       SEMIAUTOMÁTICO paso 1: destila la KB local en references/research-brief.md
+      [--domain <dom>] [--limit <n>]   (determinista, 0 tokens IA; sin límites por defecto, --limit/budget opcional)
   dtx skill create "<solicitud>"      Genera una skill validada por el pipeline de 11 pasos [--limit <n>]
   dtx skill validate <nombre>         Valida trazabilidad documental + calidad de contenido
   dtx skill backfill <nombre>         Genera evidence.json para una skill buscando en la base documental local
   dtx skill list                      Lista todas las skills del entorno y su estado de verificación
-
-PLANES DE TRABAJO:
-  dtx plan create "<sugerencia>"      Convierte una sugerencia en plan de trabajo estructurado
-     [--skill <nombre>] [--ref <ruta#ancla>] [--domain <dom>] [--priority high] [--owner X]
-  dtx plan list [--status <estado>]   Lista los planes registrados (draft|in-progress|blocked|done|cancelled)
-  dtx plan show <PLAN-ID>             Muestra el contenido completo de un plan
-  dtx plan validate <PLAN-ID>         Valida estructura, tareas y evidencia documental del plan
-  dtx plan status <ID> <estado>       Cambia el estado de un plan
-  dtx plan reindex                    Regenera plans/index.json desde los archivos .md
 
 OPCIONES GLOBALES:
   --output json|table|raw             Formato de salida (por defecto: env DTX_OUTPUT o json)
@@ -322,9 +289,9 @@ export function cmdSkillDraft(prompt: string, options: CliOptions): void {
     return;
   }
 
-  const maxDocs = options.limit ?? 40;
-  const maxBriefBytes = options.maxBytes ?? options.budget ?? 120_000;
-  const maxCodeChars = options.maxCodeChars ?? 3500;
+  const maxDocs = options.limit ?? Number.POSITIVE_INFINITY;
+  const maxBriefBytes = options.maxBytes ?? options.budget ?? Number.POSITIVE_INFINITY;
+  const maxCodeChars = options.maxCodeChars ?? Number.POSITIVE_INFINITY;
 
   const res = buildResearchDraft({
     prompt,
@@ -376,6 +343,12 @@ export function cmdSkillValidate(skillName: string): void {
   console.log(`  - Frontmatter YAML:         ${res.validFrontmatter ? "VÁLIDO (OK)" : "INVÁLIDO"}`);
   console.log(`  - Evidencia (evidence.json): ${res.hasEvidence ? "PRESENTE (OK)" : "FALTA"}`);
   console.log(`  - Fuentes documentales:     ${res.backedByDocsCount} páginas oficiales`);
+  if (res.backedByDocsCount > 0) {
+    console.log(`  - En KB local:              ${res.groundedSources ?? 0}/${res.backedByDocsCount} indexadas`);
+  }
+  if ((res.duplicateUrls ?? 0) > 0 || (res.nearDuplicateUrls ?? 0) > 0) {
+    console.log(`  - Duplicados:               ${res.duplicateUrls ?? 0} exactas, ${res.nearDuplicateUrls ?? 0} casi-duplicadas (ver avisos ⚠)`);
+  }
   console.log(`  - Estado de Verificación:   ${res.status}`);
   if (res.quality && res.quality !== "N/A") {
     console.log(`  - Calidad de contenido:     ${res.quality} (${(res.sectionCount ?? 0)} secciones H2, ${((res.contentBytes ?? 0) / 1024).toFixed(1)} KB)`);
@@ -403,7 +376,7 @@ export function cmdSkillBackfill(skillName: string, options: CliOptions): void {
   const res = backfillSkillEvidence({
     skillName,
     domain: options.domain,
-    limit: options.limit ?? 15,
+    limit: options.limit ?? Number.POSITIVE_INFINITY,
   });
 
   console.log(`\nBackfill de evidencia documental: Skill '${res.skillName}'`);
@@ -469,142 +442,6 @@ export function cmdSkillList(): void {
   }
   console.log("");
 }
-
-export function cmdPlanCreate(suggestion: string, options: CliOptions): void {
-  if (!suggestion) {
-    console.error('Uso: dtx plan create "<sugerencia>" [--skill <nombre>] [--ref <ruta#ancla>]');
-    process.exitCode = 1;
-    return;
-  }
-  const priority = (options.priority ?? "") as PlanPriority;
-  const createOptions: CreatePlanOptions = {
-    suggestion,
-    skill: options.skill,
-    ref: options.ref,
-    domain: options.domain,
-    owner: options.owner,
-    priority: PLAN_PRIORITIES.includes(priority) ? priority : "medium",
-  };
-
-  ensurePlansDir();
-  const index = loadPlansIndex();
-  const id = nextPlanId(index);
-  const now = new Date().toISOString();
-  const { frontmatter, body } = buildScaffold(createOptions, id, now);
-  const file = planFileName(id, frontmatter.title);
-  writePlanFile(file, frontmatter, body);
-  upsertIndexEntry(frontmatter, file);
-
-  console.log("\n[OK] Plan creado");
-  console.log(`  ID:     ${id}`);
-  console.log(`  Archivo: plans/${file}`);
-  console.log(`  Origen:  ${frontmatter.origin.type}${options.skill ? ` (${options.skill})` : ""}`);
-  console.log(`  Prioridad: ${frontmatter.priority}`);
-  console.log("\nSiguientes pasos:");
-  console.log(`  1. Edita plans/${file} y completa fases, tareas y evidencias`);
-  console.log(`  2. dtx plan validate ${id}`);
-  console.log("");
-}
-
-export function cmdPlanList(options: CliOptions): void {
-  const index = loadPlansIndex();
-  let plans = [...index.plans];
-  if (options.status) {
-    plans = plans.filter((p) => p.status === options.status);
-  }
-
-  if (options.output === "json") {
-    console.log(JSON.stringify({ totalPlans: plans.length, plans }, null, 2));
-    return;
-  }
-
-  if (plans.length === 0) {
-    console.log(
-      options.status
-        ? `\n(Sin planes con estado '${options.status}')\n`
-        : "\n(Sin planes todavía. Crea uno: dtx plan create \"<sugerencia>\")\n",
-    );
-    return;
-  }
-
-  console.log(`\nPlan de trabajo (${plans.length} planes):\n`);
-  console.log(
-    `  ${"ID".padEnd(18)}   ${"ESTADO".padEnd(12)}   ${"PRIORIDAD".padEnd(10)}   TÍTULO`,
-  );
-  console.log("  " + "-".repeat(90));
-  for (const p of plans) {
-    console.log(
-      `  ${p.id.padEnd(18)}   ${p.status.padEnd(12)}   ${p.priority.padEnd(10)}   ${p.title}`,
-    );
-  }
-  console.log("  " + "-".repeat(90));
-  console.log(`  Total: ${plans.length} | Índice: plans/index.json\n`);
-}
-
-export function cmdPlanShow(planId: string): void {
-  if (!planId) {
-    console.error("Uso: dtx plan show <PLAN-ID>");
-    process.exitCode = 1;
-    return;
-  }
-  const plan = getPlan(planId);
-  if (!plan) {
-    console.error(`No se encontró el plan '${planId}'. Lista los disponibles: dtx plan list`);
-    process.exitCode = 1;
-    return;
-  }
-  console.log(plan.body.trimEnd());
-}
-
-export function cmdPlanValidate(planId: string): void {
-  if (!planId) {
-    console.error("Uso: dtx plan validate <PLAN-ID>");
-    process.exitCode = 1;
-    return;
-  }
-  const report = validatePlan(planId);
-  if (!report) {
-    console.error(`No se encontró o no se pudo leer el plan '${planId}' (frontmatter inválido = BROKEN).`);
-    process.exitCode = 1;
-    return;
-  }
-  console.log(`\nValidación del plan: ${report.planId} (${report.file})`);
-  for (const c of report.checks) {
-    console.log(`  [${c.ok ? "OK" : "X "}] ${c.check.padEnd(26)} ${c.detail}`);
-  }
-  console.log(`\n  Estado: ${report.status}\n`);
-  if (report.status !== "VALID") process.exitCode = 1;
-}
-
-export function cmdPlanStatus(planId: string, newStatus: string): void {
-  if (!planId || !newStatus) {
-    console.error(`Uso: dtx plan status <PLAN-ID> <${PLAN_STATUSES.join("|")}>`);
-    process.exitCode = 1;
-    return;
-  }
-  if (!PLAN_STATUSES.includes(newStatus as PlanStatus)) {
-    console.error(`Estado inválido '${newStatus}'. Valores: ${PLAN_STATUSES.join(", ")}`);
-    process.exitCode = 1;
-    return;
-  }
-  const plan = getPlan(planId);
-  if (!plan) {
-    console.error(`No se encontró el plan '${planId}'.`);
-    process.exitCode = 1;
-    return;
-  }
-  plan.frontmatter.status = newStatus as PlanStatus;
-  plan.frontmatter.updated = new Date().toISOString();
-  writePlanFile(plan.file, plan.frontmatter, plan.body);
-  upsertIndexEntry(plan.frontmatter, plan.file);
-  console.log(`[OK] ${plan.frontmatter.id}: estado → ${newStatus}`);
-}
-
-export function cmdPlanReindex(): void {
-  const count = reindexPlans();
-  console.log(`[OK] Índice regenerado: ${count} planes procesados → plans/index.json`);
-}
-
 
 export function cmdConfig(): void {
   const config = loadConfig();

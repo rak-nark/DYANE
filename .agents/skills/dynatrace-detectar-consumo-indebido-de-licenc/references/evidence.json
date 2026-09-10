@@ -1,0 +1,279 @@
+{
+  "skillName": "dynatrace-detectar-consumo-indebido-de-licenc",
+  "targetDomain": "dashboards",
+  "requestedCapability": "detectar consumo indebido de licencia dps y dashboards costosos",
+  "classification": {
+    "skillType": "operational-runbook",
+    "domain": "dashboards",
+    "objective": "Proveer procedimientos operativos, DQL, configuración y diagnóstico para detectar consumo indebido de licencia dps y dashboards costosos",
+    "applicableDocCategories": [
+      "dashboards"
+    ]
+  },
+  "sufficiency": {
+    "isSufficient": true,
+    "confidence": 1,
+    "reasoning": "Respaldada por 15 páginas oficiales indexadas de Dynatrace Docs."
+  },
+  "sources": [
+    {
+      "url": "https://docs.dynatrace.com/docs/license/dps-for-hybrid/api-export-business-events",
+      "title": "Explore your DPS for Hybrid subscription with dashboards — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 41",
+      "extractedConcepts": [
+        "Explore your DPS for Hybrid subscription with dashboards"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/manage-your-costs/view/usage-dashboards",
+      "title": "View DPS consumption with ready-made usage dashboards — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 29",
+      "extractedConcepts": [
+        "View DPS consumption with ready-made usage dashboards"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-all",
+      "title": "Dashboards Classic API - GET all dashboards — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 26",
+      "extractedConcepts": [
+        "Dashboards Classic API - GET all dashboards"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-sharing-config",
+      "title": "Dashboards Classic API - GET sharing configuration — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 23",
+      "extractedConcepts": [
+        "Dashboards Classic API - GET sharing configuration"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/put-sharing-config",
+      "title": "Dashboards Classic API - PUT sharing configuration — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 23",
+      "extractedConcepts": [
+        "Dashboards Classic API - PUT sharing configuration"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/del-dashboard",
+      "title": "Dashboards Classic API - DELETE a dashboard — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 19",
+      "extractedConcepts": [
+        "Dashboards Classic API - DELETE a dashboard"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-dashboard",
+      "title": "Dashboards Classic API - GET a dashboard — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 19",
+      "extractedConcepts": [
+        "Dashboards Classic API - GET a dashboard"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/post-dashboard",
+      "title": "Dashboards Classic API - POST a dashboard — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 19",
+      "extractedConcepts": [
+        "Dashboards Classic API - POST a dashboard"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/put-dashboard",
+      "title": "Dashboards Classic API - PUT a dashboard — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 19",
+      "extractedConcepts": [
+        "Dashboards Classic API - PUT a dashboard"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api",
+      "title": "Dashboards Classic API — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 18",
+      "extractedConcepts": [
+        "Dashboards Classic API"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/dashboards-api-tile-models",
+      "title": "Dashboards Classic API - Tile JSON models — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 15",
+      "extractedConcepts": [
+        "Dashboards Classic API - Tile JSON models"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-general",
+      "title": "Settings API - General settings schema table — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 7",
+      "extractedConcepts": [
+        "Settings API - General settings schema table"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-image-allowlist",
+      "title": "Settings API - Allowed URL pattern rules schema table — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 7",
+      "extractedConcepts": [
+        "Settings API - Allowed URL pattern rules schema table"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-presets",
+      "title": "Settings API - Preset settings schema table — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 7",
+      "extractedConcepts": [
+        "Settings API - Preset settings schema table"
+      ]
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/deliver/service-level-objectives/service-level-objective-tile-add-to-dashboard",
+      "title": "Add a service-level objective (SLO) tile to a dashboard — Dynatrace Docs",
+      "domain": "dashboards",
+      "contentHash": "indexed",
+      "crawledAt": "2026-09-09T23:22:45.552Z",
+      "relevance": "Score: 3",
+      "extractedConcepts": [
+        "Add a service-level objective (SLO) tile to a dashboard"
+      ]
+    }
+  ],
+  "groundingChecks": [
+    {
+      "claimOrInstruction": "Respaldado por sección: Explore your DPS for Hybrid subscription with dashboards",
+      "backedByUrl": "https://docs.dynatrace.com/docs/license/dps-for-hybrid/api-export-business-events",
+      "evidenceExcerpt": "Explore your DPS for Hybrid subscription with dashboards — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: View DPS consumption with ready-made usage dashboards",
+      "backedByUrl": "https://docs.dynatrace.com/docs/manage-your-costs/view/usage-dashboards",
+      "evidenceExcerpt": "View DPS consumption with ready-made usage dashboards — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - GET all dashboards",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-all",
+      "evidenceExcerpt": "Dashboards Classic API - GET all dashboards — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - GET sharing configuration",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-sharing-config",
+      "evidenceExcerpt": "Dashboards Classic API - GET sharing configuration — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - PUT sharing configuration",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/put-sharing-config",
+      "evidenceExcerpt": "Dashboards Classic API - PUT sharing configuration — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - DELETE a dashboard",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/del-dashboard",
+      "evidenceExcerpt": "Dashboards Classic API - DELETE a dashboard — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - GET a dashboard",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/get-dashboard",
+      "evidenceExcerpt": "Dashboards Classic API - GET a dashboard — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - POST a dashboard",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/post-dashboard",
+      "evidenceExcerpt": "Dashboards Classic API - POST a dashboard — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - PUT a dashboard",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/put-dashboard",
+      "evidenceExcerpt": "Dashboards Classic API - PUT a dashboard — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api",
+      "evidenceExcerpt": "Dashboards Classic API — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Dashboards Classic API - Tile JSON models",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/configuration-api/dashboards-api/dashboards-api-tile-models",
+      "evidenceExcerpt": "Dashboards Classic API - Tile JSON models — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - General settings schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-general",
+      "evidenceExcerpt": "Settings API - General settings schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Allowed URL pattern rules schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-image-allowlist",
+      "evidenceExcerpt": "Settings API - Allowed URL pattern rules schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Settings API - Preset settings schema table",
+      "backedByUrl": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/settings/schemas/builtin-dashboards-presets",
+      "evidenceExcerpt": "Settings API - Preset settings schema table — Dynatrace Docs",
+      "status": "VERIFIED"
+    },
+    {
+      "claimOrInstruction": "Respaldado por sección: Add a service-level objective (SLO) tile to a dashboard",
+      "backedByUrl": "https://docs.dynatrace.com/docs/deliver/service-level-objectives/service-level-objective-tile-add-to-dashboard",
+      "evidenceExcerpt": "Add a service-level objective (SLO) tile to a dashboard — Dynatrace Docs",
+      "status": "VERIFIED"
+    }
+  ],
+  "createdAt": "2026-09-09T23:22:45.552Z",
+  "version": "1.0.0"
+}
